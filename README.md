@@ -1,0 +1,1 @@
+dialog-native-component

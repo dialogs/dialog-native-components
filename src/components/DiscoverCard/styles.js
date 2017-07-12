@@ -20,8 +20,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 20,
-    lineHeight: 24  ,
+    fontSize: 18,
+    lineHeight: 24,
     fontWeight: '500'
   },
   shortname: {
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     color: 'rgba(0, 0, 0, 0.5)',
   },
   description: {
-    marginTop: 4,
+    marginTop: 6,
     fontSize: 15,
     lineHeight: 16,
     color: 'rgba(0, 0, 0, 0.4)'
@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   creatorText: {
+    fontSize: 14,
+    lineHeight: 20,
+    color: 'rgba(0, 0, 0, 0.5)',
     textAlign: 'right'
   },
   creatorName: {

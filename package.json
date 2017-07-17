@@ -4,6 +4,10 @@
   "author": "Oleg Shilov <me@olegshilov.com>",
   "license": "Apache-2.0",
   "description": "",
+  "main": "src/index.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest"

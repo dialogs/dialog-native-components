@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { AppRegistry, View, Text, Alert, TouchableOpacity, Image } from 'react-native';
-import Icon from '../Icon/Icon';
+// import Icon from '../Icon/Icon';
 import Avatar from '../Avatar/Avatar';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import styles from './styles';
@@ -37,7 +37,26 @@ class DiscoverCard extends PureComponent {
   }
 
   renderIcon() {
-    return null;
+    const { type } = this.props;
+
+    switch (type) {
+      case 'channel':
+        return (
+          <Image
+            source={require('../../assets/icons/channel.png')}
+            style={styles.titleIcon}
+          />
+        );
+      case 'group':
+        return (
+          <Image
+            source={require('../../assets/icons/group.png')}
+            style={styles.titleIcon}
+          />
+        );
+      default:
+        return null;
+    }
   }
 
   renderInfo() {
@@ -65,12 +84,9 @@ class DiscoverCard extends PureComponent {
 
     return (
       <View style={styles.members}>
-        <Icon
-          name="person"
-          width={16}
-          height={16}
-          fill="rgba(0, 0, 0, 0.5)"
+        <Image
           style={styles.membersIcon}
+          source={require('../../assets/icons/person.png')}
         />
         <Text style={styles.membersText}>{members}</Text>
       </View>

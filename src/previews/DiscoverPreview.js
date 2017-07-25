@@ -19,12 +19,6 @@ class DiscoverPreview extends Component {
         creator: user.title
       });
       items.push({
-        ...group,
-        description: group.about,
-        members: 23,
-        creator: user.title
-      });
-      items.push({
         ...channel,
         description: channel.about,
         shortname: channel.userName,

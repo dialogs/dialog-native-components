@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.9)'
   },
   cards: {
-    flex: 1
+    flex: 1,
+    backgroundColor: '#eeeeee'
   },
   card: {
     marginTop: 0,

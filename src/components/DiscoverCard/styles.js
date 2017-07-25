@@ -4,11 +4,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     flexWrap: 'nowrap',
-    borderRadius: 4,
+    borderRadius: 2,
     backgroundColor: 'white',
-    borderColor: '#e2e2e2',
-    borderWidth: 1,
-    marginBottom: 0
+    // borderColor: '#ececec',
+    // borderWidth: 1,
+    marginBottom: 0,
+    elevation: 2
   },
   body: {
     padding: 10,
@@ -17,22 +18,35 @@ const styles = StyleSheet.create({
     alignContent: 'center'
   },
   info: {
-    flex: 1,
+    flex: 1
+  },
+  titleWrapper: {
+    display: 'flex',
+    flexDirection: 'row'
   },
   title: {
     fontSize: 18,
-    lineHeight: 24,
-    fontWeight: '500'
+    lineHeight: 23,
+    fontWeight: '500',
+    color: '#727272',
+    flex: 1
+  },
+  titleIcon: {
+    flex: 0,
+    width: 24,
+    height: 24,
+    marginRight: 4,
   },
   shortname: {
     lineHeight: 20,
-    color: 'rgba(0, 0, 0, 0.5)',
+    color: '#acacac',
   },
   description: {
     marginTop: 6,
-    fontSize: 15,
+    fontSize: 14,
     lineHeight: 16,
-    color: 'rgba(0, 0, 0, 0.4)'
+    paddingBottom: 2,
+    color: '#727272'
   },
   avatar: {
      width: 60,
@@ -60,12 +74,14 @@ const styles = StyleSheet.create({
   membersIcon: {
     flex: 0,
     marginRight: 4,
+    width: 18,
+    height: 18
   },
   membersText: {
     flex: 0,
     fontSize: 14,
     lineHeight: 20,
-    color: 'rgba(0, 0, 0, 0.4)',
+    color: '#727272',
     fontWeight: '500'
   },
   creator: {
@@ -74,7 +90,7 @@ const styles = StyleSheet.create({
   creatorText: {
     fontSize: 14,
     lineHeight: 20,
-    color: 'rgba(0, 0, 0, 0.5)',
+    color: '#727272',
     textAlign: 'right'
   },
   creatorName: {

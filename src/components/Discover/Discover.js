@@ -48,6 +48,4 @@ class Discover extends PureComponent {
   }
 }
 
-AppRegistry.registerComponent("Discover", () => Discover);
-
 export default Discover;

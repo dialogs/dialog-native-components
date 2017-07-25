@@ -3,7 +3,7 @@
  */
 
 import React, { Component } from "react";
-import { AppRegistry, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { group, user, channel, bot } from "../fixtures/peerInfo";
 import Discover from "../components/Discover/Discover";
 

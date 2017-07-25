@@ -1,6 +1,10 @@
+/*
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
+ */
+
 import React, { PureComponent } from 'react';
-import { AppRegistry, View, Text, Alert, TouchableOpacity, Image } from 'react-native';
-// import Icon from '../Icon/Icon';
+import { View, Text, Alert, TouchableOpacity, Image } from 'react-native';
 import Avatar from '../Avatar/Avatar';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import styles from './styles';
@@ -126,7 +130,5 @@ class DiscoverCard extends PureComponent {
     );
   }
 }
-
-AppRegistry.registerComponent('DiscoverCard', () => DiscoverCard);
 
 export default DiscoverCard

@@ -5,7 +5,7 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { group, user, channel, bot } from "../fixtures/peerInfo";
-import Discover from "../components/Discover/Discover";
+import DiscoverIOS from "../components/DiscoverIOS/DiscoverIOS";
 
 class DiscoverPreview extends Component {
   render() {
@@ -39,7 +39,7 @@ class DiscoverPreview extends Component {
 
     return (
       <View style={styles.container}>
-        <Discover data={items} />
+        <DiscoverIOS data={items} />
       </View>
     );
   }

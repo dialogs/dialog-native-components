@@ -9,7 +9,7 @@ import Avatar from '../Avatar/Avatar';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import styles from './styles';
 
-class DiscoverCard extends PureComponent {
+class DiscoverCardIOS extends PureComponent {
   handleClick = () => {
     Alert.alert(this.props.title);
   };
@@ -23,7 +23,7 @@ class DiscoverCard extends PureComponent {
         image={this.props.avatar}
         placeholder={placeholder}
         title={this.props.title}
-        size={60}
+        size={56}
       />
     );
   }
@@ -63,67 +63,25 @@ class DiscoverCard extends PureComponent {
     }
   }
 
-  renderInfo() {
-    const { title, description } = this.props;
+  renderTitle() {
+    const { title } = this.props;
 
     return (
-      <View style={styles.info}>
-        <View style={styles.titleWrapper}>
-          {this.renderIcon()}
-          <Text numberOfLines={1} style={styles.title}>
-            {title}
-          </Text>
-        </View>
-        {this.renderShortname()}
-        <Text numberOfLines={4} style={styles.description}>{description}</Text>
-      </View>
-    );
-  }
-
-  renderMembers() {
-    const { members } = this.props;
-    if (!members) {
-      return null;
-    }
-
-    return (
-      <View style={styles.members}>
-        <Image
-          style={styles.membersIcon}
-          source={require('../../assets/icons/person.png')}
-        />
-        <Text style={styles.membersText}>{members}</Text>
-      </View>
-    );
-  }
-
-  renderCreator() {
-    const { type, creator } = this.props;
-
-    if (!creator) {
-      return null;
-    }
-
-    return (
-      <View style={styles.creator}>
-        <Text style={styles.creatorText}>
-          created by: <Text style={styles.creatorName}>{creator}</Text>
-        </Text>
+      <View style={styles.titleWrapper}>
+        {this.renderIcon()}
+        <Text numberOfLines={1} style={styles.title}>{title}</Text>
       </View>
     );
   }
 
   render() {
     return (
-      <View style={[styles.container, this.props.style]}>
+      <View style={styles.container}>
         <TouchableOpacity onPress={this.handleClick} activeOpacity={0.8}>
           <View style={styles.body}>
             {this.renderAvatar()}
-            {this.renderInfo()}
-          </View>
-          <View style={styles.footer}>
-            {this.renderMembers()}
-            {this.renderCreator()}
+            {this.renderTitle()}
+            {this.renderShortname()}
           </View>
         </TouchableOpacity>
       </View>
@@ -131,4 +89,4 @@ class DiscoverCard extends PureComponent {
   }
 }
 
-export default DiscoverCard;
+export default DiscoverCardIOS;

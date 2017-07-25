@@ -4,18 +4,12 @@
  */
 
 import React, {PureComponent} from "react";
-import {AppRegistry, View, Text, Image} from "react-native";
-import Svg, {
-  LinearGradient,
-  Defs,
-  Circle,
-  Stop
-} from "react-native-svg";
-import type {AvatarPlaceholder} from "@dlghq/dialog-types";
-import type {Gradient} from './getAvatarColor';
+import { AppRegistry, View, Text, Image } from "react-native";
+import LinearGradient from 'react-native-linear-gradient';
+import type { AvatarPlaceholder } from "@dlghq/dialog-types";
+import type { Gradient } from './getAvatarColor';
 import getAvatarText from './getAvatarText';
 import getAvatarColor from "./getAvatarColor";
-import createSequence from '../../utils/createSequence';
 import styles from "./styles";
 
 export type Props = {
@@ -23,20 +17,11 @@ export type Props = {
   size: number,
   image: ?String,
   title: string,
-  placeholder: AvatarPlaceholder,
-  id: number
+  placeholder: AvatarPlaceholder
 };
-
-const seq = createSequence();
 
 class Avatar extends PureComponent {
   props: Props;
-
-  constructor(props: Props) {
-    super(props);
-    this.id = 'avatar_' + seq.next();
-    console.log(this.id);
-  }
 
   getAvatarText(): string {
     return getAvatarText(this.props.title);
@@ -47,34 +32,22 @@ class Avatar extends PureComponent {
   };
 
   renderGradientAvatar() {
+    const { size } = this.props;
     const colors = this.getAvatarColor();
+    const gradient = [colors.payload.from, colors.payload.to];
+    const style = {
+      width: size,
+      height: size,
+      borderRadius: size / 2
+    };
+
     return (
-      <Svg
-        viewBox="0 0 100 100"
-        width={this.props.size}
-        height={this.props.size}
-        style={{ position: 'absolute', left: 0, top: 0}}
-      >
-        <Defs>
-          <LinearGradient
-            id={this.id}
-            gradientUnits="userSpaceOnUse"
-            x1="6.79%"
-            y1="105.31%"
-            x2="93.21%"
-            y2="-5.31%"
-          >
-            <Stop offset="0%" stopColor={colors.payload.from}/>
-            <Stop offset="100%" stopColor={colors.payload.to}/>
-          </LinearGradient>
-        </Defs>
-        <Circle
-          fill={`url(#${this.id})`}
-          cx="50"
-          cy="50"
-          r="50"
-        />
-      </Svg>
+      <LinearGradient
+        colors={gradient}
+        style={style}
+        start={{x: 0, y: 1}}
+        end={{x: 1, y: 0}}
+      />
     );
   }
 
@@ -104,6 +77,7 @@ class Avatar extends PureComponent {
 
   renderText() {
     const {image} = this.props;
+
     if (image) {
       return null;
     }

@@ -22,7 +22,7 @@ class DiscoverIOS extends PureComponent {
       const item = this.getItem(this.props.data, index * COLUMN + i);
 
       cards.push(
-        <DiscoverCardIOS {...item} />
+        <DiscoverCardIOS key={i} {...item} />
       )
     }
 

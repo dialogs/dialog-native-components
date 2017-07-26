@@ -5,21 +5,21 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 2,
     backgroundColor: '#ffffff',
-    // height: 100,
     margin: 5,
-    shadowColor: '#000000',
+    borderColor: 'rgba(0, 0, 0, 0.06)',
+    shadowColor: 'rgba(0, 0, 0, 0.08)',
     shadowOffset: {
       width: 0,
       height: 1
     },
-    shadowOpacity: 8,
-    shadowRadius: 2
+    shadowRadius: 2,
+    shadowOpacity: 1
   },
   body: {
     paddingTop: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 20,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingBottom: 16,
     flexDirection: 'column',
     flexWrap: 'nowrap',
     justifyContent: 'flex-start',

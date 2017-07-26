@@ -1,4 +1,4 @@
-package com.awesomeproject;
+package com.dialogcomponents;
 
 import android.app.Application;
 

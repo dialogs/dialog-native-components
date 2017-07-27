@@ -4,13 +4,13 @@
 
 import type { Peer } from "@dlghq/dialog-types";
 import React, { PureComponent } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Alert } from "react-native";
 import { group, user, channel, bot } from "../fixtures/peerInfo";
 import Discover from "../components/Discover/Discover";
 
 class DiscoverPreview extends PureComponent {
-  handleCardlick = (peer: Peer) => {
-    Alert.alert(peer.id);
+  handleCardTap = (peer: Peer) => {
+    Alert.alert(`Tap to card with peer id: ${peer.id.toString()}`);
   };
 
   render() {
@@ -46,7 +46,7 @@ class DiscoverPreview extends PureComponent {
       <View style={styles.container}>
         <Discover
           data={items}
-          onCardClick={this.handleCardlick}
+          onCardTap={this.handleCardTap}
         />
       </View>
     );

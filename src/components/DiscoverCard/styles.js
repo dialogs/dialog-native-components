@@ -1,4 +1,10 @@
-import { StyleSheet } from 'react-native';
+/*
+ * Copyright 2017 dialog LLC <info@dlg.im>
+ * @flow
+ */
+
+import { Platform, StyleSheet } from 'react-native';
+import { Color, Padding } from '../../styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -6,13 +12,26 @@ const styles = StyleSheet.create({
     flexWrap: 'nowrap',
     borderRadius: 2,
     backgroundColor: 'white',
-    // borderColor: '#ececec',
-    // borderWidth: 1,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: 'rgba(0, 0, 0, 0.06)',
     marginBottom: 0,
-    elevation: 2
+    ...Platform.select({
+      ios: {
+        shadowColor: Color.black,
+        shadowOffset: {
+          width: 0,
+          height: 1
+        },
+        shadowRadius: 2,
+        shadowOpacity: 0.08
+      },
+      android: {
+        elevation: 2
+      }
+    })
   },
   body: {
-    padding: 10,
+    padding: Padding.default,
     flexDirection: 'row',
     flexWrap: 'nowrap',
     alignContent: 'center'
@@ -26,36 +45,30 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    lineHeight: 23,
+    lineHeight: 24,
     fontWeight: '500',
-    color: '#727272',
+    color: Color.gray,
     flex: 1
   },
   titleIcon: {
     flex: 0,
-    width: 24,
-    height: 24,
-    marginRight: 4,
+    marginRight: 4
   },
   shortname: {
     lineHeight: 20,
-    color: '#acacac',
+    color: Color.grayLight
   },
   description: {
     marginTop: 6,
     fontSize: 14,
     lineHeight: 16,
-    paddingBottom: 2,
-    color: '#727272'
+    color: Color.gray
   },
   avatar: {
-     width: 60,
-     height: 60,
-     borderRadius: 40,
-     marginRight: 10
+    marginRight: Padding.default
   },
   footer: {
-    padding: 10,
+    padding: Padding.default,
     height: 40,
     display: 'flex',
     flexDirection: 'row',
@@ -69,28 +82,26 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    alignContent: 'center',
+    alignContent: 'center'
   },
   membersIcon: {
     flex: 0,
-    marginRight: 4,
-    width: 18,
-    height: 18
+    marginRight: 4
   },
   membersText: {
     flex: 0,
     fontSize: 14,
     lineHeight: 20,
-    color: '#727272',
+    color: Color.gray,
     fontWeight: '500'
   },
   creator: {
-    flex: 1,
+    flex: 1
   },
   creatorText: {
     fontSize: 14,
     lineHeight: 20,
-    color: '#727272',
+    color: Color.gray,
     textAlign: 'right'
   },
   creatorName: {

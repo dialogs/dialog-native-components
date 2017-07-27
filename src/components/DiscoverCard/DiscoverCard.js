@@ -3,15 +3,30 @@
  * @flow
  */
 
-import React, { PureComponent } from 'react';
-import { View, Text, Alert, TouchableOpacity, Image } from 'react-native';
-import Avatar from '../Avatar/Avatar';
-import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
-import styles from './styles';
+import type { Peer } from "@dlghq/dialog-types";
+import React, { PureComponent } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import Avatar from "../Avatar/Avatar";
+import Icon from "../Icon/Icon";
+import getAvatarPlaceholder from "../../utils/getAvatarPlaceholder";
+import styles from "./styles";
+
+type Props = {
+  avatar: ?string,
+  title: string,
+  shortname?: string,
+  description?: string,
+  members?: number,
+  creator?: string,
+  peer: Peer,
+  onCardTap: (peer: Peer) => mixed
+};
 
 class DiscoverCard extends PureComponent {
-  handleClick = () => {
-    Alert.alert(this.props.title);
+  props: Props;
+
+  handleCardTap = () => {
+    this.props.onCardTap(this.props.peer);
   };
 
   renderAvatar() {
@@ -23,7 +38,7 @@ class DiscoverCard extends PureComponent {
         image={this.props.avatar}
         placeholder={placeholder}
         title={this.props.title}
-        size={60}
+        size={66}
       />
     );
   }
@@ -44,19 +59,15 @@ class DiscoverCard extends PureComponent {
     const { type } = this.props;
 
     switch (type) {
-      case 'channel':
+      case "channel":
+      case "group":
         return (
-          <Image
-            source={require('../../assets/icons/channel.png')}
-            style={styles.titleIcon}
-          />
-        );
-      case 'group':
-        return (
-          <Image
-            source={require('../../assets/icons/group.png')}
-            style={styles.titleIcon}
-          />
+           <Icon
+             glyph={type}
+             style={styles.titleIcon}
+             width={24}
+             height={24}
+           />
         );
       default:
         return null;
@@ -75,24 +86,31 @@ class DiscoverCard extends PureComponent {
           </Text>
         </View>
         {this.renderShortname()}
-        <Text numberOfLines={4} style={styles.description}>{description}</Text>
+        <Text numberOfLines={4} style={styles.description}>
+          {description}
+        </Text>
       </View>
     );
   }
 
   renderMembers() {
     const { members } = this.props;
+
     if (!members) {
       return null;
     }
 
     return (
       <View style={styles.members}>
-        <Image
+        <Icon
           style={styles.membersIcon}
-          source={require('../../assets/icons/person.png')}
+          glyph="person"
+          width={18}
+          height={18}
         />
-        <Text style={styles.membersText}>{members}</Text>
+        <Text style={styles.membersText}>
+          {members}
+        </Text>
       </View>
     );
   }
@@ -113,18 +131,24 @@ class DiscoverCard extends PureComponent {
     );
   }
 
+  renderFooter() {
+    return (
+      <View style={styles.footer}>
+        {this.renderMembers()}
+        {this.renderCreator()}
+      </View>
+    );
+  }
+
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        <TouchableOpacity onPress={this.handleClick} activeOpacity={0.8}>
+        <TouchableOpacity onPress={this.handleCardTap} activeOpacity={0.8}>
           <View style={styles.body}>
             {this.renderAvatar()}
             {this.renderInfo()}
           </View>
-          <View style={styles.footer}>
-            {this.renderMembers()}
-            {this.renderCreator()}
-          </View>
+          {/* {this.renderFooter()} */}
         </TouchableOpacity>
       </View>
     );

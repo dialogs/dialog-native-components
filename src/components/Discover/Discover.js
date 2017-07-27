@@ -3,29 +3,37 @@
  * @flow
  */
 
+import type { Peer } from "@dlghq/dialog-types";
 import React, { PureComponent } from "react";
 import { AppRegistry, View, Text, VirtualizedList } from "react-native";
 import DiscoverCard from "../DiscoverCard/DiscoverCard";
 import styles from "./styles";
 
+type Props = {
+  onCardTap: (peer: Peer) => mixed
+};
+
 class Discover extends PureComponent {
+  props: Props;
+
   getItem = (data: any, index: number) => data[index];
   getItemKey = (card: any, index: number) => `card_${index}`;
   getItemCount = (data: any) => data.length;
 
   renderCard = ({ item, index }) => {
-    const isFirst = index === 0;
     return (
       <DiscoverCard
         {...item}
-        style={[styles.card, isFirst ? styles.firstCard : null]}
+        onCardTap={this.props.onCardTap}
+        style={[
+          styles.card,
+          index === 0 ? styles.firstCard : null
+        ]}
       />
     );
   };
 
   render() {
-    const { data } = this.props;
-
     return (
       <View style={styles.container}>
         <View style={styles.header}>
@@ -37,7 +45,7 @@ class Discover extends PureComponent {
         <View style={styles.cards}>
           <VirtualizedList
             renderItem={this.renderCard}
-            data={data}
+            data={this.props.data}
             getItem={this.getItem}
             getItemCount={this.getItemCount}
             keyExtractor={this.getItemKey}

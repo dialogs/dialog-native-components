@@ -13,9 +13,9 @@ import getAvatarColor from './getAvatarColor';
 import styles from './styles';
 
 export type Props = {
-  styles?: Object,
+  style?: Object,
   size: number,
-  image: ?String,
+  image: ?string,
   title: string,
   placeholder: AvatarPlaceholder
 };

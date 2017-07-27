@@ -2,12 +2,17 @@
  * @flow
  */
 
-import React, { Component } from "react";
+import type { Peer } from "@dlghq/dialog-types";
+import React, { PureComponent } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { group, user, channel, bot } from "../fixtures/peerInfo";
-import DiscoverIOS from "../components/DiscoverIOS/DiscoverIOS";
+import Discover from "../components/Discover/Discover";
 
-class DiscoverPreview extends Component {
+class DiscoverPreview extends PureComponent {
+  handleCardlick = (peer: Peer) => {
+    Alert.alert(peer.id);
+  };
+
   render() {
     const items = [];
 
@@ -39,7 +44,10 @@ class DiscoverPreview extends Component {
 
     return (
       <View style={styles.container}>
-        <DiscoverIOS data={items} />
+        <Discover
+          data={items}
+          onCardClick={this.handleCardlick}
+        />
       </View>
     );
   }

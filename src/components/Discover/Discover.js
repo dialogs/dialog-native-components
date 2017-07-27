@@ -3,14 +3,15 @@
  * @flow
  */
 
-import type { Peer } from "@dlghq/dialog-types";
+import type { DiscoverCard as Card } from "../../types";
 import React, { PureComponent } from "react";
 import { AppRegistry, View, Text, VirtualizedList } from "react-native";
 import DiscoverCard from "../DiscoverCard/DiscoverCard";
 import styles from "./styles";
 
 type Props = {
-  onCardTap: (peer: Peer) => mixed
+  data: Card[],
+  onGoToCard: (card: Card) => mixed
 };
 
 class Discover extends PureComponent {
@@ -23,8 +24,8 @@ class Discover extends PureComponent {
   renderCard = ({ item, index }) => {
     return (
       <DiscoverCard
-        {...item}
-        onCardTap={this.props.onCardTap}
+        card={item}
+        onGoToCard={this.props.onGoToCard}
         style={[
           styles.card,
           index === 0 ? styles.firstCard : null

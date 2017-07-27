@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Peer } from "@dlghq/dialog-types";
+import type { DiscoverCard as Card } from "../../types";
 import React, { PureComponent } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import Avatar from "../Avatar/Avatar";
@@ -12,39 +12,35 @@ import getAvatarPlaceholder from "../../utils/getAvatarPlaceholder";
 import styles from "./styles";
 
 type Props = {
-  avatar: ?string,
-  title: string,
-  shortname?: string,
-  description?: string,
-  members?: number,
-  creator?: string,
-  peer: Peer,
-  onCardTap: (peer: Peer) => mixed
+  style?: Object,
+  card: Card,
+  onGoToCard: (card: Card) => mixed
 };
 
 class DiscoverCard extends PureComponent {
   props: Props;
 
   handleCardTap = () => {
-    this.props.onCardTap(this.props.peer);
+    this.props.onGoToCard(this.props.card);
   };
 
   renderAvatar() {
-    const placeholder = getAvatarPlaceholder(this.props.peer.id);
+    const { card: { avatar, title, peer: { id } } } = this.props;
+    const placeholder = getAvatarPlaceholder(id);
 
     return (
       <Avatar
         style={styles.avatar}
-        image={this.props.avatar}
+        image={avatar}
         placeholder={placeholder}
-        title={this.props.title}
+        title={title}
         size={66}
       />
     );
   }
 
   renderShortname() {
-    const { shortname } = this.props;
+    const { card: { shortname } } = this.props;
 
     if (!shortname) {
       return null;
@@ -56,7 +52,7 @@ class DiscoverCard extends PureComponent {
   }
 
   renderIcon() {
-    const { type } = this.props;
+    const { card: { type } } = this.props;
 
     switch (type) {
       case "channel":
@@ -75,7 +71,7 @@ class DiscoverCard extends PureComponent {
   }
 
   renderInfo() {
-    const { title, description } = this.props;
+    const { card: { title, description } } = this.props;
 
     return (
       <View style={styles.info}>
@@ -94,7 +90,7 @@ class DiscoverCard extends PureComponent {
   }
 
   renderMembers() {
-    const { members } = this.props;
+    const { card: { members } } = this.props;
 
     if (!members) {
       return null;
@@ -108,15 +104,13 @@ class DiscoverCard extends PureComponent {
           width={18}
           height={18}
         />
-        <Text style={styles.membersText}>
-          {members}
-        </Text>
+        <Text style={styles.membersText}>{members}</Text>
       </View>
     );
   }
 
   renderCreator() {
-    const { type, creator } = this.props;
+    const { card: { type, creator } } = this.props;
 
     if (!creator) {
       return null;

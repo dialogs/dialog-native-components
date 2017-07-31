@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@dlghq/dialog-types": "1.27.0",
+    "prop-types": "15.5.10",
     "react": "16.0.0-alpha.12",
     "react-native": "0.46.4",
     "react-native-linear-gradient": "2.1.0"

@@ -4,10 +4,11 @@
  */
 
 import type { DiscoverCard as Card } from "../../types";
+import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
 import { AppRegistry, View, Text, VirtualizedList } from "react-native";
 import DiscoverCard from "../DiscoverCard/DiscoverCard";
-import styles from "./styles";
+import getStyles from "./styles";
 
 type Props = {
   data: Card[],
@@ -16,6 +17,18 @@ type Props = {
 
 class Discover extends PureComponent {
   props: Props;
+  styles: Object;
+
+  static contextTypes = {
+    theme: PropTypes.object,
+    style: PropTypes.object
+  };
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.styles = getStyles(context.theme, context.style.Discover);
+  }
 
   getItem = (data: any, index: number) => data[index];
   getItemKey = (card: any, index: number) => `card_${index}`;
@@ -27,8 +40,8 @@ class Discover extends PureComponent {
         card={item}
         onGoToCard={this.props.onGoToCard}
         style={[
-          styles.card,
-          index === 0 ? styles.firstCard : null
+          this.styles.card,
+          index === 0 ? this.styles.firstCard : null
         ]}
       />
     );
@@ -36,14 +49,14 @@ class Discover extends PureComponent {
 
   render() {
     return (
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <View style={styles.headerText}>
-            <Text style={styles.title}>Discover</Text>
-            <Text style={styles.subtitle}>Explore thousands channels, groups, bots and users</Text>
+      <View style={this.styles.container}>
+        <View style={this.styles.header}>
+          <View style={this.styles.headerText}>
+            <Text style={this.styles.title}>Discover</Text>
+            <Text style={this.styles.subtitle}>Explore thousands channels, groups, bots and users</Text>
           </View>
         </View>
-        <View style={styles.cards}>
+        <View style={this.styles.cards}>
           <VirtualizedList
             renderItem={this.renderCard}
             data={this.props.data}

@@ -6,6 +6,7 @@ import type { DiscoverCard } from '../types';
 import React, { PureComponent } from "react";
 import { StyleSheet, Text, View, Alert } from "react-native";
 import { group, user, channel, bot } from "../fixtures/peerInfo";
+import ContextProvider from '../components/ContextProvider/ContextProvider';
 import Discover from "../components/Discover/Discover";
 
 class DiscoverPreview extends PureComponent {
@@ -40,15 +41,35 @@ class DiscoverPreview extends PureComponent {
         description: bot.about,
         shortname: bot.userName
       });
-    }
+    };
+
+    const theme = {
+      color: {
+        primary: '#e4002b'
+      }
+    };
+    const style = {
+      Discover: {
+        cards: {
+          backgroundColor: 'rgb(100, 45, 167)'
+        }
+      },
+      DiscoverCard: {
+        container: {
+          backgroundColor: '#20d51d'
+        }
+      }
+    };
 
     return (
-      <View style={styles.container}>
-        <Discover
-          data={items}
-          onGoToCard={this.handleCardTap}
-        />
-      </View>
+      <ContextProvider theme={theme} style={style}>
+        <View style={styles.container}>
+          <Discover
+            data={items}
+            onGoToCard={this.handleCardTap}
+          />
+        </View>
+      </ContextProvider>
     );
   }
 }

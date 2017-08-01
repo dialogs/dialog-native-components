@@ -8,8 +8,9 @@ import React, { PureComponent, Children } from "react";
 import PropTypes from 'prop-types';
 
 type Props = {
-  theme: ?Object,
-  styles: ?Object
+  theme: Object,
+  styles: Object,
+  locale: string
 };
 
 class ContextProvider extends PureComponent {
@@ -17,22 +18,25 @@ class ContextProvider extends PureComponent {
 
   static defaultProps = {
     theme: {},
-    style: {}
+    style: {},
+    locale: 'en'
   };
 
   static childContextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    locale: PropTypes.string
   };
 
   getChildContext() {
     return {
       theme: this.props.theme,
-      style: this.props.style
+      style: this.props.style,
+      locale: this.props.locale
     };
   }
 
-  render(): React.Element<any> {
+  render() {
     return Children.only(this.props.children);
   }
 }

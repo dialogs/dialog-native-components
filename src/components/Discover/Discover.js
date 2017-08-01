@@ -21,7 +21,8 @@ class Discover extends PureComponent {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    locale: PropTypes.string
   };
 
   constructor(props, context) {
@@ -47,13 +48,22 @@ class Discover extends PureComponent {
     );
   };
 
+  getTitle() {
+    if (this.context.locale === 'ru') {
+      return 'Популярные каналы, группы, боты и пользователи';
+    }
+
+    return 'Explore popular channels, groups, bots and users';
+  }
+
   render() {
     return (
       <View style={this.styles.container}>
         <View style={this.styles.header}>
           <View style={this.styles.headerText}>
-            <Text style={this.styles.title}>Discover</Text>
-            <Text style={this.styles.subtitle}>Explore thousands channels, groups, bots and users</Text>
+            <Text style={this.styles.subtitle}>
+              {this.getTitle()}
+            </Text>
           </View>
         </View>
         <View style={this.styles.cards}>

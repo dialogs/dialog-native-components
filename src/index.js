@@ -12,4 +12,4 @@ export { default as Discover } from './components/Discover/Discover';
 export { default as DiscoverCard } from './components/DiscoverCard/DiscoverCard';
 
 // Utils
-export { default as ContextProvider } from './components/ContextProvider';
+export { default as ContextProvider } from './components/ContextProvider/ContextProvider';

@@ -4,7 +4,8 @@
  */
 
 import React, { PureComponent } from "react";
-import { Image } from 'react-native';
+import PropTypes from 'prop-types';
+import { Image, Platform } from 'react-native';
 
 type Props = {
   glyph: string,
@@ -16,8 +17,18 @@ type Props = {
 class Icon extends PureComponent {
   props: Props;
 
+  static contextTypes = {
+    icons: PropTypes.object
+  };
+
   getImage = () => {
     const { glyph } = this.props;
+
+    if (this.context.icons && this.context.icons[glyph]) {
+      return { uri: this.context.icons[glyph] };
+    } else if (Platform.OS === 'ios') {
+      return null;
+    }
 
     switch (glyph) {
       case 'person':
@@ -32,6 +43,11 @@ class Icon extends PureComponent {
   };
 
   render() {
+    const source = this.getImage();
+    if (!source) {
+      return null;
+    }
+
     const style = [{
       width: this.props.width,
       height: this.props.height
@@ -40,7 +56,7 @@ class Icon extends PureComponent {
     return (
       <Image
         style={style}
-        source={this.getImage()}
+        source={source}
       />
     );
   }

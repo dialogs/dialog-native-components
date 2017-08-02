@@ -32,7 +32,7 @@ class Discover extends PureComponent {
   }
 
   getItem = (data: any, index: number) => data[index];
-  getItemKey = (card: any, index: number) => `card_${index}`;
+  getItemKey = (card: any, index: number) => card.peer.type + card.peer.id;
   getItemCount = (data: any) => data.length;
 
   renderCard = ({ item, index }) => {

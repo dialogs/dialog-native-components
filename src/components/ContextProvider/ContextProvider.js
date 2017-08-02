@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 type Props = {
   theme: Object,
   styles: Object,
+  icons: Object,
   locale: string
 };
 
@@ -19,12 +20,14 @@ class ContextProvider extends PureComponent {
   static defaultProps = {
     theme: {},
     style: {},
+    icons: {},
     locale: 'en'
   };
 
   static childContextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
+    icons: PropTypes.object,
     locale: PropTypes.string
   };
 
@@ -32,6 +35,7 @@ class ContextProvider extends PureComponent {
     return {
       theme: this.props.theme,
       style: this.props.style,
+      icons: this.props.icons,
       locale: this.props.locale
     };
   }

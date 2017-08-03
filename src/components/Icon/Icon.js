@@ -37,6 +37,8 @@ class Icon extends PureComponent {
         return require('../../assets/icons/group.png');
       case 'channel':
         return require('../../assets/icons/channel.png');
+      case 'error':
+        return require('../../assets/icons/error.png');
       default:
         return null;
     }

@@ -40,6 +40,35 @@ const getStyles = (theme, styleOverride) => {
     firstCard: {
       marginTop: Padding.default
     },
+    fill: {
+      flex: 1,
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center'
+    },
+    textHeading: {
+      fontSize: 18,
+      marginBottom: 6,
+      fontWeight: '500'
+    },
+    text: {
+      fontSize: 14
+    },
+    errorWrapper: {
+      padding: Padding.default,
+      flex: 1,
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center'
+    },
+    errorIcon: {
+      marginBottom: Padding.default
+    },
+    errorText: {
+      textAlign: 'center',
+      fontSize: 20,
+      color: theme.color.danger || Color.danger
+    }
   };
 
   return StyleSheet.create(Object.assign({}, style, styleOverride));

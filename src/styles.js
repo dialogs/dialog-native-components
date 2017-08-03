@@ -5,6 +5,7 @@
 
 const Color = {
   primary: '#6203a5',
+  danger: '#e22d44',
 
   black: '#000',
   grayDark: '#333333',

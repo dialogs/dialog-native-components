@@ -14,7 +14,6 @@ const getStyles = (theme, styleOverride) => {
     header: {
       padding: Padding.default,
       backgroundColor: theme.color.primary || Color.primary,
-      height: 60
     },
     title: {
       margin: 0,

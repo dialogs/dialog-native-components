@@ -3,18 +3,24 @@
  * @flow
  */
 
-import type { DiscoverCard as Card } from "../../types";
+import type { DiscoverCard as Card } from '../../types';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { AppRegistry, View, Text, VirtualizedList, ActivityIndicator } from "react-native";
-import DiscoverCard from "../DiscoverCard/DiscoverCard";
+import React, { PureComponent } from 'react';
+import {
+  AppRegistry,
+  View,
+  Text,
+  VirtualizedList,
+  ActivityIndicator
+} from 'react-native';
+import DiscoverCard from '../DiscoverCard/DiscoverCard';
 import Icon from '../Icon/Icon';
-import getStyles from "./styles";
+import getStyles from './styles';
 import { Color } from '../../styles';
 
 type Props = {
   data: {
-    value: ?Card[],
+    value: ?(Card[]),
     pending: boolean,
     error: ?string
   },
@@ -38,7 +44,8 @@ class Discover extends PureComponent {
   }
 
   getItem = (data: any, index: number) => data[index];
-  getItemKey = (card: any, index: number) => `${index}_${card.peer.type}_${card.peer.id}}`;
+  getItemKey = (card: any, index: number) =>
+    `${index}_${card.peer.type}_${card.peer.id}}`;
   getItemCount = (data: any) => data.length;
 
   renderCard = ({ item, index }) => {
@@ -46,10 +53,7 @@ class Discover extends PureComponent {
       <DiscoverCard
         card={item}
         onGoToCard={this.props.onGoToCard}
-        style={[
-          this.styles.card,
-          index === 0 ? this.styles.firstCard : null
-        ]}
+        style={[this.styles.card, index === 0 ? this.styles.firstCard : null]}
       />
     );
   };
@@ -63,7 +67,7 @@ class Discover extends PureComponent {
   }
 
   renderError() {
-    console.log('renderError')
+    console.log('renderError');
     return (
       <View style={this.styles.errorWrapper}>
         <Icon
@@ -94,7 +98,9 @@ class Discover extends PureComponent {
     return (
       <View style={[this.styles.fill, { height: 100 }]}>
         <Text style={this.styles.textHeading}>Oops!</Text>
-        <Text style={this.styles.text}>It looks like we haven't added any cards yet.</Text>
+        <Text style={this.styles.text}>
+          It looks like we haven't added any cards yet.
+        </Text>
       </View>
     );
   }
@@ -125,13 +131,6 @@ class Discover extends PureComponent {
   render() {
     return (
       <View style={this.styles.container}>
-        <View style={this.styles.header}>
-          <View style={this.styles.headerText}>
-            <Text style={this.styles.subtitle}>
-              {this.getTitle()}
-            </Text>
-          </View>
-        </View>
         <View style={this.styles.cards}>
           {this.renderCards()}
         </View>

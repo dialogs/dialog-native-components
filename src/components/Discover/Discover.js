@@ -44,8 +44,7 @@ class Discover extends PureComponent {
   }
 
   getItem = (data: any, index: number) => data[index];
-  getItemKey = (card: any, index: number) =>
-    `${index}_${card.peer.type}_${card.peer.id}}`;
+  getItemKey = (card: any, index: number) => `${card.peer.type}_${card.peer.id}}`;
   getItemCount = (data: any) => data.length;
 
   renderCard = ({ item, index }) => {
@@ -58,16 +57,7 @@ class Discover extends PureComponent {
     );
   };
 
-  getTitle() {
-    if (this.context.locale === 'ru') {
-      return 'Популярные каналы, группы, боты и пользователи';
-    }
-
-    return 'Explore popular channels, groups, bots and users';
-  }
-
   renderError() {
-    console.log('renderError');
     return (
       <View style={this.styles.errorWrapper}>
         <Icon

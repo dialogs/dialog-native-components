@@ -9,32 +9,31 @@ import { group, user, channel, bot } from "../fixtures/peerInfo";
 import ContextProvider from '../components/ContextProvider/ContextProvider';
 import Discover from "../components/Discover/Discover";
 
-const items = [];
-for (let i = 0; i < 4; i++) {
-  items.push({
+const items = [
+  {
     ...group,
     description: group.about,
     members: 23,
-    creator: user.title,
-  });
-  items.push({
+    creator: user.title
+  },
+  {
     ...channel,
     description: channel.about,
     shortname: channel.userName,
     members: 420,
     avatar: null
-  });
-  items.push({
+  },
+  {
     ...user,
     description: user.about,
     shortname: user.userName
-  });
-  items.push({
+  },
+  {
     ...bot,
     description: bot.about,
     shortname: bot.userName
-  });
-};
+  }
+];
 
 class DiscoverPreview extends PureComponent {
   constructor(props) {

@@ -36,6 +36,10 @@ const items = [
 ];
 
 class DiscoverPreview extends PureComponent {
+  static navigationOptions = {
+    title: 'Discover'
+  };
+
   constructor(props) {
     super(props);
 
@@ -63,22 +67,13 @@ class DiscoverPreview extends PureComponent {
   };
 
   render() {
-    const theme = {
-      color: {
-        primary: '#e4002b'
-      }
-    };
-    const style = {};
-
     return (
-      <ContextProvider theme={theme} style={style}>
-        <View style={styles.container}>
-          <Discover
-            data={this.state.cards}
-            onGoToCard={this.handleCardTap}
-          />
-        </View>
-      </ContextProvider>
+      <View style={styles.container}>
+        <Discover
+          data={this.state.cards}
+          onGoToCard={this.handleCardTap}
+        />
+      </View>
     );
   }
 }

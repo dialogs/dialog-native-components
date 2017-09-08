@@ -16,13 +16,14 @@
     "postpublish": "git push --follow-tags"
   },
   "dependencies": {
-    "@dlghq/dialog-types": "1.27.0",
+    "@dlghq/dialog-types": "1.28.0",
     "prop-types": "15.5.10",
     "react": "16.0.0-alpha.12",
-    "react-native": "0.47.1",
-    "react-native-linear-gradient": "2.2.0"
+    "react-native": "0.48.1",
+    "react-native-linear-gradient": "2.3.0"
   },
   "devDependencies": {
-    "babel-preset-react-native": "3.0.0"
+    "babel-preset-react-native": "3.0.2",
+    "react-navigation": "^1.0.0-beta.11"
   }
 }

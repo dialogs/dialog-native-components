@@ -12,7 +12,9 @@ const Color = {
   gray: '#727272',
   grayLight: '#acacac',
   grayLighter: '#eeeeee',
-  white: '#fff'
+  white: '#fff',
+
+  border: '#e0e0e0'
 };
 
 const Padding = {

@@ -9,3 +9,29 @@ export type DiscoverCard = {
   creator?: string,
   peer: Peer,
 }
+
+export type ScheduleEvent = {
+  title: string,
+  time: string,
+  description: ?string,
+  address: ?string,
+  location: ?Location,
+  locale: string,
+  onNavRequest: (location: Location) => mixed
+};
+
+export type ScheduleDay = {
+  title: string,
+  events: ScheduleEvent[]
+};
+
+export type ScheduleDayProps = ScheduleDay & {
+  locale: string,
+  onNavRequest: (location: Location) => mixed
+};
+
+export type ScheduleProps = {
+  data: Field<ScheduleDay[]>,
+  locale: string,
+  onNavRequest: (location: Location) => mixed
+};

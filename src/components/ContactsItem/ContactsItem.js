@@ -104,7 +104,7 @@ class ContactsItem extends PureComponent {
           <View style={this.styles.cardHeading} pointerEvents="box-only">
             <View style={this.styles.cardHeadingText}>
               <Text style={this.styles.title} numberOfLines={1}>{this.props.title}</Text>
-              <Text style={this.styles.position} numberOfLines={1}>{this.props.position} 123123</Text>
+              <Text style={this.styles.position} numberOfLines={1}>{this.props.position}</Text>
             </View>
             {!this.props.isOpen ? this.renderImage() : null}
           </View>

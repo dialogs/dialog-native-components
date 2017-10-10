@@ -59,7 +59,10 @@ class SightsItem extends PureComponent {
         onLoadEnd={this.handleImageLoaded}
         style={this.props.isOpen ? this.styles.imageLarge : this.styles.imageSmall}
       >
-        <ActivityIndicator animating={this.state.loading} color={Color.primary} />
+        <ActivityIndicator
+          animating={this.state.loading}
+          color={this.context.theme.color.primary || Color.primary}
+        />
       </Image>
     );
   }

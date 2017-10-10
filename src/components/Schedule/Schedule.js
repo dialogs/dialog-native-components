@@ -53,7 +53,10 @@ class Schedule extends PureComponent {
   renderPending() {
     return (
       <View style={this.styles.fill}>
-        <ActivityIndicator size="large" color={Color.primary} />
+        <ActivityIndicator
+          size="large"
+          color={this.context.theme.color.primary || Color.primary}
+        />
       </View>
     );
   }

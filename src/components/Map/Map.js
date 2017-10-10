@@ -48,7 +48,10 @@ class Map extends PureComponent {
         style={[styles.map, { height }]}
         resizeMode="cover"
       >
-        <ActivityIndicator animating={this.state.loading} color={Color.primary} />
+        <ActivityIndicator
+          animating={this.state.loading}
+          color={this.context.theme.color.primary || Color.primary}
+        />
       </Image>
     );
   }

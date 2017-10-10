@@ -81,7 +81,7 @@ class Sights extends PureComponent {
       <View style={this.styles.fill}>
         <ActivityIndicator
           size="large"
-          color={Color.primary}
+          color={this.context.theme.color.primary || Color.primary}
         />
       </View>
     );

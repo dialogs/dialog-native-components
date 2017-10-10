@@ -9,12 +9,14 @@ import DiscoverPreview from './src/previews/DiscoverPreview';
 // import FeedbackPreview from './src/previews/FeedbackPreview';
 import SchedulePreview from './src/previews/SchedulePreview';
 import SightsPreview from './src/previews/SightsPreview';
+import ContactsPreview from './src/previews/ContactsPreview';
 
 
 
 const theme = {
   color: {
-    danger: '#f00'
+    primary: '#e4002b',
+    danger: '#e22d44'
   }
 };
 const style = {};
@@ -24,6 +26,7 @@ const ExampleScreen = TabNavigator({
   // Feedback: { screen: withContext(FeedbackPreview, theme, style) },
   Schedule: { screen: withContext(SchedulePreview, theme, style) },
   Sights: { screen: withContext(SightsPreview, theme, style) },
+  Contacts: { screen: withContext(ContactsPreview, theme, style) },
 });
 
 AppRegistry.registerComponent('ExampleScreen', () => ExampleScreen);

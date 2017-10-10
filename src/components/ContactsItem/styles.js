@@ -30,13 +30,13 @@ const getStyles = (theme, styleOverride) => {
     },
     title: {
       fontSize: 20,
-      color: Color.text,
+      color: Color.black,
       lineHeight: 24,
       marginBottom: 4
     },
     position: {
       fontSize: 14,
-      color: Color.textLight,
+      color: Color.gray,
       lineHeight: 20
     },
     imageSmall: {
@@ -64,7 +64,7 @@ const getStyles = (theme, styleOverride) => {
       paddingLeft: 22,
       paddingRight: 22,
       paddingBottom: 17,
-      color: Color.text
+      color: Color.lightGray
     }
   };
 

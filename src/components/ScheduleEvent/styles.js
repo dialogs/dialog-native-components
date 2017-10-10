@@ -56,7 +56,7 @@ const getStyles = (theme, styleOverride) => {
       paddingLeft: 22,
       paddingRight: 22,
       paddingBottom: 13,
-      color: Color.text
+      color: Color.black
     }
   };
 

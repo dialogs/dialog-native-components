@@ -1,5 +1,17 @@
 import type { Peer } from '@dlghq/dialog-types';
 
+
+export type Field<T> = {
+  value: T,
+  pending: boolean,
+  error: ?(string | Error)
+};
+
+export type Discover = {
+  data: Field<DiscoverCard[]>,
+  onGoToCard: (card: DiscoverCard) => mixed
+};
+
 export type DiscoverCard = {
   avatar: ?string,
   title: string,
@@ -35,3 +47,7 @@ export type ScheduleProps = {
   locale: string,
   onNavRequest: (location: Location) => mixed
 };
+
+export type ContactsProps = {};
+
+export type ContactsItem = {};

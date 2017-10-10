@@ -9,7 +9,7 @@ import { Image, ActivityIndicator } from "react-native";
 import styles from './styles';
 import { Color } from '../../styles';
 
-type Prop = {
+type Props = {
   latitude: number,
   longitude: number
 };
@@ -21,6 +21,7 @@ const API_KEY = 'AIzaSyCV9I5_GAlbDMcVnD87TcONL2YaPv_d-LA';
 
 class Map extends PureComponent {
   props: Props;
+  state: State;
 
   static contextTypes = {
     theme: PropTypes.object

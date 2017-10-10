@@ -41,6 +41,6 @@ const getStyles = (theme, styleOverride) => {
   };
 
   return StyleSheet.create(Object.assign({}, style, styleOverride));
-}
+};
 
 export default getStyles;

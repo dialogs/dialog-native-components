@@ -16,7 +16,13 @@ const getStyles = (theme, styleOverride) => {
     containerOpened: {
       backgroundColor: '#F4F0F7'
     },
-    header: {
+    cardHeading: {
+      height: 74,
+      flexDirection: 'row',
+      flexWrap: 'nowrap'
+    },
+    cardHeadingText: {
+      flex: 1,
       paddingLeft: 22,
       paddingRight: 22,
       paddingTop: 13,
@@ -24,38 +30,41 @@ const getStyles = (theme, styleOverride) => {
     },
     title: {
       fontSize: 20,
-      color: Color.black,
+      color: Color.text,
       lineHeight: 24,
       marginBottom: 4
     },
-    titleLocation: {
-      color: Color.primary
-    },
-    subtitle: {
-      height: 20,
-      flexDirection: 'row',
-      alignContent: 'center',
-      alignItems: 'center',
-      justifyContent: 'flex-start'
-    },
-    subtitleText: {
-      flex: 1,
+    address: {
       fontSize: 14,
-      color: Color.gray,
+      color: Color.textLight,
       lineHeight: 20
     },
-    subtitleMarker: {
-      width: 11,
-      height: 16,
-      flex: 0
+    imageSmall: {
+      flex: 0,
+      width: 74,
+      height: 74,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignContent: 'center'
+    },
+    imageLarge: {
+      flex: 1,
+      height: 200,
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      alignContent: 'center'
     },
     description: {
       fontSize: 14,
       lineHeight: 20,
-      paddingTop: 0,
+      paddingTop: 20,
       paddingLeft: 22,
       paddingRight: 22,
-      paddingBottom: 13,
+      paddingBottom: 17,
       color: Color.text
     }
   };

@@ -53,6 +53,7 @@ const getStyles = (theme, styleOverride) => {
     },
     titleIcon: {
       flex: 0,
+      marginTop: 1,
       marginRight: 4
     },
     shortname: {

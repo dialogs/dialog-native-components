@@ -6,7 +6,8 @@
 import type { ScheduleEvent as ScheduleEventProps } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
-import { View, Text, TouchableNativeFeedback, Image, ActivityIndicator } from "react-native";
+import { View, Text, Image, ActivityIndicator } from "react-native";
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import Button from '../Button/Button';
 import Map from '../Map/Map';
 import getStyles from './styles';

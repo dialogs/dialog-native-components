@@ -15,6 +15,10 @@ export { default as DiscoverCard } from './components/DiscoverCard/DiscoverCard'
 export { default as Sights } from './components/Sights/Sights';
 export { default as SightsItem } from './components/SightsItem/SightsItem';
 
+// Sights
+export { default as Contacts } from './components/Contacts/Contacts';
+export { default as ContactsItem } from './components/ContactsItem/ContactsItem';
+
 // Schedule
 export { default as Schedule } from './components/Schedule/Schedule';
 export { default as ScheduleDay } from './components/ScheduleDay/ScheduleDay';

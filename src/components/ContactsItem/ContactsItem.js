@@ -6,7 +6,8 @@
 import type { ContactsItemProps } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
-import { View, Text, ActivityIndicator, Image, TouchableNativeFeedback } from "react-native";
+import { View, Text, ActivityIndicator, Image } from "react-native";
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import Button from '../Button/Button';
 import getStyles from './styles';
 import { Color } from '../../styles';

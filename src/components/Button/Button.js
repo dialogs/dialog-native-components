@@ -5,7 +5,8 @@
 
 import React, { PureComponent } from "react";
 import PropTypes from 'prop-types';
-import { View, Text, TouchableNativeFeedback } from "react-native";
+import { View, Text } from "react-native";
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import getStyles from './styles';
 
 type Props = {

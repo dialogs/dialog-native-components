@@ -53,6 +53,10 @@ class ContactsItem extends PureComponent {
   };
 
   renderImage() {
+    if (!this.props.photo) {
+      return null;
+    }
+
     return (
       <Image
         source={{ uri: this.props.photo }}

@@ -51,7 +51,6 @@ const getStyles = (theme, styleOverride) => {
     },
     imageLarge: {
       flex: 1,
-      height: 200,
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',

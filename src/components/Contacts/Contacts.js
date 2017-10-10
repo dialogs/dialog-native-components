@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { ContactsProps, ContactsItem as SightsItemType } from '../../types';
+import type { ContactsProps, ContactsItem as ContactsItemType } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
 import { View, FlatList, ActivityIndicator, Text } from "react-native";
@@ -38,7 +38,7 @@ class Contacts extends PureComponent {
     this.styles = getStyles(context.theme, context.style.Contacts);
   }
 
-  getKey = (item: SightsItemType, index: number): string => `contact_${index}`;
+  getKey = (item: ContactsItemType, index: number): string => `contact_${index}`;
 
   handleCardPress = (current: number): void => {
     if (this.state.current === current) {

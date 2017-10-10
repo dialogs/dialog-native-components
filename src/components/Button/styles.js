@@ -10,7 +10,7 @@ const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
       height: 50,
-      backgroundColor: Color.primary,
+      backgroundColor: theme.color.primary || Color.primary,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',

@@ -29,7 +29,7 @@ const getStyles = (theme, styleOverride) => {
       marginBottom: 4
     },
     titleLocation: {
-      color: Color.primary
+      color: theme.color.primary || Color.primary
     },
     subtitle: {
       height: 20,

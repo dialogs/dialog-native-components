@@ -27,7 +27,7 @@ const getStyles = (theme, styleOverride) => {
     },
     dayTitleText: {
       flex: 1,
-      color: Color.primary,
+      color: theme.color.primary || Color.primary,
       fontSize: 14,
       lineHeight: 20
     },

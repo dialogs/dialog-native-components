@@ -4,6 +4,7 @@
  */
 
 import React, { PureComponent } from "react";
+import PropTypes from 'prop-types';
 import { Image, ActivityIndicator } from "react-native";
 import styles from './styles';
 import { Color } from '../../styles';
@@ -21,12 +22,16 @@ const API_KEY = 'AIzaSyCV9I5_GAlbDMcVnD87TcONL2YaPv_d-LA';
 class Map extends PureComponent {
   props: Props;
 
-  constructor(props: Props) {
-    super(props);
+  static contextTypes = {
+    theme: PropTypes.object
+  };
+
+  constructor(props: Props, context) {
+    super(props, context);
 
     this.state = {
       loading: true
-    }
+    };
   }
 
   handleImageLoaded = (): void => {

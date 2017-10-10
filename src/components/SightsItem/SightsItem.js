@@ -35,7 +35,7 @@ class SightsItem extends PureComponent {
       loading: true
     };
 
-    this.styles = getStyles(context.theme, context.style.ScheduleDay);
+    this.styles = getStyles(context.theme, context.style.SightsItem);
   }
 
   handleImageLoaded = (): void => {
@@ -89,7 +89,6 @@ class SightsItem extends PureComponent {
       <View style={[this.styles.container, this.props.isOpen ? this.styles.containerOpened : null]}>
         <TouchableNativeFeedback
           onPress={this.handleCardPress}
-          background={TouchableNativeFeedback.Ripple('#96CCF4')}
           delayPressIn={0}
         >
           <View style={this.styles.cardHeading} pointerEvents="box-only">

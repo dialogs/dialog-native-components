@@ -37,7 +37,7 @@ class ScheduleEvent extends PureComponent {
       isOpen: false
     };
 
-    this.styles = getStyles(context.theme, context.style.ScheduleDay);
+    this.styles = getStyles(context.theme, context.style.ScheduleEvent);
   }
 
   handleImageLoaded = (): void => {

@@ -35,7 +35,7 @@ class Sights extends PureComponent {
       current: null
     };
 
-    this.styles = getStyles(context.theme, context.style.ScheduleDay);
+    this.styles = getStyles(context.theme, context.style.Sights);
   }
 
   getKey = (item: SightsItem, index: number): string => `sight_${index}`;

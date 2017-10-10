@@ -36,7 +36,7 @@ class Schedule extends PureComponent {
     return (
       <ScheduleDay
         {...item}
-        locale={this.props.locale}
+        locale={this.context.locale}
         onNavRequest={this.props.onNavRequest}
       />
     );

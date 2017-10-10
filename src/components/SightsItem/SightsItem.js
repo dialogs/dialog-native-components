@@ -68,7 +68,7 @@ class SightsItem extends PureComponent {
     if (!this.props.isOpen) {
       return null;
     }
-    const buttonTitle = this.props.locale === 'ru' ? 'Проложить маршрут' : 'Get directions';
+    const buttonTitle = this.context.locale === 'ru' ? 'Проложить маршрут' : 'Get directions';
 
     return (
       <View style={this.styles.content}>

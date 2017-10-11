@@ -93,8 +93,6 @@ class ContactsItem extends PureComponent {
   }
 
   render() {
-    console.log('ContactItem', this.props);
-
     return (
       <View style={[this.styles.container, this.props.isOpen ? this.styles.containerOpened : null]}>
         <TouchableNativeFeedback

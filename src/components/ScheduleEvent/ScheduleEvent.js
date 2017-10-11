@@ -62,7 +62,7 @@ class ScheduleEvent extends PureComponent {
   }
 
   hasLocation(): boolean {
-    const { location } = this.props
+    const { location } = this.props;
 
     return Boolean(location && (location.latitude && location.longitude));
   }
@@ -79,7 +79,12 @@ class ScheduleEvent extends PureComponent {
           {address}
         </Text>
         {this.hasLocation() && !this.state.isOpen ? (
-          <Image source={marker} style={this.styles.subtitleMarker} />
+          <Image source={marker} style={this.styles.subtitleMarker} onLoadEnd={this.handleImageLoaded}>
+            <ActivityIndicator
+              animating={this.state.loading}
+              color={this.context.theme.color.primary || Color.primary}
+            />
+          </Image>
         ) : null}
       </View>
     );
@@ -94,7 +99,7 @@ class ScheduleEvent extends PureComponent {
         >
           <View style={this.styles.header} pointerEvents="box-only">
             <View style={this.styles.headerText}>
-              <Text style={[this.styles.title, this.styles.titleLocation]} numberOfLines={1}>{this.props.title}</Text>
+              <Text style={[this.styles.title, this.styles.titleLocation]}>{this.props.title}</Text>
               {this.renderSubtitle()}
             </View>
           </View>
@@ -105,7 +110,7 @@ class ScheduleEvent extends PureComponent {
     return (
       <View style={this.styles.header}>
         <View style={this.styles.headerText}>
-          <Text style={this.styles.title} numberOfLines={1}>{this.props.title}</Text>
+          <Text style={this.styles.title}>{this.props.title}</Text>
           {this.renderSubtitle()}
         </View>
       </View>

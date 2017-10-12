@@ -71,7 +71,7 @@ const getStyles = (theme, styleOverride) => {
     },
     footer: {
       padding: Padding.default,
-      height: 40,
+      minHeight: 40,
       display: 'flex',
       flexDirection: 'row',
       flex: 1
@@ -79,7 +79,7 @@ const getStyles = (theme, styleOverride) => {
     members: {
       flex: 0,
       width: 60,
-      height: 20,
+      minHeight: 20,
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',

@@ -9,7 +9,7 @@ import { Color } from '../../styles';
 const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
-      height: 50,
+      minHeight: 50,
       backgroundColor: theme.color.primary || Color.primary,
       alignItems: 'center',
       alignContent: 'center',

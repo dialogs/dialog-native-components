@@ -32,7 +32,7 @@ const getStyles = (theme, styleOverride) => {
       color: theme.color.primary || Color.primary
     },
     subtitle: {
-      height: 20,
+      minHeight: 20,
       flexDirection: 'row',
       alignContent: 'center',
       alignItems: 'center',

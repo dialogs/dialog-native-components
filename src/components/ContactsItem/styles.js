@@ -17,7 +17,7 @@ const getStyles = (theme, styleOverride) => {
       backgroundColor: '#F4F0F7'
     },
     cardHeading: {
-      height: 74,
+      minHeight: 74,
       flexDirection: 'row',
       flexWrap: 'nowrap'
     },
@@ -42,7 +42,7 @@ const getStyles = (theme, styleOverride) => {
     imageSmall: {
       flex: 0,
       width: 74,
-      height: 74,
+      minHeight: 74,
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
@@ -52,7 +52,7 @@ const getStyles = (theme, styleOverride) => {
     imageLarge: {
       flex: 1,
       display: 'flex',
-      height: 350,
+      minHeight: 350,
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',

@@ -14,7 +14,7 @@ const getStyles = (theme, styleOverride) => {
       elevation: 1
     },
     dayTitle: {
-      height: 44,
+      minHeight: 44,
       paddingLeft: 22,
       paddingRight: 22,
       paddingTop: 12,
@@ -34,7 +34,7 @@ const getStyles = (theme, styleOverride) => {
     dayTitleArrow: {
       flex: 0,
       width: 12,
-      height: 7,
+      minHeight: 7,
       marginTop: 3,
       marginRight: 10
     }

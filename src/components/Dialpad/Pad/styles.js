@@ -9,9 +9,11 @@ import { Color } from '../../../styles';
 const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
+      flex: 0,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
+      padding: 20
     },
     buttons: {
       flex: 1,
@@ -20,27 +22,29 @@ const getStyles = (theme, styleOverride) => {
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      width: 300,
-      paddingTop: 10,
-      paddingBottom: 10,
+      // width: 300,
+      paddingTop: 30,
+      paddingBottom: 30,
     },
     buttonWrapper: {
       flexGrow: 0,
       flexShrink: 0,
-      // flexBasis: '33%',
+      flexBasis: '33%',
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      paddingLeft: 10,
-      paddingRight: 10,
-      paddingTop: 6,
-      paddingBottom: 6,
+      padding: 10,
+      marginTop: -5,
+      marginBottom: -5,
+      marginLeft: -5,
+      marginRight: -5,
+      // backgroundColor: 'rgba(255,255,0,.4)'
     },
     button: {
-      borderWidth: StyleSheet.hairlineWidth,
-      borderColor: Color.grayLight,
-      width: 64,
-      height: 64,
+      // borderWidth: StyleSheet.hairlineWidth,
+      // borderColor: Color.grayLight,
+      width: 50,
+      height: 50,
       borderRadius: 500,
       alignItems: 'center',
       alignContent: 'center',
@@ -51,8 +55,8 @@ const getStyles = (theme, styleOverride) => {
       height: 30
     },
     buttonValue: {
-      fontSize: 20,
-      fontWeight: '200',
+      fontSize: 22,
+      fontWeight: '400',
       lineHeight: 30,
       color: theme.color.primary || Color.primary
     },

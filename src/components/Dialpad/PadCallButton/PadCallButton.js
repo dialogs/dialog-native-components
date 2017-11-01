@@ -6,6 +6,7 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
 import { View, Image } from "react-native";
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import getStyles from './styles';
 import { Color } from '../../../styles';
 import call from '../../../assets/icons/call.png';
@@ -35,9 +36,14 @@ class PadCallButton extends PureComponent {
 
   render() {
     return (
-      <View style={this.styles.container}>
-        <Image source={call} style={this.styles.icon} />
-      </View>
+      <TouchableNativeFeedback
+        onPress={this.handleButtonPress}
+        background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+      >
+        <View style={this.styles.container}>
+          <Image source={call} style={this.styles.icon} />
+        </View>
+      </TouchableNativeFeedback>
     );
   }
 }

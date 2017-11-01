@@ -68,7 +68,7 @@ class PadButton extends PureComponent {
           onPress={this.handleButtonPress}
           background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
-          <View style={this.styles.button}>
+          <View style={this.styles.button} pointerEvents='box-only'>
             {this.renderValue()}
             {this.renderText()}
           </View>

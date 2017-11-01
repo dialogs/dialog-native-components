@@ -8,6 +8,7 @@ import React, { PureComponent } from "react";
 import { View, FlatList, ActivityIndicator, Text } from "react-native";
 import Pad from './Pad/Pad';
 import PadCallButton from './PadCallButton/PadCallButton';
+import PadNumber from './PadNumber/PadNumber';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
@@ -75,28 +76,17 @@ class Dialpad extends PureComponent {
     );
   }
 
-  renderPadFooter() {
-    return (
-      <View style={this.styles.padFooter}>
-        <PadCallButton />
-      </View>
-    );
-  }
-
-  renderDialpad() {
-    return (
-      <View style={this.styles.dialpad}>
-        <Pad style={this.styles.pad} />
-        {this.renderPadFooter()}
-      </View>
-    );
-  }
-
   render() {
     return (
       <View style={this.styles.container}>
         {this.renderConatcts()}
-        {this.renderDialpad()}
+        <View style={this.styles.dialpad}>
+          <PadNumber value={'+79992093464'} />
+          <Pad style={this.styles.pad} />
+          <View style={this.styles.padFooter}>
+            <PadCallButton />
+          </View>
+        </View>
       </View>
     );
   }

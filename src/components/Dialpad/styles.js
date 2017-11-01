@@ -23,19 +23,20 @@ const getStyles = (theme, styleOverride) => {
     },
     dialpad: {
       flex: 0,
-      height: 400,
       borderTopWidth: 1,
       borderColor: Color.border
     },
     pad: {
-      flex: 1,
+      height: 250,
+      marginTop: -10,
+      marginBottom: -10
     },
     padFooter: {
       flex: 0,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      paddingBottom: 10
+      padding: 12
     },
   };
 

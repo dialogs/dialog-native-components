@@ -10,17 +10,23 @@ const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
       flex: 0,
-      backgroundColor: theme.color.success || Color.success,
-      width: 62,
-      height: 62,
+      height: 70,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      borderRadius: 500
+      position: 'relative',
     },
-    icon: {
+    number: {
+      fontSize: 26,
+      color: Color.gray,
+      letterSpacing: 5
+    },
+    backspace: {
+      position: 'absolute',
       width: 32,
-      height: 32
+      height: 32,
+      top: 20,
+      right: 20
     }
   };
 

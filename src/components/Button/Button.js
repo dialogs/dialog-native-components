@@ -32,7 +32,7 @@ class Button extends PureComponent {
   render() {
     return (
       <TouchableNativeFeedback onPress={this.props.onPress} background={TouchableNativeFeedback.SelectableBackground()}>
-        <View style={this.styles.container}>
+        <View style={this.styles.container} pointerEvents='box-only'>
           <Text style={this.styles.text}>{this.props.title.toUpperCase()}</Text>
         </View>
       </TouchableNativeFeedback>

@@ -11,7 +11,9 @@ import getStyles from './styles';
 import { Color } from '../../../styles';
 import PadButton from './PadButton';
 import padButtons from './padButtons';
-type Props = {};
+type Props = {
+  onNumberPress: (value: string) => mixed
+};
 
 type State = {};
 
@@ -36,7 +38,7 @@ class Pad extends PureComponent {
   }
 
   handleButtonPress = (value: string) => {
-    console.debug('value', value);
+    this.props.onNumberPress(value);
   };
 
   renderButtons() {

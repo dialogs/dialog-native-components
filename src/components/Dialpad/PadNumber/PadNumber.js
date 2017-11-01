@@ -7,10 +7,13 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
 import { View, Text, Image } from "react-native";
 import getStyles from './styles';
-import { Color } from '../../../styles';
 import backspace from '../../../assets/icons/backspace.png';
+import TouchableNativeFeedback from "@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe";
 
-type Props = {};
+type Props = {
+  value: string,
+  onBackspacePress: () => mixed
+};
 
 type State = {};
 
@@ -37,7 +40,14 @@ class PadNumber extends PureComponent {
     return (
       <View style={this.styles.container}>
         <Text style={this.styles.number}>{this.props.value}</Text>
-        <Image source={backspace} style={this.styles.backspace} />
+          <View style={this.styles.backspace}>
+            <TouchableNativeFeedback
+              onPress={this.props.onBackspacePress}
+              background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+            >
+              <Image source={backspace} style={this.styles.backspaceIcon}/>
+            </TouchableNativeFeedback>
+          </View>
       </View>
     );
   }

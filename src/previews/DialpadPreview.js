@@ -3,9 +3,10 @@
  * @flow
  */
 
-import React, { PureComponent } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
-import Dialpad from "../components/Dialpad/Dialpad";
+import React, { PureComponent } from 'react';
+import { StyleSheet, View, Alert } from 'react-native';
+import Dialpad from '../components/Dialpad/Dialpad';
+import contacts from '../fixtures/DialpadData.json';
 
 class DialpadPreview extends PureComponent {
   constructor(props) {
@@ -22,15 +23,15 @@ class DialpadPreview extends PureComponent {
     setTimeout(() => {
       this.setState({
         contacts: {
-          value: [],
+          value: contacts,
           pending: false,
           error: null
         }
       });
-    }, 3000);
+    }, 1000);
   }
 
-  handleCallRequest = (phone) => {
+  handleCallRequest = phone => {
     Alert.alert(`Request chat with: ${phone}`);
   };
 
@@ -49,7 +50,7 @@ class DialpadPreview extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   }
 });
 

@@ -5,7 +5,8 @@
 
 import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
-import { View, FlatList, ActivityIndicator, Text } from "react-native";
+import { View, VirtualizedList, ActivityIndicator, Text } from "react-native";
+import DialpadContact from '../DialpadContact/DialpadContact';
 import Pad from './Pad/Pad';
 import PadCallButton from './PadCallButton/PadCallButton';
 import PadNumber from './PadNumber/PadNumber';
@@ -14,7 +15,9 @@ import { Color } from '../../styles';
 
 type Props = {};
 
-type State = {};
+type State = {
+  number: string
+};
 
 class Dialpad extends PureComponent {
   props: Props;
@@ -30,10 +33,32 @@ class Dialpad extends PureComponent {
   constructor(props: Props, context) {
     super(props, context);
 
-    this.state = {};
+    this.state = {
+      number: '7'
+    };
 
     this.styles = getStyles(context.theme, context.style.Dialpad);
   }
+
+  handleBackspacePress = () => {
+    this.setState({ number: this.state.number.slice(0, -1) });
+  };
+
+  handleNumberPress = (value: string) => {
+    this.setState({ number: this.state.number + value });
+  };
+
+  handleCallPress = () => {
+    console.debug('handleCallPress');
+  };
+
+  handleContactPress = () => {
+    console.debug('handleContactPress');
+  };
+
+  getItem = (data: any, index: number) => data[index];
+  getItemKey = (contact: any, index: number) => `contact_${contact.id}}`;
+  getItemCount = (data: any) => data.length;
 
   renderError() {
     const { contacts: { error } } = this.props;
@@ -58,7 +83,24 @@ class Dialpad extends PureComponent {
     );
   }
 
-  renderConatcts() {
+  renderEmpty() {
+    return (
+      <View style={this.styles.empty}>
+        <Text>Nothing found</Text>
+      </View>
+    );
+  }
+
+  renderContact = ({ item, index }) => {
+    return (
+      <DialpadContact
+        contact={item}
+        onPress={this.handleContactPress}
+      />
+    );
+  };
+
+  renderContacts() {
     const { contacts } = this.props;
 
     if (contacts.error) {
@@ -71,7 +113,14 @@ class Dialpad extends PureComponent {
 
     return (
       <View style={this.styles.contacts}>
-        <Text>Contacts</Text>
+        <VirtualizedList
+          renderItem={this.renderContact}
+          data={contacts.value}
+          getItem={this.getItem}
+          getItemCount={this.getItemCount}
+          keyExtractor={this.getItemKey}
+          ListEmptyComponent={this.renderEmpty()}
+        />
       </View>
     );
   }
@@ -79,12 +128,12 @@ class Dialpad extends PureComponent {
   render() {
     return (
       <View style={this.styles.container}>
-        {this.renderConatcts()}
+        {this.renderContacts()}
         <View style={this.styles.dialpad}>
-          <PadNumber value={'+79992093464'} />
-          <Pad style={this.styles.pad} />
+          <PadNumber value={`+${this.state.number}`} onBackspacePress={this.handleBackspacePress} />
+          <Pad style={this.styles.pad} onNumberPress={this.handleNumberPress} />
           <View style={this.styles.padFooter}>
-            <PadCallButton />
+            <PadCallButton onCallPress={this.handleCallPress} />
           </View>
         </View>
       </View>

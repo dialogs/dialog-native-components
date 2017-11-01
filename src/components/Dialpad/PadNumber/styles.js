@@ -23,10 +23,18 @@ const getStyles = (theme, styleOverride) => {
     },
     backspace: {
       position: 'absolute',
+      top: 20,
+      right: 20,
       width: 32,
       height: 32,
-      top: 20,
-      right: 20
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center',
+    },
+    backspaceIcon: {
+      marginLeft: -2,
+      width: 32,
+      height: 32
     }
   };
 

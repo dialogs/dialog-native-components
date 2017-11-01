@@ -10,8 +10,7 @@ import DiscoverPreview from './src/previews/DiscoverPreview';
 import SchedulePreview from './src/previews/SchedulePreview';
 import SightsPreview from './src/previews/SightsPreview';
 import ContactsPreview from './src/previews/ContactsPreview';
-
-
+import DialpadPreview from './src/previews/DialpadPreview';
 
 const theme = {
   color: {
@@ -27,6 +26,7 @@ const ExampleScreen = TabNavigator({
   Schedule: { screen: withContext(SchedulePreview, theme, style) },
   Sights: { screen: withContext(SightsPreview, theme, style) },
   Contacts: { screen: withContext(ContactsPreview, theme, style) },
+  Dialpad: { screen: withContext(DialpadPreview, theme, style) },
 });
 
 AppRegistry.registerComponent('ExampleScreen', () => ExampleScreen);

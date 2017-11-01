@@ -48,6 +48,7 @@ export type ScheduleProps = {
   onNavRequest: (location: Location) => mixed
 };
 
+// TODO: describe all types
 export type ContactsProps = {};
 
 export type ContactsItem = {};

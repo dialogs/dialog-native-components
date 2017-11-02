@@ -17,13 +17,14 @@ class DialpadPreview extends PureComponent {
         value: [],
         pending: true,
         error: null
-      }
+      },
+      number: ''
     };
 
     setTimeout(() => {
       this.setState({
         contacts: {
-          value: contacts,
+          value: this.getContacts(),
           pending: false,
           error: null
         }
@@ -31,15 +32,49 @@ class DialpadPreview extends PureComponent {
     }, 1000);
   }
 
-  handleCallRequest = phone => {
-    Alert.alert(`Request chat with: ${phone}`);
+  handleCallRequest = (phone) => {
+    Alert.alert(`Request call to: ${number}`);
+  };
+
+  handleChange = (number: string) => {
+    this.setState({
+      number,
+      contacts: {
+        value: this.getContacts(),
+        pending: false,
+        error: null
+      }
+    });
+  };
+
+  getContacts = () => {
+    if (!this.state.number || this.state.number === '' ) {
+      return contacts;
+    }
+
+    return contacts.reduce((filtered, contact) => {
+      const phoneOnlyDigit = contact.phone.replace(/[^0-9]/g, '');
+      const index = phoneOnlyDigit.indexOf(this.state.number);
+
+      if (index > 0) {
+        filtered.push({
+          ...contact,
+          select: [index, this.state.number.length]
+        });
+      }
+
+      return filtered;
+    }, []);
   };
 
   render() {
+
     return (
       <View style={styles.container}>
         <Dialpad
           contacts={this.state.contacts}
+          number={this.state.number}
+          onChange={this.handleChange}
           onCallRequest={this.handleCallRequest}
         />
       </View>

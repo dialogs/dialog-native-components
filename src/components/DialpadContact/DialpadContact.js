@@ -51,20 +51,41 @@ class DialpadContact extends PureComponent {
     );
   }
 
+  renderPhone() {
+    if (!this.props.contact.select) {
+      return (
+        <View style={this.styles.phoneWrapper}>
+          <Text style={this.styles.phone}>{this.props.contact.phone}</Text>
+        </View>
+      );
+    }
+
+    return (
+      <View style={this.styles.phoneWrapper}>
+        <Text style={this.styles.phone}>
+          {this.props.contact.phone.substring(0, this.props.contact.select[0])}
+          <Text style={this.styles.phoneHighlight}>
+            {this.props.contact.phone.substring(this.props.contact.select[0], this.props.contact.select[1])}
+          </Text>
+          {this.props.contact.phone.substring(this.props.contact.select[1], this.props.contact.phone.length)}
+        </Text>
+      </View>
+    );
+  }
+
   renderInfo() {
     return (
       <View style={this.styles.info}>
         <View style={this.styles.titleWrapper}>
           <Text style={this.styles.title}>{this.props.contact.title}</Text>
         </View>
-        <View style={this.styles.phoneWrapper}>
-          <Text style={this.styles.phone}>{this.props.contact.phone}</Text>
-        </View>
+        {this.renderPhone()}
       </View>
     )
   }
 
   render() {
+    console.debug('contact', this.props)
     return (
       <View style={this.styles.wrapper}>
         <TouchableNativeFeedback

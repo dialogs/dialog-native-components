@@ -54,6 +54,9 @@ const getStyles = (theme, styleOverride) => {
       color: Color.gray,
       lineHeight: 18
     },
+    phoneHighlight: {
+      color: Color.primary
+    }
   };
 
   return StyleSheet.create(Object.assign({}, style, styleOverride));

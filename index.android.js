@@ -14,8 +14,8 @@ import DialpadPreview from './src/previews/DialpadPreview';
 
 const theme = {
   color: {
-    primary: '#e4002b',
-    danger: '#e22d44'
+    // primary: '#e4002b',
+    // danger: '#e22d44'
   }
 };
 const style = {};
@@ -29,4 +29,4 @@ const ExampleScreen = TabNavigator({
   Dialpad: { screen: withContext(DialpadPreview, theme, style) },
 });
 
-AppRegistry.registerComponent('ExampleScreen', () => ExampleScreen);
+AppRegistry.registerComponent('ExampleScreen', () => withContext(DialpadPreview, theme, style));

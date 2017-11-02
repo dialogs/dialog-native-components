@@ -13,10 +13,13 @@ import PadFooter from './PadFooter/PadFooter';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {};
+type Props = {
+  number: string,
+  onChange: (number: string) => mixed,
+  onCallRequest: (number: string) => mixed
+};
 
 type State = {
-  number: string,
   isLandscape: boolean
 };
 
@@ -35,7 +38,6 @@ class Dialpad extends PureComponent {
     super(props, context);
 
     this.state = {
-      number: '7',
       isLandscape: false
     };
 
@@ -43,15 +45,15 @@ class Dialpad extends PureComponent {
   }
 
   handleBackspacePress = () => {
-    this.setState({ number: this.state.number.slice(0, -1) });
+    this.props.onChange(this.props.number.slice(0, -1));
   };
 
   handleNumberPress = (value: string) => {
-    this.setState({ number: this.state.number + value });
+    this.props.onChange(this.props.number + value);
   };
 
   handleCallPress = () => {
-    console.debug('handleCallPress', this.state.value);
+    this.props.onCallRequest(this.props.number);
   };
 
   handleContactPress = (contact) => {
@@ -59,7 +61,6 @@ class Dialpad extends PureComponent {
   };
 
   handleLayoutChange = ({ nativeEvent: { layout: { width, height } } }) => {
-    console.debug('onLayout', width, height);
     this.setState({ isLandscape: width > height });
   };
 
@@ -133,12 +134,13 @@ class Dialpad extends PureComponent {
   }
 
   renderPad() {
+    console.debug(this.props);
     const { isLandscape } = this.state;
 
     return (
       <View style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}>
         <PadNumber
-          value={`+${this.state.number}`}
+          value={this.props.number}
           onBackspacePress={this.handleBackspacePress}
           small={this.state.isLandscape}
         />

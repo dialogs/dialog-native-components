@@ -8,15 +8,16 @@ import React, { PureComponent } from "react";
 import { View, VirtualizedList, ActivityIndicator, Text } from "react-native";
 import DialpadContact from '../DialpadContact/DialpadContact';
 import Pad from './Pad/Pad';
-import PadCallButton from './PadCallButton/PadCallButton';
 import PadNumber from './PadNumber/PadNumber';
+import PadFooter from './PadFooter/PadFooter';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
 type Props = {};
 
 type State = {
-  number: string
+  number: string,
+  isLandscape: boolean
 };
 
 class Dialpad extends PureComponent {
@@ -34,7 +35,8 @@ class Dialpad extends PureComponent {
     super(props, context);
 
     this.state = {
-      number: '7'
+      number: '7',
+      isLandscape: false
     };
 
     this.styles = getStyles(context.theme, context.style.Dialpad);
@@ -49,11 +51,16 @@ class Dialpad extends PureComponent {
   };
 
   handleCallPress = () => {
-    console.debug('handleCallPress');
+    console.debug('handleCallPress', this.state.value);
   };
 
-  handleContactPress = () => {
-    console.debug('handleContactPress');
+  handleContactPress = (contact) => {
+    console.debug('handleContactPress', contact.phone);
+  };
+
+  handleLayoutChange = ({ nativeEvent: { layout: { width, height } } }) => {
+    console.debug('onLayout', width, height);
+    this.setState({ isLandscape: width > height });
   };
 
   getItem = (data: any, index: number) => data[index];
@@ -91,7 +98,7 @@ class Dialpad extends PureComponent {
     );
   }
 
-  renderContact = ({ item, index }) => {
+  renderContact = ({ item }) => {
     return (
       <DialpadContact
         contact={item}
@@ -125,17 +132,33 @@ class Dialpad extends PureComponent {
     );
   }
 
+  renderPad() {
+    const { isLandscape } = this.state;
+
+    return (
+      <View style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}>
+        <PadNumber
+          value={`+${this.state.number}`}
+          onBackspacePress={this.handleBackspacePress}
+          small={this.state.isLandscape}
+        />
+        <Pad
+          onNumberPress={this.handleNumberPress}
+          horizontal={this.state.isLandscape}
+        />
+        <PadFooter
+          onCallPress={this.handleCallPress}
+          horizontal={this.state.isLandscape}
+        />
+      </View>
+    );
+  }
+
   render() {
     return (
-      <View style={this.styles.container}>
+      <View style={this.state.isLandscape ? this.styles.containerLandscape : this.styles.container} onLayout={this.handleLayoutChange}>
         {this.renderContacts()}
-        <View style={this.styles.dialpad}>
-          <PadNumber value={`+${this.state.number}`} onBackspacePress={this.handleBackspacePress} />
-          <Pad style={this.styles.pad} onNumberPress={this.handleNumberPress} />
-          <View style={this.styles.padFooter}>
-            <PadCallButton onCallPress={this.handleCallPress} />
-          </View>
-        </View>
+        {this.renderPad()}
       </View>
     );
   }

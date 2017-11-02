@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
 import { View, Text, Image } from "react-native";
@@ -12,6 +13,7 @@ import TouchableNativeFeedback from "@expo/react-native-touchable-native-feedbac
 
 type Props = {
   value: string,
+  small: boolean,
   onBackspacePress: () => mixed
 };
 
@@ -20,6 +22,7 @@ type State = {};
 class PadNumber extends PureComponent {
   props: Props;
   state: State;
+  context: Context;
   styles: Object;
 
   static contextTypes = {
@@ -28,7 +31,7 @@ class PadNumber extends PureComponent {
     locale: PropTypes.string
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {};
@@ -37,15 +40,27 @@ class PadNumber extends PureComponent {
   }
 
   render() {
+    const { small } = this.props;
+    const styles = [this.styles.container];
+    const numberStyles = [this.styles.number];
+    const backspaceStyles = [this.styles.backspace];
+    const backspaceIconStyles = [this.styles.backspaceIcon];
+    if (small) {
+      styles.push(this.styles.small);
+      numberStyles.push(this.styles.numberSmall);
+      backspaceStyles.push(this.styles.backspaceSmall);
+      backspaceIconStyles.push(this.styles.backspaceIconSmall);
+    }
+
     return (
-      <View style={this.styles.container}>
-        <Text style={this.styles.number}>{this.props.value}</Text>
-          <View style={this.styles.backspace}>
+      <View style={styles}>
+        <Text style={numberStyles}>{this.props.value}</Text>
+          <View style={backspaceStyles}>
             <TouchableNativeFeedback
               onPress={this.props.onBackspacePress}
               background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
             >
-              <Image source={backspace} style={this.styles.backspaceIcon}/>
+              <Image source={backspace} style={backspaceIconStyles}/>
             </TouchableNativeFeedback>
           </View>
       </View>

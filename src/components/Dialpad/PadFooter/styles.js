@@ -10,27 +10,13 @@ const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
       flex: 0,
-      backgroundColor: theme.color.success || Color.success,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      borderRadius: 500
+      padding: 12
     },
-    normal: {
-      width: 62,
-      height: 62,
-    },
-    small: {
-      width: 50,
-      height: 50,
-    },
-    iconNormal: {
-      width: 32,
-      height: 32
-    },
-    iconSmall: {
-      width: 24,
-      height: 24
+    horizontal: {
+      paddingBottom: 10
     }
   };
 

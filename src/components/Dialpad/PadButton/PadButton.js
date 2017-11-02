@@ -9,19 +9,16 @@ import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import getStyles from './styles';
-import { Color } from '../../../styles';
 
 type Props = {
   value: string,
   text: string,
+  small: boolean,
   onPress: (value: string) => mixed
 };
 
-type State = {};
-
 class PadButton extends PureComponent {
   props: Props;
-  state: State;
   context: Context;
   styles: Object;
 
@@ -43,8 +40,8 @@ class PadButton extends PureComponent {
 
   renderValue() {
     return (
-      <View style={this.styles.buttonValueWrapper}>
-        <Text style={this.styles.buttonValue}>
+      <View style={this.styles.valueWrapper}>
+        <Text style={this.styles.value}>
           {this.props.value}
         </Text>
       </View>
@@ -53,8 +50,8 @@ class PadButton extends PureComponent {
 
   renderText() {
     return (
-      <View style={this.styles.buttonTextWrapper}>
-        <Text style={this.styles.buttonText}>
+      <View style={this.styles.textWrapper}>
+        <Text style={this.styles.text}>
           {this.props.text.toUpperCase()}
         </Text>
       </View>
@@ -62,13 +59,19 @@ class PadButton extends PureComponent {
   }
 
   render() {
+    const { small } = this.props;
+    const style = [this.styles.container];
+    if (small) {
+      style.push(this.styles.small);
+    }
+
     return (
-      <View style={this.styles.buttonWrapper}>
+      <View style={this.styles.wrapper}>
         <TouchableNativeFeedback
           onPress={this.handleButtonPress}
           background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
-          <View style={this.styles.button} pointerEvents='box-only'>
+          <View style={style} pointerEvents='box-only'>
             {this.renderValue()}
             {this.renderText()}
           </View>

@@ -10,7 +10,13 @@ const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
       flex: 1,
-      backgroundColor: Color.grayLighter
+      flexDirection: 'column',
+      backgroundColor: '#fff'
+    },
+    containerLandscape: {
+      flex: 1,
+      flexDirection: 'row',
+      backgroundColor: '#fff'
     },
     fill: {
       flex: 1,
@@ -19,25 +25,18 @@ const getStyles = (theme, styleOverride) => {
       justifyContent: 'center'
     },
     contacts: {
-      flex: 1
+      flex: 1,
     },
     dialpad: {
       flex: 0,
       borderTopWidth: 1,
-      borderColor: Color.border
+      borderColor: Color.border,
     },
-    pad: {
-      height: 250,
-      marginTop: -10,
-      marginBottom: -10
-    },
-    padFooter: {
-      flex: 0,
-      alignItems: 'center',
-      alignContent: 'center',
-      justifyContent: 'center',
-      padding: 12
-    },
+    dialpadLandscape: {
+      flexBasis: '50%',
+      borderLeftWidth: 1,
+      borderColor: Color.border,
+    }
   };
 
   return StyleSheet.create(Object.assign({}, style, styleOverride));

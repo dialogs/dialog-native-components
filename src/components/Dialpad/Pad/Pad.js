@@ -6,12 +6,13 @@
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import getStyles from './styles';
-import { Color } from '../../../styles';
-import PadButton from './PadButton';
+import PadButton from '../PadButton/PadButton';
 import padButtons from './padButtons';
+
 type Props = {
+  horizontal: boolean,
   onNumberPress: (value: string) => mixed
 };
 
@@ -32,8 +33,6 @@ class Pad extends PureComponent {
   constructor(props: Props, context: Context) {
     super(props, context);
 
-    this.state = {};
-
     this.styles = getStyles(context.theme, context.style.Pad);
   }
 
@@ -49,6 +48,7 @@ class Pad extends PureComponent {
 
       return (
         <PadButton
+          small={this.props.horizontal}
           key={`pad_button_${button.title}`}
           value={button.title}
           text={text}
@@ -59,8 +59,10 @@ class Pad extends PureComponent {
   }
 
   render() {
+    const style = this.props.horizontal ? this.styles.horizontal : this.styles.container;
+
     return (
-      <View style={[this.styles.container, this.props.style]}>
+      <View style={style}>
         <View style={this.styles.buttons}>
           {this.renderButtons()}
         </View>

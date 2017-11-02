@@ -16,10 +16,16 @@ const getStyles = (theme, styleOverride) => {
       justifyContent: 'center',
       position: 'relative',
     },
+    small: {
+      height: 60
+    },
     number: {
       fontSize: 26,
       color: Color.gray,
-      letterSpacing: 5
+      letterSpacing: 2
+    },
+    numberSmall: {
+      fontSize: 22,
     },
     backspace: {
       position: 'absolute',
@@ -35,6 +41,15 @@ const getStyles = (theme, styleOverride) => {
       marginLeft: -2,
       width: 32,
       height: 32
+    },
+    backspaceSmall: {
+      top: 17,
+      width: 28,
+      height: 28,
+    },
+    backspaceIconSmall: {
+      width: 28,
+      height: 28
     }
   };
 

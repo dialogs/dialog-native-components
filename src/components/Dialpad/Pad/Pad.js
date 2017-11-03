@@ -16,11 +16,8 @@ type Props = {
   onNumberPress: (value: string) => mixed
 };
 
-type State = {};
-
 class Pad extends PureComponent {
   props: Props;
-  state: State;
   context: Context;
   styles: Object;
 

@@ -5,7 +5,7 @@
 
 import PropTypes from 'prop-types';
 import React, { PureComponent } from "react";
-import { View, VirtualizedList, ActivityIndicator, Text } from "react-native";
+import { View, FlatList, ActivityIndicator, Text } from "react-native";
 import DialpadContact from '../DialpadContact/DialpadContact';
 import Pad from './Pad/Pad';
 import PadNumber from './PadNumber/PadNumber';
@@ -14,9 +14,9 @@ import getStyles from './styles';
 import { Color } from '../../styles';
 
 type Props = {
-  number: string,
-  onChange: (number: string) => mixed,
-  onCallRequest: (number: string) => mixed
+  query: string,
+  onChange: (query: string) => mixed,
+  onCallRequest: (phone: string) => mixed
 };
 
 type State = {
@@ -45,28 +45,30 @@ class Dialpad extends PureComponent {
   }
 
   handleBackspacePress = () => {
-    this.props.onChange(this.props.number.slice(0, -1));
+    this.props.onChange(this.props.query.slice(0, -1));
   };
 
   handleNumberPress = (value: string) => {
-    this.props.onChange(this.props.number + value);
+    this.props.onChange(this.props.query + value);
   };
 
   handleCallPress = () => {
-    this.props.onCallRequest(this.props.number);
+    this.props.onCallRequest(this.props.query);
   };
 
   handleContactPress = (contact) => {
-    console.debug('handleContactPress', contact.phone);
+    this.props.onChange(contact.phone);
   };
 
-  handleLayoutChange = ({ nativeEvent: { layout: { width, height } } }) => {
-    this.setState({ isLandscape: width > height });
+  handleLayoutChange = (event) => {
+    const { width, height } = event.nativeEvent.layout;
+
+    this.setState({
+      isLandscape: width > height
+    });
   };
 
-  getItem = (data: any, index: number) => data[index];
-  getItemKey = (contact: any, index: number) => `contact_${contact.id}}`;
-  getItemCount = (data: any) => data.length;
+  getItemKey = (contact: any, index: number) => contact.id;
 
   renderError() {
     const { contacts: { error } } = this.props;
@@ -121,11 +123,10 @@ class Dialpad extends PureComponent {
 
     return (
       <View style={this.styles.contacts}>
-        <VirtualizedList
-          renderItem={this.renderContact}
+        <FlatList
           data={contacts.value}
+          renderItem={this.renderContact}
           getItem={this.getItem}
-          getItemCount={this.getItemCount}
           keyExtractor={this.getItemKey}
           ListEmptyComponent={this.renderEmpty()}
         />
@@ -134,23 +135,22 @@ class Dialpad extends PureComponent {
   }
 
   renderPad() {
-    console.debug(this.props);
     const { isLandscape } = this.state;
 
     return (
       <View style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}>
         <PadNumber
-          value={this.props.number}
-          onBackspacePress={this.handleBackspacePress}
+          value={this.props.query}
           small={this.state.isLandscape}
+          onBackspacePress={this.handleBackspacePress}
         />
         <Pad
-          onNumberPress={this.handleNumberPress}
           horizontal={this.state.isLandscape}
+          onNumberPress={this.handleNumberPress}
         />
         <PadFooter
-          onCallPress={this.handleCallPress}
           horizontal={this.state.isLandscape}
+          onCallPress={this.handleCallPress}
         />
       </View>
     );
@@ -158,7 +158,9 @@ class Dialpad extends PureComponent {
 
   render() {
     return (
-      <View style={this.state.isLandscape ? this.styles.containerLandscape : this.styles.container} onLayout={this.handleLayoutChange}>
+      <View
+        style={this.state.isLandscape ? this.styles.containerLandscape : this.styles.container} onLayout={this.handleLayoutChange}
+      >
         {this.renderContacts()}
         {this.renderPad()}
       </View>

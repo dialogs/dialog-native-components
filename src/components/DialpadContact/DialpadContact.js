@@ -12,13 +12,18 @@ import getStyles from './styles';
 import { Color } from '../../styles';
 import getAvatarPlaceholder from "../../utils/getAvatarPlaceholder";
 
-type Props = {};
-
-type State = {};
+type Props = {
+  contact: {
+    id: number,
+    title: string,
+    avatar: ?string,
+    phone: string,
+    selection?: [number, number]
+  }
+};
 
 class DialpadContact extends PureComponent {
   props: Props;
-  state: State;
   styles: Object;
 
   static contextTypes = {
@@ -27,10 +32,8 @@ class DialpadContact extends PureComponent {
     locale: PropTypes.string
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Object) {
     super(props, context);
-
-    this.state = {};
 
     this.styles = getStyles(context.theme, context.style.DialpadContact);
   }
@@ -38,37 +41,41 @@ class DialpadContact extends PureComponent {
   handleButtonPress = () => {};
 
   renderAvatar() {
-    const placeholder = getAvatarPlaceholder(parseInt(this.props.contact.phone.replace(/[^0-9]/g, ''), 10));
+    const { contact } = this.props;
+    const placeholder = getAvatarPlaceholder(contact.id);
 
     return (
       <Avatar
         style={this.styles.avatar}
-        image={this.props.contact.avatar}
+        image={contact.avatar}
         placeholder={placeholder}
-        title={this.props.contact.title}
+        title={contact.title}
         size={44}
       />
     );
   }
 
   renderPhone() {
-    if (!this.props.contact.select) {
+    const { contact } = this.props;
+    if (contact.selection) {
+      const [from, to] = contact.selection;
+
       return (
         <View style={this.styles.phoneWrapper}>
-          <Text style={this.styles.phone}>{this.props.contact.phone}</Text>
+          <Text style={this.styles.phone}>
+            {from > 0 ? contact.phone.substring(0, from) : null}
+            <Text style={this.styles.phoneHighlight}>
+              {contact.phone.substring(from, to)}
+            </Text>
+            {to < contact.phone.length - 1 ? contact.phone.substring(to) : null}
+          </Text>
         </View>
       );
     }
 
     return (
       <View style={this.styles.phoneWrapper}>
-        <Text style={this.styles.phone}>
-          {this.props.contact.phone.substring(0, this.props.contact.select[0])}
-          <Text style={this.styles.phoneHighlight}>
-            {this.props.contact.phone.substring(this.props.contact.select[0], this.props.contact.select[1])}
-          </Text>
-          {this.props.contact.phone.substring(this.props.contact.select[1], this.props.contact.phone.length)}
-        </Text>
+        <Text style={this.styles.phone}>{this.props.contact.phone}</Text>
       </View>
     );
   }
@@ -85,7 +92,6 @@ class DialpadContact extends PureComponent {
   }
 
   render() {
-    console.debug('contact', this.props)
     return (
       <View style={this.styles.wrapper}>
         <TouchableNativeFeedback

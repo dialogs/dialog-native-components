@@ -17,11 +17,8 @@ type Props = {
   onBackspacePress: () => mixed
 };
 
-type State = {};
-
 class PadNumber extends PureComponent {
   props: Props;
-  state: State;
   context: Context;
   styles: Object;
 
@@ -33,8 +30,6 @@ class PadNumber extends PureComponent {
 
   constructor(props: Props, context: Context) {
     super(props, context);
-
-    this.state = {};
 
     this.styles = getStyles(context.theme, context.style.PadNumber);
   }

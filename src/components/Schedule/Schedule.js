@@ -41,8 +41,9 @@ class Schedule extends PureComponent {
       return this.props.data.value;
     }
 
+    const today =  new Date().setHours(0,0,0,0);
     const data = this.props.data.value.filter((day) => {
-      return !(new Date(day.date).getTime() < new Date().getTime());
+      return new Date(day.date).getTime() >= today;
     });
 
     return data.length ? data : this.props.data.value;

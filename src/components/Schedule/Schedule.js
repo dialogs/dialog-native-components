@@ -18,6 +18,10 @@ class Schedule extends PureComponent {
   props: ScheduleProps;
   styles: Object;
 
+  static defaultProps = {
+    hidePastSchedule: true
+  };
+
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
@@ -30,7 +34,19 @@ class Schedule extends PureComponent {
     this.styles = getStyles(context.theme, context.style.Schedule);
   }
 
-  getKey = (item: ScheduleDay, index: number): string => `schedule_day_${index}`;
+  getKey = (item: ScheduleDayType, index: number): string => `schedule_day_${index}`;
+
+  getData = (): ScheduleDayType[] => {
+    if (!this.props.hidePastSchedule) {
+      return this.props.data.value;
+    }
+
+    const data = this.props.data.value.filter((day) => {
+      return !(new Date(day.date).getTime() < new Date().getTime());
+    });
+
+    return data.length ? data : this.props.data.value;
+  };
 
   renderItem = ({ item }) => {
     return (
@@ -74,7 +90,7 @@ class Schedule extends PureComponent {
 
     return (
       <FlatList
-        data={this.props.data.value}
+        data={this.getData()}
         keyExtractor={this.getKey}
         renderItem={this.renderItem}
       />

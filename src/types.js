@@ -45,6 +45,7 @@ export type ScheduleDayProps = ScheduleDay & {
 export type ScheduleProps = {
   data: Field<ScheduleDay[]>,
   locale: string,
+  hidePastSchedule: boolean,
   onNavRequest: (location: Location) => mixed
 };
 

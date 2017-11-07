@@ -34,13 +34,11 @@ export type ScheduleEvent = {
 
 export type ScheduleDay = {
   title: string,
+  date: string,
   events: ScheduleEvent[]
 };
 
-export type ScheduleDayProps = ScheduleDay & {
-  locale: string,
-  onNavRequest: (location: Location) => mixed
-};
+export type ScheduleDayProps = ScheduleDay;
 
 export type ScheduleProps = {
   data: Field<ScheduleDay[]>,

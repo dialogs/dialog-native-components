@@ -9,9 +9,7 @@ import { Color } from '../../styles';
 const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
-      backgroundColor: '#fff',
-      marginBottom: 16,
-      elevation: 1
+      backgroundColor: '#fff'
     },
     dayTitle: {
       minHeight: 44,

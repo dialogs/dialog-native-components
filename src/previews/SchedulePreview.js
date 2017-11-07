@@ -42,6 +42,7 @@ class SchedulePreview extends PureComponent {
       <View style={styles.container}>
         <Schedule
           data={this.state.data}
+          hidePastSchedule
           onNavRequest={this.handleNavRequest}
         />
       </View>

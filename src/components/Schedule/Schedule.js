@@ -9,8 +9,9 @@ import type {
 } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, FlatList, SectionList, ActivityIndicator } from 'react-native';
 import ScheduleDay from '../ScheduleDay/ScheduleDay';
+import ScheduleEvent from '../ScheduleEvent/ScheduleEvent';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
@@ -48,15 +49,34 @@ class Schedule extends PureComponent {
     return data.length ? data : this.props.data.value;
   };
 
+  getSections = () => {
+    const data = this.getData();
+
+    return data.map((day) => {
+      return {
+        title: day.title,
+        data: day.events
+      };
+    });
+  };
+
   renderItem = ({ item }) => {
+    console.log('renderItem', item);
+
     return (
-      <ScheduleDay
+      <ScheduleEvent
         {...item}
         locale={this.context.locale}
         onNavRequest={this.props.onNavRequest}
       />
     );
   };
+
+  renderSectionHeader = ({section}) => {
+    return (
+      <ScheduleDay title={section.title} />
+    );
+  }
 
   renderError() {
     return (
@@ -89,12 +109,21 @@ class Schedule extends PureComponent {
     }
 
     return (
-      <FlatList
-        data={this.getData()}
-        keyExtractor={this.getKey}
+      <SectionList
         renderItem={this.renderItem}
+        keyExtractor={this.getKey}
+        renderSectionHeader={this.renderSectionHeader}
+        sections={this.getSections()}
+        stickySectionHeadersEnabled
       />
     );
+
+    // return (
+    //   <FlatList
+    //     data={this.getData()}
+    //     renderItem={this.renderItem}
+    //   />
+    // );
   }
 
   render() {

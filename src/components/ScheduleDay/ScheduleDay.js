@@ -17,27 +17,13 @@ class ScheduleDay extends PureComponent {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
   constructor(props, context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.ScheduleDay);
-  }
-
-  renderEvents() {
-    return this.props.events.map((event, index) => {
-      return (
-        <ScheduleEvent
-          key={`schedule_day_event_${index}`}
-          {...event}
-          locale={this.context.locale}
-          onNavRequest={this.props.onNavRequest}
-        />
-      );
-    });
   }
 
   render() {
@@ -49,7 +35,6 @@ class ScheduleDay extends PureComponent {
             {this.props.title.toUpperCase()}
           </Text>
         </View>
-        {this.renderEvents()}
       </View>
     );
   }

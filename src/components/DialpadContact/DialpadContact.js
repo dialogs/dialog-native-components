@@ -38,20 +38,24 @@ class DialpadContact extends PureComponent {
     this.styles = getStyles(context.theme, context.style.DialpadContact);
   }
 
-  handleButtonPress = () => {};
+  handleButtonPress = () => {
+    this.props.onPress(this.props.contact);
+  };
 
   renderAvatar() {
     const { contact } = this.props;
     const placeholder = getAvatarPlaceholder(contact.id);
 
     return (
-      <Avatar
-        style={this.styles.avatar}
-        image={contact.avatar}
-        placeholder={placeholder}
-        title={contact.title}
-        size={44}
-      />
+      <View style={this.styles.avatarWrapper}>
+        <Avatar
+          style={this.styles.avatar}
+          image={contact.avatar}
+          placeholder={placeholder}
+          title={contact.title}
+          size={44}
+        />
+      </View>
     );
   }
 
@@ -62,7 +66,7 @@ class DialpadContact extends PureComponent {
 
       return (
         <View style={this.styles.phoneWrapper}>
-          <Text style={this.styles.phone}>
+          <Text style={this.styles.phone} numberOfLines={1}>
             {from > 0 ? contact.phone.substring(0, from) : null}
             <Text style={this.styles.phoneHighlight}>
               {contact.phone.substring(from, to)}
@@ -84,7 +88,7 @@ class DialpadContact extends PureComponent {
     return (
       <View style={this.styles.info}>
         <View style={this.styles.titleWrapper}>
-          <Text style={this.styles.title}>{this.props.contact.title}</Text>
+          <Text style={this.styles.title} numberOfLines={1}>{this.props.contact.title}</Text>
         </View>
         {this.renderPhone()}
       </View>

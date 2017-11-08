@@ -3,14 +3,18 @@
  * @flow
  */
 
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { Color, Padding } from '../../styles';
 
 const getStyles = (theme, styleOverride) => {
   const style = {
     wrapper: {
-      borderBottomWidth: StyleSheet.hairlineWidth,
-      borderBottomColor: Color.border,
+      ...Platform.select({
+        android: {
+          borderBottomWidth: StyleSheet.hairlineWidth,
+          borderBottomColor: Color.border,
+        }
+      })
     },
     container: {
       flex: 1,
@@ -21,8 +25,9 @@ const getStyles = (theme, styleOverride) => {
       flexDirection: 'row',
       flexWrap: 'nowrap',
       borderRadius: 500,
+    },
+    avatarWrapper: {
       paddingLeft: 22,
-      paddingRight: 22,
       paddingTop: 10,
       paddingBottom: 10,
     },
@@ -32,14 +37,23 @@ const getStyles = (theme, styleOverride) => {
     },
     info: {
       flex: 1,
-      height: 44,
       flexDirection: 'column',
       alignItems: 'flex-start',
       alignContent: 'flex-start',
       justifyContent: 'center',
+      paddingTop: 10,
+      paddingBottom: 10,
+      paddingRight: 22,
+      ...Platform.select({
+        ios: {
+          borderBottomWidth: 1,
+          borderBottomColor: Color.border,
+        }
+      })
     },
     titleWrapper: {
-      flex: 0
+      marginTop: 3,
+      flex: 0,
     },
     title: {
       fontSize: 16,
@@ -47,7 +61,8 @@ const getStyles = (theme, styleOverride) => {
       lineHeight: 20
     },
     phoneWrapper: {
-      flex: 0
+      marginBottom: 3,
+      flex: 0,
     },
     phone: {
       fontSize: 12,

@@ -46,7 +46,7 @@ class Schedule extends PureComponent {
       return new Date(day.date).getTime() >= today;
     });
 
-    return data.length ? data : this.props.data.value;
+    return data.length ? data : [this.props.data.value[this.props.data.value.length - 1]];
   };
 
   renderItem = ({ item }) => {

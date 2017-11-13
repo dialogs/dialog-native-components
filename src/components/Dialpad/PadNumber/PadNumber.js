@@ -4,6 +4,7 @@
  */
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
+import type { Selection } from '../../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import {
@@ -23,6 +24,7 @@ import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedbac
 type Props = {
   value: string,
   small: boolean,
+  onSelectionChange: (selection: Selection) => mixed,
   onBackspacePress: () => mixed
 };
 
@@ -43,6 +45,12 @@ class PadNumber extends PureComponent {
     this.styles = getStyles(context.theme, context.style.PadNumber);
   }
 
+  setInput = input => (this.input = input);
+
+  handleSelectionChange = event => {
+    this.props.onSelectionChange(event.nativeEvent.selection);
+  };
+
   render() {
     const { small } = this.props;
     const styles = [this.styles.container];
@@ -61,7 +69,12 @@ class PadNumber extends PureComponent {
         <TextInput
           style={numberStyles}
           value={this.props.value}
+          ref={this.setInput}
+          autoFocus
+          selection={this.props.selection}
           underlineColorAndroid="transparent"
+          autoCorrect={false}
+          onSelectionChange={this.handleSelectionChange}
         />
         <View style={backspaceStyles}>
           <TouchableNativeFeedback

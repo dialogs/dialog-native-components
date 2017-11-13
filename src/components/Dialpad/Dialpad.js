@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { Selection } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, FlatList, ActivityIndicator, Text } from 'react-native';
@@ -20,7 +21,8 @@ type Props = {
 };
 
 type State = {
-  isLandscape: boolean
+  isLandscape: boolean,
+  selection: Selection
 };
 
 class Dialpad extends PureComponent {
@@ -38,18 +40,47 @@ class Dialpad extends PureComponent {
     super(props, context);
 
     this.state = {
-      isLandscape: false
+      isLandscape: false,
+      selection: {
+        start: 0,
+        end: 0
+      }
     };
 
     this.styles = getStyles(context.theme, context.style.Dialpad);
   }
 
   handleBackspacePress = () => {
-    this.props.onChange(this.props.query.slice(0, -1));
+    const { start, end } = this.state.selection;
+
+    if (start === end) {
+      if (start !== 0) {
+        this.props.onChange(
+          this.props.query.substr(0, start - 1) + this.props.query.substr(end)
+        );
+      }
+    } else {
+      this.props.onChange(
+        this.props.query.substr(0, start) + this.props.query.substr(end)
+      );
+    }
   };
 
   handleNumberPress = (value: string) => {
-    this.props.onChange(this.props.query + value);
+    const { start, end } = this.state.selection;
+    const query =
+      this.props.query.substr(0, start) + value + this.props.query.substr(end);
+    const newCursorPosition =
+      start + 1 < query.length ? start + 1 : query.length;
+
+    this.props.onChange(query);
+
+    this.setState({
+      selection: {
+        start: newCursorPosition,
+        end: newCursorPosition
+      }
+    });
   };
 
   handleCallPress = () => {
@@ -66,6 +97,10 @@ class Dialpad extends PureComponent {
     this.setState({
       isLandscape: width > height
     });
+  };
+
+  handleSelectionChange = (selection: Selection) => {
+    this.setState({ selection });
   };
 
   getItemKey = (contact: any, index: number) => contact.id;
@@ -138,7 +173,9 @@ class Dialpad extends PureComponent {
       >
         <PadNumber
           value={this.props.query}
+          selection={this.state.selection}
           small={this.state.isLandscape}
+          onSelectionChange={this.handleSelectionChange}
           onBackspacePress={this.handleBackspacePress}
         />
         <Pad

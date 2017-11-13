@@ -1,47 +1,488 @@
-[
-  {
-    "title": "3 Сентября – Среда",
-    "events": [
+[{
+    "title": "Sunday, 12 November 2017",
+    "date": "2017-11-12T00:00:00.000Z",
+    "events": [{
+        "title": "11TH ANNUAL MEETING OF THE ICA-AP COMMITTEE ON YOUTH COOPERATION (ICYC)",
+        "time": "09:00 - 13:00",
+        "description": "At this annual meeting, the committee will elect its new office bearers – chair and two vice chairs.",
+        "address": "Cancun, Level 10"
+      },
       {
-        "title": "Прибытие участников",
-        "time": "13:00 - 14:00",
-        "description": null,
-        "location": null
-      }, {
-        "title": "Размещение в отеле потмоу что очень длинное описаение ивента",
-        "time": "14:00 - 15:00",
-        "description": "Процесс регистрации в гостиницах различной категории отличается по времени и качеству обслуживания, но информация о госте везде одинаковая. В отелях, имеющих автоматизированную систему, регистрация проходит очень быстро.",
-        "address": "Отель Гранд-Европа",
-        "location": null
-      }, {
-        "title": "Регистрация",
-        "time": "15:00 - 16:00",
-        "description": null,
-        "address": "Мега-Олимп",
-        "location": {
-          "latitude": 55.7582045,
-          "longitude": 37.621500,
-        }
+        "title": "9TH ANNUAL MEETING OF THE ICA-AP COMMITTEE ON UNIVERSITY/CAMPUS CO-OPERATIVES (ICUC)",
+        "time": "14:00 - 17:30",
+        "address": "Cancun, Level 10"
       }
     ]
-  }, {
-    "title": "4 Сентября – Четверг",
-    "events": [
+  },
+  {
+    "title": "Monday, 13 November 2017",
+    "date": "2017-11-13T00:00:00.000Z",
+    "events": [{
+        "title": "GLOBAL WORKSHOP ON UNIVERSITY/CAMPUS COOPERATIVES",
+        "time": "08:30 - 18:00",
+        "description": "The ICA Asia and Pacific Committee on University/Campus traditionally organises thematic workshops second year. This year, the committee will organize workshop on the sidelines of #coopConference17 in with the ICA-EU Partnership on Cooperatives in Development #Coops4Dev. The thematic area of the workshop is the sustainable Development Goals and the role of student led cooperatives and, the role participation (Bye-law making) plays in it. There will also be a study visit to the local Co-operative College of Malaysia.",
+        "address": "BC4, Level 15"
+      },
       {
-        "title": "Открытие олимпиады",
+        "title": "ALLIANCE GLOBAL BOARD MEETING",
+        "time": "09:00 - 17:30",
+        "address": "Grand Caymans, Level 10"
+      },
+      {
+        "title": "ICA GLOBAL GENDER EQUALITY COMMITTEE ANNUAL MEETING",
+        "time": "09:00 - 17:00",
+        "description": "During its annual meeting, the ICA Gender Equality will hold elections of its Executive Committee share progress on its members’ activities.",
+        "address": "Bahamas 1, Level 12"
+      },
+      {
+        "title": "COOPERATIVE HOUSING INTERNATIONAL BOARD OF MEETING",
+        "time": "09:30 - 16:30",
+        "address": "Cancun, Level 10"
+      },
+      {
+        "title": "IHCO AND CICOPA JOINT BOARD MEETING",
+        "time": "13:30 - 18:00",
+        "address": "Casablanca, Level 10"
+      },
+      {
+        "title": "YOUTH NETWORK EXECUTIVE COMMITTEE & ORGANISERS MEETING",
+        "time": "14:00 - 18:00",
+        "description": "The Youth Network will meet to organise the meetings for the week. All Youth Network members are welcome to join to help us out!",
+        "address": "Caribbean, Level 12"
+      },
+      {
+        "title": "ICAO GENERAL MEETING AND SEMINAR",
+        "time": "16:00-18:00",
+        "address": "Bahamas 2&3, Level 12"
+      }
+    ]
+  },
+  {
+    "title": "Tuesday, 14 November 2017",
+    "date": "2017-11-14T00:00:00.000Z",
+    "events": [{
+        "title": "JOINT SESSION OF THE ALLIANCE GLOBAL BOARD, SECTORAL BOARDS AND REGIONAL BOARDS AND THEMATIC COMMITTEES BOARDS",
+        "time": "08:30 - 12:30",
+        "description": "This is a joint board meeting of the Global Board, Regional Boards and Sectoral Organisation Boards and also the Thematic Committees Boards. The primary purpose is around the Alliance’s Action plan to Achieve the Blueprint for a Co-operative Decade. The main topic of discussion is integrated, multi-year planning for all structures of the Alliance.",
+        "address": "Lagoon 1, Level 15"
+      },
+      {
+        "title": "CICOPA 70 ANNIVERSARY – PUBLIC SESSION",
+        "time": "09:00 - 13:00",
+        "description": "During its public session, CICOPA will celebrate its 70 years anniversary with a presentation recalling the main historical steps. It will also present the two years report on industrial and service cooperatives and have an open discussion on the future of work and other forms of cooperatives and work than worker cooperatives and social cooperative. You are all welcome to participate!",
+        "address": "Bahamas 2 & 3, Level 12"
+      },
+      {
+        "title": "#COOPYOUTH GATHERING AND ORIENTATION",
+        "time": "09:00 - 12:00",
+        "description": "The Youth Network will gather all #coopyouth present to engage in longform introductions to get to know one another, participate in warm-up games, and move through an overview of all the youth programming scheduled for the week. Additionally, youth not yet members of the Network will be signed up to join, and volunteers will be solicited to support some of the ongoing programming efforts. To close, we will engage in a peer-to-peer training on how to network and engage in conference settings, in order to equip one another to participate fully in the week of youth-specific and intergenerational activities.",
+        "address": "Bahamas 1, level 12"
+      },
+      {
+        "title": "INTERNATIONAL COOPERATIVE FISHERIES ORGANISATION (ICFO) EXECUTIVE MEMBERS MEETING AND GENERAL ASSEMBLY",
+        "time": "16:00 - 18:00",
+        "address": "Copacabana, Level 12"
+      },
+      {
+        "title": "TRI-PARTITE MEETING BETWEEN THE CO-OPERATIVE LAW COMMITTEE, PRINCIPLES COMMITTEE AND THE COMMITTEE OF CO-OPERATIVE RESEARCH",
+        "time": "12:30 - 14:00",
+        "address": "Room 10.6, Level 10"
+      },
+      {
+        "title": "51ST COMMITTEE ON CONSUMER COOPERATION FOR ASIA AND THE PACIFIC",
         "time": "13:00 - 14:00",
-        "description": null,
-        "address": "Где-то за горизонтом",
-        "location": null
-      }, {
-        "title": "Блиц-турнир",
-        "time": "14:00 - 15:00",
-        "description": null,
-        "address": "Мега-Олимп",
-        "location": {
-          "latitude": 55.7582045,
-          "longitude": 37.621500,
-        }
+        "address": "Bermuda, Level 12"
+      },
+      {
+        "title": "YOUTH NETWORK ASSEMBLY",
+        "time": "13:30 - 16:00",
+        "description": "The Youth Network will lead an informative session on its activities over the past two years, as well as lead a business meeting of the Network. Participants will have the opportunity to engage with an ongoing process to finalise a #CoopYouth Manifesto that has grown out of several youth statements issued at co-operative events over the last five years, as well as with the Youth Network’s Strategic Plan.",
+        "address": "Bahamas 1, level 12"
+      },
+      {
+        "title": "CICOPA GENERAL ASSEMBLY – STATUTORY MEETING",
+        "time": "14:00 - 17:30",
+        "address": "Bahamas 2 & 3, Level 12"
+      },
+      {
+        "title": "DOTCOOP BOARD",
+        "time": "14:00 - 16:00",
+        "address": "Room 10.6, Level 10"
+      },
+      {
+        "title": "CO-OPERATIVE LAW COMMITTEE MEETING",
+        "time": "14:00 - 17:00",
+        "address": "Business Center 5, Level 15"
+      },
+      {
+        "title": "ICA ASIA AND PACIFIC REGIONAL BOARD MEETING",
+        "time": "14:00 - 17:00",
+        "address": "Caymans 3 & 4, Level 10"
+      },
+      {
+        "title": "INTERNATIONAL HEALTH CO-OPERATIVE (IHCO) GENERAL ASSEMBLY",
+        "time": "14:00 - 17:00",
+        "description": "The General Assembly is the most relevant event for health cooperatives. It is the time to share experiences and make decisions on the matters that will guide the near future of the IHCO.",
+        "address": "Caymans 1 & 2, Level 10"
+      },
+      {
+        "title": "CO-OPERATIVE HOUSING INTERNATIONAL PLENARY",
+        "time": "14:00 - 17:00",
+        "description": "From 14:00 - 15:00 will be the biennial elections of five CHI board members, to be followed by a roundtable on enhancing government relations strategies and influencing public policy. In the co-operative housing sector, government relations and public policy are important components of the work needed to effectively advance our issues. Join us for an international roundtable discussion on critical strategies and approaches used in different countries such as Canada, the U.S., Poland, Germany and others.",
+        "address": "Cancun, Level 10"
+      },
+      {
+        "title": "CONSUMER CO-OPERATIVES WORLDWIDE (CCW) GENERAL ASSEMBLY",
+        "time": "14:00 - 17:00",
+        "description": "Consumer Co-operatives Worldwide unites 26 national organisations of consumer co-operatives around the world. Elections for President and Executive Committee will be held. Additional points of discussion will include the financial and activity reports for 2016 and 2017, the 2018 activity plan and budget, intermember collaboration and exchange of information and possibilities for consumer cooperatives’ increased participation in Alliance initiatives.",
+        "address": "Caribbean, Level 12"
+      },
+      {
+        "title": "INTERNATIONAL CO-OPERATIVE DEVELOPMENT PLATFORM MEETING",
+        "time": "14:00 - 18:00",
+        "description": "This will be the first meeting of the International Cooperative Development Platform. It is a direct follow-up of the Development Platform Launch in October 2016 at the International Summit of Co-operatives in Quebec. During this first reunion, the co-operative organisations active in international development will further discuss how to achieve stronger coordination and collaboration. A plan of action to pursue an exchange of expertise and create international visibility, as well as to get a stronger voice vis-à-vis political institutions, will be developed. It is the first meeting to transform the newly launched Platform into a strong tool of joint cooperative development actions.",
+        "address": "Casablanca, Level 10"
+      },
+      {
+        "title": "YOUTH NETWORK EXECUTIVE COMMITTEE MEETING",
+        "time": "16:00 - 18:00",
+        "description": "The Executive Committee of the Youth Network will meet to plan, digest and distil the work of the past, as well as deal with any outstanding items of business. All Youth Network members are welcome to join the Executive Committee meeting, though are not eligible to vote in its proceedings, if a vote were to be taken.",
+        "address": "Bahamas 1, level 12"
+      },
+      {
+        "title": "OPENING GALA",
+        "time": "19:00 - 22:00",
+        "address": "Grand Lagoon Ballroom, Level 15"
+      }
+    ]
+  },
+  {
+    "title": "Wednesday, 15 November 2017",
+    "date": "2017-11-15T00:00:00.000Z",
+    "events": [{
+        "title": "PLENARY",
+        "time": "09:00 - 10:30",
+        "description": "OPENING REMARKS:\n– Monique F. Leroux, President, International Co-operative Alliance\n– Dato’ Haji ABDUL FATTAH Haji Abdullah, President, Angkasa, the Malaysian National Cooperative Federation\n\nOpening keynote plenary – Dr Linda Yueh\n\nTo set the scene for the conference, Dr Yueh will give a global outlook on economic, social, and environmental challenges, with a focus on Asia, our hosting region, and discuss the possible contributions of co-operatives to address them. One of the world’s outstanding economists, Dr Yueh is a fellow in economics at Oxford University, an adjunct professor of economics at the London Business School, and a visiting professor of economics at Peking University. She has advised the World Bank, the European Commission, the World Economic Forum and the Asian Development Bank, among many others. Dr Yueh is a contributor to British and American cable news networks and was named the BBC’s global chief business correspondent in April 2013.",
+        "address": "Grand Lagoon Ballroom, Level 15"
+      },
+      {
+        "title": "BREAK",
+        "time": "10:30 - 11:00"
+      },
+      {
+        "title": "LEARN - Building development partnerships for the future we want (part 1)",
+        "time": "11:00 - 12:30",
+        "description": "Partnership in all its dimensions is one of the most important tools that the co-operative movement has been using in order to contribute to sustainable development at a global level. Acting in collaboration with other civil society actors, co-operatives have the possibility to deploy significant resources to lift people out of poverty, to empower local communities and to improve the lives of billions across the globe. During this first part of the conference, high-level representatives of the European Union and global civil societies and networks will identify and explain the significance of partnership and how co-operatives can make a greater impact in development processes through collaboration.",
+        "address": "Lagoon 3, Level 15"
+      },
+      {
+        "title": "LEARN - Co-op to co-op trade: Taking existing achievements to scale",
+        "time": "11:00 - 12:30",
+        "description": "While co-op to co-op trade (C2C trade) is a topic the Alliance and its members have long discussed, its achievement as a movement institution remains elusive. A report commissioned by the Alliance in 2015 found that C2C trade in agriculture makes up less than 1% of the global agricultural trade sector, compared to 15% for trade between co-ops and non-co-ops. Meanwhile, co-operatives around the world are solidifying their presence on global trade markets and using e-commerce platforms and methodologies to achieve scale. What can we learn from these examples for national and regional development? How can we borrow and maximise on achievements and reproduce their successes in other parts of the world? This session will present some of these existing platforms and open a discussion for their replication in different regions and sectors for increased C2C trade.",
+        "address": "Lagoon 1, Level 15"
+      },
+      {
+        "title": "LEARN - The collaborative economy: What it is and why co-ops should care",
+        "time": "11:00 - 12:30",
+        "description": "Since the development of digital tools, we hear more and more about different approaches to business, different ideas about our globalised economy. Is this a backlash against the failures we saw nine years ago? What’s new about this collaborative economy and how can co-operatives lever advantage? What about the respective places of “global” and “local” in this respect? This session will explore the emerging business models that respond to peoples’ needs and how co-operatives can demonstrate their longevity in providing sustainable livelihoods grounded in solidarity, democracy, and equity. As the situations may be very different in Asia, in Europe, the Americas and in Africa, the session aims also at clarifying the language and concepts around this term of “collaborative economy” and others associated with it, in order to better identify the opportunities for the co-operative movement",
+        "address": "Lagoon 2, Level 15"
+      },
+      {
+        "title": "EXPERIMENT - Raising capital the co-operative way",
+        "time": "11:00 - 12:30",
+        "description": "Big and small, new and old, from banking to agriculture to handicrafts, co-operatives share a common challenge: securing reliable streams of capital while guaranteeing member control. Join this workshop on raising capital for start-up and growth activities and explore innovative mechanisms and strategies with peers. Experts from the financial co-operative industry, as well as cooperative development professionals, will guide brainstorming and share expert tips on how to identify the most appropriate capital instruments for co-operatives.",
+        "address": "Grand Caymans, Level 10"
+      },
+      {
+        "title": "EXPERIMENT - Member focus groups",
+        "time": "11:45 - 12:30",
+        "description": "We would like members to join us to tell us what aspects of the Alliance’s member value is most useful to them in order to help us refine our membership services strategy for the next few years.",
+        "address": "Grand Bahamas, Level 12"
+      },
+      {
+        "title": "NETWORK - Networking hour: Governmental organisations as co-operative partners",
+        "time": "11:00 - 12:00",
+        "description": "Many officials from national governments and international organisations are working every day to make the administrative and regulatory environments more favourable to cooperatives. Come and meet colleagues from around the world that share the same interests and challenges.",
+        "address": "Casablanca, Level 10"
+      },
+      {
+        "title": "NETWORK - Young co-operators on the move: #CoopYouth are IT!",
+        "time": "11:00 - 12:30",
+        "description": "Using a participatory assembly format, the Youth Network will engage participants in exploring how youth can contribute to fostering a “Co-operative Spring” through the use of information technology tools (e.g. social media). Of particular note will be the concept of “co-operative IT,” which shares some similarity with Free/Libre and Open Source Software value systems. Finally, we are especially interested to explore ways in which we can pursue IT to these ends as entrepreneurs, which will prepare us to engage more fully in the “Young Co- operators on the move: The future of work is ours!” session later in the day.",
+        "address": "Business Center 4, Level 15"
+      },
+      {
+        "title": "EXPLORE - Screening: PBS Series Visionaries on co-operatives",
+        "time": "11:00 - 12:30",
+        "description": "The Visionaries Series is highlighting the power of co-operatives both in the U.S. and around the world. This one-hour documentary follows the work of the National Cooperative Business Association CLUSA International (NCBA CLUSA), celebrating 100 years of co-operatives through seven co-op stories featuring members in Seattle, Western Massachusetts, Mississippi, and international projects in Mozambique and East Timor. With the seven cooperative principles binding these unique and diverse businesses, we can see that co-ops truly build a better world.",
+        "address": "Auditorium A, Level 7"
+      },
+      {
+        "title": "EXPLORE - Visit to Bank Rakyat",
+        "time": "11:00 - 17:00",
+        "description": "Bank Rakyat is not only a very successful cooperative bank but it is also one of the best Islamic bank in the region and has won many awards and accolades. Bank Rakyat is also listed in the World Cooperative Monitor 2014, 2015 and 2016. To book your seat to visit Bank Rakyat, please register at the Tour Counter, Level 12 simply by showing your tag for scanning from 13th November 2017 from 08:00 - 15th November 2017 at 09:30. (First come, first served).",
+        "address": "Lobby, Sunway Resort Hotel & Spa"
+      },
+      {
+        "title": "LUNCH BREAK",
+        "time": "12:30 - 14:00",
+        "address": "Fuzion, Level 1 or Resort Café in the Sunway Resort Hotel Lobby"
+      },
+      {
+        "title": "EXPLORE - Book signing: ‘A Short History of Co-operation’ by Ed Mayo",
+        "time": "13:00 - 14:00",
+        "description": "When was the first co-operative or mutual? The spread of co-operatives in the nineteenth century is well-known and celebrated. Yet there are also precursors of co-operation and mutuality before this in countries right across the world. Ed Mayo, Secretary General of Co-operatives UK, brings together this rich story for the first time in a free new book, A Short History of Co-operation and Mutuality. This is a fresh and magical re-telling of our own story as a co-operative sector.",
+        "address": "Foyer, Level 12"
+      },
+      {
+        "title": "LEARN - Building development partnerships for the future we want (part 2)",
+        "time": "14:00 - 17:00",
+        "description": "To continue the enquiry of how important partnerships can be, during this second session of the conference the audience will have the opportunity to take an in-depth look at real partnership cases in action. In order to understand what exactly the co-operative model brings into a partnership, how to identify the right partner and what it is necessary to make a collaboration successful, the panellists will further discuss successful concrete field collaboration cases from all around the global. Via their first-hand experience, they will guide us through the challenges, the failures, the evolution and the benefits of this kind of projects and programs within the local community where they are implemented.",
+        "address": "Lagoon 3, Level 15"
+      },
+      {
+        "title": "LEARN - The co-operative potential for the refugee crisis and new migrations",
+        "time": "14:00 - 15:30",
+        "description": "Migration is one of the biggest challenges of our time with large economic, social, and environmental consequences. Increased instability and political turmoil promise to only intensify the need for action. What role can co-operatives play to improve the livelihoods and security of migrants and refugees? How are co-operatives already making a difference? Join this session to learn about the state of refugee and migrant communities in the world, the potential for co-operative engagement and initiatives on the ground.",
+        "address": "Lagoon 2, Level 15"
+      },
+      {
+        "title": "LEARN - The co-operative health report: the worldwide contribution of cooperatives to healthcare",
+        "time": "14:00 - 15:30",
+        "description": "How do health cooperatives contribute to improving the welfare in the countries they operate in? What is the impact of co-operatives on the citizens’ health? How many people worldwide have access to healthcare through co-operatives? These and some other questions will be discussed at the session, where IHCO and EURICSE will also be launching the first edition of a research study which will explore health cooperatives in 15 countries and will analyse in depth several case studies.",
+        "address": "Lagoon 1, Level 15"
+      },
+      {
+        "title": "EXPERIMENT - Young co-operators on the move: The future of work is ours!",
+        "time": "14:00 - 17:00",
+        "description": "What are the obstacles and opportunities young people encounter when creating a #cooperative workplace? How to reach young people to bring them into the coop movement and to convince them that coops are a valuable option? What can the coop movement do to assure a good pass on to the next generation? Take part in this participative and open debate among cooperators of all ages, organized by CICOPA together with the Global Youth Cooperative Network under the campaign WE OWN IT! www.we-own-it.coop",
+        "address": "Grand Bahamas, Level 12"
+      },
+      {
+        "title": "EXPERIMENT - Advocacy 101: How to make your case to policymakers",
+        "time": "14:00 - 15:30",
+        "description": "The co-operative movement requires an enabling legal and regulatory environment to flourish. To make this happen, co-operators need to better advocate their cause to governments at the local, national, regional and global level. How can they be most successful? At this workshop, participants will generate practical ideas for managing advocacy and rehearse putting them into practice. Participants will learn how to create an environment for analysis and discussion of an identified problem and work in small groups to develop effective advocacy messages.",
+        "address": "Grand Caymans, Level 10"
+      },
+      {
+        "title": "NETWORK - Meet and Greet with the Alliance Board candidates & demonstration of the electronic voting system",
+        "time": " 14:00 - 14:45",
+        "description": "Alliance members will have a chance to meet the candidates for the Alliance Global Board before elections at the General Assembly. Your questions are welcome! Members can also test the electronic voting system to be used during the General Assembly",
+        "address": "Business Centre 4, Level 15"
+      },
+      {
+        "title": "EXPLORE - Screening: ‘Actual World, Possible Future’ ",
+        "time": "14:00 - 16:00",
+        "description": "This documentary from political scientist, researcher and filmmaker Barbara Allen explores the lives and works of Elinor and Vincent Ostrom, renowned American political economists whose ideas on governing the commons echo the co-operative approach to economics and self-governance. Learn five lessons from the Ostroms and explore case studies of co-operative commons governance from around the world. An in-depth look at the experience of Korean co-operatives and social enterprises will follow the film.",
+        "address": "Auditorium A, Level 7"
+      },
+      {
+        "title": "EXPLORE - Malaysia Truly Asia",
+        "time": "15:00 - 17:00",
+        "description": "To enjoy 10 selected local fruits that will meet your appetite at our local fruit fiesta. Don’t miss this golden opportunity to witness Malaysia’s cultures and customs. You can experience live action by traditional craftman at our local handicraft such as painting batik, wood carving, pewter making and get yourself experience handmade pottery. Not forgetting the Malaysian traditional dance such as Malay, Indian, Chinese and Orang Asli dance.",
+        "address": "Grotto, Level 1"
+      },
+      {
+        "title": "LEARN - Co-ops for 2030: Models of co-operative engagement in the SDGs",
+        "time": "15:30 - 17:00",
+        "description": "Co-operatives all over the world are engaged in initiatives that will contribute to the achievement of the Sustainable Development Goals. But what is the scope of the co-operative contribution? Who is taking action and how are they communicating their progress? Join this session to learn about the online platform ‘Co-ops for 2030’, a tool for co-operatives to learn about the SDGs, share their initiatives to achieve them and engage as a united movement. This session will present some of the successful initiatives showcased on ‘Co-ops for 2030’ and how those organisations integrate the SDGs into their corporate strategies.",
+        "address": "Lagoon 2, Level 15"
+      },
+      {
+        "title": "LEARN - Who owns the robots? Co-operatives & big data",
+        "time": "15:30 - 17:00",
+        "description": "Today, co-operative businesses operate on markets where inputs and assets are increasingly ephemeral. Knowledge and information – data – is the new currency. And block chain and artificial intelligence technologies are growing increasingly sophisticated in allowing for the extrapolation of value from all that data. But, who makes money off your tweets? Who controls what Google does with your internet search history? Who owns the robotic systems that generate profits from the data of our lives? We could, if co-operatives got involved. Join this session to discuss the added-value proposition co-operatives bring to these digital opportunities and learn about co-operatively owned structures that are already forging ahead.",
+        "address": "Lagoon 1, Level 15"
+      },
+      {
+        "title": "EXPERIMENT - Integrating gender equality into your co-operative",
+        "time": "15:30 - 17:00",
+        "description": "Co-operatives are certainly more attuned to gender issues than their corporate counterparts, but much more can be done to make co-ops an equal space for both men and women. How can you make gender equality a reality within your cooperative? What types of activites can help mainstream gender sensitivities into your business? Attend this workshop for practical tools.",
+        "address": "Grand Caymans, Level 10"
+      },
+      {
+        "title": "NETWORK - Co-op to Co-op Trade Networking Hour",
+        "time": "16:00 - 17:00",
+        "description": "Meet and greet fellow co-operators interested in developing business contacts. This is an occasion for informal conversation with other participants that are also interested in trade opportunities among co-operatives.",
+        "address": "Sunway Pyramid Convention Centre, CP3, Meeting Area 3"
+      },
+      {
+        "title": "BREAK",
+        "time": "17:00 - 18:00"
+      },
+      {
+        "title": "EXPLORE - Presentation of Coop Connect",
+        "time": "17:00 - 18:00",
+        "description": "A delegation from Coop Connect platform will show the different features including customization, communications, workflow, voting and remote meetings, as well as the comparative analysis of Coop Connect. Participants will analyse together the development of the platform and integration with business services including payment systems, automation of workflow, cooperative blockchainbased services. It will also be the opportunity to establish possible partnership between the Coop Connect platform and members of the International Co-operative Alliance.",
+        "address": "Foyer, Level 12"
+      },
+      {
+        "title": "NETWORKING EVENT AT MACCOPS",
+        "time": "18:00 - 20:00",
+        "description": "MACCOPS is an exhibition of various cooperatives products and services under one roof and this year’s event is the third series of the largest cooperative expo in Malaysia.",
+        "address": "Sunway Pyramid Convention Centre, CP3"
+      }
+    ]
+  },
+  {
+    "title": "Thursday, 16 November 2017",
+    "date": "2017-11-16T00:00:00.000Z",
+    "events": [{
+        "title": "PLENARY - Assessing our sector: Growth, challenges, and achievements",
+        "time": "09:00 - 10:00",
+        "description": "Every year the World Co-operative Monitor offers insight to the size and importance of the co-operative economy. This session will see the presentation of the 2017 edition, followed by responses from young co-operators on tackling the challenges ahead. To close the session, we will take a look at our own achievements and acknowledge those who made the growth of co-operatives possible, by presenting the 2017 Rochdale Award for outstanding contributions to the cooperative movement.",
+        "address": "Grand Lagoon Ballroom, Level 15"
+      },
+      {
+        "title": "BREAK",
+        "time": "10:00 - 10:30"
+      },
+      {
+        "title": "LEARN - The enabling environment for co-operatives: Where are we now?",
+        "time": "10:30 - 12:00",
+        "description": "Step by step, little by little, co-operators are creating a more favourable regulatory and political environment for co-operatives. How are different countries faring? What legal hurdles remain? Experts will share the latest developments in the field of co-operative law by discussing, analysing, and presenting research results on the state of legal frameworks around the world. Participants will also be invited to discover Cooplex, the global database of co-operative legal texts.",
+        "address": "Lagoon 3, Level 15"
+      },
+      {
+        "title": "LEARN - Measuring the movement: path towards better statistics on co-operatives",
+        "time": "10:30 - 12:00",
+        "description": "When asked how many co-operatives exist in the world, there is no clear answer, only rough and incomplete estimates. In order to accurately demonstrate the economic, social, and environmental power of the co-operative economy, statistics on co-operatives must improve in terms of quality, comparability, and access. How can this be achieved? Learn what statistics on co-operatives look like today, how data on co-operatives can be better collected and analysed, and what work will be achieved before the 20th International Conference of Labour Statisticians revisits the issue in 2018.",
+        "address": "Lagoon 1, Level 15"
+      },
+      {
+        "title": "LEARN - ICAO-CCW Joint Session: Building sustainable supply chains",
+        "time": "10:30 - 12:00",
+        "description": "Agricultural and food co-operatives constitute 40% of the entire co-operative economy, 49% of all co-operatives with a turnover of 100 million USD or more and 51% of the Top 300. By being at the beginning (producer) and end (retailer) of the food system, agricultural and consumer co-operatives have a very significant role to play not only as individual sectors, but also as a combined force. This is why their intercooperation is so vital for real contributions to be made to the SDGs on global scale. When speaking of direct business relations between the two sectors, the issue of supply chain comes to the forefront. Better co-operation relies on identifying any existing challenges thereof and working together on practical measures to overcome them, such direct sourcing and widening market access for agricultural co-operative produce by its sale in stores run by consumer co-operatives. However, ICAOCCW collaboration could also have a real contribution to the UN Sustainable Development Goals on global scale.",
+        "address": "Lagoon 2, Level 15"
+      },
+      {
+        "title": "EXPERIMENT - Education that has career impact and relevance",
+        "time": "10:30 - 12:00",
+        "description": "Around the world, business education that is focused on the cooperative model has deep relevance and impact for co-operative professionals (managers and directors). While the availability of education that is truly steeped in the cooperative model is rare, this session will discuss education for innovation, and innovative education, for democratic organizations. It will draw on the evidence from global studies combined with the direct experiences of co-operative professionals to illustrate how innovative education can build better co-operative enterprises. The session will be inspired by practical examples of these learning applications, as well as draw on the experience of participants in the room. It will address the question of innovation – what it is, what it means in the context of co-operative business, and how innovative practices come about through an education program. It will also address the ways to approach education in co-operative management that supports creative thinking and collective leadership.",
+        "address": "Grand Bahamas, Level 12"
+      },
+      {
+        "title": "EXPERIMENT - The makings of effective leadership",
+        "time": "10:30 - 12:00",
+        "description": "Join us to reflect on the role of leadership and of fellowship. Through small groups and debate, delve into the ‘why’ of leadership and how to be a more effective leader",
+        "address": "Grand Caymans, Level 10"
+      },
+      {
+        "title": "NETWORK - Meet and Greet with the Alliance Board candidates & demonstration of the electronic voting system",
+        "time": "10:30 - 11:15",
+        "description": "Alliance members will have a chance to meet the candidates for the Alliance Global Board before elections at the General Assembly. Your questions are welcome! Members can also test the electronic voting system to be used during the General Assembly",
+        "address": "Business Centre 4, Level 15"
+      },
+      {
+        "title": "EXPLORE - Co-operatives on our minds: Screenings of model cooperative communications campaigns",
+        "time": "10:30 - 12:00",
+        "description": "Co-operatives seem to be a best-kept secret. Reputational surveys suggest that people would prefer to work and shop at co-operatives, yet general awareness about the model remains low in many countries. The Alliance’s Global Co-operative Marketing Campaign aims to spread the messageand promise of the co-operative advantage to new communities. See how national campaigns are being rolled out in various countries around the world and how you can help amplify the co-operative message in yours.",
+        "address": "Auditorium A, Level 7"
+      },
+      {
+        "title": "EXPLORE - Visit to National Land Finance Cooperative Societies Ltd (NLFCS) ",
+        "time": "10:30 - 15:00",
+        "description": "One of the most successful cooperative in Malaysia and recognised by the Malaysian Cooperative Societies Commission (MCSC) as top 3 of the 100 Best Cooperatives in Malaysia for years. NLFCS is also a member of the ICA. To book your seat to visit NLFCS, please register at the Tour Counter, Level 12 simply by showing your tag for scanning from 13th November 2017 from 08:00 - 16th November 2017 at 09:30. (First come, first served)",
+        "address": "Lobby, Sunway Resort Hotel & Spa"
+      },
+      {
+        "title": "BREAK FOR LUNCH",
+        "time": "12:00 - 13:30",
+        "address": "Fuzion, Level 1 or Resort Café in the Sunway Resort Hotel Lobby"
+      },
+      {
+        "title": "EXPLORE - Presentation of Coop Connect",
+        "time": "12:00 - 13:30",
+        "description": "A delegation from Coop Connect platform will show the different features including customization, communications, workflow, voting and remote meetings, as well as the comparative analysis of Coop Connect. Participants will analyse together the development of the platform and integration with business services including payment systems, automation of workflow, cooperative blockchainbased services. It will also be the opportunity to establish possible partnership between the Coop Connect platform and members of the International Co-operative Alliance.",
+        "address": "Foyer, Level 12"
+      },
+      {
+        "title": "LEARN - Co-operatives and the future of work",
+        "time": "13:30 - 15:00",
+        "description": "As people-focused businesses, co-operatives are implicated in the evolving nature of employment. Co-operatives have a unique relationship with the concept of work, as many co-operatives have worker-members or producer-members, rather than direct employees. They are also being explored as a means to facilitate the transition of workers from the informal to the formal economy. What are the main challenges regarding human resources management in co-operatives? What are the future trends in employment with the advent of new technologies? How are co-operatives promoting decent work within their organisations and in global supply chains? Come to this session to have these questions answered.",
+        "address": "Lagoon 2, Level 15"
+      },
+      {
+        "title": "LEARN - Governments as co-operative advocates ",
+        "time": "13:30 - 15:00",
+        "description": "Governments can be a key partner for the co-operative movement, as they shape the environment in which co-operatives form, develop, and flourish. This session will provide a unique opportunity to learn about how governmental entities contribute to the development of the co-operative movement worldwide and areas for potential future action. Participants will also exchange experiences regarding the administrative management of cooperative policy at the national level.",
+        "address": "Lagoon 1, Level 15"
+      },
+      {
+        "title": "LEARN - Multi-stakeholder co-ops: Innovations in co-operative governance",
+        "time": "13:30 - 15:00",
+        "description": "A hallmark of the co-operative difference is collective ownership and democratic control. These attributes require a specific kind of governance rooted in democracy and equity. However, as businesses respond to opportunities, trends, and challenges in the market, we see an emergence of multi-stakeholder co-operatives: businesses that bring together different stakeholders – workers, producers, and consumers –into one enterprise. How does co-operative governance need to adapt to meld their seemingly disparate interests? How can the innovations in these emerging governance models strengthen co-operative governance overall?",
+        "address": "Lagoon 3, Level 15"
+      },
+      {
+        "title": "EXPERIMENT - Communicating the co-operative message: Practical tips and tools",
+        "time": "13:30 - 15:00",
+        "description": "Cooperatives are often formed by likeminded individuals that want to develop a certain product or service, communication strategy and media plans are not often high on the agenda but in this era of communications cooperatives need to compete like any other organisation for space in the media. What are the 5 things that cooperatives should be doing to make sure they communicate effectively to the public and how can this ultimately impact profitability? Join this workshop to find out.",
+        "address": "Grand Caymans, Level 10"
+      },
+      {
+        "title": "EXPERIMENT - Housing the Co-op – Workshop session with and for young Leaders",
+        "time": "13:30 - 15:00",
+        "description": "The workshop will provide a platform for young leaders from diverse regions of the world to present and discuss best practices that foreground innovative forms of social and spatial constellations through housing co-operatives. Drawing on the presented case studies, the workshop’s goal is to learn from organizational models that can promote affordable, innovative, and context-specific co-operative housing production, as well as to identify potentials of transferring and scaling such ideas across cultural and regional contexts.",
+        "address": "Business Center 4, Nivel 15"
+      },
+      {
+        "title": "EXPERIMENT - Member focus groups",
+        "time": "14:15 - 15:00",
+        "description": "We would like members to join us to tell us what aspects of the Alliance’s member value is most useful to them in order to help us refine our membership services strategy for the next few years.",
+        "address": "Grand Bahamas, Level 12"
+      },
+      {
+        "title": "EXPLORE - Screening: PBS Series Visionaries on co-operatives",
+        "time": "13:30 - 15:00",
+        "description": "The Visionaries Series is highlighting the power of co-operatives both in the U.S. and around the world. This one-hour documentary follows the work of the National Cooperative Business Association CLUSA International (NCBA CLUSA), celebrating 100 years of co-operatives through seven co-op stories featuring members in Seattle, Western Massachusetts, Mississippi, and international projects in Mozambique and East Timor. With the seven cooperative principles binding these unique and diverse businesses, we can see that co-ops truly build a better world.",
+        "address": "Auditorium A, Level 7"
+      },
+      {
+        "title": "BREAK",
+        "time": "15:00 - 15:30"
+      },
+      {
+        "title": "PLENARY",
+        "time": " 15:30 - 16:30",
+        "description": "INTRODUCTORY REMARKS:\n- Monique F. Leroux, President, International Co-operative Alliance\n- Dato’ Haji ABDUL FATTAH Haji Abdullah, President of Angkasa, the Malaysian National Cooperative Federation\n\nClosing keynote plenary – Dr Gro Harlem Brundtlan\n\nSustainable development is at the very core of co-operative enterprises. As a model of business based on ethical values and principles, with an overarching goal to provide for the needs and aspirations of their members, co-operatives play a pivotal role in responding to local community needs and objectives. In an inspiring closing address, Dr Gro Harlem Brundtland will discuss the implications for building a more sustainable future as a united movement. In such roles as Minister of the Environment for Norway, Norwegian Prime Minister (the youngest person and first woman to hold the office), political activist, and Director-General of the World Health Organization, Dr Brundtland gained international recognition as a leader on key global challenges, the environment, human rights, and sustainable development.",
+        "address": "Grand Lagoon Ballroom, Level 15"
+      },
+      {
+        "title": "PRESIDENTIAL PERSPECTIVES",
+        "time": "16:30 - 17:00",
+        "description": "MODERATOR:\nMonique F. Leroux, President, International Co-operative Alliance\n\n- Ariel Guarco, President, Cooperar, Argentina\n- Yogeshwar Krishna, Principal Education Officer, Examinations and Assessment Unit, Ministry of Education, Fiji Islands",
+        "address": "Grand Lagoon Ballroom, Level 15"
+      },
+      {
+        "title": "BREAK",
+        "time": "17:00 - 18:30"
+      },
+      {
+        "title": "CLOSING CELEBRATION",
+        "time": "18:30 - 20:00",
+        "address": "Grotto, Level 1"
+      }
+    ]
+  },
+  {
+    "title": "Friday, 17 November 2017",
+    "date": "2017-11-17T00:00:00.000Z",
+    "events": [{
+        "title": "GENERAL ASSEMBLY",
+        "time": "09:00 - 15:00",
+        "description": "It is with great pleasure that we invite members to participate in the General Assembly 2017 of the International Co-operative Alliance. Others who are attending the conference are welcome to observe. The official meeting documents including full agenda for the Assembly are available at https://ica.coop/en/2017GeneralAssembly\n\nLagoon 1, Level 15 - entrance for observers\nLagoon 3, Level 15 - entrance for voters",
+        "address": "Lagoon 1 & 3, Level 15"
+      },
+      {
+        "title": "BREAK",
+        "time": "15:00 - 16:00"
+      },
+      {
+        "title": "ALLIANCE BOARD MEETING",
+        "time": "16:00 - 18:00",
+        "description": "Meeting of the newly elected Global Board",
+        "address": "Cancun, Level 10"
       }
     ]
   }

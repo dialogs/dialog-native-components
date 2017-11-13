@@ -4,8 +4,8 @@
  */
 
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, FlatList, ActivityIndicator, Text } from "react-native";
+import React, { PureComponent } from 'react';
+import { View, FlatList, ActivityIndicator, Text } from 'react-native';
 import DialpadContact from '../DialpadContact/DialpadContact';
 import Pad from './Pad/Pad';
 import PadNumber from './PadNumber/PadNumber';
@@ -56,11 +56,11 @@ class Dialpad extends PureComponent {
     this.props.onCallRequest(this.props.query);
   };
 
-  handleContactPress = (contact) => {
+  handleContactPress = contact => {
     this.props.onChange(contact.phone);
   };
 
-  handleLayoutChange = (event) => {
+  handleLayoutChange = event => {
     const { width, height } = event.nativeEvent.layout;
 
     this.setState({
@@ -75,9 +75,7 @@ class Dialpad extends PureComponent {
 
     return (
       <View style={this.styles.fill}>
-        <Text>
-          {typeof error === 'string' ? error : error.message}
-        </Text>
+        <Text>{typeof error === 'string' ? error : error.message}</Text>
       </View>
     );
   }
@@ -96,18 +94,15 @@ class Dialpad extends PureComponent {
   renderEmpty() {
     return (
       <View style={this.styles.empty}>
-        <Text>Nothing found</Text>
+        <Text style={this.styles.emptyText}>
+          {this.context.locale === 'ru' ? 'Ничего не найдено' : 'Nothing found'}
+        </Text>
       </View>
     );
   }
 
   renderContact = ({ item }) => {
-    return (
-      <DialpadContact
-        contact={item}
-        onPress={this.handleContactPress}
-      />
-    );
+    return <DialpadContact contact={item} onPress={this.handleContactPress} />;
   };
 
   renderContacts() {
@@ -138,7 +133,9 @@ class Dialpad extends PureComponent {
     const { isLandscape } = this.state;
 
     return (
-      <View style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}>
+      <View
+        style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}
+      >
         <PadNumber
           value={this.props.query}
           small={this.state.isLandscape}
@@ -159,7 +156,12 @@ class Dialpad extends PureComponent {
   render() {
     return (
       <View
-        style={this.state.isLandscape ? this.styles.containerLandscape : this.styles.container} onLayout={this.handleLayoutChange}
+        style={
+          this.state.isLandscape
+            ? this.styles.containerLandscape
+            : this.styles.container
+        }
+        onLayout={this.handleLayoutChange}
       >
         {this.renderContacts()}
         {this.renderPad()}

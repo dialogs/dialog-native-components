@@ -11,18 +11,28 @@ const getStyles = (theme, styleOverride) => {
     container: {
       flex: 1,
       flexDirection: 'column',
-      backgroundColor: '#fff'
     },
     containerLandscape: {
       flex: 1,
       flexDirection: 'row',
-      backgroundColor: '#fff'
     },
     fill: {
       flex: 1,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center'
+    },
+    empty: {
+      flex: 1,
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center',
+      padding: 22,
+      height: 100
+    },
+    emptyText: {
+      fontSize: 18,
+      color: Color.gray
     },
     contacts: {
       flex: 1,
@@ -31,6 +41,7 @@ const getStyles = (theme, styleOverride) => {
       flex: 0,
       borderTopWidth: 1,
       borderColor: Color.border,
+      backgroundColor: '#fff'
     },
     dialpadLandscape: {
       flexBasis: '50%',

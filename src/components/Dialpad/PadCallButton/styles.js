@@ -17,20 +17,20 @@ const getStyles = (theme, styleOverride) => {
       borderRadius: 500
     },
     normal: {
-      width: 62,
-      height: 62,
+      width: 64,
+      height: 64,
     },
     small: {
-      width: 50,
-      height: 50,
+      width: 58,
+      height: 58,
     },
     iconNormal: {
       width: 32,
       height: 32
     },
     iconSmall: {
-      width: 24,
-      height: 24
+      width: 28,
+      height: 28
     }
   };
 

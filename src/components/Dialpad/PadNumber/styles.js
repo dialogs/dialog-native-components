@@ -14,18 +14,20 @@ const getStyles = (theme, styleOverride) => {
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      position: 'relative',
+      position: 'relative'
     },
     small: {
       height: 60
     },
     number: {
+      width: '100%',
+      textAlign: 'center',
       fontSize: 26,
       color: Color.gray,
       letterSpacing: 2
     },
     numberSmall: {
-      fontSize: 22,
+      fontSize: 22
     },
     backspace: {
       position: 'absolute',
@@ -35,7 +37,7 @@ const getStyles = (theme, styleOverride) => {
       height: 32,
       alignItems: 'center',
       alignContent: 'center',
-      justifyContent: 'center',
+      justifyContent: 'center'
     },
     backspaceIcon: {
       marginLeft: -2,
@@ -45,7 +47,7 @@ const getStyles = (theme, styleOverride) => {
     backspaceSmall: {
       top: 17,
       width: 28,
-      height: 28,
+      height: 28
     },
     backspaceIconSmall: {
       width: 28,

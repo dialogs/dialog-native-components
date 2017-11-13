@@ -5,11 +5,20 @@
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, Text, Image } from "react-native";
+import React, { PureComponent } from 'react';
+import {
+  View,
+  Text,
+  Image,
+  TouchableWithoutFeedback,
+  Keyboard,
+  TextInput,
+  TouchableOpacity,
+  ScrollView
+} from 'react-native';
 import getStyles from './styles';
 import backspace from '../../../assets/icons/backspace.png';
-import TouchableNativeFeedback from "@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe";
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';
 
 type Props = {
   value: string,
@@ -49,15 +58,19 @@ class PadNumber extends PureComponent {
 
     return (
       <View style={styles}>
-        <Text style={numberStyles}>{this.props.value}</Text>
-          <View style={backspaceStyles}>
-            <TouchableNativeFeedback
-              onPress={this.props.onBackspacePress}
-              background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-            >
-              <Image source={backspace} style={backspaceIconStyles}/>
-            </TouchableNativeFeedback>
-          </View>
+        <TextInput
+          style={numberStyles}
+          value={this.props.value}
+          underlineColorAndroid="transparent"
+        />
+        <View style={backspaceStyles}>
+          <TouchableNativeFeedback
+            onPress={this.props.onBackspacePress}
+            background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+          >
+            <Image source={backspace} style={backspaceIconStyles} />
+          </TouchableNativeFeedback>
+        </View>
       </View>
     );
   }

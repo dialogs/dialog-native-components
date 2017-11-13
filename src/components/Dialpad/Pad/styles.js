@@ -14,7 +14,7 @@ const getStyles = (theme, styleOverride) => {
       alignContent: 'center',
       justifyContent: 'center',
       padding: 20,
-      height: 250,
+      height: 300,
       marginTop: -10,
       marginBottom: -10
     },

@@ -26,7 +26,9 @@ const ExampleScreen = TabNavigator({
   Schedule: { screen: withContext(SchedulePreview, theme, style) },
   Sights: { screen: withContext(SightsPreview, theme, style) },
   Contacts: { screen: withContext(ContactsPreview, theme, style) },
-  Dialpad: { screen: withContext(DialpadPreview, theme, style) },
+  Dialpad: { screen: withContext(DialpadPreview, theme, style) }
 });
 
-AppRegistry.registerComponent('ExampleScreen', () => withContext(DialpadPreview, theme, style));
+AppRegistry.registerComponent('ExampleScreen', () => {
+  return withContext(DialpadPreview, theme, style);
+});

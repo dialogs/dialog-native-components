@@ -34,19 +34,23 @@ class DialpadPreview extends PureComponent {
     }, 1000);
   }
 
-  handleCallRequest = (phone) => {
+  handleCallRequest = phone => {
     Alert.alert(`Request call to: ${phone}`);
   };
 
   handleChange = (query: string) => {
     if (query) {
       this.setState({ query });
-      const isClarify = query.length > this.state.query &&
-                        query.slice(0, this.state.query.lenght) === this.state.query;
+      const isClarify =
+        query.length > this.state.query &&
+        query.slice(0, this.state.query.lenght) === this.state.query;
       requestAnimationFrame(() => {
         this.setState({
           contacts: {
-            value: filterContacts(query, isClarify ? this.state.contacts.value : contactsFixture),
+            value: filterContacts(
+              query,
+              isClarify ? this.state.contacts.value : contactsFixture
+            ),
             pending: false,
             error: null
           }
@@ -60,7 +64,7 @@ class DialpadPreview extends PureComponent {
           pending: false,
           error: null
         }
-      })
+      });
     }
   };
 

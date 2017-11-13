@@ -38,42 +38,33 @@ class PadButton extends PureComponent {
     this.props.onPress(this.props.value);
   };
 
-  renderValue() {
-    return (
-      <View style={this.styles.valueWrapper}>
-        <Text style={this.styles.value}>
-          {this.props.value}
-        </Text>
-      </View>
-    );
-  }
-
-  renderText() {
-    return (
-      <View style={this.styles.textWrapper}>
-        <Text style={this.styles.text}>
-          {this.props.text.toUpperCase()}
-        </Text>
-      </View>
-    );
-  }
+  handleButtonLongPress = () => {
+    if (this.props.value === '0') {
+      this.props.onPress(this.props.text);
+    }
+  };
 
   render() {
     const { small } = this.props;
-    const style = [this.styles.container];
+    const containerStyle = [this.styles.container];
+    const textStyle = [this.styles.text];
+    const valueStyle = [this.styles.value];
     if (small) {
-      style.push(this.styles.small);
+      containerStyle.push(this.styles.small);
+      textStyle.push(this.styles.textSmall);
+      valueStyle.push(this.styles.valueSmall);
     }
 
     return (
       <View style={this.styles.wrapper}>
         <TouchableNativeFeedback
           onPress={this.handleButtonPress}
+          onLongPress={this.handleButtonLongPress}
           background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
-          <View style={style} pointerEvents='box-only'>
-            {this.renderValue()}
-            {this.renderText()}
+          <View style={containerStyle} pointerEvents='box-only'>
+            <Text style={valueStyle}>{this.props.value}</Text>
+            <Text style={textStyle} numberOfLines={1}>{this.props.text.toUpperCase()}</Text>
           </View>
         </TouchableNativeFeedback>
       </View>

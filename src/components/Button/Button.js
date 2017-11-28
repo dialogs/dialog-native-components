@@ -3,20 +3,25 @@
  * @flow
  */
 
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from "react-native";
+import { View, Text } from 'react-native';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import getStyles from './styles';
 
 type Props = {
   title: string,
+  icon?: ?string,
   onPress: () => mixed
 };
 
 class Button extends PureComponent {
   props: Props;
   styles: Object;
+
+  static defailtProps = {
+    wide: false
+  };
 
   static contextTypes = {
     theme: PropTypes.object,
@@ -31,7 +36,10 @@ class Button extends PureComponent {
 
   render() {
     return (
-      <TouchableNativeFeedback onPress={this.props.onPress} background={TouchableNativeFeedback.SelectableBackground()}>
+      <TouchableNativeFeedback
+        onPress={this.props.onPress}
+        background={TouchableNativeFeedback.SelectableBackground()}
+      >
         <View style={this.styles.container}>
           <Text style={this.styles.text}>{this.props.title.toUpperCase()}</Text>
         </View>

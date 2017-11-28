@@ -1,0 +1,55 @@
+{
+  "id": 6428,
+  "name": "Steve Rodgers 🦐",
+  "nick": "rodgers",
+  "about":
+    "Steve Rogers was a scrawny fine arts student growing up during the Great Depression. His alcoholic father died when Steve was a child, and his mother passed away from pneumonia after he graduated high school.",
+  "avatar": null,
+  "bigAvatar": null,
+  "placeholder": "red",
+  "phones": [{ "number": "+1 234 567 89 00", "title": "Mobile phone" }],
+  "emails": [{ "email": "cap@america.com", "title": "Home email" }],
+  "online": {
+    "message": "3 minutes ago"
+  },
+  "isNotificationsEnabled": false,
+  "schema": {
+    "title": "A registration form",
+    "description": "A simple form example.",
+    "type": "object",
+    "required": ["firstName", "lastName"],
+    "properties": {
+      "firstName": {
+        "type": "string",
+        "title": "First name"
+      },
+      "lastName": {
+        "type": "string",
+        "title": "Last name"
+      },
+      "age": {
+        "type": "integer",
+        "title": "Age"
+      },
+      "bio": {
+        "type": "string",
+        "title": "Bio"
+      },
+      "password": {
+        "type": "string",
+        "title": "Password",
+        "minLength": 3
+      },
+      "done": {
+        "type": "boolean",
+        "title": "Done?",
+        "default": false
+      },
+      "telephone": {
+        "type": "string",
+        "title": "Telephone",
+        "minLength": 10
+      }
+    }
+  }
+}

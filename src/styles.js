@@ -4,14 +4,16 @@
  */
 
 const Color = {
-  primary: '#6203a5',
+  primary: '#4E0D9A',
   danger: '#e22d44',
+  warning: '#ffae00',
+  success: '#3bbf51',
 
   black: '#000',
   grayDark: '#333333',
   gray: '#727272',
   grayLight: '#acacac',
-  grayLighter: '#eeeeee',
+  grayLighter: '#EDEDF2',
   white: '#fff',
 
   border: '#e0e0e0'
@@ -23,7 +25,6 @@ const Padding = {
   large: 16
 };
 
-export {
-  Color,
-  Padding
-};
+const Gradient = [];
+
+export { Color, Padding, Gradient };

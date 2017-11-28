@@ -13,6 +13,7 @@
     "message": "3 minutes ago"
   },
   "isNotificationsEnabled": false,
+  "isFavourite": true,
   "custom": {
     "schema": {
       "title": "A registration form",
@@ -55,8 +56,8 @@
     },
     "value": {
       "firstName": "Steve",
-      "lastName": "Rodgers",
-      "age": 100,
+      "lastName": "Rodgers 🦐",
+      "age": 97,
       "bio": "Roundhouse kicking asses since 1940",
       "password": "noneed",
       "done": true,

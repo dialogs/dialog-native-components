@@ -11,10 +11,15 @@ import ProfileBlock from '../Profile/ProfileBlock';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import notification from '../../assets/icons/notification.png';
 import star from '../../assets/icons/star.png';
+import starOutline from '../../assets/icons/star_outline.png';
 import block from '../../assets/icons/block.png';
+import list from '../../assets/icons/list.png';
 
 type Props = {
   isNotificationsEnabled: boolean,
+  isContact: boolean,
+  isBlocked: boolean,
+  isFavourite: boolean,
   onNotificationsChange: () => void,
   onFavouriteToggle: () => void,
   onUserBlock: () => void
@@ -42,52 +47,65 @@ class ProfileActions extends PureComponent {
 
   render() {
     return (
-      <View>
-        <ProfileBlock>
-          <View>
-            <TouchableNativeFeedback
-              onPress={this.handleNotificationChange}
-              delayPressIn={0}
-            >
-              <View style={this.styles.block} pointerEvents="box-only">
-                <Image source={notification} style={this.styles.icon} />
-                <Text style={this.styles.text} numberOfLines={1}>
-                  Notifications
-                </Text>
-              </View>
-            </TouchableNativeFeedback>
-            <Switch
-              style={this.styles.switch}
-              onValueChange={this.props.onNotificationsChange}
-              value={this.props.isNotificationsEnabled}
-            />
+      <ProfileBlock>
+        <View>
+          <TouchableNativeFeedback
+            onPress={this.handleNotificationChange}
+            delayPressIn={0}
+          >
+            <View style={this.styles.block} pointerEvents="box-only">
+              <Image source={notification} style={this.styles.icon} />
+              <Text style={this.styles.text} numberOfLines={1}>
+                Notifications
+              </Text>
+            </View>
+          </TouchableNativeFeedback>
+          <Switch
+            style={this.styles.switch}
+            onValueChange={this.props.onNotificationsChange}
+            value={this.props.isNotificationsEnabled}
+          />
+        </View>
+        <TouchableNativeFeedback
+          onPress={this.props.onUserBlock}
+          delayPressIn={0}
+        >
+          <View style={this.styles.block} pointerEvents="box-only">
+            <Image source={list} style={this.styles.icon} />
+            <Text style={this.styles.text} numberOfLines={1}>
+              Shared media
+            </Text>
+            <Text style={this.styles.count}>12</Text>
           </View>
-          <TouchableNativeFeedback
-            onPress={this.props.onFavouriteToggle}
-            delayPressIn={0}
-          >
-            <View style={this.styles.block} pointerEvents="box-only">
-              <Image source={star} style={this.styles.icon} />
-              <Text style={this.styles.favText} numberOfLines={1}>
-                Add to favourites
-              </Text>
-            </View>
-          </TouchableNativeFeedback>
-        </ProfileBlock>
-        <ProfileBlock>
-          <TouchableNativeFeedback
-            onPress={this.props.onUserBlock}
-            delayPressIn={0}
-          >
-            <View style={this.styles.block} pointerEvents="box-only">
-              <Image source={block} style={this.styles.icon} />
-              <Text style={this.styles.blockText} numberOfLines={1}>
-                Block user
-              </Text>
-            </View>
-          </TouchableNativeFeedback>
-        </ProfileBlock>
-      </View>
+        </TouchableNativeFeedback>
+        <TouchableNativeFeedback
+          onPress={this.props.onFavouriteToggle}
+          delayPressIn={0}
+        >
+          <View style={this.styles.block} pointerEvents="box-only">
+            <Image
+              source={this.props.isFavourite ? star : starOutline}
+              style={this.styles.icon}
+            />
+            <Text style={this.styles.favText} numberOfLines={1}>
+              {this.props.isFavourite
+                ? 'Remove from favourites'
+                : 'Add to favourites'}
+            </Text>
+          </View>
+        </TouchableNativeFeedback>
+        <TouchableNativeFeedback
+          onPress={this.props.onUserBlock}
+          delayPressIn={0}
+        >
+          <View style={this.styles.block} pointerEvents="box-only">
+            <Image source={block} style={this.styles.icon} />
+            <Text style={this.styles.blockText} numberOfLines={1}>
+              Block user
+            </Text>
+          </View>
+        </TouchableNativeFeedback>
+      </ProfileBlock>
     );
   }
 }

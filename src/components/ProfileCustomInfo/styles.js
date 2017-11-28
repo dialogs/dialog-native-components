@@ -22,7 +22,17 @@ const getStyles = (theme, styleOverride) => {
       color: Color.gray,
       fontSize: 14
     },
-    propertyText: {
+    booleanValue: {
+      color: theme.color.primary || Color.primary,
+      fontSize: 22,
+      lineHeight: 24
+    },
+    integerValue: {
+      color: theme.color.primary || Color.primary,
+      fontSize: 18,
+      lineHeight: 24
+    },
+    stringValue: {
       marginTop: 2,
       color: Color.black,
       fontSize: 18,

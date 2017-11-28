@@ -35,8 +35,22 @@ class ContactsPreview extends PureComponent {
     this.setState({
       data: {
         value: {
-          ...data,
+          ...this.state.data.value,
           isNotificationsEnabled: value
+        },
+        pending: false,
+        error: false
+      }
+    });
+  };
+
+  handleFavouriteToggle = () => {
+    console.log('handleFavouriteToggle', this.state.data.value.isFavourite);
+    this.setState({
+      data: {
+        value: {
+          ...this.state.data.value,
+          isFavourite: !this.state.data.value.isFavourite
         },
         pending: false,
         error: false
@@ -50,6 +64,7 @@ class ContactsPreview extends PureComponent {
         <Profile
           data={this.state.data}
           onNotificationsChange={this.handleNotificationChange}
+          onFavouriteToggle={this.handleFavouriteToggle}
         />
       </View>
     );

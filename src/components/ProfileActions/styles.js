@@ -43,6 +43,10 @@ const getStyles = (theme, styleOverride) => {
       flex: 1,
       fontSize: 16,
       color: theme.color.danger || Color.danger
+    },
+    count: {
+      fontSize: 16,
+      color: Color.grayLight
     }
   };
 

@@ -37,7 +37,7 @@ type Props = {
   onUnblock: (uid: number) => mixed,
   onContactAdd: (uid: number) => mixed,
   onContactRemove: (uid: number) => mixed,
-  onFavouriteChange: () => mixed,
+  onFavouriteToggle: () => mixed,
   onNotificationsChange: () => mixed
 };
 
@@ -142,6 +142,7 @@ class Profile extends PureComponent {
   renderActions() {
     return (
       <ProfileActions
+        isFavourite={this.props.data.value.isFavourite}
         isNotificationsEnabled={this.props.data.value.isNotificationsEnabled}
         onNotificationsChange={this.props.onNotificationsChange}
         onFavouriteToggle={this.props.onFavouriteToggle}

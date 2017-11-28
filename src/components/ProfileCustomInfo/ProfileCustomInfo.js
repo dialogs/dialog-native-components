@@ -38,21 +38,24 @@ class ProfileCustomInfo extends PureComponent<Props> {
 
     for (var propery in schema.properties) {
       const value = this.getProperyValue(propery);
-      const properySchema = this.getProperySchema(propery);
+      const { title, type } = this.getProperySchema(propery);
       let children = null;
 
-      switch (properySchema.type) {
+      switch (type) {
         case 'boolean':
           children = (
-            <Text style={this.styles.propertyText}>{value ? 'Yes' : 'No'}</Text>
+            <Text style={this.styles.booleanValue}>{value ? 'Yes' : 'No'}</Text>
           );
           break;
+        case 'integer':
+          children = <Text style={this.styles.integerValue}>{value}</Text>;
+          break;
         default:
-          children = <Text style={this.styles.propertyText}>{value}</Text>;
+          children = <Text style={this.styles.stringValue}>{value}</Text>;
       }
 
       properties.push(
-        <ProfileCustomInfoItem key={propery} title={properySchema.title}>
+        <ProfileCustomInfoItem key={propery} title={title}>
           {children}
         </ProfileCustomInfoItem>
       );

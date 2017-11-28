@@ -29,8 +29,8 @@ const getStyles = (theme, styleOverride) => {
     },
     buttonWrapper: {
       flex: 2,
-      paddingLeft: Padding.default,
-      paddingRight: Padding.default
+      paddingLeft: Padding.small,
+      paddingRight: Padding.small
     },
     block: {
       elevation: 2,

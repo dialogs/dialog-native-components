@@ -9,17 +9,16 @@ import { Color, Padding } from '../../styles';
 const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
-      paddingTop: Padding.large * 2,
-      paddingRight: Padding.default,
-      paddingBottom: Padding.large * 2,
-      paddingLeft: Padding.default,
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
       alignContent: 'center',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      paddingTop: Padding.large * 2,
+      paddingBottom: Padding.default * 2
     },
+    wrapper: {},
     background: {
       position: 'absolute',
       top: 0,
@@ -43,6 +42,8 @@ const getStyles = (theme, styleOverride) => {
     },
     buttons: {
       marginTop: Padding.default * 2,
+      paddingLeft: Padding.large,
+      paddingRight: Padding.large,
       flex: 0,
       alignContent: 'center',
       flexDirection: 'row'

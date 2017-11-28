@@ -22,7 +22,7 @@ const getStyles = (theme, styleOverride) => {
     switch: {
       position: 'absolute',
       top: Padding.large,
-      right: Padding.default * 2
+      right: Padding.default * 2 - 6
     },
     icon: {
       width: 28,
@@ -45,6 +45,7 @@ const getStyles = (theme, styleOverride) => {
       color: theme.color.danger || Color.danger
     },
     count: {
+      flex: 0,
       fontSize: 16,
       color: Color.grayLight
     }

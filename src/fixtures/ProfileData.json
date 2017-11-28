@@ -13,43 +13,54 @@
     "message": "3 minutes ago"
   },
   "isNotificationsEnabled": false,
-  "schema": {
-    "title": "A registration form",
-    "description": "A simple form example.",
-    "type": "object",
-    "required": ["firstName", "lastName"],
-    "properties": {
-      "firstName": {
-        "type": "string",
-        "title": "First name"
-      },
-      "lastName": {
-        "type": "string",
-        "title": "Last name"
-      },
-      "age": {
-        "type": "integer",
-        "title": "Age"
-      },
-      "bio": {
-        "type": "string",
-        "title": "Bio"
-      },
-      "password": {
-        "type": "string",
-        "title": "Password",
-        "minLength": 3
-      },
-      "done": {
-        "type": "boolean",
-        "title": "Done?",
-        "default": false
-      },
-      "telephone": {
-        "type": "string",
-        "title": "Telephone",
-        "minLength": 10
+  "custom": {
+    "schema": {
+      "title": "A registration form",
+      "description": "A simple form example.",
+      "type": "object",
+      "required": ["firstName", "lastName"],
+      "properties": {
+        "firstName": {
+          "type": "string",
+          "title": "First name"
+        },
+        "lastName": {
+          "type": "string",
+          "title": "Last name"
+        },
+        "age": {
+          "type": "integer",
+          "title": "Age"
+        },
+        "bio": {
+          "type": "string",
+          "title": "Bio"
+        },
+        "password": {
+          "type": "string",
+          "title": "Password",
+          "minLength": 3
+        },
+        "done": {
+          "type": "boolean",
+          "title": "Done?",
+          "default": false
+        },
+        "telephone": {
+          "type": "string",
+          "title": "Telephone",
+          "minLength": 10
+        }
       }
+    },
+    "value": {
+      "firstName": "Steve",
+      "lastName": "Rodgers",
+      "age": 100,
+      "bio": "Roundhouse kicking asses since 1940",
+      "password": "noneed",
+      "done": true,
+      "telephone": "+1 234 567 89 00"
     }
   }
 }

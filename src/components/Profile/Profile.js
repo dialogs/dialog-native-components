@@ -17,6 +17,7 @@ import DiscoverCard from '../DiscoverCard/DiscoverCard';
 import Icon from '../Icon/Icon';
 import ProfileHeader from '../ProfileHeader/ProfileHeader';
 import ProfileInfo from '../ProfileInfo/ProfileInfo';
+import ProfileCustomInfo from '../ProfileCustomInfo/ProfileCustomInfo';
 import ProfileHeaderButton from '../ProfileHeader/ProfileHeaderButton';
 import ProfileActions from '../ProfileActions/ProfileActions';
 import getStyles from './styles';
@@ -37,7 +38,7 @@ type Props = {
   onContactAdd: (uid: number) => mixed,
   onContactRemove: (uid: number) => mixed,
   onFavouriteChange: () => mixed,
-  onNotificationsChange: (value: boolean) => mixed
+  onNotificationsChange: () => mixed
 };
 
 class Profile extends PureComponent {
@@ -99,10 +100,9 @@ class Profile extends PureComponent {
 
     return buttons.map((button, index) => {
       return (
-        <View style={this.styles.buttonWrapper}>
+        <View style={this.styles.buttonWrapper} key={button.id}>
           <ProfileHeaderButton
             onPress={button.handler}
-            key={button.id}
             title={button.title}
             icon={button.icon}
           />
@@ -133,6 +133,12 @@ class Profile extends PureComponent {
     );
   }
 
+  renderCustomInfo() {
+    const { data: { value: { custom } } } = this.props;
+
+    return <ProfileCustomInfo schema={custom.schema} value={custom.value} />;
+  }
+
   renderActions() {
     return (
       <ProfileActions
@@ -149,7 +155,7 @@ class Profile extends PureComponent {
   }
 
   render() {
-    console.log('this.props', this.props);
+    console.log('Profile', this.props);
     const { data } = this.props;
 
     if (data.error) {
@@ -164,6 +170,7 @@ class Profile extends PureComponent {
       <ScrollView style={this.styles.container}>
         {this.renderHeader()}
         {this.renderInfo()}
+        {this.renderCustomInfo()}
         {this.renderActions()}
         {this.renderBlockUser()}
       </ScrollView>

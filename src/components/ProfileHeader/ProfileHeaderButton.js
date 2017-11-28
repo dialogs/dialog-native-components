@@ -5,8 +5,7 @@
 
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
-import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from '../Icon/Icon';
 import getStyles from './styles';
 
@@ -42,7 +41,7 @@ class ProfileHeaderButton extends PureComponent<Props> {
     console.log('ProfileButton', this.props);
 
     return (
-      <TouchableNativeFeedback onPress={this.props.onPress} delayPressIn={0}>
+      <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.85}>
         <View
           style={[this.styles.button, this.props.style]}
           pointerEvents="box-only"
@@ -54,7 +53,7 @@ class ProfileHeaderButton extends PureComponent<Props> {
             </Text>
           </View>
         </View>
-      </TouchableNativeFeedback>
+      </TouchableOpacity>
     );
   }
 }

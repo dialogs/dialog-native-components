@@ -42,48 +42,52 @@ class ProfileActions extends PureComponent {
 
   render() {
     return (
-      <ProfileBlock>
-        <View>
+      <View>
+        <ProfileBlock>
+          <View>
+            <TouchableNativeFeedback
+              onPress={this.handleNotificationChange}
+              delayPressIn={0}
+            >
+              <View style={this.styles.block} pointerEvents="box-only">
+                <Image source={notification} style={this.styles.icon} />
+                <Text style={this.styles.text} numberOfLines={1}>
+                  Notifications
+                </Text>
+              </View>
+            </TouchableNativeFeedback>
+            <Switch
+              style={this.styles.switch}
+              onValueChange={this.props.onNotificationsChange}
+              value={this.props.isNotificationsEnabled}
+            />
+          </View>
           <TouchableNativeFeedback
-            onPress={this.handleNotificationChange}
+            onPress={this.props.onFavouriteToggle}
             delayPressIn={0}
           >
             <View style={this.styles.block} pointerEvents="box-only">
-              <Image source={notification} style={this.styles.icon} />
-              <Text style={this.styles.text} numberOfLines={1}>
-                Notifications
+              <Image source={star} style={this.styles.icon} />
+              <Text style={this.styles.favText} numberOfLines={1}>
+                Add to favourites
               </Text>
             </View>
           </TouchableNativeFeedback>
-          <Switch
-            style={this.styles.switch}
-            onValueChange={this.props.onNotificationsChange}
-            value={this.props.isNotificationsEnabled}
-          />
-        </View>
-        <TouchableNativeFeedback
-          onPress={this.props.onFavouriteToggle}
-          delayPressIn={0}
-        >
-          <View style={this.styles.block} pointerEvents="box-only">
-            <Image source={star} style={this.styles.icon} />
-            <Text style={this.styles.favText} numberOfLines={1}>
-              Add to favourites
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
-        <TouchableNativeFeedback
-          onPress={this.props.onUserBlock}
-          delayPressIn={0}
-        >
-          <View style={this.styles.block} pointerEvents="box-only">
-            <Image source={block} style={this.styles.icon} />
-            <Text style={this.styles.blockText} numberOfLines={1}>
-              Block user
-            </Text>
-          </View>
-        </TouchableNativeFeedback>
-      </ProfileBlock>
+        </ProfileBlock>
+        <ProfileBlock>
+          <TouchableNativeFeedback
+            onPress={this.props.onUserBlock}
+            delayPressIn={0}
+          >
+            <View style={this.styles.block} pointerEvents="box-only">
+              <Image source={block} style={this.styles.icon} />
+              <Text style={this.styles.blockText} numberOfLines={1}>
+                Block user
+              </Text>
+            </View>
+          </TouchableNativeFeedback>
+        </ProfileBlock>
+      </View>
     );
   }
 }

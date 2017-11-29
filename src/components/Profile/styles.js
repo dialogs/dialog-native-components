@@ -27,10 +27,20 @@ const getStyles = (theme, styleOverride) => {
       justifyContent: 'center',
       backgroundColor: Color.grayLighter
     },
+    buttons: {
+      marginTop: Padding.default * 2,
+      paddingLeft: Padding.default * 2,
+      paddingRight: Padding.default * 2,
+      alignContent: 'center',
+      flexDirection: 'row',
+      flexWrap: 'nowrap'
+    },
     buttonWrapper: {
-      flex: 2,
-      paddingLeft: Padding.small,
-      paddingRight: Padding.small
+      flex: 1
+    },
+    buttonDivider: {
+      flex: 0,
+      width: Padding.default
     },
     block: {
       elevation: 2,

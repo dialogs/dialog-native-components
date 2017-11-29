@@ -82,45 +82,43 @@ class ProfileHeader extends PureComponent {
     );
   }
 
-  renderButtons() {
-    if (!this.props.renderButtons) {
+  renderChildren() {
+    if (!this.props.children) {
       return null;
     }
 
-    return (
-      <View style={this.styles.buttons}>{this.props.renderButtons()}</View>
-    );
+    return this.props.children;
   }
 
   renderBackground() {
     const gradient = this.context.theme.gradient;
     const radius = 1.5;
+    const degree = 135;
 
     return (
       <LinearGradient
         colors={gradient}
         style={this.styles.background}
         start={{
-          x: radius * Math.cos(135),
-          y: radius * Math.sin(135)
+          x: radius * Math.cos(degree),
+          y: radius * Math.sin(degree)
         }}
         end={{
-          x: radius * Math.cos(135 + 180),
-          y: radius * Math.sin(135 + 180)
+          x: radius * Math.cos(degree + 180),
+          y: radius * Math.sin(degree + 180)
         }}
       />
     );
   }
 
   render() {
-    console.log('ProfileHeader', this.props);
     return (
       <View style={this.styles.container}>
         {this.renderBackground()}
         {this.renderAvatar()}
         {this.renderTitle()}
         {this.renderOnline()}
-        {this.renderButtons()}
+        {this.renderChildren()}
       </View>
     );
   }

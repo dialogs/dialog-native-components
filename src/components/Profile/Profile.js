@@ -82,35 +82,6 @@ class Profile extends PureComponent {
     );
   }
 
-  renderProfileButtons = () => {
-    const buttons = [
-      {
-        handler: () => console.log('Button pressed'),
-        title: 'Write',
-        id: 'write',
-        icon: 'chat'
-      },
-      {
-        handler: () => console.log('Button pressed'),
-        title: 'Call',
-        id: 'call',
-        icon: 'call'
-      }
-    ];
-
-    return buttons.map((button, index) => {
-      return (
-        <View style={this.styles.buttonWrapper} key={button.id}>
-          <ProfileHeaderButton
-            onPress={button.handler}
-            title={button.title}
-            icon={button.icon}
-          />
-        </View>
-      );
-    });
-  };
-
   renderHeader() {
     const { data } = this.props;
 
@@ -120,8 +91,25 @@ class Profile extends PureComponent {
         title={data.value.name}
         avatar={data.value.avatar}
         online={data.value.online}
-        renderButtons={this.renderProfileButtons}
-      />
+      >
+        <View style={this.styles.buttons}>
+          <View style={this.styles.buttonWrapper}>
+            <ProfileHeaderButton
+              onPress={() => console.log('Message button pressed')}
+              title="Message"
+              icon="logo"
+            />
+          </View>
+          <View style={this.styles.buttonDivider} />
+          <View style={this.styles.buttonWrapper}>
+            <ProfileHeaderButton
+              onPress={() => console.log('Call button pressed')}
+              title="Call"
+              icon="call"
+            />
+          </View>
+        </View>
+      </ProfileHeader>
     );
   }
 

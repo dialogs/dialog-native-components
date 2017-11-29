@@ -28,9 +28,8 @@ const getStyles = (theme, styleOverride) => {
       fontSize: 16
     },
     aboutText: {
-      marginTop: 2,
       color: Color.black,
-      fontSize: 18,
+      fontSize: 16,
       lineHeight: 24
     },
     nickText: {
@@ -39,7 +38,7 @@ const getStyles = (theme, styleOverride) => {
     },
     phoneText: {
       color: theme.color.primary || Color.primary,
-      fontSize: 22
+      fontSize: 20
     },
     emailText: {
       color: theme.color.primary || Color.primary,

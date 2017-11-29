@@ -34,7 +34,13 @@ class ProfileHeaderButton extends PureComponent<Props> {
   }
 
   renderIcon() {
-    return null;
+    if (!this.props.icon) {
+      return null;
+    }
+
+    return (
+      <Icon glyph={this.props.icon} size={28} style={this.styles.buttonIcon} />
+    );
   }
 
   render() {

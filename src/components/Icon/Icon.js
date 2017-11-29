@@ -3,15 +3,14 @@
  * @flow
  */
 
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Image, Platform } from 'react-native';
 
 type Props = {
   glyph: string,
-  height?: number,
-  width?: number,
-  style?: Object
+  size?: number,
+  style?: Object | number
 };
 
 class Icon extends PureComponent {
@@ -39,6 +38,20 @@ class Icon extends PureComponent {
         return require('../../assets/icons/channel.png');
       case 'error':
         return require('../../assets/icons/error.png');
+      case 'block':
+        return require('../../assets/icons/block.png');
+      case 'list':
+        return require('../../assets/icons/list.png');
+      case 'logo':
+        return require('../../assets/icons/logo.png');
+      case 'star':
+        return require('../../assets/icons/star.png');
+      case 'star_outline':
+        return require('../../assets/icons/star_outline.png');
+      case 'call':
+        return require('../../assets/icons/call.png');
+      case 'notification':
+        return require('../../assets/icons/notification.png');
       default:
         return null;
     }
@@ -50,17 +63,15 @@ class Icon extends PureComponent {
       return null;
     }
 
-    const style = [{
-      width: this.props.width,
-      height: this.props.height
-    }, this.props.style];
+    const style = [
+      {
+        width: this.props.size,
+        height: this.props.size
+      },
+      this.props.style
+    ];
 
-    return (
-      <Image
-        style={style}
-        source={source}
-      />
-    );
+    return <Image style={style} source={source} />;
   }
 }
 

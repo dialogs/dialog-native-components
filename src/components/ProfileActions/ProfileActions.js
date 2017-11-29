@@ -6,14 +6,10 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, Image, Switch } from 'react-native';
+import Icon from '../Icon/Icon';
 import getStyles from './styles';
 import ProfileBlock from '../Profile/ProfileBlock';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
-import notification from '../../assets/icons/notification.png';
-import star from '../../assets/icons/star.png';
-import starOutline from '../../assets/icons/star_outline.png';
-import block from '../../assets/icons/block.png';
-import list from '../../assets/icons/list.png';
 
 type Props = {
   isNotificationsEnabled: boolean,
@@ -54,7 +50,7 @@ class ProfileActions extends PureComponent {
             delayPressIn={0}
           >
             <View style={this.styles.block} pointerEvents="box-only">
-              <Image source={notification} style={this.styles.icon} />
+              <Icon glyph="notification" size={26} style={this.styles.icon} />
               <Text style={this.styles.text} numberOfLines={1}>
                 Notifications
               </Text>
@@ -71,7 +67,7 @@ class ProfileActions extends PureComponent {
           delayPressIn={0}
         >
           <View style={this.styles.block} pointerEvents="box-only">
-            <Image source={list} style={this.styles.icon} />
+            <Icon glyph="list" size={26} style={this.styles.icon} />
             <Text style={this.styles.text} numberOfLines={1}>
               Shared media
             </Text>
@@ -83,8 +79,9 @@ class ProfileActions extends PureComponent {
           delayPressIn={0}
         >
           <View style={this.styles.block} pointerEvents="box-only">
-            <Image
-              source={this.props.isFavourite ? star : starOutline}
+            <Icon
+              glyph={this.props.isFavourite ? 'star' : 'star_outline'}
+              size={26}
               style={this.styles.icon}
             />
             <Text style={this.styles.favText} numberOfLines={1}>
@@ -99,7 +96,7 @@ class ProfileActions extends PureComponent {
           delayPressIn={0}
         >
           <View style={this.styles.block} pointerEvents="box-only">
-            <Image source={block} style={this.styles.icon} />
+            <Icon glyph="block" size={26} style={this.styles.icon} />
             <Text style={this.styles.blockText} numberOfLines={1}>
               Block user
             </Text>

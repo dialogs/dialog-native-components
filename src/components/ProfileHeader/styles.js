@@ -9,6 +9,7 @@ import { Color, Padding } from '../../styles';
 const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
+      flex: 1,
       position: 'relative',
       display: 'flex',
       flexDirection: 'column',
@@ -18,7 +19,6 @@ const getStyles = (theme, styleOverride) => {
       paddingTop: Padding.large * 2,
       paddingBottom: Padding.default * 2
     },
-    wrapper: {},
     background: {
       position: 'absolute',
       top: 0,
@@ -27,7 +27,7 @@ const getStyles = (theme, styleOverride) => {
       right: 0
     },
     titleWrapper: {
-      marginTop: Padding.large * 2
+      marginTop: Padding.small * 2
     },
     title: {
       fontSize: 28,
@@ -40,18 +40,10 @@ const getStyles = (theme, styleOverride) => {
       fontSize: 16,
       color: 'rgba(255, 255, 255, 0.5)'
     },
-    buttons: {
-      marginTop: Padding.default * 2,
-      paddingLeft: Padding.large,
-      paddingRight: Padding.large,
-      flex: 0,
-      alignContent: 'center',
-      flexDirection: 'row'
-    },
     button: {
       borderRadius: 6,
       backgroundColor: '#fff',
-      height: 48,
+      height: 44,
       width: '100%',
       flexDirection: 'row',
       alignContent: 'center',
@@ -59,13 +51,24 @@ const getStyles = (theme, styleOverride) => {
       justifyContent: 'center'
     },
     buttonTextWrapper: {
-      paddingTop: 14,
-      paddingBottom: 14
+      paddingTop: 8,
+      paddingBottom: 8,
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center'
     },
     buttonText: {
+      flex: 0,
       color: theme.color.primary || Color.primary,
-      fontSize: 18,
-      lineHeight: 20
+      fontSize: 15,
+      lineHeight: 20,
+      fontWeight: '500'
+    },
+    buttonIcon: {
+      flex: 0,
+      marginRight: Padding.default / 2
     }
   };
 

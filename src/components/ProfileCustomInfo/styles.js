@@ -24,18 +24,18 @@ const getStyles = (theme, styleOverride) => {
     },
     booleanValue: {
       color: theme.color.primary || Color.primary,
-      fontSize: 22,
+      fontSize: 18,
       lineHeight: 24
     },
     integerValue: {
       color: theme.color.primary || Color.primary,
-      fontSize: 18,
+      fontSize: 16,
       lineHeight: 24
     },
     stringValue: {
       marginTop: 2,
       color: Color.black,
-      fontSize: 18,
+      fontSize: 16,
       lineHeight: 24
     }
   };

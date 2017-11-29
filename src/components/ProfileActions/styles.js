@@ -25,8 +25,6 @@ const getStyles = (theme, styleOverride) => {
       right: Padding.default * 2 - 6
     },
     icon: {
-      width: 28,
-      height: 28,
       marginRight: Padding.large
     },
     text: {

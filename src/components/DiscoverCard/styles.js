@@ -53,8 +53,8 @@ const getStyles = (theme, styleOverride) => {
     },
     titleIcon: {
       flex: 0,
-      marginTop: 1,
-      marginRight: 4
+      marginRight: 4,
+      tintColor: Color.gray
     },
     shortname: {
       lineHeight: 20,

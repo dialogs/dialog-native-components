@@ -3,14 +3,14 @@
  * @flow
  */
 
-import type { DiscoverCard as Card } from "../../types";
+import type { DiscoverCard as Card } from '../../types';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import Avatar from "../Avatar/Avatar";
-import Icon from "../Icon/Icon";
-import getAvatarPlaceholder from "../../utils/getAvatarPlaceholder";
-import getStyles from "./styles";
+import React, { PureComponent } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import Avatar from '../Avatar/Avatar';
+import Icon from '../Icon/Icon';
+import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
+import getStyles from './styles';
 
 type Props = {
   style?: Object,
@@ -59,25 +59,16 @@ class DiscoverCard extends PureComponent {
       return null;
     }
 
-    return (
-      <Text style={this.styles.shortname}>@{shortname}</Text>
-    );
+    return <Text style={this.styles.shortname}>@{shortname}</Text>;
   }
 
   renderIcon() {
     const { card: { type } } = this.props;
 
     switch (type) {
-      case "channel":
-      case "group":
-        return (
-           <Icon
-             glyph={type}
-             style={this.styles.titleIcon}
-             width={24}
-             height={24}
-           />
-        );
+      case 'channel':
+      case 'group':
+        return <Icon glyph={type} style={this.styles.titleIcon} size={24} />;
       default:
         return null;
     }

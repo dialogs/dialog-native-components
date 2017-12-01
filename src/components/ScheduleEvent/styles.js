@@ -45,9 +45,8 @@ const getStyles = (theme, styleOverride) => {
       lineHeight: 20
     },
     subtitleMarker: {
-      width: 11,
-      height: 16,
-      flex: 0
+      flex: 0,
+      tintColor: theme.color.primary || Color.primary
     },
     description: {
       fontSize: 14,

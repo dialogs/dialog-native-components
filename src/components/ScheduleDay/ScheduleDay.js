@@ -5,11 +5,12 @@
 
 import type { ScheduleDayProps } from '../../types';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, Text, Image } from "react-native";
+import React, { PureComponent } from 'react';
+import { View, Text } from 'react-native';
 import ScheduleEvent from '../ScheduleEvent/ScheduleEvent';
+import Block from '../Block/Block';
+import Icon from '../Icon/Icon';
 import getStyles from './styles';
-import arrow from '../../assets/icons/arrow.png';
 
 class ScheduleDay extends PureComponent {
   props: ScheduleDayProps;
@@ -42,15 +43,15 @@ class ScheduleDay extends PureComponent {
 
   render() {
     return (
-      <View style={this.styles.container}>
-        <View style={this.styles.dayTitle}>
-          <Image source={arrow} style={this.styles.dayTitleArrow} />
-          <Text style={this.styles.dayTitleText}>
+      <Block>
+        <View style={this.styles.title}>
+          <Icon glyph="arrow" size={28} style={this.styles.arrow} />
+          <Text style={this.styles.titleText}>
             {this.props.title.toUpperCase()}
           </Text>
         </View>
         {this.renderEvents()}
-      </View>
+      </Block>
     );
   }
 }

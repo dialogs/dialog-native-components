@@ -5,8 +5,8 @@
 
 import type { ContactsItemProps } from '../../types';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, Text, ActivityIndicator, Image } from "react-native";
+import React, { PureComponent } from 'react';
+import { View, Text, ActivityIndicator, ImageBackground } from 'react-native';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import Button from '../Button/Button';
 import getStyles from './styles';
@@ -40,7 +40,7 @@ class ContactsItem extends PureComponent {
   }
 
   handleImageLoaded = (): void => {
-    this.setState({ loading: false })
+    this.setState({ loading: false });
   };
 
   handleCardPress = (): void => {
@@ -59,16 +59,18 @@ class ContactsItem extends PureComponent {
     }
 
     return (
-      <Image
+      <ImageBackground
         source={{ uri: this.props.photo }}
         onLoadEnd={this.handleImageLoaded}
-        style={this.props.isOpen ? this.styles.imageLarge : this.styles.imageSmall}
+        style={
+          this.props.isOpen ? this.styles.imageLarge : this.styles.imageSmall
+        }
       >
         <ActivityIndicator
           animating={this.state.loading}
           color={this.context.theme.color.primary || Color.primary}
         />
-      </Image>
+      </ImageBackground>
     );
   }
 
@@ -76,17 +78,15 @@ class ContactsItem extends PureComponent {
     if (!this.props.isOpen) {
       return null;
     }
-    const buttonTitle = this.context.locale === 'ru' ? 'Открыть чат' : 'Open chat';
+    const buttonTitle =
+      this.context.locale === 'ru' ? 'Открыть чат' : 'Open chat';
 
     return (
       <View style={this.styles.content}>
         <Text style={this.styles.region}>{this.props.region}</Text>
         {this.props.isOpen ? this.renderImage() : null}
         {this.props.phone ? (
-          <Button
-            onPress={this.handleButtonPress}
-            title={buttonTitle}
-          />
+          <Button onPress={this.handleButtonPress} title={buttonTitle} />
         ) : null}
       </View>
     );
@@ -94,15 +94,21 @@ class ContactsItem extends PureComponent {
 
   render() {
     return (
-      <View style={[this.styles.container, this.props.isOpen ? this.styles.containerOpened : null]}>
-        <TouchableNativeFeedback
-          onPress={this.handleCardPress}
-          delayPressIn={0}
-        >
+      <View
+        style={[
+          this.styles.container,
+          this.props.isOpen ? this.styles.containerOpened : null
+        ]}
+      >
+        <TouchableNativeFeedback onPress={this.handleCardPress}>
           <View style={this.styles.cardHeading} pointerEvents="box-only">
             <View style={this.styles.cardHeadingText}>
-              <Text style={this.styles.title} numberOfLines={1}>{this.props.title}</Text>
-              <Text style={this.styles.position} numberOfLines={1}>{this.props.position}</Text>
+              <Text style={this.styles.title} numberOfLines={1}>
+                {this.props.title}
+              </Text>
+              <Text style={this.styles.position} numberOfLines={1}>
+                {this.props.position}
+              </Text>
             </View>
             {!this.props.isOpen ? this.renderImage() : null}
           </View>

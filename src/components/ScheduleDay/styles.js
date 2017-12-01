@@ -8,12 +8,7 @@ import { Color } from '../../styles';
 
 const getStyles = (theme, styleOverride) => {
   const style = {
-    container: {
-      backgroundColor: '#fff',
-      marginBottom: 16,
-      elevation: 1
-    },
-    dayTitle: {
+    title: {
       minHeight: 44,
       paddingLeft: 22,
       paddingRight: 22,
@@ -25,18 +20,17 @@ const getStyles = (theme, styleOverride) => {
       alignItems: 'center',
       justifyContent: 'flex-start'
     },
-    dayTitleText: {
+    titleText: {
       flex: 1,
       color: theme.color.primary || Color.primary,
       fontSize: 14,
       lineHeight: 20
     },
-    dayTitleArrow: {
+    arrow: {
       flex: 0,
-      width: 12,
-      minHeight: 7,
-      marginTop: 3,
-      marginRight: 10
+      marginLeft: -6,
+      marginRight: 2,
+      tintColor: theme.color.primary || Color.primary
     }
   };
 

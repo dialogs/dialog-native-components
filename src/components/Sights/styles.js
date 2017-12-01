@@ -9,7 +9,8 @@ import { Color } from '../../styles';
 const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
-      flex: 1
+      flex: 1,
+      backgroundColor: Color.grayLighter
     },
     fill: {
       flex: 1,

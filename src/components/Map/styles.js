@@ -6,12 +6,18 @@
 import { StyleSheet } from 'react-native';
 import { Color } from '../../styles';
 
-export default StyleSheet.create({
-  map: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignContent: 'center'
-  }
-});
+const getStyles = (theme, styleOverride) => {
+  const style = {
+    container: {
+      height: 200,
+      width: '100%'
+    },
+    map: {
+      ...StyleSheet.absoluteFillObject
+    }
+  };
+
+  return StyleSheet.create(Object.assign({}, style, styleOverride));
+};
+
+export default getStyles;

@@ -9,15 +9,14 @@ import { Color, Padding } from '../../styles';
 const getStyles = (theme, styleOverride) => {
   const style = {
     container: {
-      elevation: 2,
-      backgroundColor: theme.color.white || Color.white,
-      marginBottom: Padding.default * 2
-    },
-    title: {
-      color: theme.color.primary || Color.primary,
-      fontSize: 16,
+      paddingTop: Padding.small,
+      paddingBottom: Padding.small,
       paddingRight: Padding.default * 2,
       paddingLeft: Padding.default * 2
+    },
+    title: {
+      color: Color.gray,
+      fontSize: 14
     }
   };
 

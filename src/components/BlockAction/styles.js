@@ -8,7 +8,7 @@ import { Color, Padding } from '../../styles';
 
 const getStyles = (theme, styleOverride) => {
   const style = {
-    block: {
+    container: {
       paddingTop: Padding.large,
       paddingBottom: Padding.large,
       paddingRight: Padding.default * 2,
@@ -19,10 +19,24 @@ const getStyles = (theme, styleOverride) => {
       alignContent: 'flex-start',
       justifyContent: 'center'
     },
-    count: {
+    icon: {
       flex: 0,
+      marginRight: Padding.large
+    },
+    spacer: {
+      width: 26,
+      flex: 0,
+      marginRight: Padding.large
+    },
+    text: {
+      flex: 1,
       fontSize: 16,
-      color: Color.grayLight
+      color: Color.black
+    },
+    switch: {
+      position: 'absolute',
+      top: Padding.large,
+      right: Padding.default * 2 - 6
     }
   };
 

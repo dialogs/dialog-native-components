@@ -12,21 +12,6 @@ const getStyles = (theme, styleOverride) => {
       paddingTop: Padding.small,
       paddingBottom: Padding.small
     },
-    block: {
-      paddingTop: Padding.small,
-      paddingBottom: Padding.small,
-      paddingRight: Padding.default * 2,
-      paddingLeft: Padding.default * 2
-    },
-    blockHeader: {
-      color: Color.gray,
-      fontSize: 14
-    },
-    blockText: {
-      flex: 1,
-      color: Color.black,
-      fontSize: 16
-    },
     aboutText: {
       color: Color.black,
       fontSize: 16,

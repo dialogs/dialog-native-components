@@ -12,31 +12,20 @@ const getStyles = (theme, styleOverride) => {
       paddingTop: Padding.small,
       paddingBottom: Padding.small
     },
-    property: {
-      paddingTop: Padding.small,
-      paddingBottom: Padding.small,
-      paddingRight: Padding.default * 2,
-      paddingLeft: Padding.default * 2
-    },
-    propertyTitle: {
-      color: Color.gray,
-      fontSize: 14
-    },
-    booleanValue: {
+    boolean: {
       color: theme.color.primary || Color.primary,
       fontSize: 18,
-      lineHeight: 24
+      lineHeight: 22
     },
-    integerValue: {
+    integer: {
       color: theme.color.primary || Color.primary,
       fontSize: 16,
-      lineHeight: 24
+      lineHeight: 22
     },
-    stringValue: {
-      marginTop: 2,
+    string: {
       color: Color.black,
       fontSize: 16,
-      lineHeight: 24
+      lineHeight: 22
     }
   };
 

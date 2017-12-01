@@ -5,12 +5,12 @@
 
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 import getStyles from './styles';
 
 type Props = {
-  title?: ?string,
-  style: any,
+  title?: string,
+  style?: any,
   children: any
 };
 
@@ -31,7 +31,11 @@ class Block extends PureComponent {
   }
 
   renderTitle() {
-    return null;
+    if (!this.props.title) {
+      return null;
+    }
+
+    return <Text style={this.styles.title}>{this.props.title}</Text>;
   }
 
   render() {

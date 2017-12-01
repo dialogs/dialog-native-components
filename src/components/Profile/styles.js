@@ -41,11 +41,6 @@ const getStyles = (theme, styleOverride) => {
     buttonDivider: {
       flex: 0,
       width: Padding.default
-    },
-    block: {
-      elevation: 2,
-      backgroundColor: '#fff',
-      marginBottom: Padding.default * 2
     }
   };
 

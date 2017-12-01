@@ -7,8 +7,8 @@ import type { User } from '@dlghq/dialog-types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
-import ProfileBlock from '../Profile/ProfileBlock';
-import ProfileCustomInfoItem from './ProfileCustomInfoItem';
+import Block from '../Block/Block';
+import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
@@ -44,20 +44,20 @@ class ProfileCustomInfo extends PureComponent<Props> {
       switch (type) {
         case 'boolean':
           children = (
-            <Text style={this.styles.booleanValue}>{value ? 'Yes' : 'No'}</Text>
+            <Text style={this.styles.boolean}>{value ? 'Yes' : 'No'}</Text>
           );
           break;
         case 'integer':
-          children = <Text style={this.styles.integerValue}>{value}</Text>;
+          children = <Text style={this.styles.integer}>{value}</Text>;
           break;
         default:
-          children = <Text style={this.styles.stringValue}>{value}</Text>;
+          children = <Text style={this.styles.string}>{value}</Text>;
       }
 
       properties.push(
-        <ProfileCustomInfoItem key={propery} title={title}>
+        <BlockText key={propery} title={title}>
           {children}
-        </ProfileCustomInfoItem>
+        </BlockText>
       );
     }
 
@@ -65,11 +65,8 @@ class ProfileCustomInfo extends PureComponent<Props> {
   }
 
   render() {
-    console.log('ProfileCustomInfo', this.props);
     return (
-      <ProfileBlock style={this.styles.container}>
-        {this.renderProperties()}
-      </ProfileBlock>
+      <Block style={this.styles.container}>{this.renderProperties()}</Block>
     );
   }
 }

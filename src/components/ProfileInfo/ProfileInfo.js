@@ -7,7 +7,8 @@ import type { User } from '@dlghq/dialog-types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
-import ProfileBlock from '../Profile/ProfileBlock';
+import Block from '../Block/Block';
+import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
@@ -40,10 +41,9 @@ class ProfileInfo extends PureComponent {
     }
 
     return (
-      <View style={this.styles.block}>
-        <Text style={this.styles.blockHeader}>About</Text>
+      <BlockText title="About">
         <Text style={this.styles.aboutText}>{this.props.about}</Text>
-      </View>
+      </BlockText>
     );
   }
 
@@ -58,10 +58,9 @@ class ProfileInfo extends PureComponent {
     });
 
     return (
-      <View style={this.styles.block}>
-        <Text style={this.styles.blockHeader}>Phone</Text>
+      <BlockText title="Phone">
         <Text style={this.styles.phoneText}>{children}</Text>
-      </View>
+      </BlockText>
     );
   }
 
@@ -76,10 +75,9 @@ class ProfileInfo extends PureComponent {
     });
 
     return (
-      <View style={this.styles.block}>
-        <Text style={this.styles.blockHeader}>Emails</Text>
+      <BlockText title="Email">
         <Text style={this.styles.emailText}>{children}</Text>
-      </View>
+      </BlockText>
     );
   }
 
@@ -89,22 +87,20 @@ class ProfileInfo extends PureComponent {
     }
 
     return (
-      <View style={this.styles.block}>
-        <Text style={this.styles.blockHeader}>Nickname</Text>
+      <BlockText title="Nickname">
         <Text style={this.styles.nickText}>@{this.props.nick}</Text>
-      </View>
+      </BlockText>
     );
   }
 
   render() {
-    console.log('this.styles.container', this.styles.container);
     return (
-      <ProfileBlock style={this.styles.container}>
+      <Block style={this.styles.container}>
         {this.renderNick()}
         {this.renderAbout()}
         {this.renderPhones()}
         {this.renderEmails()}
-      </ProfileBlock>
+      </Block>
     );
   }
 }

@@ -47,7 +47,7 @@ class ProfileHeaderButton extends PureComponent<Props> {
     console.log('ProfileButton', this.props);
 
     return (
-      <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.85}>
+      <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.8}>
         <View
           style={[this.styles.button, this.props.style]}
           pointerEvents="box-only"

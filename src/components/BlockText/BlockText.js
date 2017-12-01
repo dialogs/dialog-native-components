@@ -7,11 +7,15 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 import getStyles from './styles';
-import { Color } from '../../styles';
 
-type Props = {};
+type Props = {
+  title?: ?string,
+  style: any,
+  icon?: ?string,
+  children: any
+};
 
-class ProfileCustomInfoItem extends PureComponent<Props> {
+class BlockText extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
@@ -23,17 +27,25 @@ class ProfileCustomInfoItem extends PureComponent<Props> {
   constructor(props, context) {
     super(props, context);
 
-    this.styles = getStyles(context.theme, context.style.ProfileCustomInfo);
+    this.styles = getStyles(context.theme, context.style.BlockText);
+  }
+
+  renderTitle() {
+    if (!this.props.title) {
+      return null;
+    }
+
+    return <Text style={this.styles.title}>{this.props.title}</Text>;
   }
 
   render() {
     return (
-      <View style={this.styles.property}>
-        <Text style={this.styles.propertyTitle}>{this.props.title}</Text>
+      <View style={[this.styles.container, this.props.style]}>
+        {this.renderTitle()}
         {this.props.children}
       </View>
     );
   }
 }
 
-export default ProfileCustomInfoItem;
+export default BlockText;

@@ -28,7 +28,7 @@ class ContactsPreview extends PureComponent {
           error: false
         }
       });
-    }, 3000);
+    }, 1500);
   }
 
   handleChatRequest = (phone) => {

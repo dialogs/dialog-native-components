@@ -19,15 +19,28 @@ const theme = {
   gradient: ['#79149A', '#400B9A']
 };
 const style = {};
-//
-// const ExampleScreen = TabNavigator({
-//   Discover: { screen: withContext(DiscoverPreview, theme, style) },
-//   // Feedback: { screen: withContext(FeedbackPreview, theme, style) },
-//   Schedule: { screen: withContext(SchedulePreview, theme, style) },
-//   Sights: { screen: withContext(SightsPreview, theme, style) },
-//   Contacts: { screen: withContext(ContactsPreview, theme, style) },
-// });
 
-AppRegistry.registerComponent('ExampleScreen', () =>
-  withContext(ProfilePreview, theme, style)
+const DialogComponents = TabNavigator(
+  {
+    Discover: { screen: withContext(DiscoverPreview, theme, style) },
+    Profile: { screen: withContext(ProfilePreview, theme, style) },
+    Schedule: { screen: withContext(SchedulePreview, theme, style) },
+    Sights: { screen: withContext(SightsPreview, theme, style) },
+    Contacts: { screen: withContext(ContactsPreview, theme, style) }
+  },
+  {
+    lazy: true,
+    animationEnabled: true,
+    tabBarOptions: {
+      scrollEnabled: true,
+      style: {
+        backgroundColor: theme.color.primary
+      },
+      indicatorStyle: {
+        backgroundColor: '#fff'
+      }
+    }
+  }
 );
+
+AppRegistry.registerComponent('DialogComponents', () => DialogComponents);

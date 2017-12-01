@@ -28,7 +28,7 @@ class SightsPreview extends PureComponent {
           error: false
         }
       });
-    }, 3000);
+    }, 1500);
   }
 
   handleNavRequest = (location) => {

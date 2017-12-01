@@ -28,7 +28,7 @@ class ContactsPreview extends PureComponent {
           error: false
         }
       });
-    }, 1000);
+    }, 1500);
   }
 
   handleNotificationChange = value => {

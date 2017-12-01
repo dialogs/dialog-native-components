@@ -19,7 +19,7 @@
     "@dlghq/dialog-types": "1.33.0",
     "@expo/react-native-touchable-native-feedback-safe": "1.1.2",
     "prop-types": "15.6.0",
-    "react": "16.1.1",
+    "react": "16.2.0",
     "react-native": "0.50.4",
     "react-native-linear-gradient": "2.3.0"
   },

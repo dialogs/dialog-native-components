@@ -8,6 +8,7 @@ const Color = {
   danger: '#e22d44',
   warning: '#ffae00',
   success: '#3bbf51',
+  info: '#5856d6',
 
   black: '#000',
   grayDark: '#333333',
@@ -25,6 +26,6 @@ const Padding = {
   large: 16
 };
 
-const Gradient = [];
+const Gradient = ['#79149A', '#400B9A'];
 
 export { Color, Padding, Gradient };

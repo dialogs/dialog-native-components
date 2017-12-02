@@ -45,30 +45,33 @@ const getStyles = (theme, styleOverride) => {
       backgroundColor: '#fff',
       height: 44,
       width: '100%',
+      paddingLeft: Padding.small,
+      paddingRight: Padding.small,
       flexDirection: 'row',
-      alignContent: 'center',
       alignItems: 'center',
+      alignContent: 'center',
       justifyContent: 'center'
     },
-    buttonTextWrapper: {
-      paddingTop: 8,
-      paddingBottom: 8,
-      display: 'flex',
+    buttonWrapper: {
+      flex: 0,
       flexDirection: 'row',
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center'
     },
     buttonText: {
-      flex: 0,
       color: theme.color.primary || Color.primary,
       fontSize: 15,
       lineHeight: 20,
-      fontWeight: '500'
+      fontWeight: '500',
+      flex: 0,
+      paddingLeft: Padding.default / 2 + 26
     },
     buttonIcon: {
-      flex: 0,
-      marginRight: Padding.default / 2
+      position: 'absolute',
+      left: 0,
+      top: -3,
+      tintColor: theme.color.primary || Color.primary
     }
   };
 

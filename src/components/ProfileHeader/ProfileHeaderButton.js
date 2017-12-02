@@ -39,22 +39,20 @@ class ProfileHeaderButton extends PureComponent<Props> {
     }
 
     return (
-      <Icon glyph={this.props.icon} size={28} style={this.styles.buttonIcon} />
+      <Icon glyph={this.props.icon} size={26} style={this.styles.buttonIcon} />
     );
   }
 
   render() {
-    console.log('ProfileButton', this.props);
-
     return (
       <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.8}>
         <View
           style={[this.styles.button, this.props.style]}
           pointerEvents="box-only"
         >
-          <View style={this.styles.buttonTextWrapper}>
+          <View style={this.styles.buttonWrapper}>
             {this.renderIcon()}
-            <Text style={this.styles.buttonText}>
+            <Text style={this.styles.buttonText} numberOfLines={1}>
               {this.props.title.toUpperCase()}
             </Text>
           </View>

@@ -11,22 +11,21 @@ import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedbac
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Theme = 'default' | 'primary' | 'success' | 'danger' | 'warning' | 'info';
-
 type Props = {
   text?: string,
   icon?: string,
-  iconColor?: Theme,
-  textColor?: Theme,
-  style?: any
+  iconColor?: string,
+  textColor?: string,
+  style?: any,
+  children?: any
 };
 
 class BlockAction extends PureComponent<Props> {
   styles: Object;
 
   static defaultProps = {
-    theme: 'default',
-    iconTheme: 'default'
+    iconColor: Color.gray,
+    textColor: Color.black
   };
 
   static contextTypes = {
@@ -50,10 +49,7 @@ class BlockAction extends PureComponent<Props> {
       <Icon
         glyph={this.props.icon}
         size={26}
-        style={[
-          this.styles.icon,
-          { tintColor: this.props.iconColor || Color.gray }
-        ]}
+        style={[this.styles.icon, { tintColor: this.props.iconColor }]}
       />
     );
   }
@@ -61,10 +57,7 @@ class BlockAction extends PureComponent<Props> {
   renderText() {
     return (
       <Text
-        style={[
-          this.styles.text,
-          { color: this.props.textColor || Color.black }
-        ]}
+        style={[this.styles.text, { color: this.props.textColor }]}
         numberOfLines={1}
       >
         {this.props.text}
@@ -81,6 +74,7 @@ class BlockAction extends PureComponent<Props> {
         >
           {this.renderIcon()}
           {this.renderText()}
+          {this.props.children}
         </View>
       </TouchableNativeFeedback>
     );

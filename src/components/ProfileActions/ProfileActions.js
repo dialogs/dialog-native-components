@@ -55,7 +55,9 @@ class ProfileActions extends PureComponent<Props> {
           icon="list"
           iconColor={Color.primary}
           text="Shared media"
-        />
+        >
+          <Text style={this.styles.count}>42</Text>
+        </BlockAction>
         <BlockAction
           onPress={this.props.onFavouriteToggle}
           icon={this.props.isFavourite ? 'star' : 'star_outline'}

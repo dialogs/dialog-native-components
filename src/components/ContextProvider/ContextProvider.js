@@ -7,7 +7,7 @@ import type { DiscoverCard as Card } from "../../types";
 import React, { PureComponent, Children } from "react";
 import PropTypes from 'prop-types';
 
-type Props = {
+export type Props = {
   theme: Object,
   styles: Object,
   icons: Object,

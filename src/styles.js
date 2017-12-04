@@ -6,6 +6,7 @@
 const Color = {
   primary: '#6203a5',
   danger: '#e22d44',
+  success: '#3bbf51',
 
   black: '#000',
   grayDark: '#333333',

@@ -28,4 +28,4 @@ export { default as ScheduleEvent } from './components/ScheduleEvent/ScheduleEve
 export { default as ContextProvider } from './components/ContextProvider/ContextProvider';
 
 // Dialpad
-export { default as Dialapad } from './components/Dialapad/Dialapad';
+export { default as Dialpad } from './components/Dialpad/Dialpad';

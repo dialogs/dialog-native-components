@@ -3,14 +3,29 @@
   "version": "0.8.1",
   "author": "Oleg Shilov <me@olegshilov.com>",
   "license": "Apache-2.0",
-  "description": "",
+  "description": "Dialog Native Components",
   "main": "src/index.js",
   "files": [
     "src"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dialogs/dialog-native-components.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dialogs/dialog-native-components/issues"
+  },
+  "keywords": [
+    "react-native",
+    "components",
+    "dialog"
+  ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "pretest": "npm run lint",
     "test": "echo 0",
+    "lint": "npm-run-all lint:flow",
+    "lint:flow": "flow",
     "preversion": "npm test",
     "postversion": "npm publish",
     "postpublish": "git push --follow-tags"
@@ -27,6 +42,8 @@
   },
   "devDependencies": {
     "babel-preset-react-native": "4.0.0",
+    "flow-bin": "0.59.0",
+    "npm-run-all": "4.1.2",
     "react-navigation": "1.0.0-beta.21"
   }
 }

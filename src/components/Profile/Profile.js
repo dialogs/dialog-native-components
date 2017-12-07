@@ -5,44 +5,18 @@
 
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import {
-  ScrollView,
-  View,
-  Text,
-  ActivityIndicator,
-  Switch,
-  Image
-} from 'react-native';
-import DiscoverCard from '../DiscoverCard/DiscoverCard';
+import { ScrollView, View, Text, ActivityIndicator } from 'react-native';
 import Icon from '../Icon/Icon';
-import ProfileHeader from '../ProfileHeader/ProfileHeader';
+import ProfileHeader from './ProfileHeader';
+import ProfileActions from './ProfileActions';
 import ProfileInfo from '../ProfileInfo/ProfileInfo';
 import ProfileCustomInfo from '../ProfileCustomInfo/ProfileCustomInfo';
-import ProfileHeaderButton from '../ProfileHeader/ProfileHeaderButton';
-import ProfileActions from '../ProfileActions/ProfileActions';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {
-  data: {
-    value: ?(Card[]),
-    pending: boolean,
-    error: ?string
-  },
-  onBack: () => mixed,
-  onCall: () => mixed,
-  onClear: (peer: Peer) => mixed,
-  onDelete: (peer: Peer) => mixed,
-  onBlock: (uid: number) => mixed,
-  onUnblock: (uid: number) => mixed,
-  onContactAdd: (uid: number) => mixed,
-  onContactRemove: (uid: number) => mixed,
-  onFavouriteToggle: () => mixed,
-  onNotificationsChange: () => mixed
-};
+type Props = {};
 
-class Profile extends PureComponent {
-  props: Props;
+class Profile extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
@@ -83,33 +57,10 @@ class Profile extends PureComponent {
   }
 
   renderHeader() {
-    const { data } = this.props;
+    const { data: { value: { avatar, id, name, online } } } = this.props;
 
     return (
-      <ProfileHeader
-        id={data.value.id}
-        title={data.value.name}
-        avatar={data.value.avatar}
-        online={data.value.online}
-      >
-        <View style={this.styles.buttons}>
-          <View style={this.styles.buttonWrapper}>
-            <ProfileHeaderButton
-              onPress={() => console.log('Message button pressed')}
-              title="Message"
-              icon="logo"
-            />
-          </View>
-          <View style={this.styles.buttonDivider} />
-          <View style={this.styles.buttonWrapper}>
-            <ProfileHeaderButton
-              onPress={() => console.log('Call button pressed')}
-              title="Call"
-              icon="call"
-            />
-          </View>
-        </View>
-      </ProfileHeader>
+      <ProfileHeader id={id} avatar={avatar} title={name} online={online} />
     );
   }
 
@@ -128,19 +79,19 @@ class Profile extends PureComponent {
   }
 
   renderActions() {
+    const {
+      data: { value: { isNotificationsEnabled, isFavourite } }
+    } = this.props;
+
     return (
       <ProfileActions
-        isFavourite={this.props.data.value.isFavourite}
-        isNotificationsEnabled={this.props.data.value.isNotificationsEnabled}
         onNotificationsChange={this.props.onNotificationsChange}
+        isNotificationsEnabled={isNotificationsEnabled}
         onFavouriteToggle={this.props.onFavouriteToggle}
+        isFavourite={isFavourite}
         onUserBlock={this.props.onUserBlock}
       />
     );
-  }
-
-  renderBlockUser() {
-    return <View style={this.styles.blockWrapper} />;
   }
 
   render() {
@@ -161,7 +112,6 @@ class Profile extends PureComponent {
         {this.renderInfo()}
         {this.renderCustomInfo()}
         {this.renderActions()}
-        {this.renderBlockUser()}
       </ScrollView>
     );
   }

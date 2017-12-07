@@ -5,25 +5,14 @@
 
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View, Text, Image, Switch } from 'react-native';
-import getStyles from './styles';
+import { Text } from 'react-native';
 import Block from '../Block/Block';
-import BlockAction from '../BlockAction/BlockAction';
 import BlockActionSwitcher from '../BlockAction/BlockActionSwitcher';
+import BlockAction from '../BlockAction/BlockAction';
+import getStyles from './styles';
 import { Color } from '../../styles';
 
-import Icon from '../Icon/Icon';
-import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
-
-type Props = {
-  isNotificationsEnabled: boolean,
-  isContact: boolean,
-  isBlocked: boolean,
-  isFavourite: boolean,
-  onNotificationsChange: () => void,
-  onFavouriteToggle: () => void,
-  onUserBlock: () => void
-};
+type Props = {};
 
 class ProfileActions extends PureComponent<Props> {
   styles: Object;
@@ -37,44 +26,42 @@ class ProfileActions extends PureComponent<Props> {
   constructor(props, context) {
     super(props, context);
 
-    this.styles = getStyles(context.theme, context.style.ProfileActions);
+    this.styles = getStyles(context.theme, context.style.Profile);
   }
 
   render() {
+    const { isNotificationsEnabled, isFavourite } = this.props;
+
     return (
       <Block>
         <BlockActionSwitcher
           onChange={this.props.onNotificationsChange}
           icon="notification"
-          iconColor={Color.primary}
+          iconColor={this.context.theme.color.primary || Color.primary}
           text="Notifications"
-          value={this.props.isNotificationsEnabled}
+          value={isNotificationsEnabled}
         />
         <BlockAction
           onPress={() => {}}
           icon="list"
-          iconColor={Color.primary}
+          iconColor={this.context.theme.color.primary || Color.primary}
           text="Shared media"
         >
           <Text style={this.styles.count}>42</Text>
         </BlockAction>
         <BlockAction
           onPress={this.props.onFavouriteToggle}
-          icon={this.props.isFavourite ? 'star' : 'star_outline'}
-          iconColor={Color.warning}
-          text={
-            this.props.isFavourite
-              ? 'Remove from favourites'
-              : 'Add to favourites'
-          }
-          textColor={Color.warning}
+          icon={isFavourite ? 'star' : 'star_outline'}
+          iconColor={this.context.theme.color.warning || Color.warning}
+          text={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
+          textColor={this.context.theme.color.warning || Color.warning}
         />
         <BlockAction
           onPress={this.props.onUserBlock}
           icon="block"
-          iconColor={Color.danger}
+          iconColor={this.context.theme.color.danger || Color.danger}
           text="Block user"
-          textColor={Color.danger}
+          textColor={this.context.theme.color.danger || Color.danger}
         />
       </Block>
     );

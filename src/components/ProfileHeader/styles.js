@@ -26,15 +26,9 @@ const getStyles = (theme, styleOverride) => {
       bottom: 0,
       right: 0
     },
-    titleWrapper: {
-      marginTop: Padding.small * 2
-    },
     title: {
       fontSize: 28,
       color: '#fff'
-    },
-    onlineWrapper: {
-      marginTop: 2
     },
     online: {
       fontSize: 16,

@@ -43,6 +43,8 @@ class Icon extends PureComponent {
         return require('../../assets/icons/bug.png');
       case 'call':
         return require('../../assets/icons/call.png');
+      case 'camera':
+        return require('../../assets/icons/camera.png');
       case 'channel':
         return require('../../assets/icons/channel.png');
       case 'error':
@@ -59,6 +61,8 @@ class Icon extends PureComponent {
         return require('../../assets/icons/notification.png');
       case 'person':
         return require('../../assets/icons/person.png');
+      case 'plus_outline':
+        return require('../../assets/icons/plus_outline.png');
       case 'question':
         return require('../../assets/icons/question.png');
       case 'security':

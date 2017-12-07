@@ -60,7 +60,7 @@ class DiscoverPreview extends PureComponent {
           error: null
         }
       });
-    }, 3000);
+    }, 1500);
   }
 
   handleCardTap = (card: DiscoverCard) => {

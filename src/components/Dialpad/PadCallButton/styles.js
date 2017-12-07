@@ -18,19 +18,21 @@ const getStyles = (theme, styleOverride) => {
     },
     normal: {
       width: 64,
-      height: 64,
+      height: 64
     },
     small: {
       width: 58,
-      height: 58,
+      height: 58
     },
     iconNormal: {
       width: 32,
-      height: 32
+      height: 32,
+      tintColor: Color.white
     },
     iconSmall: {
       width: 28,
-      height: 28
+      height: 28,
+      tintColor: Color.white
     }
   };
 

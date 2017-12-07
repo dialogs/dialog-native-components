@@ -3,62 +3,77 @@
  * @flow
  */
 
-import React, { PureComponent } from "react";
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Image, ActivityIndicator } from "react-native";
-import styles from './styles';
+import { View, Platform } from 'react-native';
+import MapView from 'react-native-maps';
+import getStyles from './styles';
+import Icon from '../Icon/Icon';
 import { Color } from '../../styles';
 
 type Props = {
   latitude: number,
   longitude: number
 };
-type State = {
-  loading: boolean
-}
 
-const API_KEY = 'AIzaSyCV9I5_GAlbDMcVnD87TcONL2YaPv_d-LA';
-
-class Map extends PureComponent {
-  props: Props;
+class Map extends PureComponent<Props> {
   state: State;
 
   static contextTypes = {
-    theme: PropTypes.object
+    theme: PropTypes.object,
+    style: PropTypes.object,
+    icons: PropTypes.object
   };
 
   constructor(props: Props, context) {
     super(props, context);
 
-    this.state = {
-      loading: true
-    };
+    this.styles = getStyles(context.theme, context.style.Map);
   }
 
-  handleImageLoaded = (): void => {
-    this.setState({ loading: false });
+  getMarkerImage = (): void => {
+    if (this.context.icons && this.context.icons['marker']) {
+      return { uri: this.context.icons['marker'], cache: 'force-cache' };
+    } else if (Platform.OS === 'ios') {
+      return null;
+    }
+
+    return require('../../assets/icons/marker.png');
   };
 
   render() {
     const { latitude, longitude } = this.props;
-    const marker = 'https://dlg.im/assets/megapolis/images/marker.png';
-    const width = 360;
-    const height = 140;
-    const zoom = 15;
-    const uri = `https://maps.googleapis.com/maps/api/staticmap?zoom=${zoom}&size=${width}x${height}&markers=icon:${marker}%7C${latitude},${longitude}&scale=2&key=${API_KEY}`;
+    const height = 200;
 
     return (
-      <Image
-        source={{ uri }}
-        onLoadEnd={this.handleImageLoaded}
-        style={[styles.map, { height }]}
-        resizeMode="cover"
-      >
-        <ActivityIndicator
-          animating={this.state.loading}
-          color={this.context.theme.color.primary || Color.primary}
-        />
-      </Image>
+      <View style={[this.styles.container, { height }]}>
+        <MapView
+          showsCompass={false}
+          rotateEnabled={false}
+          showsBuildings
+          pitchEnabled={false}
+          toolbarEnabled={false}
+          cacheEnabled
+          scrollEnabled
+          showsTraffic={false}
+          style={this.styles.map}
+          region={{
+            latitude,
+            longitude,
+            longitudeDelta: 0.0091,
+            latitudeDelta: 0.0025
+          }}
+          loadingIndicatorColor={
+            this.context.theme.color.primary || Color.primary
+          }
+        >
+          <MapView.Marker
+            coordinate={{ latitude, longitude }}
+            image={this.getMarkerImage()}
+            anchor={{ x: 0.5, y: 1 }}
+          />
+        </MapView>
+      </View>
     );
   }
 }

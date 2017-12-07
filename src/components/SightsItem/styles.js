@@ -4,6 +4,7 @@
  */
 
 import { StyleSheet } from 'react-native';
+import ColorJS from 'color';
 import { Color } from '../../styles';
 
 const getStyles = (theme, styleOverride) => {
@@ -14,7 +15,9 @@ const getStyles = (theme, styleOverride) => {
       borderBottomWidth: StyleSheet.hairlineWidth
     },
     containerOpened: {
-      backgroundColor: '#F4F0F7'
+      backgroundColor: ColorJS(theme.color.primary || Color.primary)
+        .alpha(0.1)
+        .mix(ColorJS('#fff'))
     },
     cardHeading: {
       minHeight: 74,

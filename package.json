@@ -18,13 +18,15 @@
   "dependencies": {
     "@dlghq/dialog-types": "1.33.0",
     "@expo/react-native-touchable-native-feedback-safe": "1.1.2",
+    "color": "2.0.1",
     "prop-types": "15.6.0",
     "react": "16.2.0",
     "react-native": "0.50.4",
-    "react-native-linear-gradient": "2.3.0"
+    "react-native-linear-gradient": "2.3.0",
+    "react-native-maps": "0.18.3"
   },
   "devDependencies": {
     "babel-preset-react-native": "4.0.0",
-    "react-navigation": "1.0.0-beta.13"
+    "react-navigation": "1.0.0-beta.21"
   }
 }

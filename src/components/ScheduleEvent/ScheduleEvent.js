@@ -5,14 +5,14 @@
 
 import type { ScheduleEvent as ScheduleEventProps } from '../../types';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, Text, Image, ActivityIndicator } from "react-native";
+import React, { PureComponent } from 'react';
+import { View, Text } from 'react-native';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import Button from '../Button/Button';
 import Map from '../Map/Map';
+import Icon from '../Icon/Icon';
 import getStyles from './styles';
 import { Color } from '../../styles';
-import marker from '../../assets/icons/marker.png';
 
 type State = {
   loading: boolan,
@@ -51,7 +51,7 @@ class ScheduleEvent extends PureComponent {
 
   handleNavPress = (): void => {
     if (this.props.location) {
-      this.props.onNavRequest(this.props.location)
+      this.props.onNavRequest(this.props.location);
     }
   };
 
@@ -79,12 +79,7 @@ class ScheduleEvent extends PureComponent {
           {address}
         </Text>
         {this.hasLocation() && !this.state.isOpen ? (
-          <Image source={marker} style={this.styles.subtitleMarker} onLoadEnd={this.handleImageLoaded}>
-            <ActivityIndicator
-              animating={this.state.loading}
-              color={this.context.theme.color.primary || Color.primary}
-            />
-          </Image>
+          <Icon glyph="marker" size={20} style={this.styles.subtitleMarker} />
         ) : null}
       </View>
     );
@@ -93,13 +88,12 @@ class ScheduleEvent extends PureComponent {
   renderHeader() {
     if (this.hasContent()) {
       return (
-        <TouchableNativeFeedback
-          onPress={this.handleHeaderPress}
-          delayPressIn={0}
-        >
+        <TouchableNativeFeedback onPress={this.handleHeaderPress}>
           <View style={this.styles.header} pointerEvents="box-only">
             <View style={this.styles.headerText}>
-              <Text style={[this.styles.title, this.styles.titleLocation]}>{this.props.title}</Text>
+              <Text style={[this.styles.title, this.styles.titleLocation]}>
+                {this.props.title}
+              </Text>
               {this.renderSubtitle()}
             </View>
           </View>
@@ -124,9 +118,7 @@ class ScheduleEvent extends PureComponent {
       return null;
     }
 
-    return (
-      <Text style={this.styles.description}>{description}</Text>
-    );
+    return <Text style={this.styles.description}>{description}</Text>;
   }
 
   renderLocation() {
@@ -135,17 +127,15 @@ class ScheduleEvent extends PureComponent {
     }
 
     const { location } = this.props;
-    const buttonTitle = this.context.locale === 'ru' ? 'Проложить маршрут' : 'Get directions';
+    const buttonTitle =
+      this.context.locale === 'ru' ? 'Проложить маршрут' : 'Get directions';
 
     return (
       <View style={this.styles.location}>
         {location ? (
           <Map latitude={location.latitude} longitude={location.longitude} />
         ) : null}
-        <Button
-          onPress={this.handleNavPress}
-          title={buttonTitle}
-        />
+        <Button onPress={this.handleNavPress} title={buttonTitle} />
       </View>
     );
   }
@@ -160,12 +150,17 @@ class ScheduleEvent extends PureComponent {
         {this.renderDescription()}
         {this.renderLocation()}
       </View>
-    )
+    );
   }
 
   render() {
     return (
-      <View style={[this.styles.container, this.state.isOpen ? this.styles.containerOpened : null]}>
+      <View
+        style={[
+          this.styles.container,
+          this.state.isOpen ? this.styles.containerOpened : null
+        ]}
+      >
         {this.renderHeader()}
         {this.renderContent()}
       </View>

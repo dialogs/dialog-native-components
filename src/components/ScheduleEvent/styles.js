@@ -4,6 +4,7 @@
  */
 
 import { StyleSheet } from 'react-native';
+import ColorJS from 'color';
 import { Color } from '../../styles';
 
 const getStyles = (theme, styleOverride) => {
@@ -14,7 +15,9 @@ const getStyles = (theme, styleOverride) => {
       borderBottomWidth: StyleSheet.hairlineWidth
     },
     containerOpened: {
-      backgroundColor: '#F4F0F7'
+      backgroundColor: ColorJS(theme.color.primary || Color.primary)
+        .alpha(0.1)
+        .mix(ColorJS('#fff'))
     },
     header: {
       paddingLeft: 22,
@@ -45,9 +48,8 @@ const getStyles = (theme, styleOverride) => {
       lineHeight: 20
     },
     subtitleMarker: {
-      width: 11,
-      height: 16,
-      flex: 0
+      flex: 0,
+      tintColor: theme.color.primary || Color.primary
     },
     description: {
       fontSize: 14,

@@ -53,7 +53,8 @@ const getStyles = (theme, styleOverride) => {
       justifyContent: 'center'
     },
     errorIcon: {
-      marginBottom: Padding.default
+      marginBottom: Padding.default,
+      tintColor: theme.color.danger || Color.danger
     },
     errorText: {
       textAlign: 'center',

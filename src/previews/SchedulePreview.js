@@ -28,7 +28,7 @@ class SchedulePreview extends PureComponent {
           error: false
         }
       });
-    } , 3000);
+    }, 1500);
   }
 
   handleNavRequest = location => {
@@ -40,10 +40,7 @@ class SchedulePreview extends PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <Schedule
-          data={this.state.data}
-          onNavRequest={this.handleNavRequest}
-        />
+        <Schedule data={this.state.data} onNavRequest={this.handleNavRequest} />
       </View>
     );
   }

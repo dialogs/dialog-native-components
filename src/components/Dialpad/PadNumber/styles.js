@@ -42,7 +42,8 @@ const getStyles = (theme, styleOverride) => {
     backspaceIcon: {
       marginLeft: -2,
       width: 32,
-      height: 32
+      height: 32,
+      tintColor: Color.gray
     },
     backspaceSmall: {
       top: 17,
@@ -51,7 +52,8 @@ const getStyles = (theme, styleOverride) => {
     },
     backspaceIconSmall: {
       width: 28,
-      height: 28
+      height: 28,
+      tintColor: Color.gray
     }
   };
 

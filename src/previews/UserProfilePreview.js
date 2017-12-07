@@ -6,15 +6,15 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, Text, Alert } from 'react-native';
 import data from '../fixtures/ProfileData';
-import Profile from '../components/Profile/Profile';
+import UserProfile from '../components/UserProfile/UserProfile';
 
-class ContactsPreview extends PureComponent {
+class UserProfilePreview extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
       data: {
-        value: null,
+        value: [],
         pending: true,
         error: null
       }
@@ -45,7 +45,6 @@ class ContactsPreview extends PureComponent {
   };
 
   handleFavouriteToggle = () => {
-    console.log('handleFavouriteToggle', this.state.data.value.isFavourite);
     this.setState({
       data: {
         value: {
@@ -58,13 +57,36 @@ class ContactsPreview extends PureComponent {
     });
   };
 
+  handleCustomInfoChange = value => {
+    console.log('handleCustomInfoChange', value);
+    this.setState({
+      data: {
+        value: {
+          ...this.state.data.value,
+          custom: {
+            ...this.state.data.value.custom,
+            value
+          }
+        },
+        pending: false,
+        error: false
+      }
+    });
+  };
+
+  handleAvatarChange = () => {
+    console.log('handleAvatarChange');
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Profile
+        <UserProfile
           data={this.state.data}
+          onCustomInfoChange={this.handleCustomInfoChange}
           onNotificationsChange={this.handleNotificationChange}
           onFavouriteToggle={this.handleFavouriteToggle}
+          onAvatarChange={this.handleAvatarChange}
         />
       </View>
     );
@@ -78,4 +100,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ContactsPreview;
+export default UserProfilePreview;

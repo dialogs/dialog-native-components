@@ -4,6 +4,7 @@
  */
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
@@ -24,7 +25,7 @@ class Pad extends PureComponent {
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context: Context) {
@@ -39,8 +40,8 @@ class Pad extends PureComponent {
 
   renderButtons() {
     return padButtons.map(button => {
-      const text = button.text[this.context.locale]
-        ? button.text[this.context.locale]
+      const text = button.text[this.context.l10n.locale]
+        ? button.text[this.context.l10n.locale]
         : button.text['en'];
 
       return (
@@ -56,13 +57,13 @@ class Pad extends PureComponent {
   }
 
   render() {
-    const style = this.props.horizontal ? this.styles.horizontal : this.styles.container;
+    const style = this.props.horizontal
+      ? this.styles.horizontal
+      : this.styles.container;
 
     return (
       <View style={style}>
-        <View style={this.styles.buttons}>
-          {this.renderButtons()}
-        </View>
+        <View style={this.styles.buttons}>{this.renderButtons()}</View>
       </View>
     );
   }

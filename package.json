@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@dlghq/dialog-types": "1.33.0",
+    "@dlghq/react-l10n": "0.9.1",
     "@expo/react-native-touchable-native-feedback-safe": "1.1.2",
     "color": "2.0.1",
     "prop-types": "15.6.0",

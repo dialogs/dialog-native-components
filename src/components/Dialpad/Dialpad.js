@@ -6,6 +6,7 @@
 import type { Selection } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import { View, FlatList, ActivityIndicator, Text } from 'react-native';
 import DialpadContact from '../DialpadContact/DialpadContact';
 import Pad from './Pad/Pad';
@@ -33,7 +34,7 @@ class Dialpad extends PureComponent {
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context) {
@@ -130,7 +131,7 @@ class Dialpad extends PureComponent {
     return (
       <View style={this.styles.empty}>
         <Text style={this.styles.emptyText}>
-          {this.context.locale === 'ru' ? 'Ничего не найдено' : 'Nothing found'}
+          {this.context.l10n.formatText('Error.nothing_found')}
         </Text>
       </View>
     );

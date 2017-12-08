@@ -34,7 +34,6 @@ class ScheduleDay extends PureComponent {
         <ScheduleEvent
           key={`schedule_day_event_${index}`}
           {...event}
-          locale={this.context.locale}
           onNavRequest={this.props.onNavRequest}
         />
       );

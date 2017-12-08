@@ -25,8 +25,7 @@ class ContactsItem extends PureComponent {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
   constructor(props: Props, context) {
@@ -78,15 +77,13 @@ class ContactsItem extends PureComponent {
     if (!this.props.isOpen) {
       return null;
     }
-    const buttonTitle =
-      this.context.locale === 'ru' ? 'Открыть чат' : 'Open chat';
 
     return (
       <View style={this.styles.content}>
         <Text style={this.styles.region}>{this.props.region}</Text>
         {this.props.isOpen ? this.renderImage() : null}
         {this.props.phone ? (
-          <Button onPress={this.handleButtonPress} title={buttonTitle} />
+          <Button onPress={this.handleButtonPress} title="Button.open_chat" />
         ) : null}
       </View>
     );

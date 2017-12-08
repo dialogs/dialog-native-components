@@ -3,15 +3,14 @@
  * @flow
  */
 
-import type { DiscoverCard as Card } from "../../types";
-import React, { PureComponent, Children } from "react";
+import type { DiscoverCard as Card } from '../../types';
+import React, { PureComponent, Children } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = {
   theme: Object,
   styles: Object,
-  icons: Object,
-  locale: string
+  icons: Object
 };
 
 class ContextProvider extends PureComponent {
@@ -20,23 +19,20 @@ class ContextProvider extends PureComponent {
   static defaultProps = {
     theme: {},
     style: {},
-    icons: {},
-    locale: 'en'
+    icons: {}
   };
 
   static childContextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    icons: PropTypes.object,
-    locale: PropTypes.string
+    icons: PropTypes.object
   };
 
   getChildContext() {
     return {
       theme: this.props.theme,
       style: this.props.style,
-      icons: this.props.icons,
-      locale: this.props.locale
+      icons: this.props.icons
     };
   }
 

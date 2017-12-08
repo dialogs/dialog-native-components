@@ -26,8 +26,7 @@ class ScheduleEvent extends PureComponent {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
   constructor(props: ScheduleEventProps, context) {
@@ -127,15 +126,13 @@ class ScheduleEvent extends PureComponent {
     }
 
     const { location } = this.props;
-    const buttonTitle =
-      this.context.locale === 'ru' ? 'Проложить маршрут' : 'Get directions';
 
     return (
       <View style={this.styles.location}>
         {location ? (
           <Map latitude={location.latitude} longitude={location.longitude} />
         ) : null}
-        <Button onPress={this.handleNavPress} title={buttonTitle} />
+        <Button onPress={this.handleNavPress} title="Button.get_direction" />
       </View>
     );
   }

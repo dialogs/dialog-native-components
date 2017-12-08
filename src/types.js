@@ -27,7 +27,6 @@ export type ScheduleEvent = {
   description: ?string,
   address: ?string,
   location: ?Location,
-  locale: string,
   onNavRequest: (location: Location) => mixed
 };
 
@@ -37,13 +36,11 @@ export type ScheduleDay = {
 };
 
 export type ScheduleDayProps = ScheduleDay & {
-  locale: string,
   onNavRequest: (location: Location) => mixed
 };
 
 export type ScheduleProps = {
   data: Field<ScheduleDay[]>,
-  locale: string,
   hidePastSchedule: boolean,
   onNavRequest: (location: Location) => mixed
 };

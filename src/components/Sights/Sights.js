@@ -3,10 +3,14 @@
  * @flow
  */
 
-import type { SightsProps, SightsItem as SightsItemType , Location } from '../../types';
+import type {
+  SightsProps,
+  SightsItem as SightsItemType,
+  Location
+} from '../../types';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, FlatList, ActivityIndicator, Text } from "react-native";
+import React, { PureComponent } from 'react';
+import { View, FlatList, ActivityIndicator, Text } from 'react-native';
 import SightsItem from '../SightsItem/SightsItem';
 import getStyles from './styles';
 import { Color } from '../../styles';
@@ -59,7 +63,6 @@ class Sights extends PureComponent {
         isOpen={item.id === this.state.current}
         onCardPress={this.handleCardPress}
         onNavRequest={this.handleNavPress}
-        locale={this.context.locale}
       />
     );
   };
@@ -69,9 +72,7 @@ class Sights extends PureComponent {
 
     return (
       <View style={this.styles.fill}>
-        <Text>
-          {typeof error === 'string' ? error : error.message}
-        </Text>
+        <Text>{typeof error === 'string' ? error : error.message}</Text>
       </View>
     );
   }
@@ -109,11 +110,7 @@ class Sights extends PureComponent {
   }
 
   render() {
-    return (
-      <View style={this.styles.container}>
-        {this.renderData()}
-      </View>
-    );
+    return <View style={this.styles.container}>{this.renderData()}</View>;
   }
 }
 

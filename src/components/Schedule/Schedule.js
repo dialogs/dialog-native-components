@@ -34,29 +34,26 @@ class Schedule extends PureComponent {
     this.styles = getStyles(context.theme, context.style.Schedule);
   }
 
-  getKey = (item: ScheduleDayType, index: number): string => `schedule_day_${index}`;
+  getKey = (item: ScheduleDayType, index: number): string =>
+    `schedule_day_${index}`;
 
   getData = (): ScheduleDayType[] => {
     if (!this.props.hidePastSchedule) {
       return this.props.data.value;
     }
 
-    const today =  new Date().setHours(0,0,0,0);
-    const data = this.props.data.value.filter((day) => {
+    const today = new Date().setHours(0, 0, 0, 0);
+    const data = this.props.data.value.filter(day => {
       return new Date(day.date).getTime() >= today;
     });
 
-    return data.length ? data : [this.props.data.value[this.props.data.value.length - 1]];
+    return data.length
+      ? data
+      : [this.props.data.value[this.props.data.value.length - 1]];
   };
 
   renderItem = ({ item }) => {
-    return (
-      <ScheduleDay
-        {...item}
-        locale={this.context.locale}
-        onNavRequest={this.props.onNavRequest}
-      />
-    );
+    return <ScheduleDay {...item} onNavRequest={this.props.onNavRequest} />;
   };
 
   renderError() {

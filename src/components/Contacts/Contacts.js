@@ -3,10 +3,13 @@
  * @flow
  */
 
-import type { ContactsProps, ContactsItem as ContactsItemType } from '../../types';
+import type {
+  ContactsProps,
+  ContactsItem as ContactsItemType
+} from '../../types';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, FlatList, ActivityIndicator, Text } from "react-native";
+import React, { PureComponent } from 'react';
+import { View, FlatList, ActivityIndicator, Text } from 'react-native';
 import ContactsItem from '../ContactsItem/ContactsItem';
 import getStyles from './styles';
 import { Color } from '../../styles';
@@ -24,8 +27,7 @@ class Contacts extends PureComponent {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
   constructor(props: Props, context) {
@@ -38,7 +40,8 @@ class Contacts extends PureComponent {
     this.styles = getStyles(context.theme, context.style.Contacts);
   }
 
-  getKey = (item: ContactsItemType, index: number): string => `contact_${index}`;
+  getKey = (item: ContactsItemType, index: number): string =>
+    `contact_${index}`;
 
   handleCardPress = (current: number): void => {
     if (this.state.current === current) {
@@ -59,7 +62,6 @@ class Contacts extends PureComponent {
         isOpen={item.id === this.state.current}
         onCardPress={this.handleCardPress}
         onChatRequest={this.handleChatRequest}
-        locale={this.context.locale}
       />
     );
   };
@@ -69,9 +71,7 @@ class Contacts extends PureComponent {
 
     return (
       <View style={this.styles.fill}>
-        <Text>
-          {typeof error === 'string' ? error : error.message}
-        </Text>
+        <Text>{typeof error === 'string' ? error : error.message}</Text>
       </View>
     );
   }
@@ -109,11 +109,7 @@ class Contacts extends PureComponent {
   }
 
   render() {
-    return (
-      <View style={this.styles.container}>
-        {this.renderData()}
-      </View>
-    );
+    return <View style={this.styles.container}>{this.renderData()}</View>;
   }
 }
 

@@ -25,8 +25,7 @@ class SightsItem extends PureComponent {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
   constructor(props: Props, context) {
@@ -74,13 +73,11 @@ class SightsItem extends PureComponent {
     if (!this.props.isOpen) {
       return null;
     }
-    const buttonTitle =
-      this.context.locale === 'ru' ? 'Проложить маршрут' : 'Get directions';
 
     return (
       <View style={this.styles.content}>
         {this.props.location ? (
-          <Button onPress={this.handleNavPress} title={buttonTitle} />
+          <Button onPress={this.handleNavPress} title="Button.get_direction" />
         ) : null}
         {this.props.isOpen ? this.renderImage() : null}
         <Text style={this.styles.description}>{this.props.description}</Text>

@@ -5,8 +5,8 @@
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, Image } from "react-native";
+import React, { PureComponent } from 'react';
+import { View, Image } from 'react-native';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import getStyles from './styles';
 import call from '../../../assets/icons/call.png';
@@ -16,15 +16,14 @@ type Props = {
   small: boolean
 };
 
-class PadCallButton extends PureComponent {
-  props: Props;
+class PadCallButton extends PureComponent<Props> {
   context: Context;
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+    
   };
 
   constructor(props: Props, context: Context) {

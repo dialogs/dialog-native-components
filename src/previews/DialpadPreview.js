@@ -13,7 +13,7 @@ class DialpadPreview extends PureComponent {
     super(props);
 
     this.state = {
-      query: '123456789',
+      query: '123456',
       contacts: {
         value: [],
         pending: true,

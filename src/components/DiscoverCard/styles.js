@@ -3,10 +3,11 @@
  * @flow
  */
 
+import type { ThemeOverride, StyleOverride } from '../../types';
 import { Platform, StyleSheet } from 'react-native';
 import { Color, Padding } from '../../styles';
 
-const getStyles = (theme, styleOverride) => {
+const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
       flexDirection: 'column',

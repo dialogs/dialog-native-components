@@ -3,7 +3,12 @@
  * @flow
  */
 
-import type { User } from '@dlghq/dialog-types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type {
+  CustomFormProps as Props,
+  CustomFormProperty,
+  CustomFormValue
+} from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, TextInput } from 'react-native';
@@ -14,28 +19,25 @@ import CustomFormBoolean from './CustomFormBoolean/CustomFormBoolean';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {};
-
 class CustomForm extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.CustomForm);
   }
 
-  getProperySchema = (key: string) => this.props.schema.properties[key];
-  getProperyValue = (key: string) => this.props.value[key];
+  getProperySchema = (key: string): CustomFormProperty =>
+    this.props.schema.properties[key];
+  getProperyValue = (key: string): CustomFormValue => this.props.value[key];
 
-  handleChange = (key: string, value: string) => {
-    console.log('handleChange', key, value);
+  handleChange = (key: string, value: string | boolean): void => {
     this.props.onChange({
       ...this.props.value,
       [key]: value
@@ -59,7 +61,7 @@ class CustomForm extends PureComponent<Props> {
               key={propery}
               title={title}
               onChange={this.handleChange}
-              value={value}
+              value={Boolean(value)}
             />
           );
           break;
@@ -70,7 +72,7 @@ class CustomForm extends PureComponent<Props> {
               key={propery}
               title={title}
               onChange={this.handleChange}
-              value={value.toString()}
+              value={String(value)}
               keyboardType="numeric"
             />
           );
@@ -82,12 +84,12 @@ class CustomForm extends PureComponent<Props> {
               key={propery}
               title={title}
               onChange={this.handleChange}
-              value={value}
+              value={String(value)}
             />
           );
           break;
         default:
-          children = <Text key={propery}>Unsupported type</Text>;
+          children = <Text key={propery}>{`Unsupported type ${type}`}</Text>;
       }
 
       properties.push(children);

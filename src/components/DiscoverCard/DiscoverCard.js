@@ -4,6 +4,7 @@
  */
 
 import type { DiscoverCard as Card } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
@@ -13,13 +14,12 @@ import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import getStyles from './styles';
 
 type Props = {
-  style?: Object,
+  style?: ?*,
   card: Card,
   onGoToCard: (card: Card) => mixed
 };
 
-class DiscoverCard extends PureComponent {
-  props: Props;
+class DiscoverCard extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
@@ -27,7 +27,7 @@ class DiscoverCard extends PureComponent {
     style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.DiscoverCard);

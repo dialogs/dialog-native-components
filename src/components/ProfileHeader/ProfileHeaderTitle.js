@@ -3,13 +3,15 @@
  * @flow
  */
 
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { Text } from 'react-native';
 import getStyles from './styles';
 
 type Props = {
-  title?: ?string
+  title?: ?string,
+  style?: ?*
 };
 
 class ProfileHeaderTitle extends PureComponent<Props> {
@@ -20,7 +22,7 @@ class ProfileHeaderTitle extends PureComponent<Props> {
     style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.ProfileHeader);

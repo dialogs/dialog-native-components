@@ -5,9 +5,7 @@
   "license": "Apache-2.0",
   "description": "Dialog Native Components",
   "main": "src/index.js",
-  "files": [
-    "src"
-  ],
+  "files": ["src"],
   "repository": {
     "type": "git",
     "url": "https://github.com/dialogs/dialog-native-components.git"
@@ -15,11 +13,7 @@
   "bugs": {
     "url": "https://github.com/dialogs/dialog-native-components/issues"
   },
-  "keywords": [
-    "react-native",
-    "components",
-    "dialog"
-  ],
+  "keywords": ["react-native", "components", "dialog"],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "pretest": "npm run lint",

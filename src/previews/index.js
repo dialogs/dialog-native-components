@@ -18,6 +18,7 @@ const theme = {
     primary: '#4E0D9A',
     danger: '#e22d44'
   },
+  padding: {},
   gradient: ['#79149A', '#400B9A']
 };
 const style = {};

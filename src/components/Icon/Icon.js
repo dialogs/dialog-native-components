@@ -10,12 +10,10 @@ import { Image, Platform } from 'react-native';
 type Props = {
   glyph: string,
   size?: number,
-  style?: Object | number
+  style?: any
 };
 
-class Icon extends PureComponent {
-  props: Props;
-
+class Icon extends PureComponent<Props> {
   static defaultProps = {
     size: 32
   };

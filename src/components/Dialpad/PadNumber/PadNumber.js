@@ -24,19 +24,17 @@ import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedbac
 type Props = {
   value: string,
   small: boolean,
+  selection: Selection,
   onSelectionChange: (selection: Selection) => mixed,
   onBackspacePress: () => mixed
 };
 
-class PadNumber extends PureComponent {
-  props: Props;
-  context: Context;
+class PadNumber extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
   constructor(props: Props, context: Context) {
@@ -45,9 +43,7 @@ class PadNumber extends PureComponent {
     this.styles = getStyles(context.theme, context.style.PadNumber);
   }
 
-  setInput = input => (this.input = input);
-
-  handleSelectionChange = event => {
+  handleSelectionChange = (event: *) => {
     this.props.onSelectionChange(event.nativeEvent.selection);
   };
 
@@ -69,7 +65,6 @@ class PadNumber extends PureComponent {
         <TextInput
           style={numberStyles}
           value={this.props.value}
-          ref={this.setInput}
           autoFocus
           selection={this.props.selection}
           underlineColorAndroid="transparent"

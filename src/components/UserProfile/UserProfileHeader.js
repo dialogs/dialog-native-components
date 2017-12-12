@@ -4,6 +4,7 @@
  */
 
 import PropTypes from 'prop-types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import Avatar from '../Avatar/Avatar';
@@ -15,18 +16,22 @@ import Icon from '../Icon/Icon';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {};
+type Props = {
+  avatar: ?string,
+  title: string,
+  id: number,
+  onAvatarChange: () => mixed
+};
 
 class UserProfileHeader extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.UserProfile);

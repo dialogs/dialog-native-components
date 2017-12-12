@@ -7,6 +7,7 @@ import type {
   ContactsProps,
   ContactsItem as ContactsItemType
 } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, FlatList, ActivityIndicator, Text } from 'react-native';
@@ -20,9 +21,7 @@ type State = {
   current: ?number
 };
 
-class Contacts extends PureComponent {
-  props: Props;
-  state: State;
+class Contacts extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
@@ -30,7 +29,7 @@ class Contacts extends PureComponent {
     style: PropTypes.object
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {
@@ -55,10 +54,10 @@ class Contacts extends PureComponent {
     this.props.onChatRequest(phone);
   };
 
-  renderItem = ({ item }) => {
+  renderItem = ({ item }: { item: ContactsItemType }) => {
     return (
       <ContactsItem
-        {...item}
+        contact={item}
         isOpen={item.id === this.state.current}
         onCardPress={this.handleCardPress}
         onChatRequest={this.handleChatRequest}
@@ -68,6 +67,10 @@ class Contacts extends PureComponent {
 
   renderError() {
     const { data: { error } } = this.props;
+
+    if (!error) {
+      return null;
+    }
 
     return (
       <View style={this.styles.fill}>

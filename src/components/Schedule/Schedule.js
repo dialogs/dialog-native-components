@@ -4,9 +4,10 @@
  */
 
 import type {
-  ScheduleProps,
+  ScheduleProps as Props,
   ScheduleDay as ScheduleDayType
 } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, FlatList, ActivityIndicator } from 'react-native';
@@ -14,8 +15,7 @@ import ScheduleDay from '../ScheduleDay/ScheduleDay';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-class Schedule extends PureComponent {
-  props: ScheduleProps;
+class Schedule extends PureComponent<Props> {
   styles: Object;
 
   static defaultProps = {
@@ -24,11 +24,10 @@ class Schedule extends PureComponent {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Schedule);
@@ -52,7 +51,7 @@ class Schedule extends PureComponent {
       : [this.props.data.value[this.props.data.value.length - 1]];
   };
 
-  renderItem = ({ item }) => {
+  renderItem = ({ item }: { item: ScheduleDayType }) => {
     return <ScheduleDay {...item} onNavRequest={this.props.onNavRequest} />;
   };
 

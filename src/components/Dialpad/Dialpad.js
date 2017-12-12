@@ -3,7 +3,13 @@
  * @flow
  */
 
-import type { Selection } from '../../types';
+import type {
+  Selection,
+  DialpadProps as Props,
+  DialpadContact as DialpadContactType
+} from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
@@ -15,20 +21,12 @@ import PadFooter from './PadFooter/PadFooter';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {
-  query: string,
-  onChange: (query: string) => mixed,
-  onCallRequest: (phone: string) => mixed
-};
-
 type State = {
   isLandscape: boolean,
   selection: Selection
 };
 
-class Dialpad extends PureComponent {
-  props: Props;
-  state: State;
+class Dialpad extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
@@ -37,7 +35,7 @@ class Dialpad extends PureComponent {
     l10n: LocalizationContextType
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context & ProviderContext) {
     super(props, context);
 
     this.state = {
@@ -88,11 +86,11 @@ class Dialpad extends PureComponent {
     this.props.onCallRequest(this.props.query);
   };
 
-  handleContactPress = contact => {
+  handleContactPress = (contact: DialpadContactType) => {
     this.props.onChange(contact.phone);
   };
 
-  handleLayoutChange = event => {
+  handleLayoutChange = (event: *) => {
     const { width, height } = event.nativeEvent.layout;
 
     this.setState({
@@ -108,6 +106,10 @@ class Dialpad extends PureComponent {
 
   renderError() {
     const { contacts: { error } } = this.props;
+
+    if (!error) {
+      return null;
+    }
 
     return (
       <View style={this.styles.fill}>
@@ -137,7 +139,7 @@ class Dialpad extends PureComponent {
     );
   }
 
-  renderContact = ({ item }) => {
+  renderContact = ({ item }: { item: DialpadContactType }) => {
     return <DialpadContact contact={item} onPress={this.handleContactPress} />;
   };
 
@@ -157,7 +159,6 @@ class Dialpad extends PureComponent {
         <FlatList
           data={contacts.value}
           renderItem={this.renderContact}
-          getItem={this.getItem}
           keyExtractor={this.getItemKey}
           ListEmptyComponent={this.renderEmpty()}
         />

@@ -17,15 +17,14 @@ type Props = {
   onPress: (value: string) => mixed
 };
 
-class PadButton extends PureComponent {
-  props: Props;
+class PadButton extends PureComponent<Props> {
   context: Context;
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+    
   };
 
   constructor(props: Props, context: Context) {
@@ -62,9 +61,11 @@ class PadButton extends PureComponent {
           onLongPress={this.handleButtonLongPress}
           background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
         >
-          <View style={containerStyle} pointerEvents='box-only'>
+          <View style={containerStyle} pointerEvents="box-only">
             <Text style={valueStyle}>{this.props.value}</Text>
-            <Text style={textStyle} numberOfLines={1}>{this.props.text.toUpperCase()}</Text>
+            <Text style={textStyle} numberOfLines={1}>
+              {this.props.text.toUpperCase()}
+            </Text>
           </View>
         </TouchableNativeFeedback>
       </View>

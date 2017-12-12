@@ -3,19 +3,16 @@
  * @flow
  */
 
-import type { User } from '@dlghq/dialog-types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import getStyles from './styles';
-import { Color } from '../../styles';
+import { Color, Gradient } from '../../styles';
 
 type Props = {
-  avatar?: string,
-  title: string,
-  id: number,
-  renderButtons?: () => mixed
+  children: *
 };
 
 class ProfileHeader extends PureComponent<Props> {
@@ -23,18 +20,17 @@ class ProfileHeader extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.ProfileHeader);
   }
 
   renderBackground() {
-    const gradient = this.context.theme.gradient;
+    const gradient = this.context.theme.gradient || Gradient;
     const radius = 3;
     const degree = 135;
 

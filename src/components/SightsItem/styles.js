@@ -3,11 +3,12 @@
  * @flow
  */
 
+import type { ThemeOverride, StyleOverride } from '../../types';
 import { StyleSheet } from 'react-native';
 import ColorJS from 'color';
 import { Color } from '../../styles';
 
-const getStyles = (theme, styleOverride) => {
+const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
       backgroundColor: '#fff',

@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, TextInput } from 'react-native';
@@ -12,9 +13,9 @@ import { Color } from '../../../styles';
 type Props = {
   id: string,
   title: string,
-  onChange: (id: string, value: string) => mixed,
   value: string,
-  keyboardType: 'default' | 'numeric'
+  keyboardType: 'default' | 'numeric',
+  onChange: (id: string, value: string) => mixed
 };
 
 class CustomFormString extends PureComponent<Props> {
@@ -27,10 +28,10 @@ class CustomFormString extends PureComponent<Props> {
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+    
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.CustomFormString);

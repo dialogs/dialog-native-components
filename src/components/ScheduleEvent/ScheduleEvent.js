@@ -3,7 +3,8 @@
  * @flow
  */
 
-import type { ScheduleEvent as ScheduleEventProps } from '../../types';
+import type { ScheduleEvent as Props } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
@@ -15,13 +16,11 @@ import getStyles from './styles';
 import { Color } from '../../styles';
 
 type State = {
-  loading: boolan,
+  loading: boolean,
   isOpen: boolean
 };
 
-class ScheduleEvent extends PureComponent {
-  props: ScheduleEventProps;
-  state: State;
+class ScheduleEvent extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
@@ -29,7 +28,7 @@ class ScheduleEvent extends PureComponent {
     style: PropTypes.object
   };
 
-  constructor(props: ScheduleEventProps, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {

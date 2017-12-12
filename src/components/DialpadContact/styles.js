@@ -3,16 +3,17 @@
  * @flow
  */
 
+import type { ThemeOverride, StyleOverride } from '../../types';
 import { Platform, StyleSheet } from 'react-native';
 import { Color, Padding } from '../../styles';
 
-const getStyles = (theme, styleOverride) => {
+const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     wrapper: {
       ...Platform.select({
         android: {
           borderBottomWidth: StyleSheet.hairlineWidth,
-          borderBottomColor: Color.border,
+          borderBottomColor: Color.border
         }
       })
     },
@@ -24,12 +25,12 @@ const getStyles = (theme, styleOverride) => {
       justifyContent: 'center',
       flexDirection: 'row',
       flexWrap: 'nowrap',
-      borderRadius: 500,
+      borderRadius: 500
     },
     avatarWrapper: {
       paddingLeft: 22,
       paddingTop: 10,
-      paddingBottom: 10,
+      paddingBottom: 10
     },
     avatar: {
       flex: 0,
@@ -47,13 +48,13 @@ const getStyles = (theme, styleOverride) => {
       ...Platform.select({
         ios: {
           borderBottomWidth: 1,
-          borderBottomColor: Color.border,
+          borderBottomColor: Color.border
         }
       })
     },
     titleWrapper: {
       marginTop: 3,
-      flex: 0,
+      flex: 0
     },
     title: {
       fontSize: 16,
@@ -62,7 +63,7 @@ const getStyles = (theme, styleOverride) => {
     },
     phoneWrapper: {
       marginBottom: 3,
-      flex: 0,
+      flex: 0
     },
     phone: {
       fontSize: 12,

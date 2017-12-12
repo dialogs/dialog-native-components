@@ -3,9 +3,12 @@
  * @flow
  */
 
+import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { UserProfileProps as Props } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { ScrollView, View, Text, ActivityIndicator, Image } from 'react-native';
+import Icon from '../Icon/Icon';
 import UserProfileHeader from './UserProfileHeader';
 import UserProfileInfo from './UserProfileInfo';
 import UserProfileActions from './UserProfileActions';
@@ -13,24 +16,27 @@ import CustomForm from '../CustomForm/CustomForm';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {};
-
 class UserProfile extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.UserProfile);
   }
 
   renderError() {
+    const { data: {error } } = this.props;
+
+    if (!error) {
+      return null;
+    }
+
     return (
       <View style={this.styles.errorWrapper}>
         <Icon
@@ -39,7 +45,7 @@ class UserProfile extends PureComponent<Props> {
           width={64}
           height={64}
         />
-        <Text style={this.styles.errorText}>{this.props.data.error}</Text>
+        <Text style={this.styles.errorText}>{typeof error === 'string' ? error : error.message}</Text>
       </View>
     );
   }
@@ -56,20 +62,20 @@ class UserProfile extends PureComponent<Props> {
   }
 
   renderHeader() {
-    const { data } = this.props;
+    const { data: { value: { profile: { id, avatar, name } } } } = this.props;
 
     return (
       <UserProfileHeader
-        id={data.value.id}
-        avatar={data.value.avatar}
-        title={data.value.name}
+        id={id}
+        avatar={avatar}
+        title={name}
         onAvatarChange={this.props.onAvatarChange}
       />
     );
   }
 
   renderInfo() {
-    const { data: { value: { about, nick, phones, emails } } } = this.props;
+    const { data: { value: { profile: { about, nick, phones, emails } } } } = this.props;
 
     return (
       <UserProfileInfo
@@ -98,7 +104,6 @@ class UserProfile extends PureComponent<Props> {
   }
 
   render() {
-    console.log('UserProfile', this.props);
     const { data } = this.props;
 
     if (data.error) {

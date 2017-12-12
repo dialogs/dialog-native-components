@@ -3,6 +3,8 @@
  * @flow
  */
 
+import type { Props as Context } from '../../ContextProvider/ContextProvider';
+import type { Theme } from '../../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, Switch } from 'react-native';
@@ -11,15 +13,12 @@ import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedbac
 import getStyles from './styles';
 import { Color } from '../../../styles';
 
-type Theme = 'default' | 'primary' | 'success' | 'danger' | 'warning' | 'info';
-
 type Props = {
-  text?: string,
-  icon?: string,
+  id: string,
+  title: string,
   value: boolean,
-  iconColor?: Theme,
-  textColor?: Theme,
-  style?: any
+  style?: any,
+  onChange: (id: string, value: boolean) => mixed
 };
 
 class CustomFormBoolean extends PureComponent<Props> {
@@ -33,20 +32,20 @@ class CustomFormBoolean extends PureComponent<Props> {
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+    
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.CustomFormBoolean);
   }
 
-  handlePress = () => {
+  handlePress = (): void => {
     this.props.onChange(this.props.id, !this.props.value);
   };
 
-  handleSwitcherChange = value => {
+  handleSwitcherChange = (value: boolean): void => {
     this.props.onChange(this.props.id, value);
   };
 

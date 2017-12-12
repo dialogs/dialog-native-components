@@ -4,6 +4,8 @@
  */
 
 import PropTypes from 'prop-types';
+import type { UserOnline } from '@dlghq/dialog-types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import Avatar from '../Avatar/Avatar';
@@ -15,18 +17,24 @@ import ProfileHeaderOnline from '../ProfileHeader/ProfileHeaderOnline';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {};
+type Props = {
+  avatar: ?string,
+  title: string,
+  id: number,
+  online: UserOnline,
+  onMessagePress: () => mixed,
+  onCallPress: () => mixed
+};
 
 class ProfileHeader extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Profile);
@@ -59,7 +67,7 @@ class ProfileHeader extends PureComponent<Props> {
         <View style={this.styles.buttons}>
           <View style={this.styles.buttonWrapper}>
             <ProfileHeaderButton
-              onPress={() => console.log('Message button pressed')}
+              onPress={this.props.onMessagePress}
               title="Message"
               icon="logo"
             />
@@ -67,7 +75,7 @@ class ProfileHeader extends PureComponent<Props> {
           <View style={this.styles.buttonDivider} />
           <View style={this.styles.buttonWrapper}>
             <ProfileHeaderButton
-              onPress={() => console.log('Call button pressed')}
+              onPress={this.props.onCallPress}
               title="Call"
               icon="call"
             />

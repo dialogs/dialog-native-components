@@ -3,18 +3,19 @@
  * @flow
  */
 
+import type { ThemeOverride, StyleOverride } from '../../types';
 import { StyleSheet } from 'react-native';
 import { Color } from '../../styles';
 
-const getStyles = (theme, styleOverride) => {
+const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
       flex: 1,
-      flexDirection: 'column',
+      flexDirection: 'column'
     },
     containerLandscape: {
       flex: 1,
-      flexDirection: 'row',
+      flexDirection: 'row'
     },
     fill: {
       flex: 1,
@@ -35,7 +36,7 @@ const getStyles = (theme, styleOverride) => {
       color: Color.gray
     },
     contacts: {
-      flex: 1,
+      flex: 1
     },
     dialpad: {
       flex: 0,
@@ -46,7 +47,7 @@ const getStyles = (theme, styleOverride) => {
     dialpadLandscape: {
       flexBasis: '50%',
       borderLeftWidth: 1,
-      borderColor: Color.border,
+      borderColor: Color.border
     }
   };
 

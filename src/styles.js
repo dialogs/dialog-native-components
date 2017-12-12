@@ -3,7 +3,13 @@
  * @flow
  */
 
-const Color = {
+import type {
+  Color as ColorType,
+  Padding as PaddingType,
+  Gradient as GradientType
+} from './types';
+
+const Color: ColorType = {
   primary: '#4E0D9A',
   danger: '#e22d44',
   warning: '#ffae00',
@@ -20,12 +26,12 @@ const Color = {
   border: '#e0e0e0'
 };
 
-const Padding = {
+const Padding: PaddingType = {
   small: 8,
   default: 12,
   large: 16
 };
 
-const Gradient = ['#79149A', '#400B9A'];
+const Gradient: GradientType = ['#79149A', '#400B9A'];
 
 export { Color, Padding, Gradient };

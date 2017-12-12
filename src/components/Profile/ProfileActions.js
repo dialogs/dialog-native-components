@@ -3,6 +3,8 @@
  * @flow
  */
 
+import type { ProfileActions as Props } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { Text } from 'react-native';
@@ -12,18 +14,16 @@ import BlockAction from '../BlockAction/BlockAction';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {};
-
 class ProfileActions extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Profile);

@@ -16,11 +16,15 @@
 ; Ignore polyfills
 .*/Libraries/polyfills/.*
 
+; Ignore broken libs
+<PROJECT_ROOT>/node_modules/react-navigation/src/.*
+
 [include]
 
 [libs]
-node_modules/react-native/Libraries/react-native/react-native-interface.js
+./flow-typed
 node_modules/react-native/flow/
+node_modules/react-native/Libraries/react-native/react-native-interface.js
 
 [options]
 emoji=true

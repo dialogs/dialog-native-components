@@ -5,7 +5,9 @@
   "license": "Apache-2.0",
   "description": "Dialog Native Components",
   "main": "src/index.js",
-  "files": ["src"],
+  "files": [
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dialogs/dialog-native-components.git"
@@ -13,7 +15,11 @@
   "bugs": {
     "url": "https://github.com/dialogs/dialog-native-components/issues"
   },
-  "keywords": ["react-native", "components", "dialog"],
+  "keywords": [
+    "react-native",
+    "components",
+    "dialog"
+  ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "pretest": "npm run lint",
@@ -31,13 +37,13 @@
     "color": "2.0.1",
     "prop-types": "15.6.0",
     "react": "16.2.0",
-    "react-native": "0.50.4",
+    "react-native": "0.51.0",
     "react-native-linear-gradient": "2.3.0",
-    "react-native-maps": "0.18.3"
+    "react-native-maps": "0.19.0"
   },
   "devDependencies": {
     "babel-preset-react-native": "4.0.0",
-    "flow-bin": "0.60.1",
+    "flow-bin": "0.61.0",
     "npm-run-all": "4.1.2",
     "react-navigation": "1.0.0-beta.21"
   }

@@ -29,7 +29,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     title: {
       fontSize: 28,
-      color: '#fff'
+      color: '#fff',
+      backgroundColor: 'transparent'
     },
     online: {
       fontSize: 16,

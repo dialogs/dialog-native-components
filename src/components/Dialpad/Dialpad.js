@@ -20,10 +20,10 @@ import PadNumber from './PadNumber/PadNumber';
 import PadFooter from './PadFooter/PadFooter';
 import getStyles from './styles';
 import { Color } from '../../styles';
+import { insertText, replaceText, handleBackspace } from './inputState';
 
 type State = {
-  isLandscape: boolean,
-  selection: Selection
+  isLandscape: boolean
 };
 
 class Dialpad extends PureComponent<Props, State> {
@@ -39,55 +39,26 @@ class Dialpad extends PureComponent<Props, State> {
     super(props, context);
 
     this.state = {
-      isLandscape: false,
-      selection: {
-        start: 0,
-        end: 0
-      }
+      isLandscape: false
     };
 
     this.styles = getStyles(context.theme, context.style.Dialpad);
   }
 
   handleBackspacePress = () => {
-    const { start, end } = this.state.selection;
-
-    if (start === end) {
-      if (start !== 0) {
-        this.props.onChange(
-          this.props.query.substr(0, start - 1) + this.props.query.substr(end)
-        );
-      }
-    } else {
-      this.props.onChange(
-        this.props.query.substr(0, start) + this.props.query.substr(end)
-      );
-    }
+    this.props.onChange(handleBackspace(this.props.inputState));
   };
 
-  handleNumberPress = (value: string) => {
-    const { start, end } = this.state.selection;
-    const query =
-      this.props.query.substr(0, start) + value + this.props.query.substr(end);
-    const newCursorPosition =
-      start + 1 < query.length ? start + 1 : query.length;
-
-    this.props.onChange(query);
-
-    this.setState({
-      selection: {
-        start: newCursorPosition,
-        end: newCursorPosition
-      }
-    });
+  handleNumberPress = (number: string) => {
+    this.props.onChange(insertText(this.props.inputState, number));
   };
 
   handleCallPress = () => {
-    this.props.onCallRequest(this.props.query);
+    this.props.onCallRequest(this.props.inputState.value);
   };
 
   handleContactPress = (contact: DialpadContactType) => {
-    this.props.onChange(contact.phone);
+    this.props.onChange(replaceText(contact.phone));
   };
 
   handleLayoutChange = (event: *) => {
@@ -99,7 +70,11 @@ class Dialpad extends PureComponent<Props, State> {
   };
 
   handleSelectionChange = (selection: Selection) => {
-    this.setState({ selection });
+    console.log('selection change', selection);
+    this.props.onChange({
+      selection,
+      value: this.props.inputState.value,
+    });
   };
 
   getItemKey = (contact: any, index: number) => contact.id;
@@ -167,6 +142,7 @@ class Dialpad extends PureComponent<Props, State> {
   }
 
   renderPad() {
+    const { inputState } = this.props;
     const { isLandscape } = this.state;
 
     return (
@@ -174,8 +150,8 @@ class Dialpad extends PureComponent<Props, State> {
         style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}
       >
         <PadNumber
-          value={this.props.query}
-          selection={this.state.selection}
+          value={inputState.value}
+          selection={inputState.selection}
           small={this.state.isLandscape}
           onSelectionChange={this.handleSelectionChange}
           onBackspacePress={this.handleBackspacePress}
@@ -193,6 +169,8 @@ class Dialpad extends PureComponent<Props, State> {
   }
 
   render() {
+    console.log({...this.props.inputState });
+
     return (
       <View
         style={

@@ -15,7 +15,8 @@ import {
   Keyboard,
   TextInput,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Platform
 } from 'react-native';
 import getStyles from './styles';
 import backspace from '../../../assets/icons/backspace.png';
@@ -24,12 +25,16 @@ import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedbac
 type Props = {
   value: string,
   small: boolean,
-  selection: Selection,
+  selection?: ?Selection,
   onSelectionChange: (selection: Selection) => mixed,
   onBackspacePress: () => mixed
 };
 
-class PadNumber extends PureComponent<Props> {
+type State = {
+  isFocused: boolean
+};
+
+class PadNumber extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
@@ -41,6 +46,10 @@ class PadNumber extends PureComponent<Props> {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.PadNumber);
+
+    this.state = {
+      isFocused: false
+    };
   }
 
   handleSelectionChange = (event: *) => {
@@ -65,10 +74,11 @@ class PadNumber extends PureComponent<Props> {
         <TextInput
           style={numberStyles}
           value={this.props.value}
-          autoFocus
-          selection={this.props.selection}
+          selection={Platform.OS === 'android' ? null : this.props.selection}
           underlineColorAndroid="transparent"
           autoCorrect={false}
+          disableFullscreenUI
+          dataDetectorTypes="phoneNumber"
           onSelectionChange={this.handleSelectionChange}
         />
         <View style={backspaceStyles}>

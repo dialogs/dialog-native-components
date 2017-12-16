@@ -120,7 +120,8 @@ export type Gradient = [string, string];
 
 // TODO: describe all types
 export type DialpadContact = {
-  id: number,
+  id: string,
+  uid: number,
   title: string,
   avatar: ?string,
   phone: string,
@@ -132,10 +133,15 @@ export type DialpadContactProps = {
   onPress: (contact: DialpadContact) => mixed
 };
 
+export type InputState = {
+  value: string,
+  selection?: ?Selection
+};
+
 export type DialpadProps = {
-  query: string,
+  inputState: InputState,
   contacts: Field<DialpadContact[]>,
-  onChange: (query: string) => mixed,
+  onChange: (inputState: InputState) => mixed,
   onCallRequest: (phone: string) => mixed
 };
 

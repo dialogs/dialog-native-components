@@ -34,7 +34,7 @@ class DialpadContact extends PureComponent<Props> {
 
   renderAvatar() {
     const { contact } = this.props;
-    const placeholder = getAvatarPlaceholder(contact.id);
+    const placeholder = getAvatarPlaceholder(contact.uid);
 
     return (
       <View style={this.styles.avatarWrapper}>

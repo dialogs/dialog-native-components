@@ -25,7 +25,7 @@
     "pretest": "npm run lint",
     "test": "echo 0",
     "lint": "npm-run-all lint:flow",
-    "lint:flow": "flow",
+    "lint:flow": "flow || exit 0",
     "preversion": "npm test",
     "postversion": "npm publish",
     "postpublish": "git push --follow-tags"
@@ -35,7 +35,6 @@
     "@dlghq/react-l10n": "0.9.1",
     "@expo/react-native-touchable-native-feedback-safe": "1.1.2",
     "color": "2.0.1",
-    "jest-cli": "^21.2.1",
     "prop-types": "15.6.0",
     "react": "16.0.0",
     "react-native": "0.50.4",
@@ -45,6 +44,7 @@
   "devDependencies": {
     "babel-preset-react-native": "4.0.0",
     "flow-bin": "0.61.0",
+    "jest-cli": "21.2.1",
     "npm-run-all": "4.1.2",
     "react-navigation": "1.0.0-beta.21"
   }

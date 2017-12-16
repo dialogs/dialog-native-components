@@ -3,26 +3,24 @@
  * @flow
  */
 
+import type { AvatarPlaceholder } from '@dlghq/dialog-types';
+import type { Gradient } from './getAvatarColor';
 import React, { PureComponent } from 'react';
 import { View, Text, Image } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import type { AvatarPlaceholder } from '@dlghq/dialog-types';
-import type { Gradient } from './getAvatarColor';
 import getAvatarText from './getAvatarText';
 import getAvatarColor from './getAvatarColor';
 import styles from './styles';
 
 export type Props = {
-  style?: Object,
+  style?: any,
   size: number,
   image: ?string,
   title: string,
   placeholder: AvatarPlaceholder
 };
 
-class Avatar extends PureComponent {
-  props: Props;
-
+class Avatar extends PureComponent<Props> {
   getAvatarText(): string {
     return getAvatarText(this.props.title);
   }
@@ -101,9 +99,7 @@ class Avatar extends PureComponent {
 
     return (
       <View style={wrapperStyle}>
-        <Text style={textStyles}>
-          {text.toUpperCase()}
-        </Text>
+        <Text style={textStyles}>{text.toUpperCase()}</Text>
       </View>
     );
   }

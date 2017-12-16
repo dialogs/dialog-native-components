@@ -3,19 +3,17 @@
  * @flow
  */
 
-import type { DiscoverCard as Card } from '../../types';
-import React, { PureComponent, Children } from 'react';
+import React, { PureComponent, Children, type Node } from 'react';
 import PropTypes from 'prop-types';
 
 export type Props = {
   theme: Object,
-  styles: Object,
-  icons: Object
+  style: Object,
+  icons: Object,
+  children: Node
 };
 
-class ContextProvider extends PureComponent {
-  props: Props;
-
+class ContextProvider extends PureComponent<Props> {
   static defaultProps = {
     theme: {},
     style: {},

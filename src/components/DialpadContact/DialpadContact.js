@@ -4,35 +4,25 @@
  */
 
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View, Text } from "react-native";
+import type { DialpadContactProps as Props } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
+import React, { PureComponent } from 'react';
+import { View, Text } from 'react-native';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import Avatar from '../Avatar/Avatar';
 import getStyles from './styles';
 import { Color } from '../../styles';
-import getAvatarPlaceholder from "../../utils/getAvatarPlaceholder";
+import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 
-type Props = {
-  contact: {
-    id: number,
-    title: string,
-    avatar: ?string,
-    phone: string,
-    selection?: [number, number]
-  }
-};
-
-class DialpadContact extends PureComponent {
-  props: Props;
+class DialpadContact extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props: Props, context: Object) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.DialpadContact);
@@ -44,7 +34,7 @@ class DialpadContact extends PureComponent {
 
   renderAvatar() {
     const { contact } = this.props;
-    const placeholder = getAvatarPlaceholder(contact.id);
+    const placeholder = getAvatarPlaceholder(contact.uid);
 
     return (
       <View style={this.styles.avatarWrapper}>
@@ -88,11 +78,13 @@ class DialpadContact extends PureComponent {
     return (
       <View style={this.styles.info}>
         <View style={this.styles.titleWrapper}>
-          <Text style={this.styles.title} numberOfLines={1}>{this.props.contact.title}</Text>
+          <Text style={this.styles.title} numberOfLines={1}>
+            {this.props.contact.title}
+          </Text>
         </View>
         {this.renderPhone()}
       </View>
-    )
+    );
   }
 
   render() {

@@ -4,15 +4,10 @@
  */
 
 import type { DiscoverCard as Card } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import {
-  AppRegistry,
-  View,
-  Text,
-  VirtualizedList,
-  ActivityIndicator
-} from 'react-native';
+import { View, Text, VirtualizedList, ActivityIndicator } from 'react-native';
 import DiscoverCard from '../DiscoverCard/DiscoverCard';
 import Icon from '../Icon/Icon';
 import getStyles from './styles';
@@ -27,27 +22,26 @@ type Props = {
   onGoToCard: (card: Card) => mixed
 };
 
-class Discover extends PureComponent {
-  props: Props;
+class Discover extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Discover);
   }
 
   getItem = (data: any, index: number) => data[index];
-  getItemKey = (card: any, index: number) => `${card.peer.type}_${card.peer.id}}`;
+  getItemKey = (card: any, index: number) =>
+    `${card.peer.type}_${card.peer.id}}`;
   getItemCount = (data: any) => data.length;
 
-  renderCard = ({ item, index }) => {
+  renderCard = ({ item, index }: { item: Card, index: number }) => {
     return (
       <DiscoverCard
         card={item}
@@ -66,9 +60,7 @@ class Discover extends PureComponent {
           width={64}
           height={64}
         />
-        <Text style={this.styles.errorText}>
-          {this.props.data.error}
-        </Text>
+        <Text style={this.styles.errorText}>{this.props.data.error}</Text>
       </View>
     );
   }
@@ -121,9 +113,7 @@ class Discover extends PureComponent {
   render() {
     return (
       <View style={this.styles.container}>
-        <View style={this.styles.cards}>
-          {this.renderCards()}
-        </View>
+        <View style={this.styles.cards}>{this.renderCards()}</View>
       </View>
     );
   }

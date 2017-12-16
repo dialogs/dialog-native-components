@@ -4,6 +4,7 @@
  */
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
@@ -17,9 +18,7 @@ type Props = {
   onNumberPress: (value: string) => mixed
 };
 
-class Pad extends PureComponent {
-  props: Props;
-  context: Context;
+class Pad extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
@@ -28,7 +27,7 @@ class Pad extends PureComponent {
     l10n: LocalizationContextType
   };
 
-  constructor(props: Props, context: Context) {
+  constructor(props: Props, context: Context & ProviderContext) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Pad);

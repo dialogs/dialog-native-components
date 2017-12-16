@@ -3,10 +3,11 @@
  * @flow
  */
 
+import type { ThemeOverride, StyleOverride } from '../../../types';
 import { Platform, StyleSheet } from 'react-native';
 import { Color } from '../../../styles';
 
-const getStyles = (theme, styleOverride) => {
+const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     wrapper: {
       flexGrow: 0,
@@ -19,7 +20,7 @@ const getStyles = (theme, styleOverride) => {
       marginTop: -10,
       marginBottom: -10,
       marginLeft: -10,
-      marginRight: -10,
+      marginRight: -10
     },
     container: {
       width: 64,
@@ -33,7 +34,7 @@ const getStyles = (theme, styleOverride) => {
       ...Platform.select({
         ios: {
           borderWidth: StyleSheet.hairlineWidth,
-          borderColor: Color.grayLight,
+          borderColor: Color.grayLight
         }
       })
     },
@@ -52,7 +53,7 @@ const getStyles = (theme, styleOverride) => {
     valueSmall: {
       fontSize: 18,
       height: 26,
-      lineHeight: 26,
+      lineHeight: 26
     },
     text: {
       color: Color.gray,

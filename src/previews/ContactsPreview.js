@@ -1,12 +1,11 @@
 /*
  * Copyright 2017 dialog LLC <info@dlg.im>
- * @flow
  */
 
-import React, { PureComponent } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
+import React, { PureComponent } from 'react';
+import { StyleSheet, View, Text, Alert } from 'react-native';
 import data from '../fixtures/ContactsData.json';
-import Contacts from "../components/Contacts/Contacts";
+import Contacts from '../components/Contacts/Contacts';
 
 class ContactsPreview extends PureComponent {
   constructor(props) {
@@ -31,7 +30,7 @@ class ContactsPreview extends PureComponent {
     }, 1500);
   }
 
-  handleChatRequest = (phone) => {
+  handleChatRequest = phone => {
     Alert.alert(`Request chat with: ${phone}`);
   };
 
@@ -50,7 +49,7 @@ class ContactsPreview extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   }
 });
 

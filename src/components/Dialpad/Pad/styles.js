@@ -3,10 +3,11 @@
  * @flow
  */
 
+import type { ThemeOverride, StyleOverride } from '../../../types';
 import { StyleSheet } from 'react-native';
 import { Color } from '../../../styles';
 
-const getStyles = (theme, styleOverride) => {
+const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
       flex: 0,
@@ -19,7 +20,7 @@ const getStyles = (theme, styleOverride) => {
       marginBottom: -10
     },
     horizontal: {
-      flex: 1,
+      flex: 1
     },
     buttons: {
       flex: 1,
@@ -29,7 +30,7 @@ const getStyles = (theme, styleOverride) => {
       alignContent: 'center',
       justifyContent: 'center',
       paddingTop: 30,
-      paddingBottom: 30,
+      paddingBottom: 30
     }
   };
 

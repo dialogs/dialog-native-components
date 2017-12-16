@@ -3,10 +3,11 @@
  * @flow
  */
 
+import type { ThemeOverride, StyleOverride } from '../../types';
 import { StyleSheet } from 'react-native';
 import { Color, Padding } from '../../styles';
 
-const getStyles = (theme, styleOverride) => {
+const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
       flex: 1,
@@ -28,7 +29,8 @@ const getStyles = (theme, styleOverride) => {
     },
     title: {
       fontSize: 28,
-      color: '#fff'
+      color: '#fff',
+      backgroundColor: 'transparent'
     },
     online: {
       fontSize: 16,

@@ -3,7 +3,8 @@
  * @flow
  */
 
-import type { SightsItemProps } from '../../types';
+import type { SightsItemProps as Props } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, ActivityIndicator, ImageBackground } from 'react-native';
@@ -12,15 +13,11 @@ import Button from '../Button/Button';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = SightsItemProps;
-
 type State = {
   loading: boolean
 };
 
-class SightsItem extends PureComponent {
-  props: Props;
-  state: State;
+class SightsItem extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
@@ -28,7 +25,7 @@ class SightsItem extends PureComponent {
     style: PropTypes.object
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {
@@ -43,19 +40,19 @@ class SightsItem extends PureComponent {
   };
 
   handleCardPress = (): void => {
-    this.props.onCardPress(this.props.id);
+    this.props.onCardPress(this.props.sight.id);
   };
 
   handleNavPress = (): void => {
-    if (this.props.location) {
-      this.props.onNavRequest(this.props.location);
+    if (this.props.sight.location) {
+      this.props.onNavRequest(this.props.sight.location);
     }
   };
 
   renderImage() {
     return (
       <ImageBackground
-        source={{ uri: this.props.image }}
+        source={{ uri: this.props.sight.image }}
         onLoadEnd={this.handleImageLoaded}
         style={
           this.props.isOpen ? this.styles.imageLarge : this.styles.imageSmall
@@ -76,11 +73,11 @@ class SightsItem extends PureComponent {
 
     return (
       <View style={this.styles.content}>
-        {this.props.location ? (
+        {this.props.sight.location ? (
           <Button onPress={this.handleNavPress} title="Button.get_direction" />
         ) : null}
         {this.props.isOpen ? this.renderImage() : null}
-        <Text style={this.styles.description}>{this.props.description}</Text>
+        <Text style={this.styles.description}>{this.props.sight.description}</Text>
       </View>
     );
   }
@@ -97,10 +94,10 @@ class SightsItem extends PureComponent {
           <View style={this.styles.cardHeading} pointerEvents="box-only">
             <View style={this.styles.cardHeadingText}>
               <Text style={this.styles.title} numberOfLines={1}>
-                {this.props.title}
+                {this.props.sight.title}
               </Text>
               <Text style={this.styles.address} numberOfLines={1}>
-                {this.props.address}
+                {this.props.sight.address}
               </Text>
             </View>
             {!this.props.isOpen ? this.renderImage() : null}

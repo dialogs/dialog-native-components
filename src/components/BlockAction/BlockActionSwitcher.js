@@ -3,6 +3,8 @@
  * @flow
  */
 
+import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { Theme } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, Switch } from 'react-native';
@@ -11,15 +13,14 @@ import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedbac
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Theme = 'default' | 'primary' | 'success' | 'danger' | 'warning' | 'info';
-
 type Props = {
   text?: string,
   icon?: string,
   value: boolean,
-  iconColor?: Theme,
-  textColor?: Theme,
-  style?: any
+  iconColor?: string,
+  textColor?: string,
+  style?: ?*,
+  onChange: (value: boolean) => mixed
 };
 
 class BlockActionSwitcher extends PureComponent<Props> {
@@ -32,11 +33,10 @@ class BlockActionSwitcher extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.BlockAction);

@@ -5,8 +5,8 @@
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
-import React, { PureComponent } from "react";
-import { View } from "react-native";
+import React, { PureComponent } from 'react';
+import { View } from 'react-native';
 import PadCallButton from '../PadCallButton/PadCallButton';
 import getStyles from './styles';
 
@@ -15,15 +15,14 @@ type Props = {
   horizontal: boolean
 };
 
-class PadFooter extends PureComponent {
-  props: Props;
+class PadFooter extends PureComponent<Props> {
   context: Context;
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    locale: PropTypes.string
+    
   };
 
   constructor(props: Props, context: Context) {
@@ -41,7 +40,10 @@ class PadFooter extends PureComponent {
 
     return (
       <View style={style}>
-        <PadCallButton onCallPress={this.props.onCallPress} small={horizontal} />
+        <PadCallButton
+          onCallPress={this.props.onCallPress}
+          small={horizontal}
+        />
       </View>
     );
   }

@@ -3,7 +3,8 @@
  * @flow
  */
 
-import type { ContactsItemProps } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { ContactsItemProps as Props } from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, ActivityIndicator, ImageBackground } from 'react-native';
@@ -12,15 +13,11 @@ import Button from '../Button/Button';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = ContactsItemProps;
-
 type State = {
   loading: boolean
 };
 
-class ContactsItem extends PureComponent {
-  props: Props;
-  state: State;
+class ContactsItem extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
@@ -28,7 +25,7 @@ class ContactsItem extends PureComponent {
     style: PropTypes.object
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {
@@ -43,23 +40,23 @@ class ContactsItem extends PureComponent {
   };
 
   handleCardPress = (): void => {
-    this.props.onCardPress(this.props.id);
+    this.props.onCardPress(this.props.contact.id);
   };
 
   handleButtonPress = (): void => {
-    if (this.props.phone) {
-      this.props.onChatRequest(this.props.phone);
+    if (this.props.contact.phone) {
+      this.props.onChatRequest(this.props.contact.phone);
     }
   };
 
   renderImage() {
-    if (!this.props.photo) {
+    if (!this.props.contact.photo) {
       return null;
     }
 
     return (
       <ImageBackground
-        source={{ uri: this.props.photo }}
+        source={{ uri: this.props.contact.photo }}
         onLoadEnd={this.handleImageLoaded}
         style={
           this.props.isOpen ? this.styles.imageLarge : this.styles.imageSmall
@@ -80,9 +77,9 @@ class ContactsItem extends PureComponent {
 
     return (
       <View style={this.styles.content}>
-        <Text style={this.styles.region}>{this.props.region}</Text>
+        <Text style={this.styles.region}>{this.props.contact.region}</Text>
         {this.props.isOpen ? this.renderImage() : null}
-        {this.props.phone ? (
+        {this.props.contact.phone ? (
           <Button onPress={this.handleButtonPress} title="Button.open_chat" />
         ) : null}
       </View>
@@ -101,10 +98,10 @@ class ContactsItem extends PureComponent {
           <View style={this.styles.cardHeading} pointerEvents="box-only">
             <View style={this.styles.cardHeadingText}>
               <Text style={this.styles.title} numberOfLines={1}>
-                {this.props.title}
+                {this.props.contact.title}
               </Text>
               <Text style={this.styles.position} numberOfLines={1}>
-                {this.props.position}
+                {this.props.contact.position}
               </Text>
             </View>
             {!this.props.isOpen ? this.renderImage() : null}

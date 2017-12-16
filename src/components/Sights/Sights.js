@@ -4,10 +4,11 @@
  */
 
 import type {
-  SightsProps,
+  SightsProps as Props,
   SightsItem as SightsItemType,
   Location
 } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, FlatList, ActivityIndicator, Text } from 'react-native';
@@ -15,24 +16,19 @@ import SightsItem from '../SightsItem/SightsItem';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = SightsProps;
-
 type State = {
   current: ?number
 };
 
-class Sights extends PureComponent {
-  props: Props;
-  state: State;
+class Sights extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.state = {
@@ -42,7 +38,7 @@ class Sights extends PureComponent {
     this.styles = getStyles(context.theme, context.style.Sights);
   }
 
-  getKey = (item: SightsItem, index: number): string => `sight_${index}`;
+  getKey = (item: SightsItemType, index: number): string => `sight_${index}`;
 
   handleCardPress = (current: number): void => {
     if (this.state.current === current) {
@@ -56,10 +52,10 @@ class Sights extends PureComponent {
     this.props.onNavRequest(location);
   };
 
-  renderItem = ({ item }) => {
+  renderItem = ({ item }: { item: SightsItemType }) => {
     return (
       <SightsItem
-        {...item}
+        sight={item}
         isOpen={item.id === this.state.current}
         onCardPress={this.handleCardPress}
         onNavRequest={this.handleNavPress}
@@ -69,6 +65,10 @@ class Sights extends PureComponent {
 
   renderError() {
     const { data: { error } } = this.props;
+
+    if (!error) {
+      return null;
+    }
 
     return (
       <View style={this.styles.fill}>

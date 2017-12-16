@@ -1,10 +1,9 @@
 /*
  * Copyright 2017 dialog LLC <info@dlg.im>
- * @flow
  */
 
-import React, { PureComponent } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
+import React, { PureComponent } from 'react';
+import { StyleSheet, View, Text, Alert } from 'react-native';
 import Sights from '../components/Sights/Sights';
 import data from '../fixtures/SightsData.json';
 
@@ -31,17 +30,16 @@ class SightsPreview extends PureComponent {
     }, 1500);
   }
 
-  handleNavRequest = (location) => {
-    Alert.alert(`Request navigation to: ${location.latitude}, ${location.longitude}`);
+  handleNavRequest = location => {
+    Alert.alert(
+      `Request navigation to: ${location.latitude}, ${location.longitude}`
+    );
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Sights
-          data={this.state.data}
-          onNavRequest={this.handleNavRequest}
-        />
+        <Sights data={this.state.data} onNavRequest={this.handleNavRequest} />
       </View>
     );
   }
@@ -50,7 +48,7 @@ class SightsPreview extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   }
 });
 

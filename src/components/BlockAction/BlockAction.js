@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
@@ -16,8 +17,9 @@ type Props = {
   icon?: string,
   iconColor?: string,
   textColor?: string,
-  style?: any,
-  children?: any
+  style?: ?*,
+  children?: ?*,
+  onPress: () => mixed
 };
 
 class BlockAction extends PureComponent<Props> {
@@ -30,11 +32,10 @@ class BlockAction extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.BlockAction);

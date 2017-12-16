@@ -1,14 +1,13 @@
 /*
  * Copyright 2017 dialog LLC <info@dlg.im>
- * @flow
  */
 
 import type { DiscoverCard } from '../types';
-import React, { PureComponent } from "react";
-import { StyleSheet, Text, View, Alert } from "react-native";
-import { group, user, channel, bot } from "../fixtures/peerInfo";
+import React, { PureComponent } from 'react';
+import { StyleSheet, Text, View, Alert } from 'react-native';
+import { group, user, channel, bot } from '../fixtures/peerInfo';
 import ContextProvider from '../components/ContextProvider/ContextProvider';
-import Discover from "../components/Discover/Discover";
+import Discover from '../components/Discover/Discover';
 
 const items = [
   {
@@ -70,10 +69,7 @@ class DiscoverPreview extends PureComponent {
   render() {
     return (
       <View style={styles.container}>
-        <Discover
-          data={this.state.cards}
-          onGoToCard={this.handleCardTap}
-        />
+        <Discover data={this.state.cards} onGoToCard={this.handleCardTap} />
       </View>
     );
   }
@@ -82,7 +78,7 @@ class DiscoverPreview extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   }
 });
 

@@ -3,6 +3,8 @@
  * @flow
  */
 
+import type { Location as Props } from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Platform } from 'react-native';
@@ -11,13 +13,8 @@ import getStyles from './styles';
 import Icon from '../Icon/Icon';
 import { Color } from '../../styles';
 
-type Props = {
-  latitude: number,
-  longitude: number
-};
-
 class Map extends PureComponent<Props> {
-  state: State;
+  styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
@@ -25,13 +22,13 @@ class Map extends PureComponent<Props> {
     icons: PropTypes.object
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Map);
   }
 
-  getMarkerImage = (): void => {
+  getMarkerImage = () => {
     if (this.context.icons && this.context.icons['marker']) {
       return { uri: this.context.icons['marker'], cache: 'force-cache' };
     } else if (Platform.OS === 'ios') {

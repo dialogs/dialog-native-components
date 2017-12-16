@@ -4,30 +4,28 @@
  */
 
 import PropTypes from 'prop-types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from '../Icon/Icon';
 import getStyles from './styles';
 
 type Props = {
-  avatar?: string,
+  icon: string,
   title: string,
-  id: number,
-  style?: string,
-  renderButtons?: () => mixed
+  style?: ?*,
+  onPress: () => mixed
 };
 
 class ProfileHeaderButton extends PureComponent<Props> {
-  props: Props;
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.ProfileHeader);

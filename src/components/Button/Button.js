@@ -3,6 +3,7 @@
  * @flow
  */
 
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
@@ -15,8 +16,7 @@ type Props = {
   onPress: () => mixed
 };
 
-class Button extends PureComponent {
-  props: Props;
+class Button extends PureComponent<Props> {
   styles: Object;
 
   static defailtProps = {
@@ -29,7 +29,7 @@ class Button extends PureComponent {
     l10n: LocalizationContextType
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Schedule);

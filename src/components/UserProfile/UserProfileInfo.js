@@ -3,7 +3,8 @@
  * @flow
  */
 
-import type { User } from '@dlghq/dialog-types';
+import type { Phone, Email } from '@dlghq/dialog-types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
@@ -13,18 +14,22 @@ import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-type Props = {};
+type Props = {
+  nick: ?string,
+  about: ?string,
+  phones: Phone[],
+  emails: Email[]
+};
 
 class UserProfileInfo extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.UserProfile);

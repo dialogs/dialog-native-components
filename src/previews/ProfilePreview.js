@@ -1,6 +1,5 @@
 /*
  * Copyright 2017 dialog LLC <info@dlg.im>
- * @flow
  */
 
 import React, { PureComponent } from 'react';
@@ -45,7 +44,6 @@ class ContactsPreview extends PureComponent {
   };
 
   handleFavouriteToggle = () => {
-    console.log('handleFavouriteToggle', this.state.data.value.isFavourite);
     this.setState({
       data: {
         value: {

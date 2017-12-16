@@ -3,7 +3,13 @@
  * @flow
  */
 
-import type { Selection } from '../../types';
+import type {
+  Selection,
+  DialpadProps as Props,
+  DialpadContact as DialpadContactType
+} from '../../types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { ProviderContext } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
@@ -14,21 +20,13 @@ import PadNumber from './PadNumber/PadNumber';
 import PadFooter from './PadFooter/PadFooter';
 import getStyles from './styles';
 import { Color } from '../../styles';
-
-type Props = {
-  query: string,
-  onChange: (query: string) => mixed,
-  onCallRequest: (phone: string) => mixed
-};
+import { insertText, replaceText, handleBackspace } from './inputState';
 
 type State = {
-  isLandscape: boolean,
-  selection: Selection
+  isLandscape: boolean
 };
 
-class Dialpad extends PureComponent {
-  props: Props;
-  state: State;
+class Dialpad extends PureComponent<Props, State> {
   styles: Object;
 
   static contextTypes = {
@@ -37,62 +35,33 @@ class Dialpad extends PureComponent {
     l10n: LocalizationContextType
   };
 
-  constructor(props: Props, context) {
+  constructor(props: Props, context: Context & ProviderContext) {
     super(props, context);
 
     this.state = {
-      isLandscape: false,
-      selection: {
-        start: 0,
-        end: 0
-      }
+      isLandscape: false
     };
 
     this.styles = getStyles(context.theme, context.style.Dialpad);
   }
 
   handleBackspacePress = () => {
-    const { start, end } = this.state.selection;
-
-    if (start === end) {
-      if (start !== 0) {
-        this.props.onChange(
-          this.props.query.substr(0, start - 1) + this.props.query.substr(end)
-        );
-      }
-    } else {
-      this.props.onChange(
-        this.props.query.substr(0, start) + this.props.query.substr(end)
-      );
-    }
+    this.props.onChange(handleBackspace(this.props.inputState));
   };
 
-  handleNumberPress = (value: string) => {
-    const { start, end } = this.state.selection;
-    const query =
-      this.props.query.substr(0, start) + value + this.props.query.substr(end);
-    const newCursorPosition =
-      start + 1 < query.length ? start + 1 : query.length;
-
-    this.props.onChange(query);
-
-    this.setState({
-      selection: {
-        start: newCursorPosition,
-        end: newCursorPosition
-      }
-    });
+  handleNumberPress = (number: string) => {
+    this.props.onChange(insertText(this.props.inputState, number));
   };
 
   handleCallPress = () => {
-    this.props.onCallRequest(this.props.query);
+    this.props.onCallRequest(this.props.inputState.value);
   };
 
-  handleContactPress = contact => {
-    this.props.onChange(contact.phone);
+  handleContactPress = (contact: DialpadContactType) => {
+    this.props.onChange(replaceText(contact.phone));
   };
 
-  handleLayoutChange = event => {
+  handleLayoutChange = (event: *) => {
     const { width, height } = event.nativeEvent.layout;
 
     this.setState({
@@ -101,13 +70,21 @@ class Dialpad extends PureComponent {
   };
 
   handleSelectionChange = (selection: Selection) => {
-    this.setState({ selection });
+    console.log('selection change', selection);
+    this.props.onChange({
+      selection,
+      value: this.props.inputState.value,
+    });
   };
 
   getItemKey = (contact: any, index: number) => contact.id;
 
   renderError() {
     const { contacts: { error } } = this.props;
+
+    if (!error) {
+      return null;
+    }
 
     return (
       <View style={this.styles.fill}>
@@ -137,7 +114,7 @@ class Dialpad extends PureComponent {
     );
   }
 
-  renderContact = ({ item }) => {
+  renderContact = ({ item }: { item: DialpadContactType }) => {
     return <DialpadContact contact={item} onPress={this.handleContactPress} />;
   };
 
@@ -157,7 +134,6 @@ class Dialpad extends PureComponent {
         <FlatList
           data={contacts.value}
           renderItem={this.renderContact}
-          getItem={this.getItem}
           keyExtractor={this.getItemKey}
           ListEmptyComponent={this.renderEmpty()}
         />
@@ -166,6 +142,7 @@ class Dialpad extends PureComponent {
   }
 
   renderPad() {
+    const { inputState } = this.props;
     const { isLandscape } = this.state;
 
     return (
@@ -173,8 +150,8 @@ class Dialpad extends PureComponent {
         style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}
       >
         <PadNumber
-          value={this.props.query}
-          selection={this.state.selection}
+          value={inputState.value}
+          selection={inputState.selection}
           small={this.state.isLandscape}
           onSelectionChange={this.handleSelectionChange}
           onBackspacePress={this.handleBackspacePress}
@@ -192,6 +169,8 @@ class Dialpad extends PureComponent {
   }
 
   render() {
+    console.log({...this.props.inputState });
+
     return (
       <View
         style={

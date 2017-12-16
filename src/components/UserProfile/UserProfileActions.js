@@ -4,6 +4,7 @@
  */
 
 import PropTypes from 'prop-types';
+import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import Block from '../Block/Block';
@@ -18,11 +19,10 @@ class UserProfileActions extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    locale: PropTypes.string
+    style: PropTypes.object
   };
 
-  constructor(props, context) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.UserProfile);

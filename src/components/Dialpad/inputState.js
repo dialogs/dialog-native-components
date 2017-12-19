@@ -72,6 +72,17 @@ export function handleBackspace(state: InputState): InputState {
     };
   }
 
+  const nextSelectionStart = Math.max(0, value.length - 1);
+  if (nextSelectionStart !== 0) {
+    return {
+      value: value.slice(0, -1),
+      selection: {
+        start: nextSelectionStart,
+        end: nextSelectionStart
+      }
+    };
+  }
+
   return {
     value: value.slice(0, -1)
   };

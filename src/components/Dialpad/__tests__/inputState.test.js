@@ -24,7 +24,10 @@ describe('insertText', () => {
     ).toEqual({ value: '1230', selection: { start: 4, end: 4 } });
   });
 
-  test('handleBackspace with selection', () => {
+  test('insertText with selection', () => {
+    expect(
+      insertText({ value: '1221', selection: { start: 1, end: 3 } }, '0')
+    ).toEqual({ value: '101', selection: { start: 2, end: 2 } });
   });
 });
 

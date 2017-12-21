@@ -26,7 +26,7 @@ class Icon extends PureComponent<Props> {
     const { glyph } = this.props;
     if (this.context.icons && this.context.icons[glyph]) {
       return { uri: this.context.icons[glyph], cache: 'force-cache' };
-    } else if (Platform.OS === 'ios') {
+    } else if (this.context.useNativeIcons) {
       return null;
     }
 

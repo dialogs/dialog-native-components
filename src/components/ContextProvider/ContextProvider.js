@@ -10,14 +10,16 @@ export type Props = {
   theme: Object,
   style: Object,
   icons: Object,
-  children: Node
+  children: Node,
+  useNativeIcons: boolean
 };
 
 class ContextProvider extends PureComponent<Props> {
   static defaultProps = {
     theme: {},
     style: {},
-    icons: {}
+    icons: {},
+    useNativeIcons: false
   };
 
   static childContextTypes = {

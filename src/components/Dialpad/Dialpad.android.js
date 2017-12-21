@@ -19,7 +19,7 @@ import DialpadContact from '../DialpadContact/DialpadContact';
 import Pad from './Pad/Pad';
 import PadNumber from './PadNumber/PadNumber';
 import PadFooter from './PadFooter/PadFooter';
-import getStyles from './styles';
+import getStyles from './styles.android';
 import { Color } from '../../styles';
 import { insertText, replaceText, handleBackspace } from './inputState';
 
@@ -53,13 +53,13 @@ class Dialpad extends PureComponent<Props, State> {
   }
 
   handleChange = (inputState: *) => {
-    if ((/^[0-9 ()+\-#*]*$/).test(inputState.value)) {
+    if (/^[0-9 ()+\-#*]*$/.test(inputState.value)) {
       this.props.onChange(inputState);
     } else {
       // force selection
       this.forceUpdate();
     }
-  }
+  };
 
   handleNumberPress = (number: string) => {
     this.props.onChange(insertText(this.props.inputState, number));
@@ -127,12 +127,17 @@ class Dialpad extends PureComponent<Props, State> {
     const { isLandscape } = this.state;
 
     if (!isContactsEnabled) {
-      if (isLandscape) {
-        return <View style={this.styles.contacts} />;
-      } else {
-        return null;
-      }
+      return (
+        <View
+          style={
+            isLandscape
+              ? this.styles.contactsDisabledLandscape
+              : this.styles.contactsDisabled
+          }
+        />
+      );
     }
+
     if (contacts.error) {
       return this.renderError();
     }

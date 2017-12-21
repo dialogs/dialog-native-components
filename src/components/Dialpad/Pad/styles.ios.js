@@ -4,7 +4,7 @@
  */
 
 import type { ThemeOverride, StyleOverride } from '../../../types';
-import { StyleSheet, Platform } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Color } from '../../../styles';
 
 const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
@@ -13,22 +13,24 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       flex: 0,
       alignItems: 'center',
       alignContent: 'center',
-      justifyContent: 'center',
-      ...Platform.select({
-        ios: {
-          padding: 20
-        },
-        android: {
-          padding: 12
-        }
-      })
-      // backgroundColor: 'rgba(0,255,0,.2)'
+      justifyContent: 'center'
+      // backgroundColor: 'rgba(255,0,255,.2)'
     },
     horizontal: {
-      paddingBottom: 10
+      flex: 1
     },
-    smallWidth: {
-      height: 40
+    buttons: {
+      flex: 0,
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center',
+      paddingTop: 20,
+      paddingBottom: 20
+    },
+    pullUp: {
+      marginTop: -10
     }
   };
 

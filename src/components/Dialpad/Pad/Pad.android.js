@@ -9,7 +9,7 @@ import { LocalizationContextType } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import getStyles from './styles';
+import getStyles from './styles.android';
 import PadButton from '../PadButton/PadButton';
 import padButtons from './padButtons';
 
@@ -58,6 +58,7 @@ class Pad extends PureComponent<Props> {
   }
 
   render() {
+    console.log('Pad android');
     const { isSmallWidth } = this.props;
     const style = [];
     if (this.props.horizontal) {

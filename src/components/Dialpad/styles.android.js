@@ -48,6 +48,14 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       flexBasis: '50%',
       borderLeftWidth: 1,
       borderColor: Color.border
+    },
+    contactsDisabled: {
+      height: 0,
+      flex: 0
+    },
+    contactsDisabledLandscape: {
+      height: 0,
+      flex: 0
     }
   };
 

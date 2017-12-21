@@ -34,7 +34,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     online: {
       fontSize: 16,
-      color: 'rgba(255, 255, 255, 0.5)'
+      color: 'rgba(255, 255, 255, 0.5)',
+      backgroundColor: 'transparent'
     },
     button: {
       borderRadius: 6,
@@ -61,9 +62,11 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       lineHeight: 20,
       fontWeight: '500',
       flex: 0,
+      zIndex: 5,
       paddingLeft: Padding.default / 2 + 26
     },
     buttonIcon: {
+      zIndex: 10,
       position: 'absolute',
       left: 0,
       top: -3,

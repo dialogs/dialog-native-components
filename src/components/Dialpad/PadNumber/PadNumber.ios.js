@@ -18,7 +18,7 @@ import {
   ScrollView,
   Platform
 } from 'react-native';
-import getStyles from './styles';
+import getStyles from './styles.ios';
 import { replaceText, handleBackspace } from '../inputState';
 import backspace from '../../../assets/icons/backspace.png';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';
@@ -27,6 +27,7 @@ type Props = {
   inputState: InputState,
   isLandscape: boolean,
   isSmallWidth: boolean,
+  isContactsEnabled: boolean,
   onChange: (inputState: InputState) => mixed
 };
 
@@ -67,11 +68,16 @@ class PadNumber extends PureComponent<Props, State> {
   handleSelectionChange = (event: *) => {
     const { inputState: { value } } = this.props;
     const { nativeEvent: { selection } } = event;
-    this.props.onChange({ value, selection })
+    this.props.onChange({ value, selection });
   };
 
   render() {
-    const { inputState, isLandscape, isSmallWidth } = this.props;
+    const {
+      inputState,
+      isLandscape,
+      isSmallWidth,
+      isContactsEnabled
+    } = this.props;
     const styles = [this.styles.container];
     const numberStyles = [this.styles.number];
     const backspaceStyles = [this.styles.backspace];
@@ -85,6 +91,10 @@ class PadNumber extends PureComponent<Props, State> {
 
     if (isSmallWidth) {
       styles.push(this.styles.containerCompact);
+    }
+
+    if (!isContactsEnabled && !isLandscape) {
+      styles.push(this.styles.containerWidthPadding);
     }
 
     return (

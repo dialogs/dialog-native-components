@@ -12,6 +12,7 @@ import getStyles from './styles';
 
 type Props = {
   onCallPress: () => mixed,
+  isSmallWidth: boolean,
   horizontal: boolean
 };
 
@@ -21,8 +22,7 @@ class PadFooter extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    
+    style: PropTypes.object
   };
 
   constructor(props: Props, context: Context) {
@@ -32,7 +32,8 @@ class PadFooter extends PureComponent<Props> {
   }
 
   render() {
-    const { horizontal } = this.props;
+    console.log({ ...this.props });
+    const { horizontal, isSmallWidth } = this.props;
     const style = [this.styles.container];
     if (horizontal) {
       style.push(this.styles.horizontal);
@@ -42,7 +43,7 @@ class PadFooter extends PureComponent<Props> {
       <View style={style}>
         <PadCallButton
           onCallPress={this.props.onCallPress}
-          small={horizontal}
+          small={isSmallWidth}
         />
       </View>
     );

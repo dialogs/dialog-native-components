@@ -32,7 +32,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     backspace: {
       position: 'absolute',
-      top: 20,
+      top: 19,
       right: 20,
       width: 32,
       height: 32,
@@ -47,7 +47,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       tintColor: Color.gray
     },
     backspaceSmall: {
-      top: 17,
+      top: 16,
       width: 28,
       height: 28
     },

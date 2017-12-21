@@ -22,8 +22,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       height: 64
     },
     small: {
-      width: 58,
-      height: 58
+      width: 36,
+      height: 36
     },
     iconNormal: {
       width: 32,
@@ -31,8 +31,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       tintColor: Color.white
     },
     iconSmall: {
-      width: 28,
-      height: 28,
+      width: 22,
+      height: 22,
       tintColor: Color.white
     }
   };

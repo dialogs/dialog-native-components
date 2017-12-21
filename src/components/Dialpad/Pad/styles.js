@@ -10,14 +10,13 @@ import { Color } from '../../../styles';
 const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
-      flex: 0,
+      flex: 1,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
       padding: 20,
-      height: 300,
-      marginTop: -10,
-      marginBottom: -10
+      marginTop: -5,
+      marginBottom: -5
     },
     horizontal: {
       flex: 1

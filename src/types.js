@@ -141,6 +141,7 @@ export type InputState = {
 export type DialpadProps = {
   inputState: InputState,
   contacts: Field<DialpadContact[]>,
+  isContactsEnabled: boolean,
   onChange: (inputState: InputState) => mixed,
   onCallRequest: (phone: string) => mixed
 };

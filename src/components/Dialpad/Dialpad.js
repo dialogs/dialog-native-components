@@ -23,11 +23,16 @@ import { Color } from '../../styles';
 import { insertText, replaceText, handleBackspace } from './inputState';
 
 type State = {
-  isLandscape: boolean
+  isLandscape: boolean,
+  width: number
 };
 
 class Dialpad extends PureComponent<Props, State> {
   styles: Object;
+
+  static defaultProps = {
+    isContactsEnabled: true
+  };
 
   static contextTypes = {
     theme: PropTypes.object,
@@ -39,7 +44,8 @@ class Dialpad extends PureComponent<Props, State> {
     super(props, context);
 
     this.state = {
-      isLandscape: false
+      isLandscape: false,
+      width: 0
     };
 
     this.styles = getStyles(context.theme, context.style.Dialpad);
@@ -63,17 +69,16 @@ class Dialpad extends PureComponent<Props, State> {
 
   handleLayoutChange = (event: *) => {
     const { width, height } = event.nativeEvent.layout;
-
     this.setState({
-      isLandscape: width > height
+      isLandscape: width > height,
+      width
     });
   };
 
   handleSelectionChange = (selection: Selection) => {
-    console.log('selection change', selection);
     this.props.onChange({
       selection,
-      value: this.props.inputState.value,
+      value: this.props.inputState.value
     });
   };
 
@@ -119,8 +124,16 @@ class Dialpad extends PureComponent<Props, State> {
   };
 
   renderContacts() {
-    const { contacts } = this.props;
+    const { contacts, isContactsEnabled } = this.props;
+    const { isLandscape } = this.state;
 
+    if (!isContactsEnabled) {
+      if (isLandscape) {
+        return <View style={this.styles.contacts} />;
+      } else {
+        return null;
+      }
+    }
     if (contacts.error) {
       return this.renderError();
     }
@@ -143,7 +156,7 @@ class Dialpad extends PureComponent<Props, State> {
 
   renderPad() {
     const { inputState } = this.props;
-    const { isLandscape } = this.state;
+    const { isLandscape, width } = this.state;
 
     return (
       <View
@@ -159,17 +172,19 @@ class Dialpad extends PureComponent<Props, State> {
         <Pad
           horizontal={this.state.isLandscape}
           onNumberPress={this.handleNumberPress}
+          isSmallWidth={isLandscape && width < 600}
         />
         <PadFooter
           horizontal={this.state.isLandscape}
           onCallPress={this.handleCallPress}
+          isSmallWidth={isLandscape && width < 600}
         />
       </View>
     );
   }
 
   render() {
-    console.log({...this.props.inputState });
+    console.log({ ...this.props.inputState });
 
     return (
       <View

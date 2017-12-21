@@ -15,6 +15,7 @@ import padButtons from './padButtons';
 
 type Props = {
   horizontal: boolean,
+  isSmallWidth: boolean,
   onNumberPress: (value: string) => mixed
 };
 

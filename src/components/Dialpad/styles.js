@@ -39,7 +39,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       flex: 1
     },
     dialpad: {
-      flex: 0,
+      flex: 1,
       borderTopWidth: 1,
       borderColor: Color.border,
       backgroundColor: '#fff'

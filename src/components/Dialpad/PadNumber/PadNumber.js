@@ -77,12 +77,13 @@ class PadNumber extends PureComponent<Props, State> {
     return (
       <View style={styles}>
         <TextInput
+          keyboardHidden
+          disableFullscreenUI
+          autoCorrect={false}
           style={numberStyles}
           value={this.props.value}
           selection={Platform.OS === 'android' ? null : this.props.selection}
           underlineColorAndroid="transparent"
-          autoCorrect={false}
-          disableFullscreenUI
           dataDetectorTypes="phoneNumber"
           onSelectionChange={this.handleSelectionChange}
         />

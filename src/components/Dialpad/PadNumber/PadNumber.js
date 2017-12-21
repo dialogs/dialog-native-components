@@ -4,7 +4,7 @@
  */
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
-import type { Selection } from '../../../types';
+import type { Selection, InputState } from '../../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import {
@@ -19,16 +19,15 @@ import {
   Platform
 } from 'react-native';
 import getStyles from './styles';
+import { replaceText, handleBackspace } from '../inputState';
 import backspace from '../../../assets/icons/backspace.png';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';
 
 type Props = {
-  value: string,
-  small: boolean,
-  selection?: ?Selection,
+  inputState: InputState,
+  isLandscape: boolean,
   isSmallWidth: boolean,
-  onSelectionChange: (selection: Selection) => mixed,
-  onBackspacePress: () => mixed
+  onChange: (inputState: InputState) => mixed
 };
 
 type State = {
@@ -53,17 +52,31 @@ class PadNumber extends PureComponent<Props, State> {
     };
   }
 
+  handleChange = (event: *) => {
+    this.props.onChange(replaceText(event.nativeEvent.text));
+  };
+
+  handleTextChange = (value: string) => {
+    this.props.onChange(replaceText(value));
+  };
+
+  handleBackspace = () => {
+    this.props.onChange(handleBackspace(this.props.inputState));
+  };
+
   handleSelectionChange = (event: *) => {
-    this.props.onSelectionChange(event.nativeEvent.selection);
+    const { inputState: { value } } = this.props;
+    const { nativeEvent: { selection } } = event;
+    this.props.onChange({ value, selection })
   };
 
   render() {
-    const { small, isSmallWidth } = this.props;
+    const { inputState, isLandscape, isSmallWidth } = this.props;
     const styles = [this.styles.container];
     const numberStyles = [this.styles.number];
     const backspaceStyles = [this.styles.backspace];
     const backspaceIconStyles = [this.styles.backspaceIcon];
-    if (small) {
+    if (isLandscape) {
       styles.push(this.styles.small);
       numberStyles.push(this.styles.numberSmall);
       backspaceStyles.push(this.styles.backspaceSmall);
@@ -81,15 +94,17 @@ class PadNumber extends PureComponent<Props, State> {
           disableFullscreenUI
           autoCorrect={false}
           style={numberStyles}
-          value={this.props.value}
-          selection={Platform.OS === 'android' ? null : this.props.selection}
+          value={inputState.value}
+          selection={Platform.OS === 'android' ? null : inputState.selection}
           underlineColorAndroid="transparent"
           dataDetectorTypes="phoneNumber"
+          onChange={this.handleChange}
+          onTextChange={this.handleTextChange}
           onSelectionChange={this.handleSelectionChange}
         />
         <View style={backspaceStyles}>
           <TouchableNativeFeedback
-            onPress={this.props.onBackspacePress}
+            onPress={this.handleBackspace}
             background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
           >
             <Image source={backspace} style={backspaceIconStyles} />

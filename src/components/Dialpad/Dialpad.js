@@ -5,6 +5,7 @@
 
 import type {
   Selection,
+  InputState,
   DialpadProps as Props,
   DialpadContact as DialpadContactType
 } from '../../types';
@@ -23,8 +24,8 @@ import { Color } from '../../styles';
 import { insertText, replaceText, handleBackspace } from './inputState';
 
 type State = {
-  isLandscape: boolean,
-  width: number
+  width: number,
+  isLandscape: boolean
 };
 
 class Dialpad extends PureComponent<Props, State> {
@@ -51,9 +52,14 @@ class Dialpad extends PureComponent<Props, State> {
     this.styles = getStyles(context.theme, context.style.Dialpad);
   }
 
-  handleBackspacePress = () => {
-    this.props.onChange(handleBackspace(this.props.inputState));
-  };
+  handleChange = (inputState: *) => {
+    if ((/^[0-9 ()+\-#*]*$/).test(inputState.value)) {
+      this.props.onChange(inputState);
+    } else {
+      // force selection
+      this.forceUpdate();
+    }
+  }
 
   handleNumberPress = (number: string) => {
     this.props.onChange(insertText(this.props.inputState, number));
@@ -70,15 +76,8 @@ class Dialpad extends PureComponent<Props, State> {
   handleLayoutChange = (event: *) => {
     const { width, height } = event.nativeEvent.layout;
     this.setState({
-      isLandscape: width > height,
-      width
-    });
-  };
-
-  handleSelectionChange = (selection: Selection) => {
-    this.props.onChange({
-      selection,
-      value: this.props.inputState.value
+      width,
+      isLandscape: width > height
     });
   };
 
@@ -163,12 +162,10 @@ class Dialpad extends PureComponent<Props, State> {
         style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}
       >
         <PadNumber
-          value={inputState.value}
-          selection={inputState.selection}
-          small={this.state.isLandscape}
-          onSelectionChange={this.handleSelectionChange}
-          onBackspacePress={this.handleBackspacePress}
+          inputState={inputState}
+          isLandscape={isLandscape}
           isSmallWidth={isSmallWidth}
+          onChange={this.handleChange}
         />
         <Pad
           horizontal={this.state.isLandscape}
@@ -185,8 +182,6 @@ class Dialpad extends PureComponent<Props, State> {
   }
 
   render() {
-    console.log({ ...this.props.inputState });
-
     return (
       <View
         style={

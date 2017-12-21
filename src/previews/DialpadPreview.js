@@ -45,6 +45,8 @@ class DialpadPreview extends PureComponent {
   handleChange = (inputState: string) => {
     this.setState({ inputState });
 
+    console.log(inputState);
+
     const query = inputState.value;
     if (query) {
       const isClarify =

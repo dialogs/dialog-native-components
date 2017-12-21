@@ -30,6 +30,9 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       justifyContent: 'center',
       paddingTop: 30,
       paddingBottom: 30
+    },
+    pullUp: {
+      marginTop: -10
     }
   };
 

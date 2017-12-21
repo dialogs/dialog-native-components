@@ -55,6 +55,10 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       width: 28,
       height: 28,
       tintColor: Color.gray
+    },
+    containerCompact: {
+      marginTop: -5,
+      marginBottom: -10
     }
   };
 

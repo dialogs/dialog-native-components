@@ -32,7 +32,6 @@ class PadFooter extends PureComponent<Props> {
   }
 
   render() {
-    console.log({ ...this.props });
     const { horizontal, isSmallWidth } = this.props;
     const style = [this.styles.container];
     if (horizontal) {
@@ -40,10 +39,11 @@ class PadFooter extends PureComponent<Props> {
     }
 
     return (
-      <View style={style}>
+      <View style={isSmallWidth ? this.styles.smallWidth : style}>
         <PadCallButton
           onCallPress={this.props.onCallPress}
-          small={isSmallWidth}
+          small={horizontal}
+          vertical={isSmallWidth}
         />
       </View>
     );

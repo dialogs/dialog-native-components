@@ -26,6 +26,7 @@ type Props = {
   value: string,
   small: boolean,
   selection?: ?Selection,
+  isSmallWidth: boolean,
   onSelectionChange: (selection: Selection) => mixed,
   onBackspacePress: () => mixed
 };
@@ -57,7 +58,7 @@ class PadNumber extends PureComponent<Props, State> {
   };
 
   render() {
-    const { small } = this.props;
+    const { small, isSmallWidth } = this.props;
     const styles = [this.styles.container];
     const numberStyles = [this.styles.number];
     const backspaceStyles = [this.styles.backspace];
@@ -67,6 +68,10 @@ class PadNumber extends PureComponent<Props, State> {
       numberStyles.push(this.styles.numberSmall);
       backspaceStyles.push(this.styles.backspaceSmall);
       backspaceIconStyles.push(this.styles.backspaceIconSmall);
+    }
+
+    if (isSmallWidth) {
+      styles.push(this.styles.containerCompact);
     }
 
     return (

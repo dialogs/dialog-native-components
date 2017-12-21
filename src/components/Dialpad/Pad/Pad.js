@@ -51,15 +51,24 @@ class Pad extends PureComponent<Props> {
           value={button.title}
           text={text}
           onPress={this.handleButtonPress}
+          compact={this.props.isSmallWidth}
         />
       );
     });
   }
 
   render() {
-    const style = this.props.horizontal
-      ? this.styles.horizontal
-      : this.styles.container;
+    const { isSmallWidth } = this.props;
+    const style = [];
+    if (this.props.horizontal) {
+      style.push(this.styles.horizontal);
+    } else {
+      style.push(this.styles.container);
+    }
+
+    if (isSmallWidth) {
+      style.push(this.styles.pullUp);
+    }
 
     return (
       <View style={style}>

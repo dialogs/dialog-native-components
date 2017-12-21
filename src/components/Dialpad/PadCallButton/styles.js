@@ -22,8 +22,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       height: 64
     },
     small: {
-      width: 36,
-      height: 36
+      width: 58,
+      height: 58
     },
     iconNormal: {
       width: 32,
@@ -31,8 +31,21 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       tintColor: Color.white
     },
     iconSmall: {
-      width: 22,
-      height: 22,
+      width: 28,
+      height: 28,
+      tintColor: Color.white
+    },
+    verticalButton: {
+      height: 40,
+      backgroundColor: theme.color.success || Color.success,
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center'
+    },
+    verticalIcon: {
+      marginTop: 2,
+      width: 24,
+      height: 24,
       tintColor: Color.white
     }
   };

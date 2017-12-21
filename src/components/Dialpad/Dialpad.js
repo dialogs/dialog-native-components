@@ -157,7 +157,7 @@ class Dialpad extends PureComponent<Props, State> {
   renderPad() {
     const { inputState } = this.props;
     const { isLandscape, width } = this.state;
-
+    const isSmallWidth = isLandscape && width < 600;
     return (
       <View
         style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}
@@ -168,16 +168,17 @@ class Dialpad extends PureComponent<Props, State> {
           small={this.state.isLandscape}
           onSelectionChange={this.handleSelectionChange}
           onBackspacePress={this.handleBackspacePress}
+          isSmallWidth={isSmallWidth}
         />
         <Pad
           horizontal={this.state.isLandscape}
           onNumberPress={this.handleNumberPress}
-          isSmallWidth={isLandscape && width < 600}
+          isSmallWidth={isSmallWidth}
         />
         <PadFooter
           horizontal={this.state.isLandscape}
           onCallPress={this.handleCallPress}
-          isSmallWidth={isLandscape && width < 600}
+          isSmallWidth={isSmallWidth}
         />
       </View>
     );

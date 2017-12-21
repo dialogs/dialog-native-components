@@ -65,7 +65,12 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       fontSize: 9,
       lineHeight: 10,
       height: 10
-    }
+    },
+    wrapperCompact: {
+      marginBottom: -30
+    },
+    textCompact: {},
+    valueCompact: {}
   };
 
   return StyleSheet.create(Object.assign({}, style, styleOverride));

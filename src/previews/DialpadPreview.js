@@ -50,18 +50,18 @@ class DialpadPreview extends PureComponent {
       const isClarify =
         query.length > this.state.query &&
         query.slice(0, this.state.query.lenght) === this.state.query;
-        requestAnimationFrame(() => {
-          this.setState({
-            contacts: {
-              value: filterContacts(
-                query,
-                isClarify ? this.state.contacts.value : contactsFixture
-              ),
-              pending: false,
-              error: null
-            }
-          });
+      requestAnimationFrame(() => {
+        this.setState({
+          contacts: {
+            value: filterContacts(
+              query,
+              isClarify ? this.state.contacts.value : contactsFixture
+            ),
+            pending: false,
+            error: null
+          }
         });
+      });
     } else {
       this.setState({
         contacts: {
@@ -78,6 +78,7 @@ class DialpadPreview extends PureComponent {
       <View style={styles.container}>
         <Dialpad
           inputState={this.state.inputState}
+          isContactsEnabled={false}
           contacts={this.state.contacts}
           onChange={this.handleChange}
           onCallRequest={this.handleCallRequest}

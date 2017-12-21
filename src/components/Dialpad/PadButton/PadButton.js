@@ -14,6 +14,7 @@ type Props = {
   value: string,
   text: string,
   small: boolean,
+  compact: boolean,
   onPress: (value: string) => mixed
 };
 
@@ -23,8 +24,7 @@ class PadButton extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-    
+    style: PropTypes.object
   };
 
   constructor(props: Props, context: Context) {
@@ -44,18 +44,25 @@ class PadButton extends PureComponent<Props> {
   };
 
   render() {
-    const { small } = this.props;
+    const { small, compact } = this.props;
     const containerStyle = [this.styles.container];
     const textStyle = [this.styles.text];
     const valueStyle = [this.styles.value];
+    const wrapperStyle = [this.styles.wrapper];
     if (small) {
       containerStyle.push(this.styles.small);
       textStyle.push(this.styles.textSmall);
       valueStyle.push(this.styles.valueSmall);
     }
 
+    if (compact) {
+      wrapperStyle.push(this.styles.wrapperCompact);
+      textStyle.push(this.styles.textCompact);
+      valueStyle.push(this.styles.valueCompact);
+    }
+
     return (
-      <View style={this.styles.wrapper}>
+      <View style={wrapperStyle}>
         <TouchableNativeFeedback
           onPress={this.handleButtonPress}
           onLongPress={this.handleButtonLongPress}

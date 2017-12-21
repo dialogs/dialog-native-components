@@ -18,6 +18,9 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     horizontal: {
       paddingBottom: 10
+    },
+    smallWidth: {
+      height: 40
     }
   };
 

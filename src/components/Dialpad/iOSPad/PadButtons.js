@@ -28,7 +28,7 @@ class PadButtons extends PureComponent<Props, State> {
     style: PropTypes.object
   };
 
-  constructor(props: Props, context: Context & ProviderContext) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Pad);

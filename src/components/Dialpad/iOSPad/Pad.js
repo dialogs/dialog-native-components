@@ -14,11 +14,10 @@ import getStyles from './styles';
 import { Color } from '../../../styles';
 
 type Props = {
-  width: number,
   inputState: any,
-  onChange: () => mixed,
+  onChange: (inputState: InputState) => mixed,
   onCallPress: () => mixed,
-  onNumberPress: () => mixed
+  onNumberPress: (value: string) => mixed
 };
 
 type State = {};

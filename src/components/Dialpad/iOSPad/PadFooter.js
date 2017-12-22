@@ -4,6 +4,7 @@
  */
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
+import type { Selection, InputState } from '../../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
@@ -13,7 +14,11 @@ import Icon from '../../Icon/Icon';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';
 import { handleBackspace } from '../inputState';
 
-type Props = {};
+type Props = {
+  onCallPress: () => mixed,
+  onChange: (inputState: InputState) => mixed,
+  inputState: InputState
+};
 
 type State = {};
 
@@ -27,7 +32,7 @@ class PadFooter extends PureComponent<Props, State> {
     style: PropTypes.object
   };
 
-  constructor(props: Props, context: Context & ProviderContext) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Pad);

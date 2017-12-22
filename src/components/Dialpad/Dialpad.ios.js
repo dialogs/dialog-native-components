@@ -180,8 +180,10 @@ class Dialpad extends PureComponent<Props, State> {
         />
         <PadFooter
           horizontal={this.state.isLandscape}
+          onChange={this.handleChange}
           onCallPress={this.handleCallPress}
           isSmallWidth={isSmallWidth}
+          inputState={inputState}
         />
       </View>
     );

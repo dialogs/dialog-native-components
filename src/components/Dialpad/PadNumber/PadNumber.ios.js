@@ -19,9 +19,7 @@ import {
   Platform
 } from 'react-native';
 import getStyles from './styles.ios';
-import { replaceText, handleBackspace } from '../inputState';
-import Icon from '../../Icon/Icon';
-import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';
+import { replaceText } from '../inputState';
 
 type Props = {
   inputState: InputState,
@@ -61,10 +59,6 @@ class PadNumber extends PureComponent<Props, State> {
     this.props.onChange(replaceText(value));
   };
 
-  handleBackspace = () => {
-    this.props.onChange(handleBackspace(this.props.inputState));
-  };
-
   handleSelectionChange = (event: *) => {
     const { inputState: { value } } = this.props;
     const { nativeEvent: { selection } } = event;
@@ -80,13 +74,9 @@ class PadNumber extends PureComponent<Props, State> {
     } = this.props;
     const styles = [this.styles.container];
     const numberStyles = [this.styles.number];
-    const backspaceStyles = [this.styles.backspace];
-    const backspaceIconStyles = [this.styles.backspaceIcon];
     if (isLandscape) {
       styles.push(this.styles.small);
       numberStyles.push(this.styles.numberSmall);
-      backspaceStyles.push(this.styles.backspaceSmall);
-      backspaceIconStyles.push(this.styles.backspaceIconSmall);
     }
 
     if (isSmallWidth) {
@@ -112,14 +102,6 @@ class PadNumber extends PureComponent<Props, State> {
           onTextChange={this.handleTextChange}
           onSelectionChange={this.handleSelectionChange}
         />
-        <View style={backspaceStyles}>
-          <TouchableNativeFeedback
-            onPress={this.handleBackspace}
-            background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
-          >
-            <Icon glyph="backspace" style={backspaceIconStyles} />
-          </TouchableNativeFeedback>
-        </View>
       </View>
     );
   }

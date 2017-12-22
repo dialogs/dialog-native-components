@@ -19,16 +19,16 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       marginTop: -20
     },
     normal: {
-      width: 80,
-      height: 80
+      width: 74,
+      height: 74
     },
     small: {
       width: 64,
       height: 64
     },
     iconNormal: {
-      width: 32,
-      height: 32,
+      width: 34,
+      height: 34,
       tintColor: Color.white
     },
     iconSmall: {

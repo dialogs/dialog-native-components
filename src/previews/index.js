@@ -40,7 +40,7 @@ const globalValues = {};
 const tabs = {
   User: {
     screen: withContext(
-      DialpadPreview,
+      UserProfilePreview,
       theme,
       style,
       locale,

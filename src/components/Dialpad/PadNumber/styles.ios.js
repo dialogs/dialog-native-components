@@ -31,32 +31,6 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     numberSmall: {
       fontSize: 22
     },
-    backspace: {
-      position: 'absolute',
-      top: 19,
-      right: 20,
-      width: 32,
-      height: 32,
-      alignItems: 'center',
-      alignContent: 'center',
-      justifyContent: 'center'
-    },
-    backspaceIcon: {
-      marginLeft: -2,
-      width: 32,
-      height: 32,
-      tintColor: Color.gray
-    },
-    backspaceSmall: {
-      top: 16,
-      width: 28,
-      height: 28
-    },
-    backspaceIconSmall: {
-      width: 28,
-      height: 28,
-      tintColor: Color.gray
-    },
     containerCompact: {
       marginTop: -5,
       marginBottom: -10

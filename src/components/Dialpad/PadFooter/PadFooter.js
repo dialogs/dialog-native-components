@@ -8,12 +8,17 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PadCallButton from '../PadCallButton/PadCallButton';
+import Icon from '../../Icon/Icon';
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';
 import getStyles from './styles';
+import { handleBackspace } from '../inputState';
 
 type Props = {
   onCallPress: () => mixed,
   isSmallWidth: boolean,
-  horizontal: boolean
+  horizontal: boolean,
+  onChange: (inputState: InputState) => mixed,
+  inputState: InputState
 };
 
 class PadFooter extends PureComponent<Props> {
@@ -31,6 +36,27 @@ class PadFooter extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.PadFooter);
   }
 
+  handleBackspace = () => {
+    this.props.onChange(handleBackspace(this.props.inputState));
+  };
+
+  renderBackspace() {
+    if (!this.props.inputState.value.length) {
+      return null;
+    }
+
+    return (
+      <View style={this.styles.backspace}>
+        <TouchableNativeFeedback
+          onPress={this.handleBackspace}
+          background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
+        >
+          <Icon glyph="backspace" style={this.styles.backspaceIcon} />
+        </TouchableNativeFeedback>
+      </View>
+    );
+  }
+
   render() {
     const { horizontal, isSmallWidth } = this.props;
     const style = [this.styles.container];
@@ -45,6 +71,7 @@ class PadFooter extends PureComponent<Props> {
           small={horizontal}
           vertical={isSmallWidth}
         />
+        {this.renderBackspace()}
       </View>
     );
   }

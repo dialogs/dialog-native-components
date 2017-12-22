@@ -14,6 +14,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
+      position: 'relative',
       ...Platform.select({
         ios: {
           padding: 20
@@ -29,6 +30,22 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     smallWidth: {
       height: 40
+    },
+    backspace: {
+      position: 'absolute',
+      top: 20,
+      right: 65,
+      width: 40,
+      height: 40,
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center'
+    },
+    backspaceIcon: {
+      marginLeft: -2,
+      width: 40,
+      height: 40,
+      tintColor: Color.gray
     }
   };
 

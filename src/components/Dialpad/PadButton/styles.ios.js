@@ -43,24 +43,20 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       fontWeight: '400',
       fontSize: 22,
       lineHeight: 30,
-      height: 30,
       color: theme.color.primary || Color.primary
     },
     valueSmall: {
       fontSize: 18,
-      height: 26,
       lineHeight: 26
     },
     text: {
       color: Color.gray,
       fontSize: 10,
-      lineHeight: 14,
-      height: 14
+      lineHeight: 14
     },
     textSmall: {
       fontSize: 9,
-      lineHeight: 10,
-      height: 10
+      lineHeight: 10
     },
     wrapperCompact: {
       marginBottom: -30

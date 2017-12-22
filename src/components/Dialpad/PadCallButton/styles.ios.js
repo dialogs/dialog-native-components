@@ -15,7 +15,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      borderRadius: 500
+      borderRadius: 500,
+      marginTop: -20
     },
     normal: {
       width: 80,

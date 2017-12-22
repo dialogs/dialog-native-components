@@ -17,14 +17,14 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      paddingLeft: 15,
-      paddingRight: 15,
+      paddingLeft: 20,
+      paddingRight: 20,
       paddingTop: 5,
       paddingBottom: 0,
       marginTop: -5,
       marginBottom: -5,
-      marginLeft: -10,
-      marginRight: -10
+      marginLeft: -15,
+      marginRight: -15
     },
     container: {
       width: 64,

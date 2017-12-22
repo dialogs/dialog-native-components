@@ -89,6 +89,15 @@ class PadNumber extends PureComponent<Props, State> {
       backspaceIconStyles.push(this.styles.backspaceIconSmall);
     }
 
+    const lengthEdge = 14;
+    const maxFontSize = 26;
+    const minFontSize = 18;
+    if (inputState.value.length > lengthEdge) {
+      numberStyles.push({
+        fontSize: Math.max(maxFontSize - (inputState.value.length - lengthEdge), minFontSize)
+      });
+    }
+
     if (isSmallWidth) {
       styles.push(this.styles.containerCompact);
     }

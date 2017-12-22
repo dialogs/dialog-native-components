@@ -14,10 +14,6 @@ type Props = {
 };
 
 class Icon extends PureComponent<Props> {
-  static defaultProps = {
-    size: 32
-  };
-
   static contextTypes = {
     icons: PropTypes.object
   };
@@ -35,6 +31,8 @@ class Icon extends PureComponent<Props> {
         return require('../../assets/icons/arrow.png');
       case 'arrow_right':
         return require('../../assets/icons/arrow_right.png');
+      case 'backspace':
+        return require('../../assets/icons/backspace.png');
       case 'block':
         return require('../../assets/icons/block.png');
       case 'bug':
@@ -80,13 +78,13 @@ class Icon extends PureComponent<Props> {
       return null;
     }
 
-    const style = [
-      {
+    const style = [this.props.style];
+    if (this.props.size) {
+      style.push({
         width: this.props.size,
         height: this.props.size
-      },
-      this.props.style
-    ];
+      });
+    }
 
     return <Image style={style} source={source} />;
   }

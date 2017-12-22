@@ -20,7 +20,7 @@ import {
 } from 'react-native';
 import getStyles from './styles.ios';
 import { replaceText, handleBackspace } from '../inputState';
-import backspace from '../../../assets/icons/backspace.png';
+import Icon from '../../Icon/Icon';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';
 
 type Props = {
@@ -117,7 +117,7 @@ class PadNumber extends PureComponent<Props, State> {
             onPress={this.handleBackspace}
             background={TouchableNativeFeedback.SelectableBackgroundBorderless()}
           >
-            <Image source={backspace} style={backspaceIconStyles} />
+            <Icon glyph="backspace" style={backspaceIconStyles} />
           </TouchableNativeFeedback>
         </View>
       </View>

@@ -5,6 +5,7 @@
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
+import type { Selection, InputState } from '../../../types';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PadCallButton from '../PadCallButton/PadCallButton';

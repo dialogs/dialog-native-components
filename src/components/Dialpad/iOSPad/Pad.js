@@ -5,6 +5,7 @@
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
+import type { Selection, InputState } from '../../../types';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
 import PadNumber from './PadNumber';
@@ -32,7 +33,7 @@ class Pad extends PureComponent<Props, State> {
     style: PropTypes.object
   };
 
-  constructor(props: Props, context: Context & ProviderContext) {
+  constructor(props: Props, context: Context) {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.Pad);
@@ -45,13 +46,11 @@ class Pad extends PureComponent<Props, State> {
           inputState={this.props.inputState}
           onChange={this.props.onChange}
         />
-        <PadButtons
-          onNumberPress={this.props.onNumberPress}
-          width={this.props.width}
-        />
+        <PadButtons onNumberPress={this.props.onNumberPress} />
         <PadFooter
           inputState={this.props.inputState}
           onChange={this.props.onChange}
+          onCallPress={this.props.onCallPress}
         />
       </View>
     );

@@ -16,7 +16,7 @@ import React, { PureComponent } from 'react';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import { View, FlatList, ActivityIndicator, Text } from 'react-native';
 import DialpadContact from '../DialpadContact/DialpadContact';
-import Pad from './Pad/Pad';
+import Pad from './iOSPad/Pad';
 import PadNumber from './PadNumber/PadNumber';
 import PadFooter from './PadFooter/PadFooter';
 import getStyles from './styles.ios';
@@ -163,29 +163,13 @@ class Dialpad extends PureComponent<Props, State> {
     const { isLandscape, width } = this.state;
     const isSmallWidth = isLandscape && width < 600;
     return (
-      <View
-        style={isLandscape ? this.styles.dialpadLandscape : this.styles.dialpad}
-      >
-        <PadNumber
-          isContactsEnabled={isContactsEnabled}
-          inputState={inputState}
-          isLandscape={isLandscape}
-          isSmallWidth={isSmallWidth}
-          onChange={this.handleChange}
-        />
-        <Pad
-          horizontal={this.state.isLandscape}
-          onNumberPress={this.handleNumberPress}
-          isSmallWidth={isSmallWidth}
-        />
-        <PadFooter
-          horizontal={this.state.isLandscape}
-          onChange={this.handleChange}
-          onCallPress={this.handleCallPress}
-          isSmallWidth={isSmallWidth}
-          inputState={inputState}
-        />
-      </View>
+      <Pad
+        width={width}
+        inputState={inputState}
+        onChange={this.handleChange}
+        onCallPress={this.handleCallPress}
+        onNumberPress={this.handleNumberPress}
+      />
     );
   }
 

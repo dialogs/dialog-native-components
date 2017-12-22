@@ -36,10 +36,10 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       color: Color.gray
     },
     contacts: {
-      flex: 1
+      flex: 0
     },
     dialpad: {
-      flex: 2,
+      flex: 1,
       borderTopWidth: 1,
       borderColor: Color.border,
       backgroundColor: '#fff'

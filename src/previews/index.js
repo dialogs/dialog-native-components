@@ -38,6 +38,16 @@ const messages = {
 const globalValues = {};
 
 const tabs = {
+  Dialpad: {
+    screen: withContext(
+      DialpadPreview,
+      theme,
+      style,
+      locale,
+      messages,
+      globalValues
+    )
+  },
   User: {
     screen: withContext(
       UserProfilePreview,
@@ -51,16 +61,6 @@ const tabs = {
   Profile: {
     screen: withContext(
       ProfilePreview,
-      theme,
-      style,
-      locale,
-      messages,
-      globalValues
-    )
-  },
-  Dialpad: {
-    screen: withContext(
-      DialpadPreview,
       theme,
       style,
       locale,

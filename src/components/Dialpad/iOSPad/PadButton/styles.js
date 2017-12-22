@@ -13,6 +13,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       flex: 1,
       flexGrow: 0,
       flexShrink: 0,
+      flexBasis: '33.333%',
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',

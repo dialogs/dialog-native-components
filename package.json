@@ -35,6 +35,7 @@
     "@dlghq/react-l10n": "0.9.1",
     "@expo/react-native-touchable-native-feedback-safe": "1.1.2",
     "color": "2.0.1",
+    "lodash.chunk": "^4.2.0",
     "prop-types": "15.6.0",
     "react": "16.0.0",
     "react-native": "0.51.0",

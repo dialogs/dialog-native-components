@@ -25,11 +25,20 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     buttonsContainer: {
       flex: 4,
-      flexDirection: 'row',
-      flexWrap: 'wrap',
+      flexDirection: 'column',
+      flexWrap: 'nowrap',
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center'
+    },
+    buttonsRow: {
+      flex: 0,
+      flexDirection: 'row',
+      flexWrap: 'nowrap',
+      alignItems: 'center',
+      alignContent: 'center',
+      justifyContent: 'center',
+      marginBottom: 10
     },
     footerContainer: {
       flex: 1,

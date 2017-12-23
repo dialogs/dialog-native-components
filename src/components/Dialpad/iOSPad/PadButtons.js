@@ -4,6 +4,7 @@
  */
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
+import chunk from 'lodash.chunk';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Dimensions } from 'react-native';
@@ -39,23 +40,28 @@ class PadButtons extends PureComponent<Props, State> {
   };
 
   renderButtons() {
-    return padButtons.map(button => {
-      const text = button.text['en'];
+    return chunk(padButtons, 3).map((row, index) => {
+      console.log(row);
+      const buttons = row.map(button => {
+        return (
+          <PadButton
+            key={`pad_button_${button.title}`}
+            value={button.title}
+            text={button.text['en']}
+            onPress={this.handleButtonPress}
+          />
+        );
+      });
 
       return (
-        <PadButton
-          key={`pad_button_${button.title}`}
-          value={button.title}
-          text={text}
-          onPress={this.handleButtonPress}
-        />
+        <View key={`pad_row_${index}`} style={this.styles.buttonsRow}>
+          {buttons}
+        </View>
       );
     });
   }
 
   render() {
-    const { width, height } = Dimensions.get('window');
-    console.log({ width, height });
     return (
       <View style={this.styles.buttonsContainer}>{this.renderButtons()}</View>
     );

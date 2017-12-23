@@ -29,7 +29,9 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       flexWrap: 'nowrap',
       alignItems: 'center',
       alignContent: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      paddingLeft: 40,
+      paddingRight: 40
     },
     buttonsRow: {
       flex: 0,

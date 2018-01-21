@@ -4,11 +4,6 @@
  */
 
 import type { Props as Context } from '../ContextProvider/ContextProvider';
-import type {
-  CustomFormProps as Props,
-  CustomFormProperty,
-  CustomFormValue
-} from '../../types';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text, TextInput } from 'react-native';
@@ -18,6 +13,12 @@ import CustomFormString from './CustomFormString/CustomFormString';
 import CustomFormBoolean from './CustomFormBoolean/CustomFormBoolean';
 import getStyles from './styles';
 import { Color } from '../../styles';
+
+type Props = {
+  schema: string,
+  value: ?string,
+  onChange: (value: string) => mixed
+};
 
 class CustomForm extends PureComponent<Props> {
   styles: Object;
@@ -33,10 +34,6 @@ class CustomForm extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.CustomForm);
   }
 
-  getProperySchema = (key: string): CustomFormProperty =>
-    this.props.schema.properties[key];
-  getProperyValue = (key: string): CustomFormValue => this.props.value[key];
-
   handleChange = (key: string, value: string | boolean): void => {
     this.props.onChange({
       ...this.props.value,
@@ -45,57 +42,53 @@ class CustomForm extends PureComponent<Props> {
   };
 
   renderProperties() {
-    const { schema } = this.props;
-    const properties = [];
+    const { value, schema } = this.props;
 
-    for (var propery in schema.properties) {
-      const value = this.getProperyValue(propery);
-      const { title, type } = this.getProperySchema(propery);
-      let children = null;
+    return Object.keys(schema.properties).map((propName) => {
+      const propValue = value ? value[propName] : null;
+      const { type, title } = schema.properties[propName];
 
       switch (type) {
         case 'boolean':
-          children = (
+          return (
             <CustomFormBoolean
-              id={propery}
-              key={propery}
+              key={propName}
+              id={propName}
               title={title}
-              onChange={this.handleChange}
               value={Boolean(value)}
+              onChange={this.handleChange}
             />
           );
-          break;
+
         case 'integer':
-          children = (
+          return (
             <CustomFormString
-              id={propery}
-              key={propery}
+              key={propName}
+              id={propName}
               title={title}
-              onChange={this.handleChange}
               value={String(value)}
               keyboardType="numeric"
-            />
-          );
-          break;
-        case 'string':
-          children = (
-            <CustomFormString
-              id={propery}
-              key={propery}
-              title={title}
               onChange={this.handleChange}
-              value={String(value)}
             />
           );
-          break;
+
+        case 'string':
+          return (
+            <CustomFormString
+              key={propName}
+              id={propName}
+              title={title}
+              value={String(value)}
+              onChange={this.handleChange}
+            />
+          );
+
         default:
-          children = <Text key={propery}>{`Unsupported type ${type}`}</Text>;
+          return (
+            <Text key={propName}>{`Unsupported type ${type}`}</Text>
+          );
       }
-
-      properties.push(children);
-    }
-
-    return properties;
+    });
   }
 
   render() {

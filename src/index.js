@@ -35,9 +35,6 @@ export {
   default as ContextProvider
 } from './components/ContextProvider/ContextProvider';
 
-// Dialpad
-export { default as Dialpad } from './components/Dialpad/Dialpad';
-
 // Profile
 export { default as Profile } from './components/Profile/Profile';
 

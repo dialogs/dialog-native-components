@@ -30,96 +30,40 @@ class UserProfile extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.UserProfile);
   }
 
-  renderError() {
-    const { data: {error } } = this.props;
-
-    if (!error) {
+  renderCustomForm() {
+    const { user, customProfileSchema } = this.props;
+    if (!customProfileSchema) {
       return null;
     }
 
     return (
-      <View style={this.styles.errorWrapper}>
-        <Icon
-          glyph="error"
-          style={this.styles.errorIcon}
-          width={64}
-          height={64}
-        />
-        <Text style={this.styles.errorText}>{typeof error === 'string' ? error : error.message}</Text>
-      </View>
-    );
-  }
-
-  renderPending() {
-    return (
-      <View style={this.styles.fill}>
-        <ActivityIndicator
-          size="large"
-          color={this.context.theme.color.primary || Color.primary}
-        />
-      </View>
-    );
-  }
-
-  renderHeader() {
-    const { data: { value: { profile: { id, avatar, name } } } } = this.props;
-
-    return (
-      <UserProfileHeader
-        id={id}
-        avatar={avatar}
-        title={name}
-        onAvatarChange={this.props.onAvatarChange}
-      />
-    );
-  }
-
-  renderInfo() {
-    const { data: { value: { profile: { about, nick, phones, emails } } } } = this.props;
-
-    return (
-      <UserProfileInfo
-        about={about}
-        nick={nick}
-        phones={phones}
-        emails={emails}
-      />
-    );
-  }
-
-  renderCustomForm() {
-    const { data: { value: { custom } } } = this.props;
-
-    return (
       <CustomForm
-        schema={custom.schema}
-        value={custom.value}
+        value={user.customProfile}
+        schema={customProfileSchema}
         onChange={this.props.onCustomInfoChange}
       />
     );
   }
 
-  renderActions() {
-    return <UserProfileActions />;
-  }
-
   render() {
-    const { data } = this.props;
-
-    if (data.error) {
-      return this.renderError();
-    }
-
-    if (data.pending) {
-      return this.renderPending();
-    }
+    const { user } = this.props;
 
     return (
       <ScrollView style={this.styles.container}>
-        {this.renderHeader()}
-        {this.renderInfo()}
+        <UserProfileHeader
+          id={user.id}
+          avatar={user.avatar}
+          title={user.name}
+          onAvatarChange={this.props.onAvatarChange}
+        />
+        <UserProfileInfo
+          nick={user.nick}
+          about={user.about}
+          phones={user.phones}
+          emails={user.emails}
+        />
         {this.renderCustomForm()}
-        {this.renderActions()}
+        <UserProfileActions />
       </ScrollView>
     );
   }

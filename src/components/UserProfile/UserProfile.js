@@ -3,8 +3,10 @@
  * @flow
  */
 
+import type { Peer, User, UserOnline } from '@dlghq/dialog-types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
-import type { UserProfileProps as Props } from '../../types';
+import type { JSONSchema } from '../../utils/JSONSchema';
+import memoize from 'lodash/memoize';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { ScrollView, View, Text, ActivityIndicator, Image } from 'react-native';
@@ -15,6 +17,20 @@ import UserProfileActions from './UserProfileActions';
 import CustomForm from '../CustomForm/CustomForm';
 import getStyles from './styles';
 import { Color } from '../../styles';
+import { safelyParseJSON, safelyParseJSONSchema } from '../../utils/JSONSchema';
+
+const parseJSON = memoize(safelyParseJSON);
+const parseJSONSchema = memoize(safelyParseJSONSchema);
+
+type Props = {
+  user: User,
+  online: ?UserOnline,
+  isFavourite: boolean,
+  isNotificationsEnabled: boolean,
+  customProfileSchema: ?JSONSchema,
+  onAvatarChange: () => mixed,
+  onCustomProfileChange: (value: string) => mixed
+};
 
 class UserProfile extends PureComponent<Props> {
   styles: Object;
@@ -30,17 +46,27 @@ class UserProfile extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.UserProfile);
   }
 
+  handleCustomProfileChange = (profile: *) => {
+    this.props.onCustomProfileChange(JSON.stringify(profile));
+  };
+
   renderCustomForm() {
     const { user, customProfileSchema } = this.props;
     if (!customProfileSchema) {
       return null;
     }
 
+    const value = user.customProfile ? parseJSON(user.customProfile) : {};
+    const schema = parseJSONSchema(customProfileSchema, (error) => console.error(error));
+    if (!schema) {
+      return null;
+    }
+
     return (
       <CustomForm
-        value={user.customProfile}
-        schema={customProfileSchema}
-        onChange={this.props.onCustomInfoChange}
+        value={value}
+        schema={schema}
+        onChange={this.handleCustomProfileChange}
       />
     );
   }

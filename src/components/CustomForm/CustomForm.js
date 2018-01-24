@@ -4,8 +4,9 @@
  */
 
 import type { Props as Context } from '../ContextProvider/ContextProvider';
-import PropTypes from 'prop-types';
+import type { JSONSchema, JSONValue } from '../../utils/JSONSchema';
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, TextInput } from 'react-native';
 import Block from '../Block/Block';
 import BlockText from '../BlockText/BlockText';
@@ -14,10 +15,11 @@ import CustomFormBoolean from './CustomFormBoolean/CustomFormBoolean';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
+
 type Props = {
-  schema: string,
-  value: ?string,
-  onChange: (value: string) => mixed
+  schema: JSONSchema,
+  value: JSONValue,
+  onChange: (value: JSONValue) => mixed
 };
 
 class CustomForm extends PureComponent<Props> {
@@ -34,7 +36,7 @@ class CustomForm extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.CustomForm);
   }
 
-  handleChange = (key: string, value: string | boolean): void => {
+  handleChange = (key: string, value: mixed): void => {
     this.props.onChange({
       ...this.props.value,
       [key]: value

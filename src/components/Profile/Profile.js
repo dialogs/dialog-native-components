@@ -3,8 +3,10 @@
  * @flow
  */
 
+import type { Peer, User, UserOnline } from '@dlghq/dialog-types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
-import type { ProfileProps as Props } from '../../types';
+import type { JSONSchema } from '../../utils/JSONSchema';
+import memoize from 'lodash/memoize';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { ScrollView, View, Text, ActivityIndicator } from 'react-native';
@@ -15,6 +17,23 @@ import ProfileInfo from '../ProfileInfo/ProfileInfo';
 import ProfileCustomInfo from '../ProfileCustomInfo/ProfileCustomInfo';
 import getStyles from './styles';
 import { Color } from '../../styles';
+import { safelyParseJSON, safelyParseJSONSchema } from '../../utils/JSONSchema';
+
+const parseJSON = memoize(safelyParseJSON);
+const parseJSONSchema = memoize(safelyParseJSONSchema);
+
+type Props = {
+  user: User,
+  online: UserOnline,
+  isFavourite: boolean,
+  isNotificationsEnabled: boolean,
+  customProfileSchema: ?string,
+  onUserBlock: () => mixed,
+  onCallPress: () => mixed,
+  onMessagePress: () => mixed,
+  onFavouriteToggle: () => mixed,
+  onNotificationsChange: (isNotificationsEnabled: boolean) => mixed
+};
 
 class Profile extends PureComponent<Props> {
   styles: Object;
@@ -30,99 +49,53 @@ class Profile extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.Profile);
   }
 
-  renderError() {
-    const { data: { error }} = this.props;
+  renderCustomInfo() {
+    const { user, customProfileSchema } = this.props;
+    if (!customProfileSchema) {
+      return null;
+    }
 
-    if (!error) {
+    const value = user.customProfile ? parseJSON(user.customProfile) : {};
+    const schema = parseJSONSchema(customProfileSchema, (error) => console.error(error));
+    if (!schema) {
       return null;
     }
 
     return (
-      <View style={this.styles.errorWrapper}>
-        <Icon
-          glyph="error"
-          style={this.styles.errorIcon}
-          width={64}
-          height={64}
-        />
-        <Text style={this.styles.errorText}>{typeof error === 'string' ? error : error.message}</Text>
-      </View>
-    );
-  }
-
-  renderPending() {
-    return (
-      <View style={this.styles.fill}>
-        <ActivityIndicator
-          size="large"
-          color={this.context.theme.color.primary || Color.primary}
-        />
-      </View>
-    );
-  }
-
-  renderHeader() {
-    const { data: { value: { profile: { avatar, id, name, online } } } } = this.props;
-
-    return (
-      <ProfileHeader
-        id={id}
-        avatar={avatar}
-        title={name}
-        online={online}
-        onMessagePress={this.props.onMessagePress}
-        onCallPress={this.props.onCallPress}
-      />
-    );
-  }
-
-  renderInfo() {
-    const { data: { value: { profile: { about, nick, phones, emails } } } } = this.props;
-
-    return (
-      <ProfileInfo about={about} nick={nick} phones={phones} emails={emails} />
-    );
-  }
-
-  renderCustomInfo() {
-    const { data: { value: { custom } } } = this.props;
-
-    return <ProfileCustomInfo schema={custom.schema} value={custom.value} />;
-  }
-
-  renderActions() {
-    const {
-      data: { value: { isNotificationsEnabled, isFavourite } }
-    } = this.props;
-
-    return (
-      <ProfileActions
-        onNotificationsChange={this.props.onNotificationsChange}
-        isNotificationsEnabled={isNotificationsEnabled}
-        onFavouriteToggle={this.props.onFavouriteToggle}
-        isFavourite={isFavourite}
-        onUserBlock={this.props.onUserBlock}
+      <ProfileCustomInfo
+        value={value}
+        schema={schema}
       />
     );
   }
 
   render() {
-    const { data } = this.props;
-
-    if (data.error) {
-      return this.renderError();
-    }
-
-    if (data.pending) {
-      return this.renderPending();
-    }
+    const { user, online, isFavourite, isNotificationsEnabled } = this.props;
 
     return (
       <ScrollView style={this.styles.container}>
-        {this.renderHeader()}
-        {this.renderInfo()}
+        <ProfileHeader
+          id={user.id}
+          title={user.name}
+          avatar={user.avatar}
+          online={online}
+          onMessagePress={this.props.onMessagePress}
+          onCallPress={this.props.onCallPress}
+        />
+        <ProfileInfo
+          nick={user.nick}
+          about={user.about}
+          phones={user.phones}
+          emails={user.emails}
+        />
         {this.renderCustomInfo()}
-        {this.renderActions()}
+        <ProfileActions
+          isFavourite={isFavourite}
+          isNotificationsEnabled={isNotificationsEnabled}
+          onUserBlock={this.props.onUserBlock}
+          onFavouriteToggle={this.props.onFavouriteToggle}
+          onNotificationsChange={this.props.onNotificationsChange}
+        />
       </ScrollView>
     );
   }

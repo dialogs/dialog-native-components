@@ -30,23 +30,27 @@
     "postversion": "npm publish",
     "postpublish": "git push --follow-tags"
   },
+  "peerDependencies": {
+    "react": ">=16.0.0",
+    "react-native": ">=0.51.0"
+  },
   "dependencies": {
     "@dlghq/dialog-types": "1.33.2",
     "@dlghq/react-l10n": "0.9.1",
     "@expo/react-native-touchable-native-feedback-safe": "1.1.2",
-    "color": "2.0.1",
+    "color": "3.0.0",
     "lodash": "4.17.4",
     "prop-types": "15.6.0",
-    "react": "16.0.0",
-    "react-native": "0.51.0",
     "react-native-linear-gradient": "git://github.com/react-native-community/react-native-linear-gradient.git#9e0e1785cfb630794cd3525a4496e406bb90bda9",
     "react-native-maps": "0.19.0"
   },
   "devDependencies": {
     "babel-preset-react-native": "4.0.0",
-    "flow-bin": "0.63.1",
+    "flow-bin": "0.61.0",
     "jest-cli": "22.1.4",
     "npm-run-all": "4.1.2",
+    "react": "16.2.0",
+    "react-native": "0.52.1",
     "react-navigation": "1.0.0-beta.27"
   }
 }

@@ -196,15 +196,6 @@ export type ProfileActions = {
   onUserBlock: () => mixed
 };
 
-export type ProfileProps = {
-  data: Field<Profile>,
-  onNotificationsChange: (isNotificationsEnabled: boolean) => mixed,
-  onFavouriteToggle: () => mixed,
-  onUserBlock: () => mixed,
-  onMessagePress: () => mixed,
-  onCallPress: () => mixed
-};
-
 export type UserProfileProps = {
   user: User,
   online: ?UserOnline,

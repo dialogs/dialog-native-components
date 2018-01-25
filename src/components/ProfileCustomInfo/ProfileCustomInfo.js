@@ -4,11 +4,7 @@
  */
 
 import type { Props as Context } from '../ContextProvider/ContextProvider';
-import type {
-  CustomForm as Props,
-  CustomFormProperty,
-  CustomFormValue
-} from '../../types';
+import type { JSONValue, JSONSchema } from '../../utils/JSONSchema';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
@@ -16,6 +12,11 @@ import Block from '../Block/Block';
 import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
 import { Color } from '../../styles';
+
+type Props = {
+  value: JSONValue,
+  schema: JSONSchema
+};
 
 class ProfileCustomInfo extends PureComponent<Props> {
   styles: Object;
@@ -31,45 +32,45 @@ class ProfileCustomInfo extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.ProfileCustomInfo);
   }
 
-  getProperySchema = (key: string): CustomFormProperty =>
-    this.props.schema.properties[key];
-  getProperyValue = (key: string): CustomFormValue => this.props.value[key];
-
   renderProperties() {
-    const { schema } = this.props;
-    const properties = [];
+    const { value, schema } = this.props;
 
-    for (var propery in schema.properties) {
-      const value = this.getProperyValue(propery);
-      const { title, type } = this.getProperySchema(propery);
-      let children = null;
+    return Object.keys(schema.properties).map((propName) => {
+      const propValue = value ? value[propName] : null;
+      const { type, title } = schema.properties[propName];
 
       switch (type) {
         case 'boolean':
-          children = (
-            <Text style={this.styles.boolean}>{value ? 'Yes' : 'No'}</Text>
+          return (
+            <BlockText key={propName} title={title}>
+              <Text style={this.styles.boolean}>
+                {value ? 'Yes' : 'No'}
+              </Text>
+            </BlockText>
           );
-          break;
+
         case 'integer':
-          children = <Text style={this.styles.integer}>{value}</Text>;
-          break;
+          return (
+            <BlockText key={propName} title={title}>
+              <Text style={this.styles.integer}>{value}</Text>
+            </BlockText>
+          );
+
         default:
-          children = <Text style={this.styles.string}>{value}</Text>;
+          return (
+            <BlockText key={propName} title={title}>
+              <Text style={this.styles.string}>{value}</Text>
+            </BlockText>
+          );
       }
-
-      properties.push(
-        <BlockText key={propery} title={title}>
-          {children}
-        </BlockText>
-      );
-    }
-
-    return properties;
+    });
   }
 
   render() {
     return (
-      <Block style={this.styles.container}>{this.renderProperties()}</Block>
+      <Block style={this.styles.container}>
+        {this.renderProperties()}
+      </Block>
     );
   }
 }

@@ -32,7 +32,7 @@ export function parseJSONSchema(text: string): JSONSchema {
   }
 
   const properties = {};
-  forIn(object, (value: mixed, key: string) => {
+  forIn(object.properties, (value: mixed, key: string) => {
     if (typeof value !== 'object' || !value) {
       throw new Error(`Schema property "${key}" is not a plain object`);
     }

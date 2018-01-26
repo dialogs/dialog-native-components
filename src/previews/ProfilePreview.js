@@ -12,33 +12,15 @@ class ContactsPreview extends PureComponent {
     super(props);
 
     this.state = {
-      data: {
-        value: null,
-        pending: true,
-        error: null
-      }
+      data
     };
-
-    setTimeout(() => {
-      this.setState({
-        data: {
-          value: data,
-          pending: false,
-          error: false
-        }
-      });
-    }, 1500);
   }
 
   handleNotificationChange = value => {
     this.setState({
       data: {
-        value: {
-          ...this.state.data.value,
-          isNotificationsEnabled: value
-        },
-        pending: false,
-        error: false
+        ...this.state.data,
+        isNotificationsEnabled: value
       }
     });
   };
@@ -46,23 +28,38 @@ class ContactsPreview extends PureComponent {
   handleFavouriteToggle = () => {
     this.setState({
       data: {
-        value: {
-          ...this.state.data.value,
-          isFavourite: !this.state.data.value.isFavourite
-        },
-        pending: false,
-        error: false
+        ...this.state.data,
+        isFavourite: !this.state.data.isFavourite
       }
     });
+  };
+
+  handleUserBlock = () => {
+    console.debug('handleUserBlock');
+  };
+
+  handleCallPress = () => {
+    console.debug('handleCallPress');
+  };
+
+  handleMessagePress = () => {
+    console.debug('handleMessagePress');
   };
 
   render() {
     return (
       <View style={styles.container}>
         <Profile
-          data={this.state.data}
+          user={this.state.data.profile}
+          online={this.state.data.online}
+          isFavourite={this.state.data.isFavourite}
+          isNotificationsEnabled={this.state.data.isNotificationsEnabled}
+          customProfileSchema={this.state.data.customProfileSchema}
           onNotificationsChange={this.handleNotificationChange}
           onFavouriteToggle={this.handleFavouriteToggle}
+          onUserBlock={this.handleUserBlock}
+          onCallPress={this.handleCallPress}
+          onMessagePress={this.handleMessagePress}
         />
       </View>
     );

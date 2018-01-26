@@ -11,7 +11,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
       paddingTop: Padding.small,
-      paddingBottom: Padding.small,
+      paddingBottom: Padding.small / 2,
       paddingRight: Padding.default * 2,
       paddingLeft: Padding.default * 2
     },

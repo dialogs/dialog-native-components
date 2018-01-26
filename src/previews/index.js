@@ -27,27 +27,31 @@ const messages = {
   ru: {
     'Button.get_direction': 'Проложить маршрут',
     'Button.open_chat': 'Открыть чат',
-    'Error.nothing_found': 'Ничего не найдено'
+    'Error.nothing_found': 'Ничего не найдено',
+    'Yes': 'Да',
+    'No': 'Нет'
   },
   en: {
     'Button.get_direction': 'Get directions',
     'Button.open_chat': 'Open chat',
-    'Error.nothing_found': 'Nothing found'
+    'Error.nothing_found': 'Nothing found',
+    'Yes': 'Yes',
+    'No': 'No'
   }
 };
 const globalValues = {};
 
 const tabs = {
-  Dialpad: {
-    screen: withContext(
-      DialpadPreview,
-      theme,
-      style,
-      locale,
-      messages,
-      globalValues
-    )
-  },
+  // Dialpad: {
+  //   screen: withContext(
+  //     DialpadPreview,
+  //     theme,
+  //     style,
+  //     locale,
+  //     messages,
+  //     globalValues
+  //   )
+  // },
   User: {
     screen: withContext(
       UserProfilePreview,

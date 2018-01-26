@@ -5,6 +5,7 @@
 
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import type { JSONValue, JSONSchema } from '../../utils/JSONSchema';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
@@ -23,7 +24,8 @@ class ProfileCustomInfo extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context: Context) {
@@ -36,15 +38,16 @@ class ProfileCustomInfo extends PureComponent<Props> {
     const { value, schema } = this.props;
 
     return Object.keys(schema.properties).map((propName) => {
-      const propValue = value ? value[propName] : null;
+      const propValue = value && value[propName] ? value[propName] : null;
       const { type, title } = schema.properties[propName];
 
       switch (type) {
         case 'boolean':
+          const { formatText } = this.context.l10n;
           return (
             <BlockText key={propName} title={title}>
               <Text style={this.styles.boolean}>
-                {value ? 'Yes' : 'No'}
+                {formatText(propValue ? 'Yes' : 'No')}
               </Text>
             </BlockText>
           );
@@ -52,14 +55,14 @@ class ProfileCustomInfo extends PureComponent<Props> {
         case 'integer':
           return (
             <BlockText key={propName} title={title}>
-              <Text style={this.styles.integer}>{value}</Text>
+              <Text style={this.styles.integer}>{propValue}</Text>
             </BlockText>
           );
 
         default:
           return (
             <BlockText key={propName} title={title}>
-              <Text style={this.styles.string}>{value}</Text>
+              <Text style={this.styles.string}>{propValue}</Text>
             </BlockText>
           );
       }

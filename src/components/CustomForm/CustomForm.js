@@ -15,7 +15,6 @@ import CustomFormBoolean from './CustomFormBoolean/CustomFormBoolean';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
-
 type Props = {
   schema: JSONSchema,
   value: JSONValue,
@@ -46,8 +45,8 @@ class CustomForm extends PureComponent<Props> {
   renderProperties() {
     const { value, schema } = this.props;
 
-    return Object.keys(schema.properties).map((propName) => {
-      const propValue = value ? value[propName] : null;
+    return Object.keys(schema.properties).map(propName => {
+      const propValue = value && value[propName] ? value[propName] : null;
       const { type, title } = schema.properties[propName];
 
       switch (type) {
@@ -57,7 +56,7 @@ class CustomForm extends PureComponent<Props> {
               key={propName}
               id={propName}
               title={title}
-              value={Boolean(value)}
+              value={Boolean(propValue)}
               onChange={this.handleChange}
             />
           );
@@ -68,7 +67,7 @@ class CustomForm extends PureComponent<Props> {
               key={propName}
               id={propName}
               title={title}
-              value={String(value)}
+              value={String(propValue || '')}
               keyboardType="numeric"
               onChange={this.handleChange}
             />
@@ -80,20 +79,19 @@ class CustomForm extends PureComponent<Props> {
               key={propName}
               id={propName}
               title={title}
-              value={String(value)}
+              value={String(propValue || '')}
               onChange={this.handleChange}
             />
           );
 
         default:
-          return (
-            <Text key={propName}>{`Unsupported type ${type}`}</Text>
-          );
+          return <Text key={propName}>{`Unsupported type ${type}`}</Text>;
       }
     });
   }
 
   render() {
+    console.debug('CustomForm', this.props);
     return (
       <Block style={this.styles.container}>{this.renderProperties()}</Block>
     );

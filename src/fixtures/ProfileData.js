@@ -20,21 +20,19 @@ module.exports = {
         title: 'Home email'
       }
     ],
-    online: {
-      message: '3 minutes ago'
-    }
-  },
-  custom: {
-    schema: require('./cutomProfileSchema.json'),
-    value: {
+    customProfile: JSON.stringify({
       lastName: 'Rodgers 🦐',
       age: 97,
       bio: 'Roundhouse kicking asses since 1940',
       password: 'noneed',
       done: true,
       telephone: '+1 234 567 89 00'
-    }
+    })
   },
+  online: {
+    message: '3 minutes ago'
+  },
+  customProfileSchema: JSON.stringify(require('./cutomProfileSchema.json')),
   isNotificationsEnabled: false,
-  isFavourite: true,
+  isFavourite: true
 };

@@ -25,8 +25,6 @@ const parseJSONSchema = memoize(safelyParseJSONSchema);
 type Props = {
   user: User,
   online: ?UserOnline,
-  isFavourite: boolean,
-  isNotificationsEnabled: boolean,
   customProfileSchema: ?JSONSchema,
   onAvatarChange: () => mixed,
   onCustomProfileChange: (value: string) => mixed

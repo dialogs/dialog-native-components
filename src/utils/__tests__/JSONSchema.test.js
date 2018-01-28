@@ -14,7 +14,8 @@ describe('parseJSONSchema', () => {
     {
       properties: {
         foo: {
-          type: 'email'
+          type: 'email',
+          title: ''
         }
       }
     },
@@ -33,5 +34,5 @@ describe('parseJSONSchema', () => {
     test(`should be invalid "${input}"`, () => {
       expect(() => parseJSONSchema(input)).toThrowErrorMatchingSnapshot();
     });
-  })
+  });
 });

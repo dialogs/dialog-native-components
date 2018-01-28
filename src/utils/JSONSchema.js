@@ -7,7 +7,7 @@ import forIn from 'lodash/forIn';
 import isPlainObject from 'lodash/isPlainObject';
 
 export type JSONSchemaProperty = {
-  type: 'string' | 'integer' | 'boolean',
+  type: 'string' | 'number' | 'integer' | 'boolean',
   title: string
 };
 
@@ -38,7 +38,12 @@ export function parseJSONSchema(text: string): JSONSchema {
     }
 
     const { type, title } = value;
-    if (type !== 'string' || type !== 'integer' || type !== 'boolean') {
+    if (
+      type !== 'string' &&
+      type !== 'number' &&
+      type !== 'integer' &&
+      type !== 'boolean'
+    ) {
       throw new Error(`Schema property "${key}" has unsupported type`);
     }
 

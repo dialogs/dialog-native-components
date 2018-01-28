@@ -52,6 +52,7 @@ class ProfileCustomInfo extends PureComponent<Props> {
             </BlockText>
           );
 
+        case 'number':
         case 'integer':
           return (
             <BlockText key={propName} title={title}>

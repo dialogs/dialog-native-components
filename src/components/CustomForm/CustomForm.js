@@ -61,6 +61,7 @@ class CustomForm extends PureComponent<Props> {
             />
           );
 
+        case 'number':
         case 'integer':
           return (
             <CustomFormString

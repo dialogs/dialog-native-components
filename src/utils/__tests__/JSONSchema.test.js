@@ -35,4 +35,34 @@ describe('parseJSONSchema', () => {
       expect(() => parseJSONSchema(input)).toThrowErrorMatchingSnapshot();
     });
   });
+
+  const ok = [
+    {
+      properties: {
+        foo: { type: 'string', title: 'foo' }
+      }
+    },
+    {
+      properties: {
+        foo: { type: 'number', title: 'foo' }
+      }
+    },
+    {
+      properties: {
+        foo: { type: 'integer', title: 'foo' }
+      }
+    },
+    {
+      properties: {
+        foo: { type: 'boolean', title: 'foo' }
+      }
+    }
+  ];
+
+  ok.forEach((it) => {
+    const input = JSON.stringify(it);
+    test(`should be valid "${input}"`, () => {
+      expect(parseJSONSchema(input)).toEqual(it);
+    });
+  });
 });

@@ -44,7 +44,12 @@ const messages = {
     'Profile.media': 'Общие медиа',
     'Profile.favourite_enable': 'Удалить из избранного',
     'Profile.favourite_disable': 'Добавить в избранное',
-    'Profile.block': 'Block user'
+    'Profile.block': 'Заблокировать пользователя',
+    'User.notifications': 'Уведомления и звуки',
+    'User.privacy': 'Конфиденциальность и безопасность',
+    'User.advanced_settings': 'Расширенные настройки',
+    'User.ask_a_question': 'Задать вопрос в чате',
+    'User.feedback': 'Отправить отзыв'
   },
   en: {
     'Button.get_direction': 'Get directions',
@@ -66,7 +71,12 @@ const messages = {
     'Profile.media': 'Shared media',
     'Profile.favourite_enable': 'Remove from favourites',
     'Profile.favourite_disable': 'Add to favourites',
-    'Profile.block': 'Block user'
+    'Profile.block': 'Block user',
+    'User.notifications': 'Notifications and sounds',
+    'User.privacy': 'Privacy and security',
+    'User.advanced_settings': 'Advanced settings',
+    'User.ask_a_question': 'Ask question in chat',
+    'User.feedback': 'Submit feedback'
   }
 };
 const globalValues = {};

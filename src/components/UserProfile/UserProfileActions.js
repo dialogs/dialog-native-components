@@ -36,19 +36,19 @@ class UserProfileActions extends PureComponent<Props> {
             onPress={() => {}}
             icon="notification"
             iconColor={this.context.theme.color.primary || Color.primary}
-            text="Notifications and sounds"
+            text="User.notifications"
           />
           <BlockAction
             onPress={() => {}}
             icon="security"
             iconColor={this.context.theme.color.primary || Color.primary}
-            text="Privacy and security"
+            text="User.privacy"
           />
           <BlockAction
             onPress={() => {}}
             icon="logo"
             iconColor={this.context.theme.color.primary || Color.primary}
-            text="Advanced settings"
+            text="User.advanced_settings"
           />
         </Block>
         <Block>
@@ -56,13 +56,13 @@ class UserProfileActions extends PureComponent<Props> {
             onPress={() => {}}
             icon="question"
             iconColor={this.context.theme.color.primary || Color.primary}
-            text="Ask question in chat"
+            text="User.ask_a_question"
           />
           <BlockAction
             onPress={() => {}}
             icon="bug"
             iconColor={this.context.theme.color.primary || Color.primary}
-            text="Submit feedback"
+            text="User.feedback"
           />
         </Block>
       </View>

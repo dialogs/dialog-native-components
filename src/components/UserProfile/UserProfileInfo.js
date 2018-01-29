@@ -62,7 +62,7 @@ class UserProfileInfo extends PureComponent<Props> {
 
   renderPhones() {
     const { phones } = this.props;
-    if (!phones && !phones.length) {
+    if (!phones || !phones.length) {
       return null;
     }
 
@@ -79,7 +79,7 @@ class UserProfileInfo extends PureComponent<Props> {
 
   renderEmails() {
     const { emails } = this.props;
-    if (!emails && !emails.length) {
+    if (!emails || !emails.length) {
       return null;
     }
 

@@ -11,6 +11,7 @@ import { View, Text } from 'react-native';
 import Block from '../Block/Block';
 import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
+import ProfilePhone from './ProfilePhone';
 import { Color } from '../../styles';
 
 type Props = {
@@ -48,12 +49,12 @@ class ProfileInfo extends PureComponent<Props> {
 
   renderPhones() {
     const { phones } = this.props;
-    if (!phones && !phones.length) {
+    if (!phones || !phones.length) {
       return null;
     }
 
     const children = phones.map(phone => {
-      return <Text key={phone.number}>{phone.number}</Text>;
+      return <ProfilePhone key={phone.number} phone={phone} />;
     });
 
     return (
@@ -65,7 +66,7 @@ class ProfileInfo extends PureComponent<Props> {
 
   renderEmails() {
     const { emails } = this.props;
-    if (!emails && !emails.length) {
+    if (!emails || !emails.length) {
       return null;
     }
 

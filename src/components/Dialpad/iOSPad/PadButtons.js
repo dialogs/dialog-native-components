@@ -41,7 +41,6 @@ class PadButtons extends PureComponent<Props, State> {
 
   renderButtons() {
     return chunk(padButtons, 3).map((row, index) => {
-      console.log(row);
       const buttons = row.map(button => {
         return (
           <PadButton

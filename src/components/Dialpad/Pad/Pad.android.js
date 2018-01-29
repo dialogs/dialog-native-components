@@ -58,7 +58,6 @@ class Pad extends PureComponent<Props> {
   }
 
   render() {
-    console.log('Pad android');
     const { isSmallWidth } = this.props;
     const style = [];
     if (this.props.horizontal) {

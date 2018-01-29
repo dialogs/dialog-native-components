@@ -44,7 +44,6 @@ class PadButton extends PureComponent<Props> {
   };
 
   render() {
-    console.log('PadButton android');
     const { small, compact } = this.props;
     const containerStyle = [this.styles.container];
     const textStyle = [this.styles.text];

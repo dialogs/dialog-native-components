@@ -92,7 +92,6 @@ class CustomForm extends PureComponent<Props> {
   }
 
   render() {
-    console.debug('CustomForm', this.props);
     return (
       <Block style={this.styles.container}>{this.renderProperties()}</Block>
     );

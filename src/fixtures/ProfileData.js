@@ -12,6 +12,10 @@ module.exports = {
       {
         number: '+1 234 567 89 00',
         title: 'Mobile phone'
+      },
+      {
+        number: '+1 222 333 44 55',
+        title: 'Mobile phone'
       }
     ],
     emails: [

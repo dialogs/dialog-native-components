@@ -29,14 +29,30 @@ const messages = {
     'Button.open_chat': 'Открыть чат',
     'Error.nothing_found': 'Ничего не найдено',
     'Yes': 'Да',
-    'No': 'Нет'
+    'No': 'Нет',
+    'Profile.about': 'О себе',
+    'Profile.about_add_button': 'Добавить описание',
+    'Profile.nick': 'Никнейм',
+    'Profile.nick_add_button': 'Выберите никнейм',
+    'Profile.nick_hint':
+      'Вы можете выбрать никнейм, чтобы другие люди могли найти вас, не зная номер вашего телефона.',
+    'Profile.phone': 'Телефон',
+    'Profile.email': 'E-mail'
   },
   en: {
     'Button.get_direction': 'Get directions',
     'Button.open_chat': 'Open chat',
     'Error.nothing_found': 'Nothing found',
     'Yes': 'Yes',
-    'No': 'No'
+    'No': 'No',
+    'Profile.about': 'About',
+    'Profile.about_add_button': 'Describe yourself',
+    'Profile.nick': 'Nickname',
+    'Profile.nick_add_button': 'Choose a nickname',
+    'Profile.nick_hint':
+      'You can choose a nickname, so other people will be able to find you by this nickname and contact you without knowing your phone number.',
+    'Profile.phone': 'Phone',
+    'Profile.email': 'E-mail'
   }
 };
 const globalValues = {};
@@ -129,4 +145,8 @@ const tabOptions = {
 
 AppRegistry.registerComponent('DialogComponents', () =>
   TabNavigator(tabs, tabOptions)
+);
+
+AppRegistry.registerComponent('DialogComponents', () =>
+  withContext(UserProfilePreview, theme, style, locale, messages, globalValues)
 );

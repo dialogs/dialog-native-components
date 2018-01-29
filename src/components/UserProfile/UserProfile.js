@@ -27,7 +27,11 @@ type Props = {
   online: ?UserOnline,
   customProfileSchema: ?JSONSchema,
   onAvatarChange: () => mixed,
-  onCustomProfileChange: (value: string) => mixed
+  onCustomProfileChange: (value: string) => mixed,
+  onEmailPress: (phone: string) => mixed,
+  onPhonePress: (email: string) => mixed,
+  onAboutPress: () => mixed,
+  onNickPress: () => mixed
 };
 
 class UserProfile extends PureComponent<Props> {
@@ -55,7 +59,9 @@ class UserProfile extends PureComponent<Props> {
     }
 
     const value = user.customProfile ? parseJSON(user.customProfile) : {};
-    const schema = parseJSONSchema(customProfileSchema, (error) => console.error(error));
+    const schema = parseJSONSchema(customProfileSchema, error =>
+      console.error(error)
+    );
     if (!schema) {
       return null;
     }
@@ -81,10 +87,14 @@ class UserProfile extends PureComponent<Props> {
           onAvatarChange={this.props.onAvatarChange}
         />
         <UserProfileInfo
-          nick={user.nick}
           about={user.about}
+          nick={user.nick}
           phones={user.phones}
           emails={user.emails}
+          onAboutPress={this.props.onAboutPress}
+          onNickPress={this.props.onNickPress}
+          onPhonePress={this.props.onPhonePress}
+          onEmailPress={this.props.onEmailPress}
         />
         {this.renderCustomForm()}
         <UserProfileActions />

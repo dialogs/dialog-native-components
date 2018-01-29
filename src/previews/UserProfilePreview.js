@@ -25,7 +25,23 @@ class UserProfilePreview extends PureComponent {
   };
 
   handleAvatarChange = () => {
-    console.log('handleAvatarChange');
+    Alert.alert('Change avatar action');
+  };
+
+  handleAboutPress = () => {
+    Alert.alert('Change user about action');
+  };
+
+  handleNickPress = () => {
+    Alert.alert('Change user nickname action');
+  };
+
+  handlePhonePress = phone => {
+    Alert.alert(`Request call to ${phone}`);
+  };
+
+  handleEmailPress = email => {
+    Alert.alert(`Request write message to ${email}`);
   };
 
   render() {
@@ -37,6 +53,10 @@ class UserProfilePreview extends PureComponent {
           customProfileSchema={this.state.customProfileSchema}
           onCustomProfileChange={this.handleCustomProfileChange}
           onAvatarChange={this.handleAvatarChange}
+          onAboutPress={this.handleAboutPress}
+          onNickPress={this.handleNickPress}
+          onPhonePress={this.handlePhonePress}
+          onEmailPress={this.handleEmailPress}
         />
       </View>
     );

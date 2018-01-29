@@ -6,11 +6,13 @@
 import type { Phone, Email } from '@dlghq/dialog-types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from '../Icon/Icon';
 import Block from '../Block/Block';
 import BlockText from '../BlockText/BlockText';
+import ProfileTouchableContact from '../ProfileTouchableContact/ProfileTouchableContact';
 import getStyles from './styles';
 import { Color } from '../../styles';
 
@@ -18,7 +20,11 @@ type Props = {
   nick: ?string,
   about: ?string,
   phones: Phone[],
-  emails: Email[]
+  emails: Email[],
+  onEmailPress: (phone: string) => mixed,
+  onPhonePress: (email: string) => mixed,
+  onAboutPress: () => mixed,
+  onNickPress: () => mixed
 };
 
 class UserProfileInfo extends PureComponent<Props> {
@@ -26,7 +32,8 @@ class UserProfileInfo extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context: Context) {
@@ -37,25 +44,81 @@ class UserProfileInfo extends PureComponent<Props> {
 
   renderAbout() {
     if (!this.props.about) {
+      const { formatText } = this.context.l10n;
+
       return (
-        <BlockText title="About">
-          <View style={this.styles.aboutAddWrapper}>
-            <Icon
-              glyph="plus_outline"
-              size={26}
-              style={this.styles.aboutAddIcon}
-            />
-            <Text style={this.styles.aboutAddText}>
-              {`Describe yourself`.toUpperCase()}
-            </Text>
-          </View>
+        <BlockText title="Profile.about">
+          <TouchableOpacity
+            onPress={this.props.onAboutPress}
+            activeOpacity={0.8}
+            hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
+          >
+            <View style={this.styles.addWrapper}>
+              <Icon
+                glyph="plus_outline"
+                size={24}
+                style={this.styles.addIcon}
+              />
+              <Text style={this.styles.addText}>
+                {formatText('Profile.about_add_button').toUpperCase()}
+              </Text>
+            </View>
+          </TouchableOpacity>
         </BlockText>
       );
     }
 
     return (
-      <BlockText title="About">
-        <Text style={this.styles.aboutText}>{this.props.about}</Text>
+      <BlockText title="Profile.about">
+        <TouchableOpacity
+          onPress={this.props.onAboutPress}
+          activeOpacity={0.8}
+          hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
+        >
+          <Text style={this.styles.aboutText}>{this.props.about}</Text>
+        </TouchableOpacity>
+      </BlockText>
+    );
+  }
+
+  renderNick() {
+    if (!this.props.nick) {
+      const { formatText } = this.context.l10n;
+
+      return (
+        <BlockText title="Profile.nick">
+          <TouchableOpacity
+            onPress={this.props.onNickPress}
+            activeOpacity={0.8}
+            hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
+          >
+            <View style={this.styles.addWrapper}>
+              <Icon
+                glyph="plus_outline"
+                size={24}
+                style={this.styles.addIcon}
+              />
+              <Text style={this.styles.addText}>
+                {formatText('Profile.nick_add_button').toUpperCase()}
+              </Text>
+            </View>
+          </TouchableOpacity>
+          <Text style={this.styles.hintText}>
+            {formatText('Profile.nick_hint')}
+          </Text>
+        </BlockText>
+      );
+    }
+
+    return (
+      <BlockText title="Profile.nick">
+        <TouchableOpacity
+          onPress={this.props.onNickPress}
+          activeOpacity={0.8}
+          hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
+        >
+          <Text style={this.styles.nickText}>@{this.props.nick}</Text>
+        </TouchableOpacity>
       </BlockText>
     );
   }
@@ -67,14 +130,17 @@ class UserProfileInfo extends PureComponent<Props> {
     }
 
     const children = phones.map(phone => {
-      return <Text key={phone.number}>{phone.number}</Text>;
+      return (
+        <ProfileTouchableContact
+          key={phone.number}
+          type="phone"
+          value={phone}
+          onPress={this.props.onPhonePress}
+        />
+      );
     });
 
-    return (
-      <BlockText title="Phone">
-        <Text style={this.styles.phoneText}>{children}</Text>
-      </BlockText>
-    );
+    return <BlockText title="Profile.phone">{children}</BlockText>;
   }
 
   renderEmails() {
@@ -84,42 +150,26 @@ class UserProfileInfo extends PureComponent<Props> {
     }
 
     const children = emails.map(email => {
-      return <Text key={email.email}>{email.email}</Text>;
+      return (
+        <ProfileTouchableContact
+          key={email.email}
+          type="email"
+          value={email}
+          onPress={this.props.onEmailPress}
+        />
+      );
     });
 
-    return (
-      <BlockText title="Email">
-        <Text style={this.styles.emailText}>{children}</Text>
-      </BlockText>
-    );
-  }
-
-  renderNick() {
-    if (!this.props.nick) {
-      return (
-        <BlockText title="Nickname">
-          <Text>
-            You can choose a nickname, so other people will be able to find you
-            by this nickname and contact you without knowing your phone number.
-          </Text>
-        </BlockText>
-      );
-    }
-
-    return (
-      <BlockText title="Nickname">
-        <Text style={this.styles.nickText}>@{this.props.nick}</Text>
-      </BlockText>
-    );
+    return <BlockText title="Profile.email">{children}</BlockText>;
   }
 
   render() {
     return (
       <Block style={this.styles.infoContainer}>
         {this.renderAbout()}
+        {this.renderNick()}
         {this.renderPhones()}
         {this.renderEmails()}
-        {this.renderNick()}
       </Block>
     );
   }

@@ -20,15 +20,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     nickText: {
       color: Color.black,
-      fontSize: 20
-    },
-    phoneText: {
-      color: theme.color.primary || Color.primary,
-      fontSize: 20
-    },
-    emailText: {
-      color: theme.color.primary || Color.primary,
-      fontSize: 18
+      fontSize: 18,
+      lineHeight: 26
     }
   };
 

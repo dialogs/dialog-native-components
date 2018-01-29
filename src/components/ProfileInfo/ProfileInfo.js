@@ -11,14 +11,16 @@ import { View, Text } from 'react-native';
 import Block from '../Block/Block';
 import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
-import ProfilePhone from './ProfilePhone';
+import ProfileTouchableContact from '../ProfileTouchableContact/ProfileTouchableContact';
 import { Color } from '../../styles';
 
 type Props = {
   nick: ?string,
   about: ?string,
   phones: Phone[],
-  emails: Email[]
+  emails: Email[],
+  onEmailPress: (phone: string) => mixed,
+  onPhonePress: (email: string) => mixed
 };
 
 class ProfileInfo extends PureComponent<Props> {
@@ -41,42 +43,8 @@ class ProfileInfo extends PureComponent<Props> {
     }
 
     return (
-      <BlockText title="About">
+      <BlockText title="Profile.about">
         <Text style={this.styles.aboutText}>{this.props.about}</Text>
-      </BlockText>
-    );
-  }
-
-  renderPhones() {
-    const { phones } = this.props;
-    if (!phones || !phones.length) {
-      return null;
-    }
-
-    const children = phones.map(phone => {
-      return <ProfilePhone key={phone.number} phone={phone} />;
-    });
-
-    return (
-      <BlockText title="Phone">
-        <Text style={this.styles.phoneText}>{children}</Text>
-      </BlockText>
-    );
-  }
-
-  renderEmails() {
-    const { emails } = this.props;
-    if (!emails || !emails.length) {
-      return null;
-    }
-
-    const children = emails.map(email => {
-      return <Text key={email.email}>{email.email}</Text>;
-    });
-
-    return (
-      <BlockText title="Email">
-        <Text style={this.styles.emailText}>{children}</Text>
       </BlockText>
     );
   }
@@ -87,17 +55,58 @@ class ProfileInfo extends PureComponent<Props> {
     }
 
     return (
-      <BlockText title="Nickname">
+      <BlockText title="Profile.nick">
         <Text style={this.styles.nickText}>@{this.props.nick}</Text>
       </BlockText>
     );
   }
 
+  renderPhones() {
+    const { phones } = this.props;
+
+    if (!phones || !phones.length) {
+      return null;
+    }
+
+    const children = phones.map(phone => {
+      return (
+        <ProfileTouchableContact
+          key={phone.number}
+          type="phone"
+          value={phone}
+          onPress={this.props.onPhonePress}
+        />
+      );
+    });
+
+    return <BlockText title="Profile.phone">{children}</BlockText>;
+  }
+
+  renderEmails() {
+    const { emails } = this.props;
+    if (!emails || !emails.length) {
+      return null;
+    }
+
+    const children = emails.map(email => {
+      return (
+        <ProfileTouchableContact
+          key={email.email}
+          type="email"
+          value={email}
+          onPress={this.props.onEmailPress}
+        />
+      );
+    });
+
+    return <BlockText title="Profile.email">{children}</BlockText>;
+  }
+
   render() {
     return (
       <Block style={this.styles.container}>
-        {this.renderNick()}
         {this.renderAbout()}
+        {this.renderNick()}
         {this.renderPhones()}
         {this.renderEmails()}
       </Block>

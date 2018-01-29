@@ -35,15 +35,23 @@ class ContactsPreview extends PureComponent {
   };
 
   handleUserBlock = () => {
-    console.debug('handleUserBlock');
+    Alert.alert('Block user action');
   };
 
   handleCallPress = () => {
-    console.debug('handleCallPress');
+    Alert.alert('Request call to user');
   };
 
   handleMessagePress = () => {
-    console.debug('handleMessagePress');
+    Alert.alert('Write message to user');
+  };
+
+  handlePhonePress = phone => {
+    Alert.alert(`Request call to ${phone}`);
+  };
+
+  handleEmailPress = email => {
+    Alert.alert(`Request write message to ${email}`);
   };
 
   render() {
@@ -60,6 +68,8 @@ class ContactsPreview extends PureComponent {
           onUserBlock={this.handleUserBlock}
           onCallPress={this.handleCallPress}
           onMessagePress={this.handleMessagePress}
+          onPhonePress={this.handlePhonePress}
+          onEmailPress={this.handleEmailPress}
         />
       </View>
     );

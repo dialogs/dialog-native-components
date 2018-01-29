@@ -5,6 +5,7 @@
 
 import PropTypes from 'prop-types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Icon from '../Icon/Icon';
@@ -22,7 +23,8 @@ class ProfileHeaderButton extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context: Context) {
@@ -42,6 +44,8 @@ class ProfileHeaderButton extends PureComponent<Props> {
   }
 
   render() {
+    const { formatText } = this.context.l10n;
+
     return (
       <TouchableOpacity onPress={this.props.onPress} activeOpacity={0.8}>
         <View
@@ -51,7 +55,7 @@ class ProfileHeaderButton extends PureComponent<Props> {
           <View style={this.styles.buttonWrapper}>
             {this.renderIcon()}
             <Text style={this.styles.buttonText} numberOfLines={1}>
-              {this.props.title.toUpperCase()}
+              {formatText(this.props.title).toUpperCase()}
             </Text>
           </View>
         </View>

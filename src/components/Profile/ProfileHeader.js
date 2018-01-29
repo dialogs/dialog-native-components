@@ -68,7 +68,7 @@ class ProfileHeader extends PureComponent<Props> {
           <View style={this.styles.buttonWrapper}>
             <ProfileHeaderButton
               onPress={this.props.onMessagePress}
-              title="Message"
+              title="Profile.button_message"
               icon="logo"
             />
           </View>
@@ -76,7 +76,7 @@ class ProfileHeader extends PureComponent<Props> {
           <View style={this.styles.buttonWrapper}>
             <ProfileHeaderButton
               onPress={this.props.onCallPress}
-              title="Call"
+              title="Profile.button_call"
               icon="call"
             />
           </View>

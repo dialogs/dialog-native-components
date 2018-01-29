@@ -19,8 +19,7 @@ class ProfileActions extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object,
-
+    style: PropTypes.object
   };
 
   constructor(props: Props, context: Context) {
@@ -38,14 +37,14 @@ class ProfileActions extends PureComponent<Props> {
           onChange={this.props.onNotificationsChange}
           icon="notification"
           iconColor={this.context.theme.color.primary || Color.primary}
-          text="Notifications"
+          text="Profile.notifications"
           value={isNotificationsEnabled}
         />
         <BlockAction
           onPress={() => {}}
           icon="list"
           iconColor={this.context.theme.color.primary || Color.primary}
-          text="Shared media"
+          text="Profile.media"
         >
           <Text style={this.styles.count}>42</Text>
         </BlockAction>
@@ -53,14 +52,18 @@ class ProfileActions extends PureComponent<Props> {
           onPress={this.props.onFavouriteToggle}
           icon={isFavourite ? 'star' : 'star_outline'}
           iconColor={this.context.theme.color.warning || Color.warning}
-          text={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
+          text={
+            isFavourite
+              ? 'Profile.favourite_enable'
+              : 'Profile.favourite_disable'
+          }
           textColor={this.context.theme.color.warning || Color.warning}
         />
         <BlockAction
           onPress={this.props.onUserBlock}
           icon="block"
           iconColor={this.context.theme.color.danger || Color.danger}
-          text="Block user"
+          text="Profile.block"
           textColor={this.context.theme.color.danger || Color.danger}
         />
       </Block>

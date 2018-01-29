@@ -56,17 +56,14 @@ class Profile extends PureComponent<Props> {
     }
 
     const value = user.customProfile ? parseJSON(user.customProfile) : {};
-    const schema = parseJSONSchema(customProfileSchema, (error) => console.error(error));
+    const schema = parseJSONSchema(customProfileSchema, error =>
+      console.error(error)
+    );
     if (!schema) {
       return null;
     }
 
-    return (
-      <ProfileCustomInfo
-        value={value}
-        schema={schema}
-      />
-    );
+    return <ProfileCustomInfo value={value} schema={schema} />;
   }
 
   render() {
@@ -87,6 +84,8 @@ class Profile extends PureComponent<Props> {
           about={user.about}
           phones={user.phones}
           emails={user.emails}
+          onPhonePress={this.props.onPhonePress}
+          onEmailPress={this.props.onEmailPress}
         />
         {this.renderCustomInfo()}
         <ProfileActions

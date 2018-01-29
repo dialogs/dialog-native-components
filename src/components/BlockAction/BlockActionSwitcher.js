@@ -6,6 +6,7 @@
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import type { Theme } from '../../types';
 import PropTypes from 'prop-types';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import { View, Text, Switch } from 'react-native';
 import Icon from '../Icon/Icon';
@@ -33,7 +34,8 @@ class BlockActionSwitcher extends PureComponent<Props> {
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context: Context) {
@@ -64,6 +66,8 @@ class BlockActionSwitcher extends PureComponent<Props> {
   }
 
   renderText() {
+    const { formatText } = this.context.l10n;
+
     return (
       <Text
         style={[
@@ -72,13 +76,12 @@ class BlockActionSwitcher extends PureComponent<Props> {
         ]}
         numberOfLines={1}
       >
-        {this.props.text}
+        {formatText(this.props.text)}
       </Text>
     );
   }
 
   render() {
-    console.log(this.props);
     return (
       <View>
         <TouchableNativeFeedback onPress={this.handlePress}>

@@ -30,6 +30,8 @@ const messages = {
     'Error.nothing_found': 'Ничего не найдено',
     'Yes': 'Да',
     'No': 'Нет',
+    'Profile.button_call': 'Позвонить',
+    'Profile.button_message': 'Написать',
     'Profile.about': 'О себе',
     'Profile.about_add_button': 'Добавить описание',
     'Profile.nick': 'Никнейм',
@@ -37,7 +39,12 @@ const messages = {
     'Profile.nick_hint':
       'Вы можете выбрать никнейм, чтобы другие люди могли найти вас, не зная номер вашего телефона.',
     'Profile.phone': 'Телефон',
-    'Profile.email': 'E-mail'
+    'Profile.email': 'E-mail',
+    'Profile.notifications': 'Уведомления',
+    'Profile.media': 'Общие медиа',
+    'Profile.favourite_enable': 'Удалить из избранного',
+    'Profile.favourite_disable': 'Добавить в избранное',
+    'Profile.block': 'Block user'
   },
   en: {
     'Button.get_direction': 'Get directions',
@@ -45,6 +52,8 @@ const messages = {
     'Error.nothing_found': 'Nothing found',
     'Yes': 'Yes',
     'No': 'No',
+    'Profile.button_call': 'Call',
+    'Profile.button_message': 'Message',
     'Profile.about': 'About',
     'Profile.about_add_button': 'Describe yourself',
     'Profile.nick': 'Nickname',
@@ -52,7 +61,12 @@ const messages = {
     'Profile.nick_hint':
       'You can choose a nickname, so other people will be able to find you by this nickname and contact you without knowing your phone number.',
     'Profile.phone': 'Phone',
-    'Profile.email': 'E-mail'
+    'Profile.email': 'E-mail',
+    'Profile.notifications': 'Notifications',
+    'Profile.media': 'Shared media',
+    'Profile.favourite_enable': 'Remove from favourites',
+    'Profile.favourite_disable': 'Add to favourites',
+    'Profile.block': 'Block user'
   }
 };
 const globalValues = {};
@@ -145,8 +159,4 @@ const tabOptions = {
 
 AppRegistry.registerComponent('DialogComponents', () =>
   TabNavigator(tabs, tabOptions)
-);
-
-AppRegistry.registerComponent('DialogComponents', () =>
-  withContext(UserProfilePreview, theme, style, locale, messages, globalValues)
 );

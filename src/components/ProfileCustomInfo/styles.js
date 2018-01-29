@@ -14,19 +14,19 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       paddingBottom: Padding.small
     },
     boolean: {
-      marginTop: 4,
+      marginTop: 2,
       color: theme.color.primary || Color.primary,
-      fontSize: 18,
+      fontSize: 16,
       lineHeight: 22
     },
     integer: {
-      marginTop: 4,
+      marginTop: 2,
       color: theme.color.primary || Color.primary,
       fontSize: 16,
       lineHeight: 22
     },
     string: {
-      marginTop: 4,
+      marginTop: 2,
       color: Color.black,
       fontSize: 16,
       lineHeight: 22

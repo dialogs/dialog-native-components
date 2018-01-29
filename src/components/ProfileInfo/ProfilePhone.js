@@ -14,7 +14,7 @@ type Props = {
 
 function formatPhone(phone: string) {
   try {
-    return PhoneNumber(phone).getNumber('international');
+    return PhoneNumber('+' + phone).getNumber('international');
   } catch (e) {
     console.error(e);
     return phone;

@@ -41,6 +41,11 @@ class ProfileCustomInfo extends PureComponent<Props> {
       const propValue = value && value[propName] ? value[propName] : null;
       const { type, title } = schema.properties[propName];
 
+      // Do not render property if no value presented
+      if (!propValue || typeof propValue === 'undefined' || propValue === '') {
+        return null;
+      }
+
       switch (type) {
         case 'boolean':
           const { formatText } = this.context.l10n;

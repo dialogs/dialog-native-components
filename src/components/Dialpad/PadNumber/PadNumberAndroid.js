@@ -18,7 +18,7 @@ import {
   ScrollView,
   Platform
 } from 'react-native';
-import getStyles from './styles.android';
+import getStyles from './stylesAndroid';
 import Icon from '../../Icon/Icon';
 import { replaceText, handleBackspace } from '../inputState';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe/TouchableNativeFeedbackSafe';

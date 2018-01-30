@@ -11,11 +11,19 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import ProfilePhone from '../ProfileInfo/ProfilePhone';
 import getStyles from './styles';
 
+type Contact = {
+  type: 'phone',
+  value: Phone
+} | {
+  type: 'email',
+  value: Email
+};
+
 type Props = {
-  value: Phone | Email,
-  type: 'phone' | 'email',
+  contact: Contact,
   onPress: (value: string) => mixed
 };
+
 
 class ProfileTouchableContact extends PureComponent<Props> {
   styles: Object;
@@ -35,13 +43,13 @@ class ProfileTouchableContact extends PureComponent<Props> {
   }
 
   handlePress = () => {
-    switch (this.props.type) {
+    switch (this.props.contact.type) {
       case 'phone':
-        this.props.onPress(this.props.value.number);
+        this.props.onPress(this.props.contact.value.number);
         break;
 
       case 'email':
-        this.props.onPress(this.props.value.email);
+        this.props.onPress(this.props.contact.value.email);
 
         break;
       default:
@@ -49,15 +57,15 @@ class ProfileTouchableContact extends PureComponent<Props> {
   };
 
   renderValue() {
-    switch (this.props.type) {
+    switch (this.props.contact.type) {
       case 'phone':
         return (
           <Text style={this.styles.text}>
-            <ProfilePhone phone={this.props.value} />
+            <ProfilePhone phone={this.props.contact.value} />
           </Text>
         );
       case 'email':
-        return <Text style={this.styles.text}>{this.props.value.email}</Text>;
+        return <Text style={this.styles.text}>{this.props.contact.value.email}</Text>;
 
       default:
         return null;

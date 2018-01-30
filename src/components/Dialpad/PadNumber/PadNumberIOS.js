@@ -18,7 +18,7 @@ import {
   ScrollView,
   Platform
 } from 'react-native';
-import getStyles from './styles.ios';
+import getStyles from './stylesIOS';
 import { replaceText } from '../inputState';
 
 type Props = {

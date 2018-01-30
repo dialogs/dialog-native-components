@@ -5,10 +5,9 @@
 
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
-import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
-import getStyles from './styles';
+import getStyles from './stylesIOS';
 
 type Props = {
   title?: string,
@@ -22,7 +21,7 @@ class Block extends PureComponent<Props> {
   static contextTypes = {
     theme: PropTypes.object,
     style: PropTypes.object,
-    l10n: LocalizationContextType
+
   };
 
   constructor(props: Props, context: Context) {
@@ -36,11 +35,7 @@ class Block extends PureComponent<Props> {
       return null;
     }
 
-    const { formatText } = this.context.l10n;
-
-    return (
-      <Text style={this.styles.title}>{formatText(this.props.title)}</Text>
-    );
+    return <Text style={this.styles.title}>{this.props.title}</Text>;
   }
 
   render() {

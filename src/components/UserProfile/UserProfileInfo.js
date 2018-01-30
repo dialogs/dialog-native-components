@@ -133,8 +133,10 @@ class UserProfileInfo extends PureComponent<Props> {
       return (
         <ProfileTouchableContact
           key={phone.number}
-          type="phone"
-          value={phone}
+          contact={{
+            type: 'phone',
+            value: phone
+          }}
           onPress={this.props.onPhonePress}
         />
       );
@@ -153,8 +155,10 @@ class UserProfileInfo extends PureComponent<Props> {
       return (
         <ProfileTouchableContact
           key={email.email}
-          type="email"
-          value={email}
+          contact={{
+            type: 'email',
+            value: email
+          }}
           onPress={this.props.onEmailPress}
         />
       );

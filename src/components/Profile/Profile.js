@@ -32,7 +32,9 @@ type Props = {
   onCallPress: () => mixed,
   onMessagePress: () => mixed,
   onFavouriteToggle: () => mixed,
-  onNotificationsChange: (isNotificationsEnabled: boolean) => mixed
+  onNotificationsChange: (isNotificationsEnabled: boolean) => mixed,
+  onPhonePress: (phone: string) => mixed,
+  onEmailPress: (email: string) => mixed
 };
 
 class Profile extends PureComponent<Props> {

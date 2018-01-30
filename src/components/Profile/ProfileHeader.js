@@ -7,8 +7,9 @@ import PropTypes from 'prop-types';
 import type { UserOnline } from '@dlghq/dialog-types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
-import { View } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import Avatar from '../Avatar/Avatar';
+import Icon from '../Icon/Icon';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
 import ProfileHeaderWrapper from '../ProfileHeader/ProfileHeader';
 import ProfileHeaderButton from '../ProfileHeader/ProfileHeaderButton';
@@ -55,6 +56,44 @@ class ProfileHeader extends PureComponent<Props> {
     );
   }
 
+  renderButtons() {
+    // Try new buttons design
+    //
+    // return (
+    //   <View style={this.styles.buttonsNew}>
+    //     <View style={this.styles.button}>
+    //       <Icon glyph="logo" size={28} style={this.styles.buttonIcon} />
+    //       <Text style={this.styles.buttonText} numberOfLines={1}>Написать</Text>
+    //     </View>
+    //     <View style={this.styles.divider} />
+    //     <View style={this.styles.button}>
+    //       <Icon glyph="call" size={28} style={this.styles.buttonIcon} />
+    //       <Text style={this.styles.buttonText} numberOfLines={1}>Позвонить</Text>
+    //     </View>
+    //   </View>
+    // );
+
+    return (
+      <View style={this.styles.buttons}>
+        <View style={this.styles.buttonWrapper}>
+          <ProfileHeaderButton
+            onPress={this.props.onMessagePress}
+            title="Profile.button_message"
+            icon="logo"
+          />
+        </View>
+        <View style={this.styles.buttonDivider} />
+        <View style={this.styles.buttonWrapper}>
+          <ProfileHeaderButton
+            onPress={this.props.onCallPress}
+            title="Profile.button_call"
+            icon="call"
+          />
+        </View>
+      </View>
+    );
+  }
+
   render() {
     return (
       <ProfileHeaderWrapper>
@@ -64,23 +103,7 @@ class ProfileHeader extends PureComponent<Props> {
           online={this.props.online}
           styles={this.styles.online}
         />
-        <View style={this.styles.buttons}>
-          <View style={this.styles.buttonWrapper}>
-            <ProfileHeaderButton
-              onPress={this.props.onMessagePress}
-              title="Profile.button_message"
-              icon="logo"
-            />
-          </View>
-          <View style={this.styles.buttonDivider} />
-          <View style={this.styles.buttonWrapper}>
-            <ProfileHeaderButton
-              onPress={this.props.onCallPress}
-              title="Profile.button_call"
-              icon="call"
-            />
-          </View>
-        </View>
+        {this.renderButtons()}
       </ProfileHeaderWrapper>
     );
   }

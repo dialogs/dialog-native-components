@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
-import getStyles from './styles.ios';
+import getStyles from './stylesIOS';
 
 type Props = {
   value: string,

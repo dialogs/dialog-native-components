@@ -3,16 +3,16 @@
  * @flow
  */
 
-import type { ProfileActions as Props } from '../../types';
-import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { ProfileActions as Props } from '../../../types';
+import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { Text } from 'react-native';
-import Block from '../Block/Block';
-import BlockActionSwitcher from '../BlockAction/BlockActionSwitcher';
-import BlockAction from '../BlockAction/BlockAction';
-import getStyles from './styles';
-import { Color } from '../../styles';
+import Block from '../../Block/Block';
+import BlockActionSwitcher from '../../BlockActionSwitcher/BlockActionSwitcher';
+import BlockAction from '../../BlockAction/BlockAction';
+import getStyles from './stylesAndroid';
+import { Color } from '../../../styles';
 
 class ProfileActions extends PureComponent<Props> {
   styles: Object;

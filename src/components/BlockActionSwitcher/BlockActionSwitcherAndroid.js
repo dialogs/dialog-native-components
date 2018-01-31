@@ -11,7 +11,7 @@ import React, { PureComponent } from 'react';
 import { View, Text, Switch } from 'react-native';
 import Icon from '../Icon/Icon';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
-import getStyles from './styles';
+import getStyles from './stylesAndroid';
 import { Color } from '../../styles';
 
 type Props = {

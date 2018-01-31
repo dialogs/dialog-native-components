@@ -20,7 +20,7 @@ const Color: ColorType = {
   grayDark: '#333333',
   gray: '#727272',
   grayLight: '#acacac',
-  grayLighter: '#EDEDF2',
+  grayLighter: '#DEDDE0',
   white: '#fff',
 
   border: '#e0e0e0'

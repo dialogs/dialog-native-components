@@ -4,17 +4,17 @@
  */
 
 import type { Phone, Email } from '@dlghq/dialog-types';
-import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import Icon from '../Icon/Icon';
-import Block from '../Block/Block';
-import BlockText from '../BlockText/BlockText';
-import ProfileTouchableContact from '../ProfileTouchableContact/ProfileTouchableContact';
-import getStyles from './styles';
-import { Color } from '../../styles';
+import Icon from '../../Icon/Icon';
+import Block from '../../Block/Block';
+import BlockText from '../../BlockText/BlockText';
+import ProfileTouchableContact from '../../ProfileTouchableContact/ProfileTouchableContact';
+import getStyles from './stylesIOS';
+import { Color } from '../../../styles';
 
 type Props = {
   nick: ?string,
@@ -164,12 +164,16 @@ class UserProfileInfo extends PureComponent<Props> {
       );
     });
 
-    return <BlockText title="Profile.email">{children}</BlockText>;
+    return (
+      <BlockText title="Profile.email" borderless>
+        {children}
+      </BlockText>
+    );
   }
 
   render() {
     return (
-      <Block style={this.styles.infoContainer}>
+      <Block>
         {this.renderAbout()}
         {this.renderNick()}
         {this.renderPhones()}

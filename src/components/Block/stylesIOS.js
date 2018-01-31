@@ -9,16 +9,24 @@ import { Color, Padding } from '../../styles';
 
 const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
-    container: {
-      elevation: 2,
-      backgroundColor: theme.color.white || Color.white,
+    wrapper: {
       marginBottom: Padding.default * 2
     },
+    container: {
+      padding: 0,
+      backgroundColor: theme.color.white || Color.white,
+      borderColor: theme.color.grayLight || Color.grayLight,
+      borderTopWidth: StyleSheet.hairlineWidth,
+      borderBottomWidth: StyleSheet.hairlineWidth
+    },
     title: {
-      color: theme.color.primary || Color.primary,
+      color: theme.color.gray || Color.gray,
       fontSize: 16,
-      paddingRight: Padding.default * 2,
-      paddingLeft: Padding.default * 2
+      lineHeight: 20,
+      paddingTop: Padding.small,
+      paddingBottom: Padding.small,
+      paddingRight: Padding.large,
+      paddingLeft: Padding.large
     }
   };
 

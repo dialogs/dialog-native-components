@@ -30,8 +30,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     buttons: {
       marginTop: Padding.default * 2,
-      paddingLeft: Padding.default * 2,
-      paddingRight: Padding.default * 2,
+      paddingLeft: Padding.large,
+      paddingRight: Padding.large,
       alignContent: 'center',
       flexDirection: 'row',
       flexWrap: 'nowrap'
@@ -48,7 +48,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     online: {
       marginTop: 4
-    },
+    }
     // buttonsNew: {
     //   alignContent: 'center',
     //   flexDirection: 'row',

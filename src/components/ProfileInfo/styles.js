@@ -21,7 +21,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     nickText: {
       color: Color.black,
       fontSize: 18,
-      lineHeight: 26
+      lineHeight: 24
     }
   };
 

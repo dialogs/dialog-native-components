@@ -45,9 +45,11 @@ class CustomForm extends PureComponent<Props> {
   renderProperties() {
     const { value, schema } = this.props;
 
-    return Object.keys(schema.properties).map(propName => {
+    return Object.keys(schema.properties).map((propName, index, array) => {
       const propValue = value && value[propName] ? value[propName] : null;
       const { type, title } = schema.properties[propName];
+
+      const borderless = array.length - 1 === index;
 
       switch (type) {
         case 'boolean':
@@ -56,6 +58,7 @@ class CustomForm extends PureComponent<Props> {
               key={propName}
               id={propName}
               title={title}
+              borderless={borderless}
               value={Boolean(propValue)}
               onChange={this.handleChange}
             />
@@ -68,6 +71,7 @@ class CustomForm extends PureComponent<Props> {
               key={propName}
               id={propName}
               title={title}
+              borderless={borderless}
               value={String(propValue || '')}
               keyboardType="numeric"
               onChange={this.handleChange}
@@ -80,6 +84,7 @@ class CustomForm extends PureComponent<Props> {
               key={propName}
               id={propName}
               title={title}
+              borderless={borderless}
               value={String(propValue || '')}
               onChange={this.handleChange}
             />

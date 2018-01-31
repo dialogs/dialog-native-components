@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import type { UserOnline } from '@dlghq/dialog-types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Platform } from 'react-native';
 import Avatar from '../Avatar/Avatar';
 import Icon from '../Icon/Icon';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
@@ -72,6 +72,16 @@ class ProfileHeader extends PureComponent<Props> {
     //     </View>
     //   </View>
     // );
+    const glyphs = Platform.select({
+      ios: {
+        call: 'call_outline',
+        message: 'logo_outline'
+      },
+      android: {
+        call: 'call',
+        message: 'logo'
+      }
+    });
 
     return (
       <View style={this.styles.buttons}>
@@ -79,7 +89,7 @@ class ProfileHeader extends PureComponent<Props> {
           <ProfileHeaderButton
             onPress={this.props.onMessagePress}
             title="Profile.button_message"
-            icon="logo"
+            icon={glyphs.message}
           />
         </View>
         <View style={this.styles.buttonDivider} />
@@ -87,7 +97,7 @@ class ProfileHeader extends PureComponent<Props> {
           <ProfileHeaderButton
             onPress={this.props.onCallPress}
             title="Profile.button_call"
-            icon="call"
+            icon={glyphs.call}
           />
         </View>
       </View>

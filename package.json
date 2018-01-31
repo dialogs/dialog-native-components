@@ -25,7 +25,7 @@
     "pretest": "npm run lint",
     "test": "jest",
     "lint": "npm-run-all lint:flow",
-    "lint:flow": "flow || exit 0",
+    "lint:flow": "flow",
     "preversion": "npm test",
     "postversion": "npm publish",
     "postpublish": "git push --follow-tags"

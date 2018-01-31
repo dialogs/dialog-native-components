@@ -8,7 +8,7 @@ import type { JSONValue, JSONSchema } from '../../utils/JSONSchema';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import Block from '../Block/Block';
 import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
@@ -37,7 +37,7 @@ class ProfileCustomInfo extends PureComponent<Props> {
   renderProperties() {
     const { value, schema } = this.props;
 
-    return Object.keys(schema.properties).map((propName) => {
+    return Object.keys(schema.properties).map((propName, index, array) => {
       const propValue = value && value[propName] ? value[propName] : null;
       const { type, title } = schema.properties[propName];
 
@@ -46,11 +46,13 @@ class ProfileCustomInfo extends PureComponent<Props> {
         return null;
       }
 
+      const borderless = array.length - 1 === index;
+
       switch (type) {
         case 'boolean':
           const { formatText } = this.context.l10n;
           return (
-            <BlockText key={propName} title={title}>
+            <BlockText key={propName} title={title} borderless={borderless}>
               <Text style={this.styles.boolean}>
                 {formatText(propValue ? 'Yes' : 'No')}
               </Text>
@@ -60,14 +62,14 @@ class ProfileCustomInfo extends PureComponent<Props> {
         case 'number':
         case 'integer':
           return (
-            <BlockText key={propName} title={title}>
+            <BlockText key={propName} title={title} borderless={borderless}>
               <Text style={this.styles.integer}>{propValue}</Text>
             </BlockText>
           );
 
         default:
           return (
-            <BlockText key={propName} title={title}>
+            <BlockText key={propName} title={title} borderless={borderless}>
               <Text style={this.styles.string}>{propValue}</Text>
             </BlockText>
           );
@@ -76,11 +78,12 @@ class ProfileCustomInfo extends PureComponent<Props> {
   }
 
   render() {
-    return (
-      <Block style={this.styles.container}>
-        {this.renderProperties()}
-      </Block>
-    );
+    const styles = Platform.select({
+      ios: null,
+      android: this.styles.container
+    });
+
+    return <Block style={styles}>{this.renderProperties()}</Block>;
   }
 }
 

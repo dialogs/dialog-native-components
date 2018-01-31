@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
 import { View, Text } from 'react-native';
-import getStyles from './styles';
+import getStyles from './stylesAndroid';
 
 type Props = {
   title?: ?string,

@@ -12,7 +12,7 @@ import React, { PureComponent } from 'react';
 import { ScrollView, View, Text, ActivityIndicator } from 'react-native';
 import Icon from '../Icon/Icon';
 import ProfileHeader from './ProfileHeader';
-import ProfileActions from './ProfileActions';
+import ProfileActions from './ProfileActions/ProfileActions';
 import ProfileInfo from '../ProfileInfo/ProfileInfo';
 import ProfileCustomInfo from '../ProfileCustomInfo/ProfileCustomInfo';
 import getStyles from './styles';

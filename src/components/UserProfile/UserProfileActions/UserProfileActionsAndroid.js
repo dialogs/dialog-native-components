@@ -4,13 +4,13 @@
  */
 
 import PropTypes from 'prop-types';
-import type { Props as Context } from '../ContextProvider/ContextProvider';
+import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import React, { PureComponent } from 'react';
 import { View } from 'react-native';
-import Block from '../Block/Block';
-import BlockAction from '../BlockAction/BlockAction';
-import getStyles from './styles';
-import { Color } from '../../styles';
+import Block from '../../Block/Block';
+import BlockAction from '../../BlockAction/BlockAction';
+import getStyles from './stylesAndroid';
+import { Color } from '../../../styles';
 
 type Props = {};
 

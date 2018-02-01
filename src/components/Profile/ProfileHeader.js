@@ -19,12 +19,12 @@ import getStyles from './styles';
 import { Color } from '../../styles';
 
 type Props = {
-  avatar: ?string,
-  title: string,
   id: number,
-  online: UserOnline,
-  onMessagePress: () => mixed,
-  onCallPress: () => mixed
+  title: string,
+  avatar: ?string,
+  online: ?UserOnline,
+  onCallPress: () => mixed,
+  onMessagePress: () => mixed
 };
 
 class ProfileHeader extends PureComponent<Props> {

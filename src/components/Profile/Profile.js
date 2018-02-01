@@ -3,7 +3,7 @@
  * @flow
  */
 
-import type { Peer, User, UserOnline } from '@dlghq/dialog-types';
+import type { Peer, User, Avatar, UserOnline } from '@dlghq/dialog-types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import type { JSONSchema } from '../../utils/JSONSchema';
 import memoize from 'lodash/memoize';
@@ -24,7 +24,8 @@ const parseJSONSchema = memoize(safelyParseJSONSchema);
 
 type Props = {
   user: User,
-  online: UserOnline,
+  avatar: ?Avatar,
+  online: ?UserOnline,
   isFavourite: boolean,
   isNotificationsEnabled: boolean,
   customProfileSchema: ?string,
@@ -69,14 +70,14 @@ class Profile extends PureComponent<Props> {
   }
 
   render() {
-    const { user, online, isFavourite, isNotificationsEnabled } = this.props;
+    const { user, avatar, online, isFavourite, isNotificationsEnabled } = this.props;
 
     return (
       <ScrollView style={this.styles.container}>
         <ProfileHeader
           id={user.id}
           title={user.name}
-          avatar={user.avatar}
+          avatar={avatar ? avatar.url : null}
           online={online}
           onMessagePress={this.props.onMessagePress}
           onCallPress={this.props.onCallPress}

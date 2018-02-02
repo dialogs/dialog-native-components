@@ -8,11 +8,12 @@ import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import { LocalizationContextType } from '@dlghq/react-l10n';
 import React, { PureComponent } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput } from 'react-native';
 import Icon from '../../Icon/Icon';
 import Block from '../../Block/Block';
 import BlockText from '../../BlockText/BlockText';
 import ProfileTouchableContact from '../../ProfileTouchableContact/ProfileTouchableContact';
+import UserProfileAbout from '../UserProfileAbout/UserProfileAbout';
 import getStyles from './stylesAndroid';
 import { Color } from '../../../styles';
 
@@ -39,45 +40,23 @@ class UserProfileInfo extends PureComponent<Props> {
   constructor(props: Props, context: Context) {
     super(props, context);
 
+    this.state = {
+      about: props.about
+    };
+
     this.styles = getStyles(context.theme, context.style.UserProfile);
   }
 
+  handleAboutChange = value => {
+    this.setState({ about: value });
+  };
+
   renderAbout() {
-    if (!this.props.about) {
-      const { formatText } = this.context.l10n;
-
-      return (
-        <BlockText title="Profile.about">
-          <TouchableOpacity
-            onPress={this.props.onAboutPress}
-            activeOpacity={0.8}
-            hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
-          >
-            <View style={this.styles.addWrapper}>
-              <Icon
-                glyph="plus_outline"
-                size={24}
-                style={this.styles.addIcon}
-              />
-              <Text style={this.styles.addText}>
-                {formatText('Profile.about_add_button').toUpperCase()}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        </BlockText>
-      );
-    }
-
     return (
-      <BlockText title="Profile.about">
-        <TouchableOpacity
-          onPress={this.props.onAboutPress}
-          activeOpacity={0.8}
-          hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
-        >
-          <Text style={this.styles.aboutText}>{this.props.about}</Text>
-        </TouchableOpacity>
-      </BlockText>
+      <UserProfileAbout
+        about={this.state.about}
+        onChange={this.handleAboutChange}
+      />
     );
   }
 

@@ -29,8 +29,10 @@ class Icon extends PureComponent<Props> {
     switch (glyph) {
       case 'arrow':
         return require('../../assets/icons/arrow.png');
-      case 'arrow_right':
-        return require('../../assets/icons/arrow_right.png');
+      case 'arrow_back':
+        return require('../../assets/icons/arrow_back.png');
+      case 'arrow_forward':
+        return require('../../assets/icons/arrow_forward.png');
       case 'backspace':
         return require('../../assets/icons/backspace.png');
       case 'block':

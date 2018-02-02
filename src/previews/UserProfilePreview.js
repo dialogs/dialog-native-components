@@ -44,6 +44,10 @@ class UserProfilePreview extends PureComponent {
     Alert.alert(`Request write message to ${email}`);
   };
 
+  handleBackPress = () => {
+    Alert.alert(`Go to previous screen`);
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -57,6 +61,7 @@ class UserProfilePreview extends PureComponent {
           onNickPress={this.handleNickPress}
           onPhonePress={this.handlePhonePress}
           onEmailPress={this.handleEmailPress}
+          onBackPress={this.handleBackPress}
         />
       </View>
     );

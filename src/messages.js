@@ -7,6 +7,8 @@ const messages = {
   ru: {
     'Button.get_direction': 'Проложить маршрут',
     'Button.open_chat': 'Открыть чат',
+    'Button.save': 'Сохранить',
+    'Button.cancel': 'Отменить',
     'Error.nothing_found': 'Ничего не найдено',
     'Yes': 'Да',
     'No': 'Нет',
@@ -34,6 +36,8 @@ const messages = {
   en: {
     'Button.get_direction': 'Get directions',
     'Button.open_chat': 'Open chat',
+    'Button.save': 'Save',
+    'Button.cancel': 'Cancel',
     'Error.nothing_found': 'Nothing found',
     'Yes': 'Yes',
     'No': 'No',

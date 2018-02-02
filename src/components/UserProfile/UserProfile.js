@@ -31,7 +31,8 @@ type Props = {
   onEmailPress: (phone: string) => mixed,
   onPhonePress: (email: string) => mixed,
   onAboutPress: () => mixed,
-  onNickPress: () => mixed
+  onNickPress: () => mixed,
+  onBackPress: () => mixed
 };
 
 class UserProfile extends PureComponent<Props> {
@@ -85,6 +86,7 @@ class UserProfile extends PureComponent<Props> {
           avatar={user.avatar}
           title={user.name}
           onAvatarChange={this.props.onAvatarChange}
+          onBackPress={this.props.onBackPress}
         />
         <UserProfileInfo
           about={user.about}

@@ -5,6 +5,7 @@
 
 import type { ThemeOverride, StyleOverride } from '../../../types';
 import { StyleSheet } from 'react-native';
+import ColorJS from 'color';
 import { Color, Padding } from '../../../styles';
 
 const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
@@ -26,8 +27,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       flexDirection: 'row',
       alignItems: 'center',
       alignContent: 'center',
-      justifyContent: 'center',
-      paddingTop: Padding.small
+      justifyContent: 'center'
     },
     addIcon: {
       flex: 0,
@@ -36,6 +36,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     addText: {
       flex: 1,
+      height: 24,
       fontSize: 14,
       lineHeight: 24,
       color: theme.color.primary || Color.primary
@@ -48,27 +49,10 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     buttons: {
       flex: 1,
-      alignItems: 'flex-start',
+      flexDirection: 'row',
+      alignItems: 'center',
       alignContent: 'center',
-      justifyContent: 'center'
-    },
-    button: {
-      paddingTop: Padding.small,
-      paddingBottom: Padding.small,
-      paddingLeft: Padding.default,
-      paddingRight: Padding.default,
-      borderRadius: 3,
-      backgroundColor: 'rgba(0,0,0,.05)',
-      marginRight: Padding.small
-    },
-    buttonSave: {
-      color: Color.success
-    },
-    buttonCancel: {
-      color: Color.gray
-    },
-    buttonText: {
-      fontSize: 13
+      justifyContent: 'flex-start'
     }
   };
 

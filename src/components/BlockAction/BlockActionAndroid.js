@@ -72,7 +72,7 @@ class BlockAction extends PureComponent<Props> {
 
   render() {
     return (
-      <TouchableNativeFeedback onPress={this.props.onPress}>
+      <TouchableNativeFeedback onPress={this.props.onPress} delayPressIn={0}>
         <View
           style={[this.styles.container, this.props.style]}
           pointerEvents="box-only"

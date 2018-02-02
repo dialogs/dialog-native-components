@@ -10,7 +10,7 @@ import { Color, Padding } from '../../styles';
 const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
   const style = {
     container: {
-      // paddingTop: Padding.small,
+      paddingTop: Padding.default
       // paddingBottom: Padding.small
     }
   };

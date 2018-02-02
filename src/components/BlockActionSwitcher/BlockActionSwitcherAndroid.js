@@ -84,11 +84,8 @@ class BlockActionSwitcher extends PureComponent<Props> {
   render() {
     return (
       <View>
-        <TouchableNativeFeedback onPress={this.handlePress}>
-          <View
-            style={[this.styles.container, this.props.style]}
-            pointerEvents="box-only"
-          >
+        <TouchableNativeFeedback onPress={this.handlePress} delayPressIn={0}>
+          <View style={[this.styles.container, this.props.style]}>
             {this.renderIcon()}
             {this.renderText()}
           </View>

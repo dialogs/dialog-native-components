@@ -17,7 +17,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     title: {
       color: Color.gray,
-      fontSize: 14
+      fontSize: 14,
+      marginBottom: 4
     }
   };
 

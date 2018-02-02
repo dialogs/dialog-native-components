@@ -7,7 +7,7 @@ import type { Phone, Email } from '@dlghq/dialog-types';
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import { LocalizationContextType } from '@dlghq/react-l10n';
-import React, { PureComponent } from 'react';
+import React, { PureComponent, type Node } from 'react';
 import { View, Text, TouchableOpacity, TextInput, Button } from 'react-native';
 import Icon from '../../Icon/Icon';
 import Block from '../../Block/Block';
@@ -24,6 +24,7 @@ type Props = {
 
 class UserProfileAbout extends PureComponent<Props> {
   styles: Object;
+  input: ?Node;
 
   static contextTypes = {
     theme: PropTypes.object,
@@ -33,7 +34,6 @@ class UserProfileAbout extends PureComponent<Props> {
 
   constructor(props: Props, context: Context) {
     super(props, context);
-
     this.state = {
       isEditStarted: false
     };
@@ -43,7 +43,9 @@ class UserProfileAbout extends PureComponent<Props> {
 
   handleEditStart = () => {
     console.log('handleEditStart');
-    this.setState({ isEditStarted: true });
+    this.setState({ isEditStarted: true }, () => {
+      this.input.focus();
+    });
   };
 
   handleSavePress = () => {
@@ -93,14 +95,16 @@ class UserProfileAbout extends PureComponent<Props> {
     return (
       <View>
         <TextInput
+          ref={input => (this.input = input)}
           style={this.styles.aboutInput}
           onChangeText={this.props.onChange}
-          value={this.props.about}
-          multiline={true}
+          // value={this.props.about}
+          multiline
           numberOfLines={1}
           returnKeyType="done"
-          keyboardType={this.props.keyboardType}
-        />
+        >
+          <Text>{this.props.about}</Text>
+        </TextInput>
         <View style={this.styles.buttons}>
           <SmallButton
             textColor={Color.primary}

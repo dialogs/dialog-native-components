@@ -80,7 +80,10 @@ class UserProfile extends PureComponent<Props> {
     const { user } = this.props;
 
     return (
-      <ScrollView style={this.styles.container}>
+      <ScrollView
+        style={this.styles.container}
+        keyboardShouldPersistTaps="always"
+      >
         <UserProfileHeader
           id={user.id}
           avatar={user.avatar}

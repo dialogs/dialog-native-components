@@ -16,15 +16,16 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       paddingLeft: Padding.default * 2
     },
     title: {
-      marginTop: 6,
       color: Color.gray,
-      fontSize: 14
+      fontSize: 14,
+      marginBottom: 4
     },
     input: {
-      marginTop: -4,
+      fontSize: 16,
+      lineHeight: 24,
       marginLeft: -4,
       marginRight: -4,
-      fontSize: 16
+      paddingTop: 0
     }
   };
 

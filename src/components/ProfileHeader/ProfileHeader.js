@@ -31,7 +31,7 @@ class ProfileHeader extends PureComponent<Props> {
 
   renderBackground() {
     const gradient = this.context.theme.gradient || Gradient;
-    const radius = 3;
+    const radius = 2.5;
     const degree = 135;
 
     return (

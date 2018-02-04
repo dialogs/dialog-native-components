@@ -5,7 +5,7 @@
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, Text, Alert } from 'react-native';
 import data from '../fixtures/ProfileData';
-import UserProfile from '../components/UserProfile/UserProfile';
+import UserProfile from '../components/UserProfile/UserProfileAnimated/UserProfile';
 
 class UserProfilePreview extends PureComponent {
   constructor(props) {

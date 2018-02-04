@@ -98,13 +98,11 @@ class UserProfileAbout extends PureComponent<Props> {
           ref={input => (this.input = input)}
           style={this.styles.aboutInput}
           onChangeText={this.props.onChange}
-          // value={this.props.about}
+          value={this.props.about}
           multiline
           numberOfLines={1}
           returnKeyType="done"
-        >
-          <Text>{this.props.about}</Text>
-        </TextInput>
+        />
         <View style={this.styles.buttons}>
           <SmallButton
             textColor={Color.primary}
@@ -134,7 +132,6 @@ class UserProfileAbout extends PureComponent<Props> {
   }
 
   render() {
-    console.log(this.props, this.state);
     return <BlockText title="Profile.about">{this.renderContent()}</BlockText>;
   }
 }

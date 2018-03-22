@@ -3,83 +3,13 @@
  * @flow
  */
 
-import type { Props as Context } from '../ContextProvider/ContextProvider';
-import PropTypes from 'prop-types';
-import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
-import Icon from '../Icon/Icon';
-import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
-import getStyles from './styles';
-import { Color } from '../../styles';
+import { Platform } from 'react-native';
+import BlockActionAndroid from './BlockActionAndroid';
+import BlockActionIOS from './BlockActionIOS';
 
-type Props = {
-  text?: string,
-  icon?: string,
-  iconColor?: string,
-  textColor?: string,
-  style?: ?*,
-  children?: ?*,
-  onPress: () => mixed
-};
-
-class BlockAction extends PureComponent<Props> {
-  styles: Object;
-
-  static defaultProps = {
-    iconColor: Color.gray,
-    textColor: Color.black
-  };
-
-  static contextTypes = {
-    theme: PropTypes.object,
-    style: PropTypes.object
-  };
-
-  constructor(props: Props, context: Context) {
-    super(props, context);
-
-    this.styles = getStyles(context.theme, context.style.BlockAction);
-  }
-
-  renderIcon() {
-    if (!this.props.icon) {
-      return <View style={this.styles.spacer} />;
-    }
-
-    return (
-      <Icon
-        glyph={this.props.icon}
-        size={26}
-        style={[this.styles.icon, { tintColor: this.props.iconColor }]}
-      />
-    );
-  }
-
-  renderText() {
-    return (
-      <Text
-        style={[this.styles.text, { color: this.props.textColor }]}
-        numberOfLines={1}
-      >
-        {this.props.text}
-      </Text>
-    );
-  }
-
-  render() {
-    return (
-      <TouchableNativeFeedback onPress={this.props.onPress}>
-        <View
-          style={[this.styles.container, this.props.style]}
-          pointerEvents="box-only"
-        >
-          {this.renderIcon()}
-          {this.renderText()}
-          {this.props.children}
-        </View>
-      </TouchableNativeFeedback>
-    );
-  }
-}
+const BlockAction = Platform.select({
+  ios: () => BlockActionIOS,
+  android: () => BlockActionAndroid
+})();
 
 export default BlockAction;

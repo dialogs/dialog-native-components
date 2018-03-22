@@ -18,7 +18,7 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       alignItems: 'center',
       justifyContent: 'center',
       paddingTop: Padding.large * 2,
-      paddingBottom: Padding.default * 2
+      paddingBottom: Padding.large
     },
     background: {
       position: 'absolute',

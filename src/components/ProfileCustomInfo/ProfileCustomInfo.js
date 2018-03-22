@@ -4,25 +4,28 @@
  */
 
 import type { Props as Context } from '../ContextProvider/ContextProvider';
-import type {
-  CustomForm as Props,
-  CustomFormProperty,
-  CustomFormValue
-} from '../../types';
+import type { JSONValue, JSONSchema } from '../../utils/JSONSchema';
+import { LocalizationContextType } from '@dlghq/react-l10n';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import Block from '../Block/Block';
 import BlockText from '../BlockText/BlockText';
 import getStyles from './styles';
 import { Color } from '../../styles';
+
+type Props = {
+  value: JSONValue,
+  schema: JSONSchema
+};
 
 class ProfileCustomInfo extends PureComponent<Props> {
   styles: Object;
 
   static contextTypes = {
     theme: PropTypes.object,
-    style: PropTypes.object
+    style: PropTypes.object,
+    l10n: LocalizationContextType
   };
 
   constructor(props: Props, context: Context) {
@@ -31,46 +34,56 @@ class ProfileCustomInfo extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.ProfileCustomInfo);
   }
 
-  getProperySchema = (key: string): CustomFormProperty =>
-    this.props.schema.properties[key];
-  getProperyValue = (key: string): CustomFormValue => this.props.value[key];
-
   renderProperties() {
-    const { schema } = this.props;
-    const properties = [];
+    const { value, schema } = this.props;
 
-    for (var propery in schema.properties) {
-      const value = this.getProperyValue(propery);
-      const { title, type } = this.getProperySchema(propery);
-      let children = null;
+    return Object.keys(schema.properties).map((propName, index, array) => {
+      const propValue = value && value[propName] ? value[propName] : null;
+      const { type, title } = schema.properties[propName];
+
+      // Do not render property if no value presented
+      if (!propValue || typeof propValue === 'undefined' || propValue === '') {
+        return null;
+      }
+
+      const borderless = array.length - 1 === index;
 
       switch (type) {
         case 'boolean':
-          children = (
-            <Text style={this.styles.boolean}>{value ? 'Yes' : 'No'}</Text>
+          const { formatText } = this.context.l10n;
+          return (
+            <BlockText key={propName} title={title} borderless={borderless}>
+              <Text style={this.styles.boolean}>
+                {formatText(propValue ? 'Yes' : 'No')}
+              </Text>
+            </BlockText>
           );
-          break;
+
+        case 'number':
         case 'integer':
-          children = <Text style={this.styles.integer}>{value}</Text>;
-          break;
+          return (
+            <BlockText key={propName} title={title} borderless={borderless}>
+              <Text style={this.styles.integer}>{propValue}</Text>
+            </BlockText>
+          );
+
         default:
-          children = <Text style={this.styles.string}>{value}</Text>;
+          return (
+            <BlockText key={propName} title={title} borderless={borderless}>
+              <Text style={this.styles.string}>{propValue}</Text>
+            </BlockText>
+          );
       }
-
-      properties.push(
-        <BlockText key={propery} title={title}>
-          {children}
-        </BlockText>
-      );
-    }
-
-    return properties;
+    });
   }
 
   render() {
-    return (
-      <Block style={this.styles.container}>{this.renderProperties()}</Block>
-    );
+    const styles = Platform.select({
+      ios: null,
+      android: this.styles.container
+    });
+
+    return <Block style={styles}>{this.renderProperties()}</Block>;
   }
 }
 

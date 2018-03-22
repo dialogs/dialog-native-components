@@ -15,11 +15,13 @@ import ProfileHeaderOnline from '../ProfileHeader/ProfileHeaderOnline';
 import Icon from '../Icon/Icon';
 import getStyles from './styles';
 import { Color } from '../../styles';
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 
 type Props = {
-  avatar: ?string,
-  title: string,
   id: number,
+  title: string,
+  avatar: ?string,
+  onBackPress: () => mixed,
   onAvatarChange: () => mixed
 };
 
@@ -35,6 +37,22 @@ class UserProfileHeader extends PureComponent<Props> {
     super(props, context);
 
     this.styles = getStyles(context.theme, context.style.UserProfile);
+  }
+
+  renderBackButton() {
+    return (
+      <View style={this.styles.backWrapper}>
+        <TouchableNativeFeedback
+          onPress={this.props.onBackPress}
+          background={TouchableNativeFeedback.Ripple(
+            'rgba(255,255,255,.5)',
+            true
+          )}
+        >
+          <Icon glyph="arrow_back" size={28} style={this.styles.backIcon} />
+        </TouchableNativeFeedback>
+      </View>
+    );
   }
 
   renderAvatar() {
@@ -64,6 +82,7 @@ class UserProfileHeader extends PureComponent<Props> {
   render() {
     return (
       <ProfileHeader>
+        {this.renderBackButton()}
         {this.renderAvatar()}
         <ProfileHeaderTitle title={this.props.title} />
       </ProfileHeader>

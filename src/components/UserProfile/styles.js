@@ -47,41 +47,19 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     cameraIcon: {
       tintColor: Color.white
     },
-
-    aboutText: {
-      color: Color.black,
-      fontSize: 16,
-      lineHeight: 24
-    },
-    nickText: {
-      color: Color.black,
-      fontSize: 20
-    },
-    phoneText: {
-      color: theme.color.primary || Color.primary,
-      fontSize: 20
-    },
-    emailText: {
-      color: theme.color.primary || Color.primary,
-      fontSize: 18
-    },
-    aboutAddWrapper: {
-      flexDirection: 'row',
+    backWrapper: {
+      position: 'absolute',
+      top: Padding.small,
+      left: Padding.small,
+      width: 48,
+      height: 48,
       alignItems: 'center',
       alignContent: 'center',
       justifyContent: 'center',
-      paddingTop: Padding.small
+      borderRadius: 1000
     },
-    aboutAddIcon: {
-      flex: 0,
-      marginRight: Padding.small,
-      tintColor: theme.color.primary || Color.primary
-    },
-    aboutAddText: {
-      flex: 1,
-      fontSize: 18,
-      lineHeight: 24,
-      color: theme.color.primary || Color.primary
+    backIcon: {
+      tintColor: theme.color.white || Color.white
     }
   };
 

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseJSONSchema should be invalid "{"properties":{"foo":{"type":"email","title":""}}}" 1`] = `"Schema property \\"foo\\" has unsupported type"`;
+
+exports[`parseJSONSchema should be invalid "{"properties":{"foo":{"type":"string","title":1}}}" 1`] = `"Schema property \\"foo\\" title is not a string\\""`;
+
+exports[`parseJSONSchema should be invalid "{"properties":{"foo":null}}" 1`] = `"Schema property \\"foo\\" is not a plain object"`;
+
+exports[`parseJSONSchema should be invalid "{}" 1`] = `"Schema properties is not a plain object"`;
+
+exports[`parseJSONSchema should be invalid "null" 1`] = `"Schema is not a plain object"`;

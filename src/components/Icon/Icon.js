@@ -29,8 +29,10 @@ class Icon extends PureComponent<Props> {
     switch (glyph) {
       case 'arrow':
         return require('../../assets/icons/arrow.png');
-      case 'arrow_right':
-        return require('../../assets/icons/arrow_right.png');
+      case 'arrow_back':
+        return require('../../assets/icons/arrow_back.png');
+      case 'arrow_forward':
+        return require('../../assets/icons/arrow_forward.png');
       case 'backspace':
         return require('../../assets/icons/backspace.png');
       case 'block':
@@ -39,6 +41,8 @@ class Icon extends PureComponent<Props> {
         return require('../../assets/icons/bug.png');
       case 'call':
         return require('../../assets/icons/call.png');
+      case 'call_outline':
+        return require('../../assets/icons/call_outline.png');
       case 'camera':
         return require('../../assets/icons/camera.png');
       case 'channel':
@@ -49,10 +53,16 @@ class Icon extends PureComponent<Props> {
         return require('../../assets/icons/group.png');
       case 'list':
         return require('../../assets/icons/list.png');
+      case 'lock':
+        return require('../../assets/icons/lock.png');
       case 'logo':
         return require('../../assets/icons/logo.png');
+      case 'logo_outline':
+        return require('../../assets/icons/logo_outline.png');
       case 'marker':
         return require('../../assets/icons/marker.png');
+      case 'next':
+        return require('../../assets/icons/next.png');
       case 'notification':
         return require('../../assets/icons/notification.png');
       case 'person':

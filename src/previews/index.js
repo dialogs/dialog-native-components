@@ -12,6 +12,7 @@ import ContactsPreview from './ContactsPreview';
 import ProfilePreview from './ProfilePreview';
 import UserProfilePreview from './UserProfilePreview';
 import DialpadPreview from './DialpadPreview';
+import messages from '../messages';
 
 const theme = {
   color: {
@@ -23,18 +24,6 @@ const theme = {
 };
 const style = {};
 const locale = 'ru';
-const messages = {
-  ru: {
-    'Button.get_direction': 'Проложить маршрут',
-    'Button.open_chat': 'Открыть чат',
-    'Error.nothing_found': 'Ничего не найдено'
-  },
-  en: {
-    'Button.get_direction': 'Get directions',
-    'Button.open_chat': 'Open chat',
-    'Error.nothing_found': 'Nothing found'
-  }
-};
 const globalValues = {};
 
 const tabs = {

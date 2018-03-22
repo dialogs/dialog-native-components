@@ -30,8 +30,8 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     },
     buttons: {
       marginTop: Padding.default * 2,
-      paddingLeft: Padding.default * 2,
-      paddingRight: Padding.default * 2,
+      paddingLeft: Padding.large,
+      paddingRight: Padding.large,
       alignContent: 'center',
       flexDirection: 'row',
       flexWrap: 'nowrap'
@@ -49,6 +49,36 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
     online: {
       marginTop: 4
     }
+    // buttonsNew: {
+    //   alignContent: 'center',
+    //   flexDirection: 'row',
+    //   flexWrap: 'nowrap',
+    //   marginTop: Padding.large * 2,
+    //   marginBottom: Padding.default
+    // },
+    // button: {
+    //   flex: 1,
+    //   alignContent: 'center',
+    //   justifyContent: 'center',
+    //   alignItems: 'center',
+    //   flexDirection: 'column',
+    //   padding: Padding.small,
+    // },
+    // buttonIcon: {
+    //   tintColor: Color.white,
+    //   marginBottom: Padding.small / 2
+    // },
+    // buttonText: {
+    //   fontSize: 16,
+    //   color: Color.white
+    // },
+    // divider: {
+    //   flex: 0,
+    //   marginTop: Padding.small,
+    //   marginBottom: Padding.small,
+    //   width: StyleSheet.hairlineWidth,
+    //   backgroundColor: 'rgba(255,255,255,.6)'
+    // }
   };
 
   return StyleSheet.create(Object.assign({}, style, styleOverride));

@@ -4,7 +4,7 @@
  */
 
 import type { Props as Context } from '../../ContextProvider/ContextProvider';
-import chunk from 'lodash.chunk';
+import chunk from 'lodash/chunk';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { View, Dimensions } from 'react-native';
@@ -41,7 +41,6 @@ class PadButtons extends PureComponent<Props, State> {
 
   renderButtons() {
     return chunk(padButtons, 3).map((row, index) => {
-      console.log(row);
       const buttons = row.map(button => {
         return (
           <PadButton

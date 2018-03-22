@@ -163,13 +163,15 @@ export type CustomFormValues = {
   [key: string]: CustomFormValue
 };
 
+export type JSONSchema = {
+  properties: {
+    [key: string]: CustomFormProperty
+  }
+};
+
 export type CustomForm = {
-  schema: {
-    properties: {
-      [key: string]: CustomFormProperty
-    }
-  },
-  value: CustomFormValues
+  schema: JSONSchema,
+  value: ?CustomFormValues
 };
 
 export type CustomFormProps = CustomForm & {
@@ -186,15 +188,6 @@ export type StyleOverride = {
   [key: string]: Object
 };
 
-export type Profile = {
-  profile: User & {
-    online: UserOnline
-  },
-  custom: CustomForm,
-  isNotificationsEnabled: boolean,
-  isFavourite: boolean
-};
-
 export type ProfileActions = {
   isNotificationsEnabled: boolean,
   isFavourite: boolean,
@@ -203,17 +196,12 @@ export type ProfileActions = {
   onUserBlock: () => mixed
 };
 
-export type ProfileProps = {
-  data: Field<Profile>,
-  onNotificationsChange: (isNotificationsEnabled: boolean) => mixed,
-  onFavouriteToggle: () => mixed,
-  onUserBlock: () => mixed,
-  onMessagePress: () => mixed,
-  onCallPress: () => mixed
-};
-
 export type UserProfileProps = {
-  data: Field<Profile>,
+  user: User,
+  online: ?UserOnline,
+  isFavourite: boolean,
+  isNotificationsEnabled: boolean,
+  customProfileSchema: ?JSONSchema,
   onAvatarChange: () => mixed,
   onCustomInfoChange: (value: CustomFormValues) => mixed
 };

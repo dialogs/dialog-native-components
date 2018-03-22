@@ -22,10 +22,8 @@
   ],
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "pretest": "npm run lint",
+    "pretest": "flow || exit 0",
     "test": "jest",
-    "lint": "npm-run-all lint:flow",
-    "lint:flow": "flow",
     "preversion": "npm test",
     "postversion": "npm publish",
     "postpublish": "git push --follow-tags"

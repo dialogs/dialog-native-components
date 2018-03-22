@@ -1,6 +1,5 @@
 [ignore]
-; We fork some components by platform
-.*/*[.]android.js
+.*/node_modules/react-native/.*/*[.]android.js
 
 ; Ignore "BUCK" generated dirs
 <PROJECT_ROOT>/\.buckd/
@@ -17,7 +16,7 @@
 .*/Libraries/polyfills/.*
 
 ; Ignore broken libs
-<PROJECT_ROOT>/node_modules/react-navigation/src/.*
+; <PROJECT_ROOT>/node_modules/react-navigation/src/.*
 
 [include]
 
@@ -49,5 +48,3 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowFixMe\\($\\|[^(]\\|(\\(<VERSION>\\)? *\\(si
 suppress_comment=\\(.\\|\n\\)*\\$FlowIssue\\((\\(<VERSION>\\)? *\\(site=[a-z,_]*react_native[a-z,_]*\\)?)\\)?:? #[0-9]+
 suppress_comment=\\(.\\|\n\\)*\\$FlowFixedInNextDeploy
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
-
-unsafe.enable_getters_and_setters=true

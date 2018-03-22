@@ -17,7 +17,7 @@ import { LocalizationContextType } from '@dlghq/react-l10n';
 import { View, FlatList, ActivityIndicator, Text } from 'react-native';
 import DialpadContact from '../DialpadContact/DialpadContact';
 import Pad from './iOSPad/Pad';
-import PadNumber from './PadNumber/PadNumber';
+import PadNumber from './PadNumber/PadNumber.ios';
 import PadFooter from './PadFooter/PadFooter';
 import getStyles from './styles.ios';
 import { Color } from '../../styles';

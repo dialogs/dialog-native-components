@@ -7,7 +7,8 @@ import type { DiscoverCard as Card } from '../../types';
 import type { Props as Context } from '../ContextProvider/ContextProvider';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text } from 'react-native';
+import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
 import Avatar from '../Avatar/Avatar';
 import Icon from '../Icon/Icon';
 import getAvatarPlaceholder from '../../utils/getAvatarPlaceholder';
@@ -33,7 +34,7 @@ class DiscoverCard extends PureComponent<Props> {
     this.styles = getStyles(context.theme, context.style.DiscoverCard);
   }
 
-  handleCardTap = () => {
+  handleCardPress = () => {
     this.props.onGoToCard(this.props.card);
   };
 
@@ -141,13 +142,13 @@ class DiscoverCard extends PureComponent<Props> {
   render() {
     return (
       <View style={[this.styles.container, this.props.style]}>
-        <TouchableOpacity onPress={this.handleCardTap} activeOpacity={0.8}>
-          <View style={this.styles.body}>
+        <TouchableNativeFeedback onPress={this.handleCardPress} delayPressIn={0}>
+          <View style={this.styles.body} pointerEvents="box-only">
             {this.renderAvatar()}
             {this.renderInfo()}
           </View>
           {/* {this.renderFooter()} */}
-        </TouchableOpacity>
+        </TouchableNativeFeedback>
       </View>
     );
   }

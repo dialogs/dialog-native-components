@@ -14,23 +14,23 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       flexWrap: 'nowrap',
       borderRadius: 2,
       backgroundColor: Color.white,
-      borderWidth: StyleSheet.hairlineWidth,
-      borderColor: 'rgba(0, 0, 0, 0.06)',
+      borderBottomWidth: StyleSheet.hairlineWidth,
+      borderBottomColor: 'rgba(0, 0, 0, 0.06)',
       marginBottom: 0,
-      ...Platform.select({
-        ios: {
-          shadowColor: Color.black,
-          shadowOffset: {
-            width: 0,
-            height: 1
-          },
-          shadowRadius: 2,
-          shadowOpacity: 0.08
-        },
-        android: {
-          elevation: 2
-        }
-      })
+      // ...Platform.select({
+      //   ios: {
+      //     shadowColor: Color.black,
+      //     shadowOffset: {
+      //       width: 0,
+      //       height: 1
+      //     },
+      //     shadowRadius: 2,
+      //     shadowOpacity: 0.08
+      //   },
+      //   android: {
+      //     elevation: 2
+      //   }
+      // })
     },
     body: {
       padding: Padding.default,

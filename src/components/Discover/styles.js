@@ -24,13 +24,13 @@ const getStyles = (theme: ThemeOverride, styleOverride: StyleOverride) => {
       backgroundColor: Color.grayLighter
     },
     card: {
-      marginTop: 0,
-      marginBottom: Padding.default,
-      marginLeft: Padding.default,
-      marginRight: Padding.default
+      margin: 0,
+      // marginBottom: Padding.default,
+      // marginLeft: Padding.default,
+      // marginRight: Padding.default
     },
     firstCard: {
-      marginTop: Padding.default
+      // marginTop: Padding.default
     },
     fill: {
       flex: 1,

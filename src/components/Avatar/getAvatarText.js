@@ -4,6 +4,10 @@
  */
 
 function getAvatarText(title: string): string {
+  if (!title.length) {
+    return '#';
+  }
+
   const titleArray = title.trim().split(' ');
   if (titleArray.length > 1) {
     return `${titleArray[0][0]}${titleArray[1][0]}`;

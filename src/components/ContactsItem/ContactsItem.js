@@ -94,7 +94,7 @@ class ContactsItem extends PureComponent<Props, State> {
           this.props.isOpen ? this.styles.containerOpened : null
         ]}
       >
-        <TouchableNativeFeedback onPress={this.handleCardPress}>
+        <TouchableNativeFeedback onPress={this.handleCardPress} delayPressIn={0}>
           <View style={this.styles.cardHeading} pointerEvents="box-only">
             <View style={this.styles.cardHeadingText}>
               <Text style={this.styles.title} numberOfLines={1}>

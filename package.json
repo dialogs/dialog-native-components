@@ -29,8 +29,8 @@
     "postpublish": "git push --follow-tags"
   },
   "peerDependencies": {
-    "react": ">=16.3.0-alpha.1",
-    "react-native": ">=0.54.2"
+    "react": ">=16.0.0-alpha.12",
+    "react-native": ">=0.47.1"
   },
   "dependencies": {
     "@dlghq/dialog-types": "1.35.3",
@@ -48,8 +48,8 @@
     "flow-bin": "0.65.0",
     "jest-cli": "22.4.3",
     "npm-run-all": "4.1.2",
-    "react": "16.3.0-alpha.1",
-    "react-native": "0.54.2",
+    "react": "16.0.0-alpha.12",
+    "react-native": "0.47.1",
     "react-navigation": "1.5.8"
   }
 }
